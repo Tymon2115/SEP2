@@ -1,8 +1,9 @@
-package client.model.personel;
+package shared.personel;
 
 import client.exceptions.AlreadyExists;
 import client.exceptions.DoesNotExist;
-import client.model.Branches.Branch;
+import shared.Branches.Branch;
+import shared.Branches.Branches;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +25,12 @@ public class Employees {
         }
     }
 
-    public void editEmployee(Employee employee) {
+    public void editEmployee(Employee employee, ArrayList<String> properties) {
         for (Employee employee1 : employees) {
             if (employee1.equals(employee)) {
-                //todo create edit method
-                employee.editEmployee();
+                for (String property : properties) {
+                    whatToEdit(property, employee1);
+                }
             }
         }
     }
@@ -45,4 +47,26 @@ public class Employees {
     public void createEmployee(String name, String surname, int id, Branch branch) {
         employees.add(new Employee(name, surname, id, branch));
     }
+
+    private void whatToEdit(String property, Employee employee) {
+        String name = property.split(",")[0];
+        String value = property.split(",")[1];
+        switch (name) {
+            case "name":
+                employee.setName(value);
+                break;
+            case "surname":
+                employee.setSurname(value);
+                break;
+            case "branch":
+                try {
+                    employee.setBranch(Branches.getInstance().getBranch(value));
+                } catch (DoesNotExist doesNotExist) {
+                    doesNotExist.printStackTrace();
+                }
+                break;
+
+        }
+    }
+
 }

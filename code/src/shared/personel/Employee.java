@@ -1,6 +1,6 @@
-package client.model.personel;
+package shared.personel;
 
-import client.model.Branches.Branch;
+import shared.Branches.Branch;
 
 public class Employee {
     private String name;
