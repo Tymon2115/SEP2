@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane dividerPositions="0.75" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.75" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <items>
       <ScrollPane prefHeight="200.0" prefWidth="200.0">
          <content>
@@ -42,7 +42,7 @@
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="158.0" prefWidth="300.0">
                      <graphic>
-                        <ImageView fitHeight="122.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="67.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../pictures%20for%20scene/minus.png" />
                            </image>

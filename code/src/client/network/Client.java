@@ -1,4 +1,5 @@
 package client.network;
 
-public class d {
+public interface Client {
+
 }

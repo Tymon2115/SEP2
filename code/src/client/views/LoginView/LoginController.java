@@ -18,12 +18,11 @@ public class LoginController {
 
     private LoginViewModel loginVM;
 
-    public void init() {
+    public void init(LoginViewModel loginViewModel) {
+        this.loginVM = loginViewModel;
         usernameField.textProperty().bindBidirectional(loginVM.usernameProperty());
         passwordField.textProperty().bindBidirectional(loginVM.passwordProperty());
-        loginResultMessage.textProperty().bindBidirectional(loginVM.loginResponseProperty());
-
-
+        loginResultMessage.textProperty().bindBidirectional(loginVM.loginResponseProperty()); // If needed
     }
 
     public void onLoginButton(ActionEvent actionEvent) {

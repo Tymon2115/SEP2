@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -8,18 +9,19 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="304.0" prefWidth="442.0" style="-fx-background-color: #23272a;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.LoginView.LoginController">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: #23272a;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.LoginView.LoginController">
    <children>
-      <TextField fx:id="usernameField" layoutX="121.0" layoutY="110.0" prefHeight="26.0" prefWidth="242.0" />
-      <Button layoutX="195.0" layoutY="236.0" mnemonicParsing="false" onAction="#onLoginButton" text="Log in" textFill="#7c4f4f" />
-      <ImageView fitHeight="90.0" fitWidth="91.0" layoutX="177.0" layoutY="14.0">
+      <TextField fx:id="usernameField" layoutX="79.0" layoutY="124.0" prefHeight="26.0" prefWidth="242.0" promptText="Username" style="-fx-background-color: #2c2f33;" />
+      <Button layoutX="155.0" layoutY="209.0" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #7289da;" text="Log in" textFill="#e4dbdb" />
+      <ImageView fitHeight="90.0" fitWidth="91.0" layoutX="155.0" layoutY="21.0">
          <image>
-            <Image url="@../../../../../../../OneDrive/Desktop/login-logo.png" />
+            <Image url="@../pictures%20for%20scene/logo.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="passwordField" layoutX="121.0" layoutY="167.0" prefHeight="26.0" prefWidth="242.0" />
-      <Label fx:id="Username" layoutX="35.0" layoutY="114.0" text="Username" textFill="#3ba8e7" />
-      <Label fx:id="Password" layoutX="36.0" layoutY="171.0" text="Password" textFill="#3ba8e7" />
-      <Label fx:id="loginResultMessage" layoutX="66.0" layoutY="242.0" text="Login Message" />
+      <PasswordField fx:id="passwordField" layoutX="79.0" layoutY="166.0" prefHeight="26.0" prefWidth="242.0" promptText="Password" style="-fx-background-color: #2c2f33;" />
+      <Label fx:id="loginResultMessage" layoutX="160.0" layoutY="254.0" text="Login Message" />
    </children>
+   <padding>
+      <Insets right="10.0" />
+   </padding>
 </AnchorPane>

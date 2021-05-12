@@ -14,11 +14,9 @@ public class LoginViewModel {
         username = new SimpleStringProperty();
         password = new SimpleStringProperty();
         loginResponse = new SimpleStringProperty();
-
     }
 
-    public StringProperty usernameProperty()
-    {
+    public StringProperty usernameProperty() {
         return username;
     }
 
@@ -31,8 +29,6 @@ public class LoginViewModel {
     }
 
     public void login() {
-        System.out.println(username.get());
-        System.out.println(password.get());
-
+        model.login(username.get(), password.get());
     }
 }

@@ -6,7 +6,9 @@ import javafx.stage.Stage;
 public class CarRentalApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        ViewHandler viewHandler = new ViewHandler();
+        ModelFactory modelFactory = new ModelFactory();
+        ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
+        ViewHandler viewHandler = new ViewHandler(viewModelFactory);
         viewHandler.start();
     }
 }
