@@ -1,4 +1,4 @@
 package client.model;
 
-public class d {
+public interface Model {
 }
