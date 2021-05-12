@@ -1,10 +1,11 @@
-package client.model.Reservation;
+package shared.Reservation;
 
 import client.exceptions.AlreadyExists;
 import client.exceptions.DoesNotExist;
-import client.model.Branches.Branch;
+import shared.Branches.Branch;
 
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,9 +52,8 @@ public class Reservations {
         }
     }
 
-    public void createReservation(String name, String surname, int id, Branch branch) {
-        //todo find out reservation parameters
-        reservations.add(new Reservation());
+    public void createReservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date) {
+        reservations.add(new Reservation(name, surname, driversLicence, address, creditCardNumber, car, branch, date));
     }
 
     public Reservation getReservation(int id) throws DoesNotExist {

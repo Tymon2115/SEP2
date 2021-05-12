@@ -1,13 +1,10 @@
-package client.model.Branches;
+package shared.Branches;
 
-import client.model.Reservation.Cars;
-import client.model.Reservation.Reservation;
-import client.model.Reservation.Reservations;
-import client.model.personel.Employee;
-import client.model.personel.Employees;
-import client.model.personel.Manager;
-
-import java.util.List;
+import shared.Reservation.Cars;
+import shared.Reservation.Reservation;
+import shared.Reservation.Reservations;
+import shared.personel.Employees;
+import shared.personel.Manager;
 
 public class Branch {
     private int id;
