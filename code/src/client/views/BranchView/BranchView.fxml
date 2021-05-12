@@ -35,7 +35,7 @@
                      <graphic>
                         <ImageView fitHeight="71.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@pictures%20for%20scene/Untitled-2.png" />
+                              <Image url="@../pictures%20for%20scene/plus.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -44,7 +44,7 @@
                      <graphic>
                         <ImageView fitHeight="122.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@pictures%20for%20scene/minus.png" />
+                              <Image url="@../pictures%20for%20scene/minus.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -55,7 +55,7 @@
                <graphic>
                   <ImageView fitHeight="86.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@pictures%20for%20scene/editIcon.png" />
+                        <Image url="@../pictures%20for%20scene/editIcon.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -64,7 +64,7 @@
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="173.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@pictures%20for%20scene/sports-car.png" />
+                        <Image url="@../pictures%20for%20scene/sports-car.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -73,7 +73,7 @@
                <graphic>
                   <ImageView fitHeight="121.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@pictures%20for%20scene/employees.png" />
+                        <Image url="@../pictures%20for%20scene/employees.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -82,7 +82,7 @@
                <graphic>
                   <ImageView fitHeight="123.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@pictures%20for%20scene/reservation-icon-png-29.jpg" />
+                        <Image url="@../pictures%20for%20scene/reservation.jpg" />
                      </image>
                   </ImageView>
                </graphic>
