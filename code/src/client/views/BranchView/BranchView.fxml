@@ -10,84 +10,86 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane dividerPositions="0.75" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <items>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0">
-         <content>
-            <TableView prefHeight="1044.0" prefWidth="1474.0">
-               <columns>
-                  <TableColumn prefWidth="75.0" text="ID" />
-                  <TableColumn prefWidth="75.0" text="Name" />
-                  <TableColumn prefWidth="75.0" text="Surname" />
-                  <TableColumn prefWidth="128.33331298828125" text="Driver's license no." />
-                  <TableColumn prefWidth="225.66668701171875" text="All other shit for reservations" />
-                  <TableColumn prefWidth="203.33331298828125" text="Column X" />
-                  <TableColumn prefWidth="317.66668701171875" text="Column X" />
-               </columns>
-            </TableView>
-         </content>
-      </ScrollPane>
-      <VBox prefHeight="1050.0" prefWidth="416.0">
-         <children>
-            <HBox prefHeight="135.0" prefWidth="393.0">
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="300.0">
-                     <graphic>
-                        <ImageView fitHeight="71.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../pictures%20for%20scene/plus.png" />
-                           </image>
+<SplitPane dividerPositions="0.75" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/11.0.1"
+           xmlns:fx="http://javafx.com/fxml/1">
+    <items>
+        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+            <content>
+                <TableView prefHeight="1044.0" prefWidth="1474.0">
+                    <columns>
+                        <TableColumn prefWidth="75.0" text="ID"/>
+                        <TableColumn prefWidth="75.0" text="Name"/>
+                        <TableColumn prefWidth="75.0" text="Surname"/>
+                        <TableColumn prefWidth="128.33331298828125" text="Driver's license no."/>
+                        <TableColumn prefWidth="225.66668701171875" text="All other shit for reservations"/>
+                        <TableColumn prefWidth="203.33331298828125" text="Column X"/>
+                        <TableColumn prefWidth="317.66668701171875" text="Column X"/>
+                    </columns>
+                </TableView>
+            </content>
+        </ScrollPane>
+        <VBox prefHeight="1050.0" prefWidth="416.0">
+            <children>
+                <HBox prefHeight="135.0" prefWidth="393.0">
+                    <children>
+                        <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="300.0">
+                            <graphic>
+                                <ImageView fitHeight="71.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../pictures%20for%20scene/plus.png"/>
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="158.0" prefWidth="300.0">
+                            <graphic>
+                                <ImageView fitHeight="122.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../pictures%20for%20scene/minus.png"/>
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+                <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
+                    <graphic>
+                        <ImageView fitHeight="86.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../pictures%20for%20scene/editIcon.png"/>
+                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="158.0" prefWidth="300.0">
-                     <graphic>
-                        <ImageView fitHeight="122.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../pictures%20for%20scene/minus.png" />
-                           </image>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
+                    <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="173.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../pictures%20for%20scene/sports-car.png"/>
+                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-            <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
-               <graphic>
-                  <ImageView fitHeight="86.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../pictures%20for%20scene/editIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="173.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../pictures%20for%20scene/sports-car.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
-               <graphic>
-                  <ImageView fitHeight="121.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../pictures%20for%20scene/employees.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
-               <graphic>
-                  <ImageView fitHeight="123.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../pictures%20for%20scene/reservation.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </VBox>
-   </items>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
+                    <graphic>
+                        <ImageView fitHeight="121.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../pictures%20for%20scene/employees.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
+                    <graphic>
+                        <ImageView fitHeight="123.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../pictures%20for%20scene/reservation.jpg"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+    </items>
 </SplitPane>

@@ -22,12 +22,12 @@ public class LoginController {
         usernameField.textProperty().bindBidirectional(loginVM.usernameProperty());
         passwordField.textProperty().bindBidirectional(loginVM.passwordProperty());
         loginResultMessage.textProperty().bindBidirectional(loginVM.loginResponseProperty());
+
+
     }
 
     public void onLoginButton(ActionEvent actionEvent) {
         System.out.println("Login pressed");
         loginVM.login();
     }
-
-
 }

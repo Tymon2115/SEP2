@@ -1,4 +1,4 @@
 package client.viewmodel;
 
-public class d {
+public class CarViewModel {
 }
