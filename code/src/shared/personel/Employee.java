@@ -43,6 +43,8 @@ public class Employee {
         this.branch = branch;
     }
 
+    //todo is the part bellow necessary?
+
     public void createReservation() {
 
     }

@@ -87,10 +87,6 @@ public class Reservation {
         this.branch = branch;
     }
 
-    public void editReservation() {
-        //todo figure out edits
-    }
-
     public Date getDate() {
         return date;
     }
