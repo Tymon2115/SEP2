@@ -54,5 +54,6 @@ public interface Model extends PropertyChangeSubject {
 
     void deleteBranch(Branch branch);
 
+    void login(String username, String password);
 
 }

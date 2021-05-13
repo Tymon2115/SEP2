@@ -118,6 +118,11 @@ public class DataModel implements Model {
     }
 
     @Override
+    public void login(String username, String password) {
+
+    }
+
+    @Override
     public void addListener(PropertyChangeListener listener, String name) {
 
     }
