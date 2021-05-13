@@ -21,9 +21,16 @@ public class DataServer implements Server {
     }
 
     @Override
-    public void createReservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date, Client client) throws RemoteException {
-        Reservation reservation = new Reservation(name, surname, driversLicence, address, creditCardNumber, car, branch, date);
-
+//    public void createReservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date, Client client) throws RemoteException {
+            public void createReservation(String name, Client client){
+        Reservation reservation = new Reservation(name);
+        //todo there will be some database bullshit and then reservation will be made
+        try {
+            client.reservationCallback(reservation);
+            System.out.println(reservation.getName());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

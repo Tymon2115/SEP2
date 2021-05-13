@@ -88,7 +88,7 @@ public class Branch {
     }
 
     public void createReservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date) throws Exception {
-        reservations.addReservation(new Reservation(name, surname, driversLicence, address, creditCardNumber, car, branch, date));
+      //  reservations.addReservation(new Reservation(name, surname, driversLicence, address, creditCardNumber, car, branch, date));
     }
 
     public void editReservation(Reservation reservation, ArrayList<String> properties) {
