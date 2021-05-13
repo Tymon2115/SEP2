@@ -17,16 +17,16 @@ public class Reservation implements Serializable {
     private Date date;
 
 
-//    public Reservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date) {
-    public Reservation(String name) {
+    public Reservation(int id, String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date) {
+        this.id = id;
         this.name = name;
-//        this.surname = surname;
-//        this.driversLicence = driversLicence;
-//        this.address = address;
-//        this.creditCardNumber = creditCardNumber;
-//        this.car = car;
-//        this.branch = branch;
-//        this.date = date;
+        this.surname = surname;
+        this.driversLicence = driversLicence;
+        this.address = address;
+        this.creditCardNumber = creditCardNumber;
+        this.car = car;
+        this.branch = branch;
+        this.date = date;
     }
 
     public String getName() {

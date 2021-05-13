@@ -2,6 +2,7 @@ package client.network;
 
 import server.RMIServer.Server;
 import shared.Branches.Branch;
+import shared.PropertyChangeSubject;
 import shared.Reservation.Car;
 import shared.Reservation.Cars;
 import shared.Reservation.Reservation;
@@ -11,6 +12,7 @@ import shared.personel.Employees;
 import shared.personel.Manager;
 
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -19,9 +21,11 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
 
-public class DataClient implements Client {
+public class DataClient implements Client, PropertyChangeSubject {
 
     private Server server;
+    private PropertyChangeSupport support = new PropertyChangeSupport(this);
+
 
     public DataClient() throws RemoteException {
         UnicastRemoteObject.exportObject(this, 0);
@@ -33,12 +37,11 @@ public class DataClient implements Client {
     }
 
 
-
-//    public void createReservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date) {
-@Override
-    public void createReservation(String name){
+    //    public void createReservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date) {
+    @Override
+    public void createReservation(String name)  {
         try {
-           //
+            //
             // server.createReservation(name, surname, driversLicence, address, creditCardNumber, car, branch, date, this);
             server.createReservation(name, this);
         } catch (RemoteException e) {
@@ -48,8 +51,12 @@ public class DataClient implements Client {
     }
 
     @Override
-    public void reservationCallback(Reservation reservation) {
-        System.out.println(reservation.getName());
+    public void reservationCallback(Reservation reservation) throws RemoteException {
+        reservationUpdate(reservation);
+    }
+
+    private void reservationUpdate(Reservation reservation) {
+        support.firePropertyChange("reservation", null, reservation);
     }
 
     @Override
@@ -145,6 +152,11 @@ public class DataClient implements Client {
     @Override
     public void deleteBranch(Branch branch) {
 
+    }
+
+    @Override
+    public void addListener(PropertyChangeListener listener, String name) {
+        support.addPropertyChangeListener(name, listener);
     }
 
 //    @Override
