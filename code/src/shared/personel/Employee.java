@@ -43,16 +43,6 @@ public class Employee {
         this.branch = branch;
     }
 
-    public void createReservation() {
-
-    }
-
-    public void editReservation() {
-
-    }
-
-    public void deleteReservation() {
-
-    }
+    //todo
 
 }

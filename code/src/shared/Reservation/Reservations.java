@@ -3,6 +3,7 @@ package shared.Reservation;
 import client.exceptions.AlreadyExists;
 import client.exceptions.DoesNotExist;
 import shared.Branches.Branch;
+import shared.Branches.Branches;
 
 
 import java.sql.Date;
@@ -34,13 +35,50 @@ public class Reservations {
         }
     }
 
-    public void editReservation(Reservation reservation) {
+    public void editReservation(Reservation reservation, ArrayList<String> parameters) {
         for (Reservation reservation1 : reservations) {
             if (reservation1.equals(reservation)) {
-                //todo create edit method
-                reservation.editReservation();
+                for (String parameter : parameters)
+                    whatToEdit(reservation1, parameter);
             }
         }
+    }
+
+    private void whatToEdit(Reservation reservation, String parameters) {
+        String name = parameters.split(",")[0];
+        String value = parameters.split(",")[0];
+        switch (name) {
+            case "name":
+                reservation.setName(value);
+                break;
+            case "surname":
+                reservation.setSurname(value);
+                break;
+            case "driversLicence":
+                reservation.setDriversLicence(value);
+                break;
+            case "address":
+                reservation.setAddress(value);
+                break;
+            case "creditCardNumber":
+                reservation.setCreditCardNumber(value);
+                break;
+            case "Car":
+                reservation.setCar(branch.getCars().getCar(Integer.parseInt(value)));
+                break;
+            case "branch":
+                try {
+                    reservation.setBranch(Branches.getInstance().getBranch(value));
+                } catch (DoesNotExist doesNotExist) {
+                    doesNotExist.printStackTrace();
+                }
+                break;
+            case "date":
+                reservation.setDate(new Date(Integer.parseInt(value.split("/")[0]), Integer.parseInt(value.split("/")[1]), Integer.parseInt(value.split("/")[2])));
+                break;
+
+        }
+
     }
 
     public void deleteReservation(Reservation reservation) throws DoesNotExist {
@@ -53,7 +91,7 @@ public class Reservations {
     }
 
     public void createReservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date) {
-        reservations.add(new Reservation(name, surname, driversLicence, address, creditCardNumber, car, branch, date));
+      //  reservations.add(new Reservation(name, surname, driversLicence, address, creditCardNumber, car, branch, date));
     }
 
     public Reservation getReservation(int id) throws DoesNotExist {

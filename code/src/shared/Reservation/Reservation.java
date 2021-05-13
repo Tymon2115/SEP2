@@ -2,9 +2,10 @@ package shared.Reservation;
 
 import shared.Branches.Branch;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Reservation {
+public class Reservation implements Serializable {
     private int id;
     private String name;
     private String surname;
@@ -16,15 +17,16 @@ public class Reservation {
     private Date date;
 
 
-    public Reservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date) {
+//    public Reservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date) {
+    public Reservation(String name) {
         this.name = name;
-        this.surname = surname;
-        this.driversLicence = driversLicence;
-        this.address = address;
-        this.creditCardNumber = creditCardNumber;
-        this.car = car;
-        this.branch = branch;
-        this.date = date;
+//        this.surname = surname;
+//        this.driversLicence = driversLicence;
+//        this.address = address;
+//        this.creditCardNumber = creditCardNumber;
+//        this.car = car;
+//        this.branch = branch;
+//        this.date = date;
     }
 
     public String getName() {
@@ -85,10 +87,6 @@ public class Reservation {
 
     public void setBranch(Branch branch) {
         this.branch = branch;
-    }
-
-    public void editReservation() {
-        //todo figure out edits
     }
 
     public Date getDate() {

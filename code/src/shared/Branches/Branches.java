@@ -31,10 +31,10 @@ public class Branches {
             if (branch.getName().equals(name))
                 return branch;
         }
-        throw new DoesNotExist("couldnt find the right branch");
+        throw new DoesNotExist("couldn't find the right branch");
     }
 
-    public static void add(Branch branch) {
+    public void add(Branch branch) {
         branches.add(branch);
     }
 

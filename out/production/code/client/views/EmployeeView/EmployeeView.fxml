@@ -73,16 +73,16 @@
                <graphic>
                   <ImageView fitHeight="121.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../pictures%20for%20scene/employees.png" />
+                        <Image url="@../pictures%20for%20scene/reservation.jpg" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
             <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
                <graphic>
-                  <ImageView fitHeight="123.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="115.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../pictures%20for%20scene/reservation.jpg" />
+                        <Image url="@../pictures%20for%20scene/branch.png" />
                      </image>
                   </ImageView>
                </graphic>

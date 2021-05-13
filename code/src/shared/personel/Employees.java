@@ -8,6 +8,8 @@ import shared.Branches.Branches;
 import java.util.ArrayList;
 import java.util.List;
 
+//todo one list
+
 public class Employees {
     private List<Employee> employees;
     private Branch branch;
@@ -68,5 +70,7 @@ public class Employees {
 
         }
     }
+
+
 
 }
