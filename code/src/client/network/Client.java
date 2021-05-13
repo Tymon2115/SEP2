@@ -1,4 +1,4 @@
-package client.model;
+package client.network;
 
 import shared.Branches.Branch;
 import shared.PropertyChangeSubject;
@@ -10,11 +10,13 @@ import shared.personel.Employee;
 import shared.personel.Employees;
 import shared.personel.Manager;
 
+import java.rmi.Remote;
 import java.sql.Date;
 
-public interface Model extends PropertyChangeSubject {
-
+public interface Client extends PropertyChangeSubject, Remote {
     void createReservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date);
+
+    void reservationCallback(Reservation reservation);
 
     void editReservation();
 
@@ -53,6 +55,4 @@ public interface Model extends PropertyChangeSubject {
     void addBranch(Branch branch);
 
     void deleteBranch(Branch branch);
-
-
 }
