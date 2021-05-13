@@ -22,7 +22,7 @@ public class ViewModelFactory {
     }
 
     // Sheeshh for the GIT
-    public ModelFactory getModelFactory() {
+    public ModelFactory getModelFactork() {
         return modelFactory;
     }
 }
