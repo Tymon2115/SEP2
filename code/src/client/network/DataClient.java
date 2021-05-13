@@ -33,14 +33,23 @@ public class DataClient implements Client {
     }
 
 
-    @Override
-    public void createReservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date) {
+
+//    public void createReservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date) {
+@Override
+    public void createReservation(String name){
         try {
-            server.createReservation(name, surname, driversLicence, address, creditCardNumber, car, branch, date, this);
+           //
+            // server.createReservation(name, surname, driversLicence, address, creditCardNumber, car, branch, date, this);
+            server.createReservation(name, this);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void reservationCallback(Reservation reservation) {
+        System.out.println(reservation.getName());
     }
 
     @Override
@@ -138,8 +147,8 @@ public class DataClient implements Client {
 
     }
 
-    @Override
-    public void addListener(PropertyChangeListener listener, String name) {
-
-    }
+//    @Override
+//    public void addListener(PropertyChangeListener listener, String name) {
+//
+//    }
 }

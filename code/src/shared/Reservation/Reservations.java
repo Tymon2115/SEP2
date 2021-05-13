@@ -91,7 +91,7 @@ public class Reservations {
     }
 
     public void createReservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date) {
-        reservations.add(new Reservation(name, surname, driversLicence, address, creditCardNumber, car, branch, date));
+      //  reservations.add(new Reservation(name, surname, driversLicence, address, creditCardNumber, car, branch, date));
     }
 
     public Reservation getReservation(int id) throws DoesNotExist {
