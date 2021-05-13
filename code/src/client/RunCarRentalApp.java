@@ -1,6 +1,5 @@
 package client;
 
-import client.core.CarRentalApp;
 import javafx.application.Application;
 
 public class RunCarRentalApp {
