@@ -20,4 +20,9 @@ public class ViewModelFactory {
         }
         return loginViewModel;
     }
+
+    // Sheeshh for the GIT
+    public ModelFactory getModelFactory() {
+        return modelFactory;
+    }
 }
