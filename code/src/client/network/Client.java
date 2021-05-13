@@ -30,7 +30,7 @@ public interface Client extends Remote {
 
     void editEmployee() throws RemoteException;
 
-    void addEmployee(Employee employee) throws RemoteException;
+    void employeeCallback(Employee employee) throws RemoteException;
 
     void deleteEmployee(Employee employee) throws RemoteException;
 
@@ -38,15 +38,15 @@ public interface Client extends Remote {
 
     void editManager() throws RemoteException;
 
-    void addManager(Manager manager) throws RemoteException;
+    void managerCallback(Manager manager) throws RemoteException;
 
     void deleteManager(Manager manager) throws RemoteException;
 
-    void createCar(int id, String make, String model, String color, String numberPlates) throws RemoteException;
+    void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description) throws RemoteException;
 
     void editCar() throws RemoteException;
 
-    void addCar(Car car) throws RemoteException;
+    void carCallback(Car car) throws RemoteException;
 
     void deleteCar(Car car) throws RemoteException;
 
@@ -54,7 +54,7 @@ public interface Client extends Remote {
 
     void editBranch() throws RemoteException;
 
-    void addBranch(Branch branch) throws RemoteException;
+    void branchCallback(Branch branch) throws RemoteException;
 
     void deleteBranch(Branch branch) throws RemoteException;
 }
