@@ -17,15 +17,14 @@ public class Branch {
     private int id;
     private String name;
     private String location;
-    private Employees employees;
     private Reservations reservations;
     private Cars cars;
     private Manager manager;
 
-    public Branch(String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) {
+    public Branch(String name, String location, Reservations reservations, Cars cars, Manager manager) {
         this.name = name;
         this.location = location;
-        this.employees = employees;
+
         this.reservations = reservations;
         this.cars = cars;
         this.manager = manager;
@@ -41,10 +40,6 @@ public class Branch {
 
     public String getLocation() {
         return location;
-    }
-
-    public Employees getEmployees() {
-        return employees;
     }
 
     public Reservations getReservations() {
@@ -65,10 +60,6 @@ public class Branch {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public void setEmployees(Employees employees) {
-        this.employees = employees;
     }
 
     public void setReservations(Reservations reservations) {
@@ -128,23 +119,4 @@ public class Branch {
         return cars.getCar(id);
     }
 
-    public void addEmployee(Employee employee) {
-        try {
-            employees.addEmployee(employee);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void editEmployee(Employee employee, ArrayList<String> properties) {
-        employees.editEmployee(employee, properties);
-    }
-
-    public void deleteEmployee(Employee employee) {
-        try {
-            employees.deleteEmployee(employee);
-        } catch (DoesNotExist doesNotExist) {
-            doesNotExist.printStackTrace();
-        }
-    }
 }

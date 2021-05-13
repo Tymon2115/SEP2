@@ -58,7 +58,7 @@ public class Reservations {
                 reservation.setDriversLicence(value);
                 break;
             case "address":
-                reservation.setAddress(value);
+               // reservation.setAddress(value);
                 break;
             case "creditCardNumber":
                 reservation.setCreditCardNumber(value);

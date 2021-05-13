@@ -2,10 +2,7 @@ package client.network;
 
 import shared.Branches.Branch;
 import shared.PropertyChangeSubject;
-import shared.Reservation.Car;
-import shared.Reservation.Cars;
-import shared.Reservation.Reservation;
-import shared.Reservation.Reservations;
+import shared.Reservation.*;
 import shared.personel.Employee;
 import shared.personel.Employees;
 import shared.personel.Manager;
@@ -18,7 +15,7 @@ import java.sql.Date;
 public interface Client extends Remote {
     void startClient() throws RemoteException, NotBoundException;
 
-    void createReservation(int id, String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date);
+    void createReservation(int id, String name, String surname, String driversLicence, Address address, String creditCardNumber, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate);
 
 
     void reservationCallback(Reservation reservation) throws RemoteException;
