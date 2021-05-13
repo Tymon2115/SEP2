@@ -60,17 +60,25 @@ public class DataClient implements Client, PropertyChangeSubject {
 
     @Override
     public void addReservation(Reservation reservation) {
-
+        //todo idk this is garbage probably
     }
 
     @Override
     public void deleteReservation(Reservation reservation) {
-
+        try {
+            server.deleteReservation(reservation);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void createEmployee(String name, String surname, int id, Branch branch) {
-
+        try {
+            server.createEmployee(name, surname, id, branch);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -79,18 +87,26 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void addEmployee(Employee employee) {
-
+    public void employeeCallback(Employee employee) {
+        support.firePropertyChange("employee", null, employee);
     }
 
     @Override
     public void deleteEmployee(Employee employee) {
-
+        try {
+            server.deleteEmployee(employee);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void createManager(String name, String surname, int id, Branch branch) {
-
+        try {
+            server.createManager(name, surname, id, branch);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -99,38 +115,54 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void addManager(Manager manager) {
-
+    public void managerCallback(Manager manager) {
+        support.firePropertyChange("manager", null, manager);
     }
 
     @Override
     public void deleteManager(Manager manager) {
-
+        try {
+            server.deleteManager(manager);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void createCar(int id, String make, String model, String color, String numberPlates) {
-
+    public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description) {
+        try {
+            server.createCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void editCar() {
-
+        //
     }
 
     @Override
-    public void addCar(Car car) {
-
+    public void carCallback(Car car) {
+        support.firePropertyChange("car", null, car);
     }
 
     @Override
     public void deleteCar(Car car) {
-
+        try {
+            server.deleteCar(car);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void createBranch(String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) {
-
+        try {
+            server.createBranch(name, location, employees, reservations, cars, manager);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -139,13 +171,17 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void addBranch(Branch branch) {
-
+    public void branchCallback(Branch branch) {
+        support.firePropertyChange("branch", null, branch);
     }
 
     @Override
     public void deleteBranch(Branch branch) {
-
+        try {
+            server.deleteBranch(branch);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
