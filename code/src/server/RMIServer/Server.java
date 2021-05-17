@@ -2,10 +2,7 @@ package server.RMIServer;
 
 import client.network.Client;
 import shared.Branches.Branch;
-import shared.Reservation.Car;
-import shared.Reservation.Cars;
-import shared.Reservation.Reservation;
-import shared.Reservation.Reservations;
+import shared.Reservation.*;
 import shared.personel.Employee;
 import shared.personel.Employees;
 import shared.personel.Manager;
@@ -15,7 +12,7 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 
 public interface Server extends Remote {
-    void createReservation(String name, Client client) throws RemoteException;
+    void createReservation(int id, String name, String surname, String driversLicence, Address address, String creditCardNumber, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client) throws RemoteException;
 
     void editReservation() throws RemoteException;
 
@@ -39,7 +36,7 @@ public interface Server extends Remote {
 
     void deleteManager(Manager manager) throws RemoteException;
 
-    Car createCar(int id, String make, String model, String color, String numberPlates) throws RemoteException;
+    Car createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description) throws RemoteException;
 
     void editCar() throws RemoteException;
 

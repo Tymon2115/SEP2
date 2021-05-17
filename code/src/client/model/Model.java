@@ -2,23 +2,21 @@ package client.model;
 
 import shared.Branches.Branch;
 import shared.PropertyChangeSubject;
-import shared.Reservation.Car;
-import shared.Reservation.Cars;
-import shared.Reservation.Reservation;
-import shared.Reservation.Reservations;
+import shared.Reservation.*;
 import shared.personel.Employee;
 import shared.personel.Employees;
 import shared.personel.Manager;
 
+import java.beans.PropertyChangeEvent;
 import java.sql.Date;
 
 public interface Model extends PropertyChangeSubject {
 
-    void createReservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date);
+    void createReservation(int id, String name, String surname, String driversLicence, Address address, String creditCardNumber, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate);
 
     void editReservation();
 
-    void addReservation(Reservation reservation);
+    void receiveReservation(PropertyChangeEvent event);
 
     void deleteReservation(Reservation reservation);
 
@@ -26,7 +24,7 @@ public interface Model extends PropertyChangeSubject {
 
     void editEmployee();
 
-    void addEmployee(Employee employee);
+    void receiveEmployee(PropertyChangeEvent event);
 
     void deleteEmployee(Employee employee);
 
@@ -34,15 +32,15 @@ public interface Model extends PropertyChangeSubject {
 
     void editManager();
 
-    void addManager(Manager manager);
+    void receiveManager(PropertyChangeEvent event);
 
     void deleteManager(Manager manager);
 
-    void createCar(int id, String make, String model, String color, String numberPlates);
+    void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description);
 
     void editCar();
 
-    void addCar(Car car);
+    void receiveCar(PropertyChangeEvent event);
 
     void deleteCar(Car car);
 
@@ -50,7 +48,7 @@ public interface Model extends PropertyChangeSubject {
 
     void editBranch();
 
-    void addBranch(Branch branch);
+    void receiveBranch(PropertyChangeEvent event);
 
     void deleteBranch(Branch branch);
 

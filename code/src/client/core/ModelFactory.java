@@ -2,6 +2,9 @@ package client.core;
 
 import client.model.DataModel;
 import client.model.Model;
+import client.network.DataClient;
+
+import java.rmi.RemoteException;
 
 
 public class ModelFactory {
@@ -9,7 +12,11 @@ public class ModelFactory {
 
     public Model getModel() {
         if (model == null) {
-            model = new DataModel();
+            try {
+                model = new DataModel(new DataClient());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
         return model;
     }

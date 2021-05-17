@@ -2,10 +2,7 @@ package server.RMIServer;
 
 import client.network.Client;
 import shared.Branches.Branch;
-import shared.Reservation.Car;
-import shared.Reservation.Cars;
-import shared.Reservation.Reservation;
-import shared.Reservation.Reservations;
+import shared.Reservation.*;
 import shared.personel.Employee;
 import shared.personel.Employees;
 import shared.personel.Manager;
@@ -21,9 +18,8 @@ public class DataServer implements Server {
     }
 
     @Override
-//    public void createReservation(String name, String surname, String driversLicence, String address, String creditCardNumber, Car car, Branch branch, Date date, Client client) throws RemoteException {
-            public void createReservation(String name, Client client){
-        Reservation reservation = new Reservation(name);
+    public void createReservation(int id, String name, String surname, String driversLicence, Address address, String creditCardNumber, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client) throws RemoteException {
+        Reservation reservation = new Reservation(id, name, surname, driversLicence, address, creditCardNumber, car, startBranch, endBranch, startDate, endDate);
         //todo there will be some database bullshit and then reservation will be made
         try {
             client.reservationCallback(reservation);
@@ -89,8 +85,8 @@ public class DataServer implements Server {
     }
 
     @Override
-    public Car createCar(int id, String make, String model, String color, String numberPlates) throws RemoteException {
-        return new Car(id, make, model, color, numberPlates);
+    public Car createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description) throws RemoteException {
+        return new Car(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description);
     }
 
     @Override
