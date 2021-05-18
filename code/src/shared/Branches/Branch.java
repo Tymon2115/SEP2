@@ -6,8 +6,7 @@ import shared.Reservation.Cars;
 import shared.Reservation.Reservation;
 import shared.Reservation.Reservations;
 import shared.personel.Employee;
-import shared.personel.Employees;
-import shared.personel.Manager;
+
 
 import java.sql.Array;
 import java.sql.Date;
@@ -19,14 +18,13 @@ public class Branch {
     private String location;
     private Reservations reservations;
     private Cars cars;
-    private Manager manager;
 
-    public Branch(String name, String location, Reservations reservations, Cars cars, Manager manager) {
+
+    public Branch(String name, String location, Reservations reservations, Cars cars) {
         this.name = name;
         this.location = location;
         this.reservations = reservations;
         this.cars = cars;
-        this.manager = manager;
     }
 
     public Branch(int id, String name, String location) {
@@ -55,9 +53,6 @@ public class Branch {
         return cars;
     }
 
-    public Manager getManager() {
-        return manager;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -75,9 +70,6 @@ public class Branch {
         this.cars = cars;
     }
 
-    public void setManager(Manager manager) {
-        this.manager = manager;
-    }
 
     public void addReservation(Reservation reservation) throws Exception {
         reservations.addReservation(reservation);
@@ -132,7 +124,6 @@ public class Branch {
                 ", location='" + location + '\'' +
                 ", reservations=" + reservations +
                 ", cars=" + cars +
-                ", manager=" + manager +
                 '}';
     }
 }

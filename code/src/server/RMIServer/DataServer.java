@@ -5,8 +5,6 @@ import server.database.CarHandler;
 import shared.Branches.Branch;
 import shared.Reservation.*;
 import shared.personel.Employee;
-import shared.personel.Employees;
-import shared.personel.Manager;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -46,8 +44,8 @@ public class DataServer implements Server {
     }
 
     @Override
-    public Employee createEmployee(String name, String surname, int id, Branch branch) throws RemoteException {
-        return new Employee(name, surname, id, branch);
+    public Employee createEmployee(String name, String surname, int roleId, Branch branch, String username, String password) throws RemoteException {
+        return null;
     }
 
     @Override
@@ -62,26 +60,6 @@ public class DataServer implements Server {
 
     @Override
     public void deleteEmployee(Employee employee) throws RemoteException {
-
-    }
-
-    @Override
-    public Manager createManager(String name, String surname, int id, Branch branch) throws RemoteException {
-        return new Manager(name, surname, id, branch);
-    }
-
-    @Override
-    public void editManager() throws RemoteException {
-
-    }
-
-    @Override
-    public void addManager(Manager manager) throws RemoteException {
-
-    }
-
-    @Override
-    public void deleteManager(Manager manager) throws RemoteException {
 
     }
 
@@ -105,10 +83,6 @@ public class DataServer implements Server {
 
     }
 
-    @Override
-    public Branch createBranch(String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) throws RemoteException {
-        return new Branch(name, location, reservations, cars, manager);
-    }
 
     @Override
     public Branch createBranch(int id, String name, String location) {

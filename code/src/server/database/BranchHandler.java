@@ -3,8 +3,7 @@ package server.database;
 import shared.Branches.Branch;
 import shared.Reservation.Cars;
 import shared.Reservation.Reservations;
-import shared.personel.Employees;
-import shared.personel.Manager;
+
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -68,16 +67,16 @@ public class BranchHandler {
         return null;
     }
 
-    public void editBranch(int id, String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) {
-        try {
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("");
-            statement.close();
-        } catch (SQLException throwables) {
-
-            throwables.printStackTrace();
-
-        }
-    }
+//    public void editBranch(int id, String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) {
+//        try {
+//            Statement statement = connection.createStatement();
+//            statement.executeUpdate("");
+//            statement.close();
+//        } catch (SQLException throwables) {
+//
+//            throwables.printStackTrace();
+//
+//        }
+//    }
 
 }

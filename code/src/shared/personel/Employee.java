@@ -7,12 +7,18 @@ public class Employee {
     private String surname;
     private int id;
     private Branch branch;
+    private String username;
+    private String password;
+    int roleId;
 
-    public Employee(String name, String surname, int id, Branch branch) {
+    public Employee(int id, String name, String surname, int roleId, Branch branch, String username, String password) {
         this.name = name;
         this.surname = surname;
         this.id = id;
         this.branch = branch;
+        this.roleId = roleId;
+        this.username = username;
+        this.password = password;
     }
 
     public String getName() {
@@ -43,6 +49,16 @@ public class Employee {
         this.branch = branch;
     }
 
-    //todo
-
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", id=" + id +
+                ", branch=" + branch +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", roleId=" + roleId +
+                '}';
+    }
 }
