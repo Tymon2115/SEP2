@@ -56,7 +56,7 @@ public class CarHandler {
     }
 
     public ArrayList<Car> getCars() {
-
+        return null;
     }
 
 }
