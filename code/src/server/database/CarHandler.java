@@ -1,5 +1,4 @@
 package server.database;
 
-public interface Branch {
-
+public class CarHandler {
 }
