@@ -97,4 +97,13 @@ public class CarHandler {
 
     }
 
+    public void deleteCar(int id) {
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            statement.executeUpdate("DELETE FROM car where id = '" + id + "';");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
 }

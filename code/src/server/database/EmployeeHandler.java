@@ -95,6 +95,14 @@ public class EmployeeHandler {
 
         }
     }
+    public void deleteEmployee(int id){
+        try{
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM employee where id = '" + id + "';" );
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
 }
 

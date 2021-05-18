@@ -60,9 +60,6 @@ public class Reservations {
             case "address":
                // reservation.setAddress(value);
                 break;
-            case "creditCardNumber":
-                reservation.setCreditCardNumber(value);
-                break;
             case "Car":
                 reservation.setCar(branch.getCars().getCar(Integer.parseInt(value)));
                 break;
