@@ -46,6 +46,8 @@ public interface Model extends PropertyChangeSubject {
 
     void createBranch(String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager);
 
+    void createBranch(int id, String name, String location);
+
     void editBranch();
 
     void receiveBranch(PropertyChangeEvent event);

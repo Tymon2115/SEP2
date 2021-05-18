@@ -52,6 +52,8 @@ public interface Client extends Remote {
 
     void createBranch(String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) throws RemoteException;
 
+    void createBranch(int id, String name, String location) throws RemoteException;
+
     void editBranch() throws RemoteException;
 
     void branchCallback(Branch branch) throws RemoteException;

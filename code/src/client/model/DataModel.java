@@ -121,6 +121,11 @@ public class DataModel implements Model, PropertyChangeSubject {
     }
 
     @Override
+    public void createBranch(int id, String name, String location) {
+        client.createBranch(id, name, location);
+    }
+
+    @Override
     public void editBranch() {
 
     }
