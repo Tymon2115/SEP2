@@ -1,5 +1,6 @@
 package server.database;
 
+import shared.Branches.Branch;
 import shared.Reservation.Car;
 
 import java.sql.Connection;
@@ -68,7 +69,32 @@ public class CarHandler {
     }
 
     public ArrayList<Car> getCars() {
-        return null;
+        ArrayList<Car> cars = new ArrayList<>();
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * from employee");
+            while (result.next()) {
+                int id = result.getInt("id");
+                String make = result.getString("make");
+                String model = result.getString("model");
+                String color = result.getString("color");
+                String numberPlates = result.getString("number_plates");
+                String fuelType = result.getString("fuel_type");
+                String fuelConsumption = result.getString("fuel_consumption");
+                String seats = result.getString("seats");
+                String engine = result.getString("engine");
+                String transmission = result.getString("transmission");
+                String equipment = result.getString("equipment");
+                String description = result.getString("description");
+                int branchId = result.getInt("branch_id");
+                cars.add(new Car(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId));
+            }
+            return cars;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return cars;
+        }
+
     }
 
 }
