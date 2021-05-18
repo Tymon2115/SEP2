@@ -1,8 +1,11 @@
 package server.database;
 
+
+import client.exceptions.AlreadyExists;
 import shared.Branches.Branch;
 import shared.Reservation.Car;
 
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,15 +14,31 @@ import java.util.ArrayList;
 
 public class CarHandler {
 
-    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) {
+    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws AlreadyExists {
         try {
-            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
-            statement.executeUpdate(
-                    " INSERT INTO car (make, model, color, number_plates, fuel_type," +
-                            " fuel_consumption, seats, engine, transmission, equipment, description, branch_id) " +
-                            "VALUES ('" + make + "', '" + model + "', '" + color + "', '" + numberPlates + "', '" + fuelType + "', '" +
-                            fuelConsumption + "', '" + seats + "', '" + engine + "', '" + transmission + "', '" + equipment + "', '" + description + "', '" + branchId + "');");
-            statement.close();
+
+            Statement statement1 = DatabaseConnection.getInstance().getConnection().createStatement();
+
+            //TODO finish statement
+
+            ResultSet result = statement1.executeQuery("SELECT * FROM car WHERE ");
+
+
+
+            if (result.next()) {
+
+                Statement statement2 = DatabaseConnection.getInstance().getConnection().createStatement();
+                statement2.executeUpdate(
+                        " INSERT INTO car (make, model, color, number_plates, fuel_type," +
+                                " fuel_consumption, seats, engine, transmission, equipment, description, branch_id) " +
+                                "VALUES ('" + make + "', '" + model + "', '" + color + "', '" + numberPlates + "', '" + fuelType + "', '" +
+                                fuelConsumption + "', '" + seats + "', '" + engine + "', '" + transmission + "', '" + equipment + "', '" + description + "', '" + branchId + "');");
+                statement1.close();
+                statement2.close();
+            } else {
+                statement1.close();
+                throw new AlreadyExists("This object already exists in the database");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
