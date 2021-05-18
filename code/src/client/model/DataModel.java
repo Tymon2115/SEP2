@@ -30,8 +30,8 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
 
-    public void createReservation(int id, String name, String surname, String driversLicence, Address address, String creditCardNumber, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate) {
-        client.createReservation(id, name, surname, driversLicence, address, creditCardNumber, car, startBranch, endBranch, startDate, endDate);
+    public void createReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
+        client.createReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
     }
 
     @Override

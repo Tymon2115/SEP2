@@ -17,8 +17,8 @@ public class DataServer implements Server {
     }
 
     @Override
-    public void createReservation(int id, String name, String surname, String driversLicence, Address address, String creditCardNumber, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client) throws RemoteException {
-        Reservation reservation = new Reservation(id, name, surname, driversLicence, address, creditCardNumber, car, startBranch, endBranch, startDate, endDate);
+    public void createReservation(int id, String name, String surname, String driversLicence, Address address , Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price) throws RemoteException {
+        Reservation reservation = new Reservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
         //todo there will be some database bullshit and then reservation will be made
         try {
             client.reservationCallback(null);

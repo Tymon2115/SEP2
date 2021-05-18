@@ -19,7 +19,8 @@ public class BranchHandler {
     public void createBranch(String name, String location) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO \"sep\".branch (name, location) VALUES ('" + name + "','" + location + "');");
+         statement.executeUpdate("INSERT INTO 'branch' (name, location) VALUES ('" + name + "','" + location + "');" );
+
             statement.close();
         } catch (SQLException throwables) {
 
@@ -31,10 +32,13 @@ public class BranchHandler {
     public Branch getBranch(int searchId) {
         try {
             Statement statement = connection.createStatement();
+
+
             ResultSet result = statement.executeQuery("SELECT * FROM branch WHERE id = '" + searchId + "' ; ");
             int id = 0;
             String name = null;
             String location = null;
+
             while (result.next()) {
                 id = result.getInt("id");
                 name = result.getString("name");
@@ -46,37 +50,46 @@ public class BranchHandler {
             return branch;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-
+            return null;
         }
-        return null;
+
     }
 
-    public ArrayList<Branch> getBranch() {
-//        try {
-//            Statement statement = databaseConnection.createStatement();
-//            ResultSet result = statement.executeQuery("SELECT * FROM 'branch'");
-//            Arraylist<Branch> branches = new ArrayList<>();
-//            while (result.next()) {
-//
-//            }
-//            return null;
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//            return null;
-//        }
-        return null;
+
+    public ArrayList<Branch> getBranch(){
+
+        try {
+            Statement statement = databaseConnection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM 'branch'");
+            ArrayList<Branch> branches = new ArrayList<Branch>();
+            int id = 0;
+            String name = "";
+            String location = "";
+            while (result.next()) {
+                id = result.getInt("id");
+                name = result.getString("name");
+                location = result.getString("location");
+                branches.add(new Branch(id, name, location));
+            }
+        return branches;
+        }
+        catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
     }
 
-//    public void editBranch(int id, String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) {
-//        try {
-//            Statement statement = connection.createStatement();
-//            statement.executeUpdate("");
-//            statement.close();
-//        } catch (SQLException throwables) {
-//
-//            throwables.printStackTrace();
-//
-//        }
-//    }
+    public void editBranch(int id, String name, String location) {
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("UPDATE branch SET name ='" + name + "', location = '" + location + "');");
+            statement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+
+
 
 }
