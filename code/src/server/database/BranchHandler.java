@@ -97,13 +97,20 @@ public class BranchHandler {
     public void editBranch(int id, String name, String location) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("UPDATE branch SET name ='" + name + "', location = '" + location + "');");
+            statement.executeUpdate("UPDATE branch SET name ='" + name + "', location = '" + location + "';");
             statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
-
+    public void deleteBranch(int id){
+        try{
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM branch where id= '" + id + "';" );
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
 
 
