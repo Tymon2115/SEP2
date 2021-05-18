@@ -60,6 +60,7 @@ CREATE TABLE reservation (
     end_branch_id INTEGER NOT NULL ,
     start_date DATE NOT NULL ,
     end_date DATE NOT NULL ,
+    price NUMERIC NOT NULL ,
     FOREIGN KEY (car_id) references car (id),
     FOREIGN KEY (start_branch_id) references branch (id),
     FOREIGN KEY (end_branch_id) references  branch (id)

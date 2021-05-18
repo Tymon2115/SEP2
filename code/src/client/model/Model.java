@@ -12,7 +12,7 @@ import java.sql.Date;
 
 public interface Model extends PropertyChangeSubject {
 
-    void createReservation(int id, String name, String surname, String driversLicence, Address address, String creditCardNumber, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate);
+    void createReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price);
 
     void editReservation();
 
