@@ -155,5 +155,13 @@ public class ReservationHandler {
             throwables.printStackTrace();
         }
     }
+    public void deleteReservation(int id){
+        try{
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM reservation where id = '" + id + "';" );
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
 }

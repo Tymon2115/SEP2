@@ -1,9 +1,9 @@
 package server.database;
 
 import client.exceptions.AlreadyExists;
+import shared.Branches.Branch;
 import shared.Reservation.Car;
 
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,16 +12,12 @@ import java.util.ArrayList;
 
 public class CarHandler {
 
-    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws AlreadyExists {
+    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws AlreadyExists{
         try {
-
             Statement statement1 = DatabaseConnection.getInstance().getConnection().createStatement();
 
-            //TODO finish statement
-
-            ResultSet result = statement1.executeQuery("SELECT * FROM car WHERE ");
-
-
+            //TODO Finish query
+            ResultSet result = statement1.executeQuery("SELECT");
 
             if (result.next()) {
 
@@ -86,7 +82,41 @@ public class CarHandler {
     }
 
     public ArrayList<Car> getCars() {
-        return null;
+        ArrayList<Car> cars = new ArrayList<>();
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * from employee");
+            while (result.next()) {
+                int id = result.getInt("id");
+                String make = result.getString("make");
+                String model = result.getString("model");
+                String color = result.getString("color");
+                String numberPlates = result.getString("number_plates");
+                String fuelType = result.getString("fuel_type");
+                String fuelConsumption = result.getString("fuel_consumption");
+                String seats = result.getString("seats");
+                String engine = result.getString("engine");
+                String transmission = result.getString("transmission");
+                String equipment = result.getString("equipment");
+                String description = result.getString("description");
+                int branchId = result.getInt("branch_id");
+                cars.add(new Car(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId));
+            }
+            return cars;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return cars;
+        }
+
+    }
+
+    public void deleteCar(int id) {
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            statement.executeUpdate("DELETE FROM car where id = '" + id + "';");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
 }
