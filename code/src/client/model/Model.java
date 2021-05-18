@@ -36,7 +36,7 @@ public interface Model extends PropertyChangeSubject {
 
     void deleteManager(Manager manager);
 
-    void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description);
+    void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId);
 
     void editCar();
 

@@ -42,7 +42,7 @@ public interface Client extends Remote {
 
     void deleteManager(Manager manager) throws RemoteException;
 
-    void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description) throws RemoteException;
+    void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws RemoteException;
 
     void editCar() throws RemoteException;
 

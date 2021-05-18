@@ -23,7 +23,7 @@ public class DataServer implements Server {
         Reservation reservation = new Reservation(id, name, surname, driversLicence, address, creditCardNumber, car, startBranch, endBranch, startDate, endDate);
         //todo there will be some database bullshit and then reservation will be made
         try {
-            client.reservationCallback();
+            client.reservationCallback(null);
             System.out.println(reservation.getName());
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -86,8 +86,8 @@ public class DataServer implements Server {
     }
 
     @Override
-    public Car createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description) throws RemoteException {
-        return new Car(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description);
+    public Car createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws RemoteException {
+        return new Car(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId);
     }
 
     @Override

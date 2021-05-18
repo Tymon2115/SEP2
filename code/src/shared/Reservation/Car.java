@@ -13,8 +13,9 @@ public class Car {
     private String transmission;
     private String equipment;
     private String description;
+    private int branchId;
 
-    public Car(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description) {
+    public Car(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) {
         this.id = id;
         this.make = make;
         this.model = model;
@@ -27,7 +28,9 @@ public class Car {
         this.transmission = transmission;
         this.equipment = equipment;
         this.description = description;
+        this.branchId = id;
     }
+
 
     public int getId() {
         return id;
@@ -123,5 +126,24 @@ public class Car {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", numberPlates='" + numberPlates + '\'' +
+                ", fuelType='" + fuelType + '\'' +
+                ", fuelConsumption='" + fuelConsumption + '\'' +
+                ", seats='" + seats + '\'' +
+                ", engine='" + engine + '\'' +
+                ", transmission='" + transmission + '\'' +
+                ", equipment='" + equipment + '\'' +
+                ", description='" + description + '\'' +
+                ", branchId=" + branchId +
+                '}';
     }
 }

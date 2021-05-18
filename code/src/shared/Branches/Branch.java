@@ -124,4 +124,15 @@ public class Branch {
         return cars.getCar(id);
     }
 
+    @Override
+    public String toString() {
+        return "Branch{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", reservations=" + reservations +
+                ", cars=" + cars +
+                ", manager=" + manager +
+                '}';
+    }
 }
