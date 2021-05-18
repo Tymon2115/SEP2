@@ -1,9 +1,11 @@
 package server.database;
 
+
 import client.exceptions.AlreadyExists;
 import shared.Branches.Branch;
 import shared.Reservation.Car;
 
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,12 +14,16 @@ import java.util.ArrayList;
 
 public class CarHandler {
 
-    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws AlreadyExists{
+    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws AlreadyExists {
         try {
+
             Statement statement1 = DatabaseConnection.getInstance().getConnection().createStatement();
 
-            //TODO Finish query
-            ResultSet result = statement1.executeQuery("SELECT");
+            //TODO finish statement
+
+            ResultSet result = statement1.executeQuery("SELECT * FROM car WHERE ");
+
+
 
             if (result.next()) {
 
