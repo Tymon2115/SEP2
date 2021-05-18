@@ -5,13 +5,9 @@ import shared.Branches.Branch;
 import shared.PropertyChangeSubject;
 import shared.Reservation.*;
 import shared.personel.Employee;
-import shared.personel.Employees;
-import shared.personel.Manager;
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.NotBoundException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -73,9 +69,9 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void createEmployee(String name, String surname, int id, Branch branch) {
+    public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password) {
         try {
-            server.createEmployee(name, surname, id, branch);
+            server.createEmployee(name, surname, roleId, branch, username, password);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -101,37 +97,9 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void createManager(String name, String surname, int id, Branch branch) {
+    public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) {
         try {
-            server.createManager(name, surname, id, branch);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void editManager() {
-
-    }
-
-    @Override
-    public void managerCallback(Manager manager) {
-        support.firePropertyChange("manager", null, manager);
-    }
-
-    @Override
-    public void deleteManager(Manager manager) {
-        try {
-            server.deleteManager(manager);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description) {
-        try {
-            server.createCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description);
+            server.createCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -156,14 +124,6 @@ public class DataClient implements Client, PropertyChangeSubject {
         }
     }
 
-    @Override
-    public void createBranch(String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) {
-        try {
-            server.createBranch(name, location, employees, reservations, cars, manager);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void createBranch(int id, String name, String location) {

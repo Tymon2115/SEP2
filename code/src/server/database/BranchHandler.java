@@ -3,8 +3,7 @@ package server.database;
 import shared.Branches.Branch;
 import shared.Reservation.Cars;
 import shared.Reservation.Reservations;
-import shared.personel.Employees;
-import shared.personel.Manager;
+
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,10 +16,11 @@ public class BranchHandler {
     private final Connection connection = DatabaseConnection.getInstance().getConnection();
 
 
-    public void createBranch (String name, String location) {
+    public void createBranch(String name, String location) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO 'branch' (name, location) VALUES ('" + name + "','" + location + "');" );
+         statement.executeUpdate("INSERT INTO 'branch' (name, location) VALUES ('" + name + "','" + location + "');" );
+
             statement.close();
         } catch (SQLException throwables) {
 
@@ -29,13 +29,16 @@ public class BranchHandler {
         }
     }
 
-    public Branch getBranch(int searchId){
+    public Branch getBranch(int searchId) {
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM 'branch' WHERE id = '" + searchId + "'); ");
+
+
+            ResultSet result = statement.executeQuery("SELECT * FROM branch WHERE id = '" + searchId + "' ; ");
             int id = 0;
-            String name = "";
-            String location = "";
+            String name = null;
+            String location = null;
+
             while (result.next()) {
                 id = result.getInt("id");
                 name = result.getString("name");
@@ -51,6 +54,7 @@ public class BranchHandler {
         }
 
     }
+
 
     public ArrayList<Branch> getBranch(){
 
@@ -84,5 +88,8 @@ public class BranchHandler {
             throwables.printStackTrace();
         }
     }
+
+
+
 
 }

@@ -3,6 +3,7 @@ package server.database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -15,6 +16,9 @@ public class DatabaseConnection {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "2115");
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("SET SCHEMA 'sep'");
+            statement.close();
             System.out.println("Database connection established");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

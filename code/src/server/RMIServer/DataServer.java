@@ -1,11 +1,10 @@
 package server.RMIServer;
 
 import client.network.Client;
+import server.database.CarHandler;
 import shared.Branches.Branch;
 import shared.Reservation.*;
 import shared.personel.Employee;
-import shared.personel.Employees;
-import shared.personel.Manager;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -22,7 +21,7 @@ public class DataServer implements Server {
         Reservation reservation = new Reservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
         //todo there will be some database bullshit and then reservation will be made
         try {
-            client.reservationCallback(reservation);
+            client.reservationCallback(null);
             System.out.println(reservation.getName());
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -45,8 +44,8 @@ public class DataServer implements Server {
     }
 
     @Override
-    public Employee createEmployee(String name, String surname, int id, Branch branch) throws RemoteException {
-        return new Employee(name, surname, id, branch);
+    public Employee createEmployee(String name, String surname, int roleId, Branch branch, String username, String password) throws RemoteException {
+        return null;
     }
 
     @Override
@@ -65,28 +64,8 @@ public class DataServer implements Server {
     }
 
     @Override
-    public Manager createManager(String name, String surname, int id, Branch branch) throws RemoteException {
-        return new Manager(name, surname, id, branch);
-    }
-
-    @Override
-    public void editManager() throws RemoteException {
-
-    }
-
-    @Override
-    public void addManager(Manager manager) throws RemoteException {
-
-    }
-
-    @Override
-    public void deleteManager(Manager manager) throws RemoteException {
-
-    }
-
-    @Override
-    public Car createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description) throws RemoteException {
-        return new Car(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description);
+    public Car createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws RemoteException {
+        return new Car(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId);
     }
 
     @Override
@@ -104,10 +83,6 @@ public class DataServer implements Server {
 
     }
 
-    @Override
-    public Branch createBranch(String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) throws RemoteException {
-        return new Branch(name, location, reservations, cars, manager);
-    }
 
     @Override
     public Branch createBranch(int id, String name, String location) {
