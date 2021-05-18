@@ -11,26 +11,26 @@ public class Reservation implements Serializable {
     private String surname;
     private String driversLicence;
     private Address address;
-    private String creditCardNumber;
     private Car car;
     private Branch startBranch;
     private Branch endBranch;
     private Date startDate;
     private Date endDate;
+    private double price;
 
 
-    public Reservation(int id, String name, String surname, String driversLicence, Address address, String creditCardNumber, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate) {
+    public Reservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.driversLicence = driversLicence;
         this.address = address;
-        this.creditCardNumber = creditCardNumber;
         this.car = car;
         this.startBranch = startBranch;
         this.endBranch = endBranch;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.price = price;
     }
 
     public String getName() {
@@ -47,10 +47,6 @@ public class Reservation implements Serializable {
 
     public Address getAddress() {
         return address;
-    }
-
-    public String getCreditCardNumber() {
-        return creditCardNumber;
     }
 
     public Car getCar() {
@@ -75,10 +71,6 @@ public class Reservation implements Serializable {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public void setCreditCardNumber(String creditCardNumber) {
-        this.creditCardNumber = creditCardNumber;
     }
 
     public void setCar(Car car) {

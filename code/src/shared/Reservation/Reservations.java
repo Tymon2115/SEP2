@@ -60,22 +60,19 @@ public class Reservations {
             case "address":
                // reservation.setAddress(value);
                 break;
-            case "creditCardNumber":
-                reservation.setCreditCardNumber(value);
-                break;
             case "Car":
                 reservation.setCar(branch.getCars().getCar(Integer.parseInt(value)));
                 break;
-            case "branch":
-                try {
-                    reservation.setBranch(Branches.getInstance().getBranch(value));
-                } catch (DoesNotExist doesNotExist) {
-                    doesNotExist.printStackTrace();
-                }
-                break;
-            case "date":
-                reservation.setDate(new Date(Integer.parseInt(value.split("/")[0]), Integer.parseInt(value.split("/")[1]), Integer.parseInt(value.split("/")[2])));
-                break;
+//            case "branch":
+//                try {
+//                 //   reservation.setBranch(Branches.getInstance().getBranch(value));
+//                } catch (DoesNotExist doesNotExist) {
+//                    doesNotExist.printStackTrace();
+//                }
+//                break;
+//            case "date":
+//                reservation.setDate(new Date(Integer.parseInt(value.split("/")[0]), Integer.parseInt(value.split("/")[1]), Integer.parseInt(value.split("/")[2])));
+//                break;
 
         }
 

@@ -6,8 +6,7 @@ import shared.Branches.Branch;
 import shared.PropertyChangeSubject;
 import shared.Reservation.*;
 import shared.personel.Employee;
-import shared.personel.Employees;
-import shared.personel.Manager;
+
 
 import javax.xml.crypto.Data;
 import java.beans.PropertyChangeEvent;
@@ -31,8 +30,8 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
 
-    public void createReservation(int id, String name, String surname, String driversLicence, Address address, String creditCardNumber, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate) {
-        client.createReservation(id, name, surname, driversLicence, address, creditCardNumber, car, startBranch, endBranch, startDate, endDate);
+    public void createReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
+        client.createReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
     }
 
     @Override
@@ -53,8 +52,8 @@ public class DataModel implements Model, PropertyChangeSubject {
     }
 
     @Override
-    public void createEmployee(String name, String surname, int id, Branch branch) {
-        client.createEmployee(name, surname, id, branch);
+    public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password) {
+        client.createEmployee(name, surname, roleId, branch, username, password);
     }
 
     @Override
@@ -73,10 +72,6 @@ public class DataModel implements Model, PropertyChangeSubject {
         client.deleteEmployee(employee);
     }
 
-    @Override
-    public void createManager(String name, String surname, int id, Branch branch) {
-        client.createManager(name, surname, id, branch);
-    }
 
     @Override
     public void editManager() {
@@ -89,14 +84,10 @@ public class DataModel implements Model, PropertyChangeSubject {
     }
 
 
-    @Override
-    public void deleteManager(Manager manager) {
-        client.deleteManager(manager);
-    }
 
     @Override
-    public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description) {
-        client.createCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description);
+    public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description,int branchId) {
+        client.createCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId);
     }
 
     @Override
@@ -115,9 +106,10 @@ public class DataModel implements Model, PropertyChangeSubject {
         client.deleteCar(car);
     }
 
+
     @Override
-    public void createBranch(String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) {
-        client.createBranch(name, location, employees, reservations, cars, manager);
+    public void createBranch(int id, String name, String location) {
+        client.createBranch(id, name, location);
     }
 
     @Override
