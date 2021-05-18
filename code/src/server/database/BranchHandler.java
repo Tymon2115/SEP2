@@ -11,12 +11,7 @@ public class BranchHandler {
     private Statement statement;
 
     public Branch createBranch () {
-        try {
-            Statement statement = databaseConnection.createStatement();
-            ResultSet result = statement.executeQuery("");
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+
 
     }
 
