@@ -1,12 +1,8 @@
 package client.network;
 
 import shared.Branches.Branch;
-import shared.PropertyChangeSubject;
 import shared.Reservation.*;
 import shared.personel.Employee;
-import shared.personel.Employees;
-import shared.personel.Manager;
-
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -26,7 +22,7 @@ public interface Client extends Remote {
 
     void deleteReservation(Reservation reservation) throws RemoteException;
 
-    void createEmployee(String name, String surname, int id, Branch branch) throws RemoteException;
+    void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password) throws RemoteException;
 
     void editEmployee() throws RemoteException;
 
@@ -34,23 +30,13 @@ public interface Client extends Remote {
 
     void deleteEmployee(Employee employee) throws RemoteException;
 
-    void createManager(String name, String surname, int id, Branch branch) throws RemoteException;
-
-    void editManager() throws RemoteException;
-
-    void managerCallback(Manager manager) throws RemoteException;
-
-    void deleteManager(Manager manager) throws RemoteException;
-
-    void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description) throws RemoteException;
+    void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws RemoteException;
 
     void editCar() throws RemoteException;
 
     void carCallback(Car car) throws RemoteException;
 
     void deleteCar(Car car) throws RemoteException;
-
-    void createBranch(String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) throws RemoteException;
 
     void createBranch(int id, String name, String location) throws RemoteException;
 

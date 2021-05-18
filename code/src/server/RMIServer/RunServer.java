@@ -6,8 +6,7 @@ import shared.Reservation.Cars;
 import shared.Reservation.Reservation;
 import shared.Reservation.Reservations;
 import shared.personel.Employee;
-import shared.personel.Employees;
-import shared.personel.Manager;
+
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
