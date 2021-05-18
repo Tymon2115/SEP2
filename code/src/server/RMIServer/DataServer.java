@@ -1,6 +1,7 @@
 package server.RMIServer;
 
 import client.network.Client;
+import server.database.CarHandler;
 import shared.Branches.Branch;
 import shared.Reservation.*;
 import shared.personel.Employee;
@@ -22,7 +23,7 @@ public class DataServer implements Server {
         Reservation reservation = new Reservation(id, name, surname, driversLicence, address, creditCardNumber, car, startBranch, endBranch, startDate, endDate);
         //todo there will be some database bullshit and then reservation will be made
         try {
-            client.reservationCallback(reservation);
+            client.reservationCallback();
             System.out.println(reservation.getName());
         } catch (RemoteException e) {
             e.printStackTrace();
