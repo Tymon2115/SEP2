@@ -1,5 +1,6 @@
 package server.database;
 
+import client.exceptions.AlreadyExists;
 import shared.Branches.Branch;
 import shared.Reservation.Address;
 import shared.Reservation.Car;
@@ -16,13 +17,25 @@ public class ReservationHandler {
     private final CarHandler carHandler = new CarHandler();
 
 
-    public void createReservation (String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
+    public void createReservation (String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws AlreadyExists {
         try {
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO 'reservation' (name, surname, drivers_licence, address_street, address_city, address_zip, address_country, car_id, start_branch_id, end_branch_id, start_date, end_date, price) " +
-                    "VALUES ('" + name + "','" + surname + "','" + driversLicence + "','" + address.getStreet() + "','" + address.getCity() + "', '" + address.getZip() + "', '" + address.getCountry() +"','" + car.getId() +"', '" + startBranch.getId() + "', '" + endBranch.getId() +
-            "', '" + startDate + "','" + endDate + "', '" + price + "');" );
-            statement.close();
+            Statement statement1 = connection.createStatement();
+
+            //TODO finish query
+            ResultSet result = statement1.executeQuery("SELECT");
+
+            if (result.next()) {
+                Statement statement2 = connection.createStatement();
+                statement2.executeUpdate("INSERT INTO 'reservation' (name, surname, drivers_licence, address_street, address_city, address_zip, address_country, car_id, start_branch_id, end_branch_id, start_date, end_date, price) " +
+                        "VALUES ('" + name + "','" + surname + "','" + driversLicence + "','" + address.getStreet() + "','" + address.getCity() + "', '" + address.getZip() + "', '" + address.getCountry() + "','" + car.getId() + "', '" + startBranch.getId() + "', '" + endBranch.getId() +
+                        "', '" + startDate + "','" + endDate + "', '" + price + "');");
+
+                statement1.close();
+                statement2.close();
+            } else {
+                statement1.close();
+                throw new AlreadyExists("This object already exists in the database");
+            }
         } catch (SQLException throwables) {
 
             throwables.printStackTrace();

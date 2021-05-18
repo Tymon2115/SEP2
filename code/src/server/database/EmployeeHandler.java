@@ -1,5 +1,6 @@
 package server.database;
 
+import client.exceptions.AlreadyExists;
 import shared.Branches.Branch;
 import shared.Reservation.Cars;
 import shared.Reservation.Reservations;
@@ -15,13 +16,24 @@ public class EmployeeHandler {
     private final Connection connection = DatabaseConnection.getInstance().getConnection();
     private BranchHandler branchHandler = new BranchHandler();
 
-    public void createEmployee(String name, String surname, int role_id, Branch branch, String username, String password) {
+    public void createEmployee(String name, String surname, int role_id, Branch branch, String username, String password) throws AlreadyExists {
         try {
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO employee (name, surname, role_id, branch_id, username, password) " +
-                    "VALUES ('" + name + "', '" + surname + "', " + role_id + ", " + branch.getId() + ", '" + username + "', '" +
-                    password + "');");
-            statement.close();
+            Statement statement1 = connection.createStatement();
+
+            //TODO finish statement
+            ResultSet result = statement1.executeQuery("SELECT");
+
+            if (result.next()) {
+                Statement statement2 = connection.createStatement();
+                statement2.executeUpdate("INSERT INTO employee (name, surname, role_id, branch_id, username, password) " +
+                        "VALUES ('" + name + "', '" + surname + "', " + role_id + ", " + branch.getId() + ", '" + username + "', '" +
+                        password + "');");
+                statement1.close();
+                statement2.close();
+            } else {
+                statement1.close();
+                throw new AlreadyExists("This object already exists in the database");
+            }
         } catch (SQLException throwables) {
 
             throwables.printStackTrace();

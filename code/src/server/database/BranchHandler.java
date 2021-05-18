@@ -1,5 +1,6 @@
 package server.database;
 
+import client.exceptions.AlreadyExists;
 import shared.Branches.Branch;
 import shared.Reservation.Cars;
 import shared.Reservation.Reservations;
@@ -16,12 +17,26 @@ public class BranchHandler {
     private final Connection connection = DatabaseConnection.getInstance().getConnection();
 
 
-    public void createBranch(String name, String location) {
-        try {
-            Statement statement = connection.createStatement();
-         statement.executeUpdate("INSERT INTO 'branch' (name, location) VALUES ('" + name + "','" + location + "');" );
+    public void createBranch(String name, String location) throws AlreadyExists {
 
-            statement.close();
+        try {
+            Statement statement1 = connection.createStatement();
+            ResultSet result = statement1.executeQuery("SELECT * FROM branch WHERE name = '" + name + "', location = '" + location + "');");
+
+            if (result.next()) {
+
+                Statement statement2 = connection.createStatement();
+                statement2.executeUpdate("INSERT INTO 'branch' (name, location) VALUES ('" + name + "','" + location + "');");
+                statement1.close();
+                statement2.close();
+
+            }
+
+            else  {
+                statement1.close();
+                throw new AlreadyExists("This object already exists in the database");
+            }
+
         } catch (SQLException throwables) {
 
             throwables.printStackTrace();
@@ -31,8 +46,8 @@ public class BranchHandler {
 
     public Branch getBranch(int searchId) {
         try {
-            Statement statement = connection.createStatement();
 
+            Statement statement = connection.createStatement();
 
             ResultSet result = statement.executeQuery("SELECT * FROM branch WHERE id = '" + searchId + "' ; ");
             int id = 0;
@@ -45,7 +60,7 @@ public class BranchHandler {
                 location = result.getString("location");
             }
             statement.close();
-            result.close();
+
             Branch branch = new Branch(id, name, location);
             return branch;
         } catch (SQLException throwables) {
@@ -59,7 +74,7 @@ public class BranchHandler {
     public ArrayList<Branch> getBranch(){
 
         try {
-            Statement statement = databaseConnection.createStatement();
+            Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM 'branch'");
             ArrayList<Branch> branches = new ArrayList<Branch>();
             int id = 0;
