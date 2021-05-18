@@ -45,6 +45,7 @@ public interface Server extends Remote {
     void deleteCar(Car car) throws RemoteException;
 
     Branch createBranch(String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) throws RemoteException;
+    Branch createBranch(int id, String name, String location) throws RemoteException;
 
     void editBranch() throws RemoteException;
 

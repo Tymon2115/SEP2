@@ -106,7 +106,12 @@ public class DataServer implements Server {
 
     @Override
     public Branch createBranch(String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) throws RemoteException {
-        return new Branch(name, location, employees, reservations, cars, manager);
+        return new Branch(name, location, reservations, cars, manager);
+    }
+
+    @Override
+    public Branch createBranch(int id, String name, String location) {
+        return new Branch(id, name, location);
     }
 
     @Override

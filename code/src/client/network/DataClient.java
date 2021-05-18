@@ -166,6 +166,15 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
+    public void createBranch(int id, String name, String location) {
+        try {
+            server.createBranch(id, name, location);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void editBranch() {
 
     }
