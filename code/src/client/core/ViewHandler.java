@@ -48,6 +48,7 @@ public class ViewHandler {
         }
     }
 
+
     public void openCarViewModel() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/CarView/CarView.fxml"));
@@ -68,6 +69,7 @@ public class ViewHandler {
             e.printStackTrace();
         }
     }
+
 
 
 }
