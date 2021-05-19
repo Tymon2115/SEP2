@@ -12,12 +12,14 @@ import java.sql.Date;
 
 public class DataServer implements Server {
 
+    private LoginHandler loginHandler = new LoginHandler;
+
     public DataServer() throws RemoteException {
         UnicastRemoteObject.exportObject(this, 0);
     }
 
     @Override
-    public void createReservation(int id, String name, String surname, String driversLicence, Address address , Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price) throws RemoteException {
+    public void createReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price) throws RemoteException {
         Reservation reservation = new Reservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
         //todo there will be some database bullshit and then reservation will be made
         try {
@@ -44,8 +46,8 @@ public class DataServer implements Server {
     }
 
     @Override
-    public Employee createEmployee(String name, String surname, int roleId, Branch branch, String username, String password) throws RemoteException {
-        return null;
+    public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email) throws RemoteException {
+
     }
 
     @Override
@@ -64,7 +66,7 @@ public class DataServer implements Server {
     }
 
     @Override
-    public Car createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws RemoteException {
+    public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws RemoteException {
         return new Car(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId);
     }
 
@@ -85,7 +87,7 @@ public class DataServer implements Server {
 
 
     @Override
-    public Branch createBranch(int id, String name, String location) {
+    public void createBranch(int id, String name, String location) {
         return new Branch(id, name, location);
     }
 
@@ -103,4 +105,11 @@ public class DataServer implements Server {
     public void deleteBranch(Branch branch) throws RemoteException {
 
     }
+
+    @Override
+    public void login(String username, String password, Client client) {
+         client.loginCallback(loginHandler.login(username, password));
+    }
+
+
 }
