@@ -10,8 +10,9 @@ public class Employee {
     private String username;
     private String password;
     int roleId;
+    private String email;
 
-    public Employee(int id, String name, String surname, int roleId, Branch branch, String username, String password) {
+    public Employee(int id, String name, String surname, int roleId, Branch branch, String username, String password, String email) {
         this.name = name;
         this.surname = surname;
         this.id = id;
@@ -19,6 +20,7 @@ public class Employee {
         this.roleId = roleId;
         this.username = username;
         this.password = password;
+        this.email = email;
     }
 
     public String getName() {

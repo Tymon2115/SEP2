@@ -18,7 +18,7 @@ public interface Server extends Remote {
 
     void deleteReservation(Reservation reservation) throws RemoteException;
 
-    Employee createEmployee(String name, String surname, int roleId, Branch branch, String username, String password) throws RemoteException;
+    void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email) throws RemoteException;
 
     void editEmployee() throws RemoteException;
 
@@ -29,17 +29,20 @@ public interface Server extends Remote {
 
     void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException;
 
+
     void editCar() throws RemoteException;
 
     void addCar(Car car) throws RemoteException;
 
     void deleteCar(Car car) throws RemoteException;
 
-    Branch createBranch(int id, String name, String location) throws RemoteException;
+    void createBranch(int id, String name, String location) throws RemoteException;
 
     void editBranch() throws RemoteException;
 
     void addBranch(Branch branch) throws RemoteException;
 
     void deleteBranch(Branch branch) throws RemoteException;
+
+    void login(String username, String password, Client client);
 }

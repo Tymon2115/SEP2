@@ -3,6 +3,7 @@ package client.network;
 import shared.Branches.Branch;
 import shared.Reservation.*;
 import shared.personel.Employee;
+
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -11,7 +12,7 @@ import java.sql.Date;
 public interface Client extends Remote {
     void startClient() throws RemoteException, NotBoundException;
 
-    void createReservation(int id, String name, String surname, String driversLicence, Address address , Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price);
+    void createReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price);
 
 
     void reservationCallback(Reservation reservation) throws RemoteException;
@@ -22,7 +23,7 @@ public interface Client extends Remote {
 
     void deleteReservation(Reservation reservation) throws RemoteException;
 
-    void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password) throws RemoteException;
+    void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email) throws RemoteException;
 
     void editEmployee() throws RemoteException;
 
@@ -45,4 +46,8 @@ public interface Client extends Remote {
     void branchCallback(Branch branch) throws RemoteException;
 
     void deleteBranch(Branch branch) throws RemoteException;
+
+    void login(String username, String password) throws RemoteException;
+
+    void loginCallback(int role);
 }

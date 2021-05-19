@@ -12,6 +12,7 @@ import javax.xml.crypto.Data;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.rmi.RemoteException;
 import java.sql.Date;
 
 public class DataModel implements Model, PropertyChangeSubject {
@@ -24,8 +25,8 @@ public class DataModel implements Model, PropertyChangeSubject {
         client.addListener(this::receiveBranch, "branch");
         client.addListener(this::receiveCar, "car");
         client.addListener(this::receiveEmployee, "employee");
-        client.addListener(this::receiveManager, "manager");
         client.addListener(this::receiveReservation, "reservation");
+        client.addListener(this::receiveLogin, "login");
     }
 
     @Override
@@ -52,8 +53,8 @@ public class DataModel implements Model, PropertyChangeSubject {
     }
 
     @Override
-    public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password) {
-        client.createEmployee(name, surname, roleId, branch, username, password);
+    public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email) {
+        client.createEmployee(name, surname, roleId, branch, username, password, email);
     }
 
     @Override
@@ -74,6 +75,7 @@ public class DataModel implements Model, PropertyChangeSubject {
 
 
     @Override
+
     public void editManager() {
 
     }
@@ -88,6 +90,7 @@ public class DataModel implements Model, PropertyChangeSubject {
     @Override
     public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description,int branchId, double dailyPrice) {
         client.createCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
+
     }
 
     @Override
@@ -130,7 +133,16 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void login(String username, String password) {
-       // client.login(username, password);
+        try {
+            client.login(username, password);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void receiveLogin(PropertyChangeEvent event) {
+        support.firePropertyChange("login", null, event.getNewValue());
     }
 
     @Override
