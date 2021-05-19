@@ -20,8 +20,8 @@ public class EmployeeHandler {
         try {
             Statement statement1 = connection.createStatement();
 
-            //TODO finish statement
-            ResultSet result = statement1.executeQuery("SELECT");
+
+            ResultSet result = statement1.executeQuery("SELECT * FROM employee WHERE name = '" + name + "' AND surname = '" + surname + "' AND role_id = '" + role_id + "' AND branch_id =  '" + branch.getId() + "' AND username = '" + username + "');");
 
             if (result.next()) {
                 Statement statement2 = connection.createStatement();
