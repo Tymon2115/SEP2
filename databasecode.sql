@@ -22,6 +22,7 @@ CREATE TABLE employee (
     branch_id INTEGER,
     username VARCHAR (30) NOT NULL,
     password VARCHAR NOT NULL,
+    email VARCHAR NOT NULL,
     FOREIGN KEY (role_id) REFERENCES role (id),
     FOREIGN KEY (branch_id) REFERENCES branch (id)
 );
