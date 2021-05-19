@@ -5,6 +5,7 @@ import shared.Branches.Branch;
 import shared.PropertyChangeSubject;
 import shared.Reservation.*;
 import shared.personel.Employee;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.NotBoundException;
@@ -31,7 +32,7 @@ public class DataClient implements Client, PropertyChangeSubject {
 
 
     @Override
-    public void createReservation(int id, String name, String surname, String driversLicence, Address address , Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
+    public void createReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
         try {
             server.createReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, this, price);
         } catch (RemoteException e) {
@@ -69,9 +70,9 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password) {
+    public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email) {
         try {
-            server.createEmployee(name, surname, roleId, branch, username, password);
+            server.createEmployee(name, surname, roleId, branch, username, password, email);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -151,6 +152,16 @@ public class DataClient implements Client, PropertyChangeSubject {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void login(String username, String password) throws RemoteException {
+        server.login(username, password, this);
+    }
+
+    @Override
+    public void loginCallback(int role) {
+        support.firePropertyChange("login", null, role);
     }
 
     @Override

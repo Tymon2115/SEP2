@@ -18,17 +18,13 @@ public interface Model extends PropertyChangeSubject {
 
     void deleteReservation(Reservation reservation);
 
-    void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password);
+    void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email);
 
     void editEmployee();
 
     void receiveEmployee(PropertyChangeEvent event);
 
     void deleteEmployee(Employee employee);
-
-    void editManager();
-
-    void receiveManager(PropertyChangeEvent event);
 
     void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId);
 
@@ -48,5 +44,7 @@ public interface Model extends PropertyChangeSubject {
     void deleteBranch(Branch branch);
 
     void login(String username, String password);
+
+    void receiveLogin(PropertyChangeEvent event);
 
 }
