@@ -1,6 +1,7 @@
 package server.database;
 
 import client.exceptions.AlreadyExists;
+import client.exceptions.DoesNotExist;
 import shared.Branches.Branch;
 import shared.Reservation.Cars;
 import shared.Reservation.Reservations;
@@ -15,6 +16,12 @@ import java.util.ArrayList;
 public class EmployeeHandler {
     private final Connection connection = DatabaseConnection.getInstance().getConnection();
     private BranchHandler branchHandler = new BranchHandler();
+
+    private int role_id;
+
+    public int getRole_id() {
+        return role_id;
+    }
 
     public void createEmployee(String name, String surname, int role_id, Branch branch, String username, String password, String email) throws AlreadyExists {
         try {
@@ -119,8 +126,23 @@ public class EmployeeHandler {
         }
     }
 
-    public void Login (String username, String password) {
-        Statement statement = connection.createStatement();
+    public void login (String username, String password) throws DoesNotExist {
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM employee WHERE username = '" + username + "' AND password = '" + password + "';");
+            if (result.next()) {
+                while (result.next()) {
+                    role_id = result.getInt("role_id");
+                    statement.close();
+                }
+            } else {
+                statement.close();
+                throw new DoesNotExist("No employee with such credentials was found");
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+
+        }
 
     }
 
