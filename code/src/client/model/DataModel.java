@@ -75,8 +75,22 @@ public class DataModel implements Model, PropertyChangeSubject {
 
 
     @Override
-    public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) {
-        client.createCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId);
+
+    public void editManager() {
+
+    }
+
+    @Override
+    public void receiveManager(PropertyChangeEvent event) {
+        support.firePropertyChange("manager", null, event.getNewValue());
+    }
+
+
+
+    @Override
+    public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description,int branchId, double dailyPrice) {
+        client.createCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
+
     }
 
     @Override

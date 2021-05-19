@@ -40,9 +40,10 @@ CREATE TABLE car (
     seats INTEGER NOT NULL ,
     engine VARCHAR (30) NOT NULL ,
     transmission VARCHAR (50) NOT NULL ,
-    equipment VARCHAR,
+    equipment VARCHAR NOT NULL,
     description VARCHAR,
-    branch_id INTEGER,
+    branch_id INTEGER NOT NULL,
+    daily_price NUMERIC NOT NULL,
     FOREIGN KEY (branch_id) REFERENCES branch (id)
 );
 

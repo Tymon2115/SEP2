@@ -31,7 +31,7 @@ public interface Client extends Remote {
 
     void deleteEmployee(Employee employee) throws RemoteException;
 
-    void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws RemoteException;
+    void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException;
 
     void editCar() throws RemoteException;
 

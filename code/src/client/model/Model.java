@@ -26,7 +26,8 @@ public interface Model extends PropertyChangeSubject {
 
     void deleteEmployee(Employee employee);
 
-    void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId);
+    void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice);
+
 
     void editCar();
 

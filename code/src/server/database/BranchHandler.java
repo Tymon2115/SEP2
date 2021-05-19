@@ -21,7 +21,7 @@ public class BranchHandler {
 
         try {
             Statement statement1 = connection.createStatement();
-            ResultSet result = statement1.executeQuery("SELECT * FROM branch WHERE name = '" + name + "', location = '" + location + "');");
+            ResultSet result = statement1.executeQuery("SELECT * FROM branch WHERE name = '" + name + "'AND location = '" + location + "');");
 
             if (result.next()) {
 

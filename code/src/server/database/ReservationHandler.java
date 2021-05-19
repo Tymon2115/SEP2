@@ -21,8 +21,9 @@ public class ReservationHandler {
         try {
             Statement statement1 = connection.createStatement();
 
-            //TODO finish query
-            ResultSet result = statement1.executeQuery("SELECT");
+            ResultSet result = statement1.executeQuery("SELECT * FROM reservation WHERE name = '" + name + "' AND surname = '" + surname + "' AND drivers_licence = '" + driversLicence + "' AND address_street = '" + address.getStreet()
+            + "' AND address_city = '" + address.getCity() + "' AND address_zip = '" + address.getZip() + "' AND address_country = '" + address.getCountry() + "' AND car_id = '" + car.getId() + "' AND start_branch_id = '" + startBranch.getId()
+            + "' AND end_branch_id = '" + endBranch.getId() + "' AND start_date = '" + startDate + "' AND end_date = '" + endDate + "' AND price = '" + price + "');");
 
             if (result.next()) {
                 Statement statement2 = connection.createStatement();
