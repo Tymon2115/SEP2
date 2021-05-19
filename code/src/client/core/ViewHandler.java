@@ -44,4 +44,12 @@ public class ViewHandler {
             e.printStackTrace();
         }
     }
+
+    private Parent loadFXML (String path) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(path));
+        Parent root = loader.load();
+
+
+    }
 }
