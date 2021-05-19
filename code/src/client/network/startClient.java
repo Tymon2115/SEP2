@@ -14,6 +14,7 @@ public class startClient {
         DataClient client = new DataClient();
         Model model = new DataModel(client);
         client.startClient();
-
+//        model.createBranch("model", "Model");
+        model.getBranch(10);
     }
 }
