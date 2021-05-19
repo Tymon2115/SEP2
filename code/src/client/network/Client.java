@@ -38,7 +38,7 @@ public interface Client extends Remote {
 
     void deleteCar(Car car) throws RemoteException;
 
-    void createBranch(int id, String name, String location) throws RemoteException;
+    void createBranch(String name, String location) throws RemoteException;
 
     void editBranch() throws RemoteException;
 

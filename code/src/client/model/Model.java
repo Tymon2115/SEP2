@@ -36,7 +36,7 @@ public interface Model extends PropertyChangeSubject {
     void deleteCar(Car car);
 
 
-    void createBranch(int id, String name, String location);
+    void createBranch(String name, String location);
 
     void editBranch();
 

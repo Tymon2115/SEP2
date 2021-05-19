@@ -16,7 +16,6 @@ import java.sql.Date;
 
 public class DataServer implements Server {
 
-    private LoginHandler loginHandler = new LoginHandler();
     private CarHandler carHandler = new CarHandler();
     private EmployeeHandler employeeHandler = new EmployeeHandler();
     private ReservationHandler reservationHandler = new ReservationHandler();
@@ -54,7 +53,11 @@ public class DataServer implements Server {
 
     @Override
     public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email) throws RemoteException {
-        employeeHandler.createEmployee(name, surname, roleId, branch, username, password, email);
+        try {
+            employeeHandler.createEmployee(name, surname, roleId, branch, username, password, email);
+        } catch (AlreadyExists alreadyExists) {
+            alreadyExists.printStackTrace();
+        }
     }
 
     @Override
@@ -119,7 +122,7 @@ public class DataServer implements Server {
 
     @Override
     public void login(String username, String password, Client client) {
-        client.loginCallback(loginHandler.login(username, password));
+        client.loginCallback(employeeHandler.login(username, password));
     }
 
 

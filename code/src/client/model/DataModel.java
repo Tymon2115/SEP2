@@ -98,12 +98,8 @@ public class DataModel implements Model, PropertyChangeSubject {
 
 
     @Override
-    public void createBranch(int id, String name, String location) {
-        try {
-            client.createBranch(id, name, location);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+    public void createBranch(String name, String location) {
+            client.createBranch(name, location);
     }
 
     @Override
