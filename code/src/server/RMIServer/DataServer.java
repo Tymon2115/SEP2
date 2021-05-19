@@ -28,6 +28,9 @@ public class DataServer implements Server {
         }
     }
 
+
+
+
     @Override
     public void editReservation() throws RemoteException {
 
@@ -62,6 +65,9 @@ public class DataServer implements Server {
     public void deleteEmployee(Employee employee) throws RemoteException {
 
     }
+
+
+
 
     @Override
     public Car createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws RemoteException {

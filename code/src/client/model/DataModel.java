@@ -6,12 +6,14 @@ import shared.Branches.Branch;
 import shared.PropertyChangeSubject;
 import shared.Reservation.*;
 import shared.personel.Employee;
-
+import shared.personel.Employees;
+import shared.personel.Manager;
 
 import javax.xml.crypto.Data;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.rmi.RemoteException;
 import java.sql.Date;
 
 public class DataModel implements Model, PropertyChangeSubject {
@@ -30,13 +32,13 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
 
-    public void createReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
-        client.createReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+    public void createReservation(Reservation reservation) {
+        client.createReservation(reservation);
     }
 
     @Override
     public void editReservation() {
-
+        client.editReservation();
     }
 
     @Override
@@ -52,8 +54,8 @@ public class DataModel implements Model, PropertyChangeSubject {
     }
 
     @Override
-    public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password) {
-        client.createEmployee(name, surname, roleId, branch, username, password);
+    public void createEmployee(String name, String surname, int id, Branch branch) {
+        client.createEmployee(name, surname, id, branch);
     }
 
     @Override
@@ -72,6 +74,10 @@ public class DataModel implements Model, PropertyChangeSubject {
         client.deleteEmployee(employee);
     }
 
+    @Override
+    public void createManager(String name, String surname, int id, Branch branch) {
+        client.createManager(name, surname, id, branch);
+    }
 
     @Override
     public void editManager() {
@@ -84,16 +90,29 @@ public class DataModel implements Model, PropertyChangeSubject {
     }
 
 
-
     @Override
-    public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description,int branchId) {
-        client.createCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId);
+    public void deleteManager(Manager manager) {
+        client.deleteManager(manager);
     }
 
     @Override
-    public void editCar() {
+    public void createCar(Car car) {
 
     }
+
+    @Override
+    public void editCar(Car car) {
+
+    }
+
+//    @Override
+//    public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description) {
+//        try {
+//            client.createCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description);
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Override
     public void receiveCar(PropertyChangeEvent event) {
@@ -106,10 +125,9 @@ public class DataModel implements Model, PropertyChangeSubject {
         client.deleteCar(car);
     }
 
-
     @Override
-    public void createBranch(int id, String name, String location) {
-        client.createBranch(id, name, location);
+    public void createBranch(String name, String location, Employees employees, Reservations reservations, Cars cars, Manager manager) {
+        client.createBranch(name, location, employees, reservations, cars, manager);
     }
 
     @Override
@@ -130,7 +148,7 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void login(String username, String password) {
-       // client.login(username, password);
+       client.login(username,password);
     }
 
     @Override
