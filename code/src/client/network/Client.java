@@ -14,7 +14,6 @@ public interface Client extends Remote {
 
     void createReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price);
 
-
     void reservationCallback(Reservation reservation) throws RemoteException;
 
     void editReservation() throws RemoteException;
