@@ -6,7 +6,8 @@ import shared.Branches.Branch;
 import shared.PropertyChangeSubject;
 import shared.Reservation.*;
 import shared.personel.Employee;
-
+import shared.personel.Employees;
+import shared.personel.Manager;
 
 import javax.xml.crypto.Data;
 import java.beans.PropertyChangeEvent;
@@ -30,6 +31,7 @@ public class DataModel implements Model, PropertyChangeSubject {
     }
 
     @Override
+
 
     public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
         try {
@@ -62,8 +64,10 @@ public class DataModel implements Model, PropertyChangeSubject {
     }
 
     @Override
+
     public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email) {
         client.createEmployee(name, surname, roleId, branch, username, password, email);
+
     }
 
     @Override
@@ -87,12 +91,17 @@ public class DataModel implements Model, PropertyChangeSubject {
         client.deleteEmployee(employee);
     }
 
+    @Override
+    public void createManager(String name, String surname, int id, Branch branch) {
+        client.createManager(name, surname, id, branch);
+    }
 
     @Override
     public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
         client.createCar(make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
 
     }
+
 
     @Override
     public void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
@@ -101,7 +110,17 @@ public class DataModel implements Model, PropertyChangeSubject {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+
     }
+
+//    @Override
+//    public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description) {
+//        try {
+//            client.createCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description);
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Override
     public void receiveCar(PropertyChangeEvent event) {
@@ -115,10 +134,11 @@ public class DataModel implements Model, PropertyChangeSubject {
         client.deleteCar(car);
     }
 
-
     @Override
+
     public void createBranch(String name, String location) {
         client.createBranch(name, location);
+
     }
 
     @Override
@@ -144,6 +164,7 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void login(String username, String password) {
+
         try {
             client.login(username, password);
         } catch (RemoteException e) {
@@ -190,6 +211,7 @@ public class DataModel implements Model, PropertyChangeSubject {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override

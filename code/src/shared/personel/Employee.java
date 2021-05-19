@@ -2,22 +2,27 @@ package shared.personel;
 
 import shared.Branches.Branch;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable{
     private String name;
     private String surname;
     private int id;
     private Branch branch;
     private String username;
     private String password;
+
+
     int roleId;
     private String email;
 
     public Employee(int id, String name, String surname, int roleId, Branch branch, String username, String password, String email) {
+
         this.name = name;
         this.surname = surname;
         this.id = id;
         this.branch = branch;
-        this.roleId = roleId;
+        this.role = roleId;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -60,7 +65,7 @@ public class Employee {
                 ", branch=" + branch +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", roleId=" + roleId +
+                ", role=" + role +
                 '}';
     }
 }

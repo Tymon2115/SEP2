@@ -2,13 +2,17 @@ package client.network;
 
 import server.RMIServer.Server;
 import shared.Branches.Branch;
+import shared.EventType;
 import shared.PropertyChangeSubject;
 import shared.Reservation.*;
 import shared.personel.Employee;
 
+main
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.NotBoundException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -22,7 +26,9 @@ public class DataClient implements Client, PropertyChangeSubject {
 
 
     public DataClient() throws RemoteException {
+
         UnicastRemoteObject.exportObject((Client) this, 0);
+
     }
 
     public void startClient() throws RemoteException, NotBoundException {
@@ -32,10 +38,10 @@ public class DataClient implements Client, PropertyChangeSubject {
 
 
     @Override
+
     public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException {
 
             server.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, (Client) this, price);
-
 
     }
 
@@ -67,10 +73,11 @@ public class DataClient implements Client, PropertyChangeSubject {
         }
     }
 
-    @Override
+
     public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email) {
         try {
             server.createEmployee(name, surname, roleId, branch, username, password, email);
+          
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -101,9 +108,11 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
+
     public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
         try {
             server.createCar(make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
+
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -134,6 +143,7 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
+
     public void createBranch(String name, String location) {
         try {
             server.createBranch(name, location);
