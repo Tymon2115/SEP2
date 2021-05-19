@@ -21,10 +21,11 @@ public class ReservationHandler {
         try {
             Statement statement1 = connection.createStatement();
 
-            //TODO finish query
-            ResultSet result = statement1.executeQuery("SELECT");
+            ResultSet result = statement1.executeQuery("SELECT * FROM reservation WHERE name = '" + name + "' AND surname = '" + surname + "' AND drivers_licence = '" + driversLicence + "' AND address_street = '" + address.getStreet()
+            + "' AND address_city = '" + address.getCity() + "' AND address_zip = '" + address.getZip() + "' AND address_country = '" + address.getCountry() + "' AND car_id = '" + car.getId() + "' AND start_branch_id = '" + startBranch.getId()
+            + "' AND end_branch_id = '" + endBranch.getId() + "' AND start_date = '" + startDate + "' AND end_date = '" + endDate + "' AND price = '" + price + "');");
 
-            if (result.next()) {
+            if (!result.next()) {
                 Statement statement2 = connection.createStatement();
                 statement2.executeUpdate("INSERT INTO 'reservation' (name, surname, drivers_licence, address_street, address_city, address_zip, address_country, car_id, start_branch_id, end_branch_id, start_date, end_date, price) " +
                         "VALUES ('" + name + "','" + surname + "','" + driversLicence + "','" + address.getStreet() + "','" + address.getCity() + "', '" + address.getZip() + "', '" + address.getCountry() + "','" + car.getId() + "', '" + startBranch.getId() + "', '" + endBranch.getId() +
@@ -149,7 +150,7 @@ public class ReservationHandler {
             Statement statement = connection.createStatement();
             statement.executeUpdate("UPDATE reservation SET name ='" + name + "', surname = '" + surname + "', drivers_licence ='" + driversLicence + "', address_street = '" + address.getStreet() + "', address_city = '" + address.getCity()
             + "', address_zip = '" + address.getZip() + "', address_country = '" + address.getCountry() + "', car_id = + '" + car.getId() + "', start_branch_id = '" + startBranch.getId() + "', end_branch_id = '" + endBranch.getId()
-            + "', start_date = '" + startDate + "', end_date = '" + endDate + "', price = '" + price + "');");
+            + "', start_date = '" + startDate + "', end_date = '" + endDate + "', price = '" + price + "' WHERE id = '" + id + "';");
             statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

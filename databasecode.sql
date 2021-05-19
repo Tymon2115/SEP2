@@ -22,6 +22,7 @@ CREATE TABLE employee (
     branch_id INTEGER,
     username VARCHAR (30) NOT NULL,
     password VARCHAR NOT NULL,
+    email VARCHAR NOT NULL,
     FOREIGN KEY (role_id) REFERENCES role (id),
     FOREIGN KEY (branch_id) REFERENCES branch (id)
 );
@@ -40,9 +41,10 @@ CREATE TABLE car (
     seats INTEGER NOT NULL ,
     engine VARCHAR (30) NOT NULL ,
     transmission VARCHAR (50) NOT NULL ,
-    equipment VARCHAR,
+    equipment VARCHAR NOT NULL,
     description VARCHAR,
-    branch_id INTEGER,
+    branch_id INTEGER NOT NULL,
+    daily_price NUMERIC NOT NULL,
     FOREIGN KEY (branch_id) REFERENCES branch (id)
 );
 

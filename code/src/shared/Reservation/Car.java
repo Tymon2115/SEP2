@@ -15,7 +15,7 @@ public class Car {
     private String description;
     private int branchId;
 
-    public Car(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) {
+    public Car(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
         this.id = id;
         this.make = make;
         this.model = model;
