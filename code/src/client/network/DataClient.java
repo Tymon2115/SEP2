@@ -34,7 +34,7 @@ public class DataClient implements Client, PropertyChangeSubject {
     @Override
     public void createReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
         try {
-            server.createReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, this, price);
+            server.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, this, price);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -125,11 +125,10 @@ public class DataClient implements Client, PropertyChangeSubject {
         }
     }
 
-
     @Override
-    public void createBranch(int id, String name, String location) {
+    public void createBranch(String name, String location) {
         try {
-            server.createBranch(id, name, location);
+            server.createBranch( name, location);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

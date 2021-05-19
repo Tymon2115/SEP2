@@ -10,11 +10,11 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 
 public interface Server extends Remote {
-    void createReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price) throws RemoteException;
+    void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price) throws RemoteException;
 
     void editReservation() throws RemoteException;
 
-    void addReservation(Reservation reservation) throws RemoteException;
+    void getReservation(int searchId, Client client) throws RemoteException
 
     void deleteReservation(Reservation reservation) throws RemoteException;
 
@@ -22,25 +22,21 @@ public interface Server extends Remote {
 
     void editEmployee() throws RemoteException;
 
-    void addEmployee(Employee employee) throws RemoteException;
+    void getEmployee(int searchId, Client client) throws RemoteException;
 
     void deleteEmployee(Employee employee) throws RemoteException;
 
-
     void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException;
-
 
     void editCar() throws RemoteException;
 
-    void addCar(Car car) throws RemoteException;
+    void getCar(int searchId, Client client) throws RemoteException;
 
     void deleteCar(Car car) throws RemoteException;
 
-    void createBranch(int id, String name, String location) throws RemoteException;
+    void createBranch(String name, String location) throws RemoteException;
 
     void editBranch() throws RemoteException;
-
-    void addBranch(Branch branch) throws RemoteException;
 
     void deleteBranch(Branch branch) throws RemoteException;
 
