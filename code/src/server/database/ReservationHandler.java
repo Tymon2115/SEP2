@@ -25,7 +25,7 @@ public class ReservationHandler {
             + "' AND address_city = '" + address.getCity() + "' AND address_zip = '" + address.getZip() + "' AND address_country = '" + address.getCountry() + "' AND car_id = '" + car.getId() + "' AND start_branch_id = '" + startBranch.getId()
             + "' AND end_branch_id = '" + endBranch.getId() + "' AND start_date = '" + startDate + "' AND end_date = '" + endDate + "' AND price = '" + price + "');");
 
-            if (result.next()) {
+            if (!result.next()) {
                 Statement statement2 = connection.createStatement();
                 statement2.executeUpdate("INSERT INTO 'reservation' (name, surname, drivers_licence, address_street, address_city, address_zip, address_country, car_id, start_branch_id, end_branch_id, start_date, end_date, price) " +
                         "VALUES ('" + name + "','" + surname + "','" + driversLicence + "','" + address.getStreet() + "','" + address.getCity() + "', '" + address.getZip() + "', '" + address.getCountry() + "','" + car.getId() + "', '" + startBranch.getId() + "', '" + endBranch.getId() +

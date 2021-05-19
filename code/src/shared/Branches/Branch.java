@@ -8,11 +8,12 @@ import shared.Reservation.Reservations;
 import shared.personel.Employee;
 
 
+import java.io.Serializable;
 import java.sql.Array;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class Branch {
+public class Branch implements Serializable {
     private int id;
     private String name;
     private String location;

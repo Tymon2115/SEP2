@@ -22,7 +22,7 @@ public class DataClient implements Client, PropertyChangeSubject {
 
 
     public DataClient() throws RemoteException {
-        UnicastRemoteObject.exportObject(this, 0);
+        UnicastRemoteObject.exportObject((Client) this, 0);
     }
 
     public void startClient() throws RemoteException, NotBoundException {
@@ -32,13 +32,16 @@ public class DataClient implements Client, PropertyChangeSubject {
 
 
     @Override
-    public void createReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
-        try {
-            server.createReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, this, price);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException {
 
+            server.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, (Client) this, price);
+
+
+    }
+
+    @Override
+    public void getReservation(int id) throws RemoteException {
+        server.getReservation(id, this);
     }
 
     @Override
@@ -46,18 +49,13 @@ public class DataClient implements Client, PropertyChangeSubject {
         reservationUpdate(reservation);
     }
 
+    @Override
+    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException {
+        server.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+    }
+
     private void reservationUpdate(Reservation reservation) {
         support.firePropertyChange("reservation", null, reservation);
-    }
-
-    @Override
-    public void editReservation() {
-
-    }
-
-    @Override
-    public void addReservation(Reservation reservation) {
-        //todo idk this is garbage probably
     }
 
     @Override
@@ -79,8 +77,13 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void editEmployee() {
+    public void getEmployee(int id) throws RemoteException {
+        server.getEmployee(id, this);
+    }
 
+    @Override
+    public void editEmployee(int id, String name, String surname, int roleId, Branch branch, String username, String password, String email) throws RemoteException {
+        server.editEmployee(id, name, surname, roleId, branch, username, password, email);
     }
 
     @Override
@@ -98,17 +101,22 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
+    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
         try {
-            server.createCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
+            server.createCar(make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void editCar() {
-        //
+    public void getCar(int id) throws RemoteException {
+        server.getCar(id, this);
+    }
+
+    @Override
+    public void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException {
+        server.editCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
     }
 
     @Override
@@ -125,19 +133,23 @@ public class DataClient implements Client, PropertyChangeSubject {
         }
     }
 
-
     @Override
-    public void createBranch(int id, String name, String location) {
+    public void createBranch(String name, String location) {
         try {
-            server.createBranch(id, name, location);
+            server.createBranch(name, location);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void editBranch() {
+    public void getBranch(int id) throws RemoteException {
+        server.getBranch(id, this);
+    }
 
+    @Override
+    public void editBranch(int id, String name, String location) throws RemoteException {
+        server.editBranch(id, name, location);
     }
 
     @Override
@@ -169,8 +181,4 @@ public class DataClient implements Client, PropertyChangeSubject {
         support.addPropertyChangeListener(name, listener);
     }
 
-//    @Override
-//    public void addListener(PropertyChangeListener listener, String name) {
-//
-//    }
 }
