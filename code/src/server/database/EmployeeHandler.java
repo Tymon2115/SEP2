@@ -7,6 +7,8 @@ import shared.Reservation.Cars;
 import shared.Reservation.Reservations;
 import shared.personel.Employee;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,24 +19,28 @@ public class EmployeeHandler {
     private final Connection connection = DatabaseConnection.getInstance().getConnection();
     private BranchHandler branchHandler = new BranchHandler();
 
-    private int role_id;
 
-    public int getRole_id() {
-        return role_id;
-    }
+
+
 
     public void createEmployee(String name, String surname, int role_id, Branch branch, String username, String password, String email) throws AlreadyExists {
         try {
             Statement statement1 = connection.createStatement();
 
 
+
             ResultSet result = statement1.executeQuery("SELECT * FROM employee WHERE name = '" + name + "' AND surname = '" + surname + "' AND role_id = '" + role_id + "' AND branch_id =  '" + branch.getId() + "' AND username = '" + username + "' AND email = '" + email + "');");
 
             if (result.next()) {
+
+
+                String hashedPassword = LoginHandler.hash(password);
+
+
                 Statement statement2 = connection.createStatement();
                 statement2.executeUpdate("INSERT INTO employee (name, surname, role_id, branch_id, username, password, email) " +
                         "VALUES ('" + name + "', '" + surname + "', " + role_id + ", " + branch.getId() + ", '" + username + "', '" +
-                        password + "','" + email + "');");
+                        hashedPassword + "','" + email + "');");
                 statement1.close();
                 statement2.close();
             } else {
@@ -42,9 +48,11 @@ public class EmployeeHandler {
                 throw new AlreadyExists("This object already exists in the database");
             }
         } catch (SQLException throwables) {
-
             throwables.printStackTrace();
-
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
         }
     }
 
@@ -126,25 +134,34 @@ public class EmployeeHandler {
         }
     }
 
-    public void login (String username, String password) throws DoesNotExist {
+    public int login (String username, String password) throws DoesNotExist {
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM employee WHERE username = '" + username + "' AND password = '" + password + "';");
-            if (result.next()) {
+            String storedPassword = null;
+            int role_id = 0;
+            ResultSet result = statement.executeQuery("SELECT * FROM employee WHERE username = '" + username + "';");
                 while (result.next()) {
+                    storedPassword = result.getString("password");
                     role_id = result.getInt("role_id");
-                    statement.close();
                 }
-            } else {
-                statement.close();
-                throw new DoesNotExist("No employee with such credentials was found");
-            }
+           if (LoginHandler.validatePassword(password, storedPassword))
+               return role_id;
+           else
+               return 0;
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-
+            return 0;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+            return 0;
         }
+    }
 
     }
 
-}
+
 
