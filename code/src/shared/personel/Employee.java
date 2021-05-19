@@ -11,9 +11,13 @@ public class Employee implements Serializable{
     private Branch branch;
     private String username;
     private String password;
-    private String role;
 
-    public Employee(int id, String name, String surname, String roleId, Branch branch, String username, String password) {
+
+    int roleId;
+    private String email;
+
+    public Employee(int id, String name, String surname, int roleId, Branch branch, String username, String password, String email) {
+
         this.name = name;
         this.surname = surname;
         this.id = id;
@@ -21,6 +25,7 @@ public class Employee implements Serializable{
         this.role = roleId;
         this.username = username;
         this.password = password;
+        this.email = email;
     }
 
     public String getName() {

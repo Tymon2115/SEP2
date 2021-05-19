@@ -1,7 +1,12 @@
 package server.RMIServer;
 
+import client.exceptions.AlreadyExists;
+import client.exceptions.DoesNotExist;
 import client.network.Client;
+import server.database.BranchHandler;
 import server.database.CarHandler;
+import server.database.EmployeeHandler;
+import server.database.ReservationHandler;
 import shared.Branches.Branch;
 import shared.Reservation.*;
 import shared.personel.Employee;
@@ -12,19 +17,22 @@ import java.sql.Date;
 
 public class DataServer implements Server {
 
+    private CarHandler carHandler = new CarHandler();
+    private EmployeeHandler employeeHandler = new EmployeeHandler();
+    private ReservationHandler reservationHandler = new ReservationHandler();
+    private BranchHandler branchHandler = new BranchHandler();
+
+
     public DataServer() throws RemoteException {
         UnicastRemoteObject.exportObject(this, 0);
     }
 
     @Override
-    public void createReservation(int id, String name, String surname, String driversLicence, Address address , Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price) throws RemoteException {
-        Reservation reservation = new Reservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
-        //todo there will be some database bullshit and then reservation will be made
+    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price) throws RemoteException {
         try {
-            client.reservationCallback(null);
-            System.out.println(reservation.getName());
-        } catch (RemoteException e) {
-            e.printStackTrace();
+            reservationHandler.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+        } catch (AlreadyExists alreadyExists) {
+            alreadyExists.printStackTrace();
         }
     }
 
@@ -32,81 +40,107 @@ public class DataServer implements Server {
 
 
     @Override
-    public void editReservation() throws RemoteException {
-
+    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException {
+        reservationHandler.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
     }
+
 
     @Override
-    public void addReservation(Reservation reservation) throws RemoteException {
-
+    public void getReservation(int searchId, Client client) throws RemoteException {
+        client.reservationCallback(reservationHandler.getReservation(searchId));
     }
+
 
     @Override
     public void deleteReservation(Reservation reservation) throws RemoteException {
-
+        reservationHandler.deleteReservation(reservation.getId());
     }
 
     @Override
-    public Employee createEmployee(String name, String surname, int roleId, Branch branch, String username, String password) throws RemoteException {
-        return null;
+    public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email) throws RemoteException {
+        try {
+            employeeHandler.createEmployee(name, surname, roleId, branch, username, password, email);
+        } catch (AlreadyExists alreadyExists) {
+            alreadyExists.printStackTrace();
+        }
     }
 
     @Override
-    public void editEmployee() throws RemoteException {
-
+    public void editEmployee(int id, String name, String surname, int roleId, Branch branch, String username, String password, String email) throws RemoteException {
+        employeeHandler.editEmployee(id, name, surname, roleId, branch, username, password, email);
     }
 
-    @Override
-    public void addEmployee(Employee employee) throws RemoteException {
 
+    @Override
+    public void getEmployee(int searchId, Client client) throws RemoteException {
+        client.employeeCallback(employeeHandler.getEmployee(searchId));
     }
 
     @Override
     public void deleteEmployee(Employee employee) throws RemoteException {
-
+        reservationHandler.deleteReservation(employee.getId());
     }
 
 
-
-
-    @Override
-    public Car createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws RemoteException {
-        return new Car(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId);
-    }
-
-    @Override
-    public void editCar() throws RemoteException {
+    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException {
+        try {
+            carHandler.createCar(make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
+        } catch (AlreadyExists alreadyExists) {
+            alreadyExists.printStackTrace();
+        }
 
     }
 
     @Override
-    public void addCar(Car car) throws RemoteException {
-
+    public void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException {
+        carHandler.editCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
     }
+
+
+    @Override
+    public void getCar(int searchId, Client client) throws RemoteException {
+        client.carCallback(carHandler.getCar(searchId));
+    }
+
 
     @Override
     public void deleteCar(Car car) throws RemoteException {
-
+        carHandler.deleteCar(car.getId());
     }
 
 
     @Override
-    public Branch createBranch(int id, String name, String location) {
-        return new Branch(id, name, location);
+    public void createBranch(String name, String location) throws RemoteException {
+        try {
+            branchHandler.createBranch(name, location);
+        } catch (AlreadyExists alreadyExists) {
+            alreadyExists.printStackTrace();
+        }
     }
 
     @Override
-    public void editBranch() throws RemoteException {
-
+    public void getBranch(int id, Client client) throws RemoteException {
+        client.branchCallback(branchHandler.getBranch(id));
     }
 
     @Override
-    public void addBranch(Branch branch) throws RemoteException {
-
+    public void editBranch(int id, String name, String location) throws RemoteException {
+        branchHandler.editBranch(id, name, location);
     }
+
 
     @Override
     public void deleteBranch(Branch branch) throws RemoteException {
+        branchHandler.deleteBranch(branch.getId());
+    }
 
+    @Override
+    public void login(String username, String password, Client client) {
+        try {
+
+            client.loginCallback(employeeHandler.login(username, password));
+        } catch (DoesNotExist | RemoteException doesNotExist) {
+            doesNotExist.printStackTrace();
+        }
     }
 }

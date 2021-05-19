@@ -14,25 +14,27 @@ import java.util.ArrayList;
 
 public class CarHandler {
 
-    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId) throws AlreadyExists {
+    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws AlreadyExists {
         try {
 
             Statement statement1 = DatabaseConnection.getInstance().getConnection().createStatement();
 
-            //TODO finish statement
+            ResultSet result = statement1.executeQuery("SELECT * FROM car WHERE make = '" + make + "' AND model ='" + model + "' AND color = '" + color + "' AND number_plates = '" + numberPlates + "' AND fuel_type = '" + fuelType + "' AND" +
+                    "fuel_consumption = '" + fuelConsumption + "' AND seats = '" + seats + "' AND engine = '" + engine + "' AND transmission = '" + transmission + "' AND equipment = '" + equipment + "' AND description = '" + description
+            + "' AND branch_id = '" + branchId + "' AND daily_price = '" + dailyPrice + "';");
 
-            ResultSet result = statement1.executeQuery("SELECT * FROM car WHERE ");
 
 
 
-            if (result.next()) {
+
+            if (!result.next()) {
 
                 Statement statement2 = DatabaseConnection.getInstance().getConnection().createStatement();
                 statement2.executeUpdate(
                         " INSERT INTO car (make, model, color, number_plates, fuel_type," +
-                                " fuel_consumption, seats, engine, transmission, equipment, description, branch_id) " +
+                                " fuel_consumption, seats, engine, transmission, equipment, description, branch_id, daily_price) " +
                                 "VALUES ('" + make + "', '" + model + "', '" + color + "', '" + numberPlates + "', '" + fuelType + "', '" +
-                                fuelConsumption + "', '" + seats + "', '" + engine + "', '" + transmission + "', '" + equipment + "', '" + description + "', '" + branchId + "');");
+                                fuelConsumption + "', '" + seats + "', '" + engine + "', '" + transmission + "', '" + equipment + "', '" + description + "', '" + branchId + "', '" + dailyPrice + "');");
                 statement1.close();
                 statement2.close();
             } else {
@@ -60,6 +62,7 @@ public class CarHandler {
             String transmission = null;
             String equipment = null;
             String description = null;
+            double dailyPrice = 0;
             int branchId = 0;
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
             ResultSet result = statement.executeQuery("SELECT * from car WHERE id = '" + searchId + "';");
@@ -77,10 +80,11 @@ public class CarHandler {
                 equipment = result.getString("equipment");
                 description = result.getString("description");
                 branchId = result.getInt("branch_id");
+                dailyPrice = result.getDouble("daily_price");
             }
             statement.close();
             result.close();
-            return new Car(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId);
+            return new Car(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -106,7 +110,8 @@ public class CarHandler {
                 String equipment = result.getString("equipment");
                 String description = result.getString("description");
                 int branchId = result.getInt("branch_id");
-                cars.add(new Car(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId));
+                double dailyPrice = result.getDouble("daily_price");
+                cars.add(new Car(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice));
             }
             return cars;
         } catch (SQLException throwables) {
@@ -114,6 +119,20 @@ public class CarHandler {
             return cars;
         }
 
+    }
+
+    public void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            statement.executeUpdate("UPDATE car SET make = '" + make + "', model = '" + model + "', color = '" + color + "', number_plates = '" + numberPlates + "', fuel_type = '" + fuelType + "', fuel_consumption = '" + fuelConsumption +
+                    "',seats = '" + seats + "', engine = '" + engine + "', transmission = '" + transmission + "', equipment = '" + equipment + "', description = '" + description + "', branch_id = '" + branchId + "', daily_price = '" + dailyPrice +
+                    "' WHERE id = '" + id + "';");
+            statement.close();
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+
+        }
     }
 
     public void deleteCar(int id) {
