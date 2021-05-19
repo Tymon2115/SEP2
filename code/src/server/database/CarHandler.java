@@ -121,6 +121,20 @@ public class CarHandler {
 
     }
 
+    public void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            statement.executeUpdate("UPDATE car SET make = '" + make + "', model = '" + model + "', color = '" + color + "', number_plates = '" + numberPlates + "', fuel_type = '" + fuelType + "', fuel_consumption = '" + fuelConsumption +
+                    "',seats = '" + seats + "', engine = '" + engine + "', transmission = '" + transmission + "', equipment = '" + equipment + "', description = '" + description + "', branch_id = '" + branchId + "', daily_price = '" + dailyPrice +
+                    "' WHERE id = '" + id + "';");
+            statement.close();
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+
+        }
+    }
+
     public void deleteCar(int id) {
         try {
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();

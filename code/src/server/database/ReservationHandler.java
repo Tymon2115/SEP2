@@ -150,7 +150,7 @@ public class ReservationHandler {
             Statement statement = connection.createStatement();
             statement.executeUpdate("UPDATE reservation SET name ='" + name + "', surname = '" + surname + "', drivers_licence ='" + driversLicence + "', address_street = '" + address.getStreet() + "', address_city = '" + address.getCity()
             + "', address_zip = '" + address.getZip() + "', address_country = '" + address.getCountry() + "', car_id = + '" + car.getId() + "', start_branch_id = '" + startBranch.getId() + "', end_branch_id = '" + endBranch.getId()
-            + "', start_date = '" + startDate + "', end_date = '" + endDate + "', price = '" + price + "');");
+            + "', start_date = '" + startDate + "', end_date = '" + endDate + "', price = '" + price + "' WHERE id = '" + id + "';");
             statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

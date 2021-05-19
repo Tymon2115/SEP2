@@ -97,7 +97,7 @@ public class BranchHandler {
     public void editBranch(int id, String name, String location) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("UPDATE branch SET name ='" + name + "', location = '" + location + "';");
+            statement.executeUpdate("UPDATE branch SET name ='" + name + "', location = '" + location + "' WHERE id = '" + id + "';");
             statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
