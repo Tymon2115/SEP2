@@ -133,8 +133,8 @@ public class DataServer implements Server {
     @Override
     public void login(String username, String password, Client client) {
         try {
-            employeeHandler.login(username, password);
-            client.loginCallback(employeeHandler.getRole_id());
+
+            client.loginCallback(employeeHandler.login(username, password));
         } catch (DoesNotExist | RemoteException doesNotExist) {
             doesNotExist.printStackTrace();
         }
