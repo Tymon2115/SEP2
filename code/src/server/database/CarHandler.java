@@ -27,7 +27,7 @@ public class CarHandler {
 
 
 
-            if (result.next()) {
+            if (!result.next()) {
 
                 Statement statement2 = DatabaseConnection.getInstance().getConnection().createStatement();
                 statement2.executeUpdate(

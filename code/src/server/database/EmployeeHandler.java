@@ -30,7 +30,7 @@ public class EmployeeHandler {
 
             ResultSet result = statement1.executeQuery("SELECT * FROM employee WHERE name = '" + name + "' AND surname = '" + surname + "' AND role_id = '" + role_id + "' AND branch_id =  '" + branch.getId() + "' AND username = '" + username + "' AND email = '" + email + "');");
 
-            if (result.next()) {
+            if (!result.next()) {
                 Statement statement2 = connection.createStatement();
                 statement2.executeUpdate("INSERT INTO employee (name, surname, role_id, branch_id, username, password, email) " +
                         "VALUES ('" + name + "', '" + surname + "', " + role_id + ", " + branch.getId() + ", '" + username + "', '" +

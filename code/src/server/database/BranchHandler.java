@@ -21,18 +21,15 @@ public class BranchHandler {
 
         try {
             Statement statement1 = connection.createStatement();
-            ResultSet result = statement1.executeQuery("SELECT * FROM branch WHERE name = '" + name + "'AND location = '" + location + "');");
-
-            if (result.next()) {
+            ResultSet result = statement1.executeQuery("SELECT * FROM branch WHERE name = '" + name + "'AND location = '" + location + "';");
+            if (!result.next()) {
 
                 Statement statement2 = connection.createStatement();
-                statement2.executeUpdate("INSERT INTO 'branch' (name, location) VALUES ('" + name + "','" + location + "');");
+                statement2.executeUpdate("INSERT INTO branch (name, location) VALUES ('" + name + "','" + location + "');");
                 statement1.close();
                 statement2.close();
 
-            }
-
-            else  {
+            } else {
                 statement1.close();
                 throw new AlreadyExists("This object already exists in the database");
             }
@@ -70,8 +67,7 @@ public class BranchHandler {
 
     }
 
-
-    public ArrayList<Branch> getBranch(){
+    public ArrayList<Branch> getBranch() {
 
         try {
             Statement statement = connection.createStatement();
@@ -86,9 +82,8 @@ public class BranchHandler {
                 location = result.getString("location");
                 branches.add(new Branch(id, name, location));
             }
-        return branches;
-        }
-        catch (SQLException throwables) {
+            return branches;
+        } catch (SQLException throwables) {
             throwables.printStackTrace();
             return null;
         }
@@ -103,15 +98,14 @@ public class BranchHandler {
             throwables.printStackTrace();
         }
     }
-    public void deleteBranch(int id){
-        try{
+
+    public void deleteBranch(int id) {
+        try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM branch where id= '" + id + "';" );
+            statement.executeUpdate("DELETE FROM branch where id= '" + id + "';");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
-
-
 
 }

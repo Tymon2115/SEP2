@@ -31,14 +31,23 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
 
-    public void createReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
-        client.createReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
+        try {
+            client.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void editReservation() {
-
+    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
+        try {
+            client.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
+
 
     @Override
     public void receiveReservation(PropertyChangeEvent event) {
@@ -58,9 +67,14 @@ public class DataModel implements Model, PropertyChangeSubject {
     }
 
     @Override
-    public void editEmployee() {
-        client.editEmployee();
+    public void editEmployee(int id, String name, String surname, int roleId, Branch branch, String username, String password, String email) {
+        try {
+            client.editEmployee(id, name, surname, roleId, branch, username, password, email);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
+
 
     @Override
     public void receiveEmployee(PropertyChangeEvent event) {
@@ -75,18 +89,23 @@ public class DataModel implements Model, PropertyChangeSubject {
 
 
     @Override
-    public void createCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description,int branchId, double dailyPrice) {
-        client.createCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
+    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
+        client.createCar(make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
 
     }
 
     @Override
-    public void editCar() {
-
+    public void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
+        try {
+            client.editCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void receiveCar(PropertyChangeEvent event) {
+        System.out.println(event.getNewValue());
         support.firePropertyChange("car", null, event.getNewValue());
     }
 
@@ -99,16 +118,21 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void createBranch(String name, String location) {
-            client.createBranch(name, location);
+        client.createBranch(name, location);
     }
 
     @Override
-    public void editBranch() {
-
+    public void editBranch(int id, String name, String location) {
+        try {
+            client.editBranch(id, name, location);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void receiveBranch(PropertyChangeEvent event) {
+        System.out.println(event.getNewValue());
         support.firePropertyChange("branch", null, event.getNewValue());
     }
 
@@ -130,6 +154,42 @@ public class DataModel implements Model, PropertyChangeSubject {
     @Override
     public void receiveLogin(PropertyChangeEvent event) {
         support.firePropertyChange("login", null, event.getNewValue());
+    }
+
+    @Override
+    public void getBranch(int id) {
+        try {
+            client.getBranch(id);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void getCar(int id) {
+        try {
+            client.getCar(id);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void getEmployee(int id) {
+        try {
+            client.getEmployee(id);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void getReservation(int id) {
+        try {
+            client.getReservation(id);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
