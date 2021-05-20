@@ -1,14 +1,14 @@
 package client.core;
 
 
-import client.viewmodel.CarViewModel;
+//import client.viewmodel.CarViewModel;
 import client.viewmodel.LoginViewModel;
 import client.viewmodel.RegistrationViewModel;
 
 public class ViewModelFactory {
 
     private LoginViewModel loginViewModel;
-    private CarViewModel carViewModel;
+//    private CarViewModel carViewModel;
     private RegistrationViewModel registrationViewModel;
     private ModelFactory modelFactory;
 
@@ -25,19 +25,19 @@ public class ViewModelFactory {
         return loginViewModel;
     }
 
-    public CarViewModel getCarViewModel() {
-        if (carViewModel == null)
-        {
-            carViewModel = new CarViewModel(modelFactory.getModel());
-        }
-        return carViewModel;
-    }
+//    public CarViewModel getCarViewModel() {
+//        if (carViewModel == null)
+//        {
+//            carViewModel = new CarViewModel(modelFactory.getModel());
+//        }
+//        return carViewModel;
+//    }
 
-    public RegistrationViewModel getRegistrationViewModel() {
-        if (registrationViewModel == null)
-        {
-            registrationViewModel = new RegistrationViewModel(modelFactory.getModel());
-        }
-        return registrationViewModel;
-    }
+//    public RegistrationViewModel getRegistrationViewModel() {
+//        if (registrationViewModel == null)
+//        {
+//            registrationViewModel = new RegistrationViewModel(modelFactory.getModel());
+//        }
+//        return registrationViewModel;
+//    }
 }

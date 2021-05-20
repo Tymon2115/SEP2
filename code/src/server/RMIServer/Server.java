@@ -1,5 +1,6 @@
 package server.RMIServer;
 
+import client.model.Model;
 import client.network.Client;
 import shared.Branch.Branch;
 import shared.Reservation.*;
@@ -26,9 +27,9 @@ public interface Server extends Remote {
 
     void deleteEmployee(Employee employee) throws RemoteException;
 
-    void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException;
+    void createCar(String make, Model model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException;
 
-    void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException;
+    void editCar(int id, String make, Model model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException;
 
     void getCar(int searchId, Client client) throws RemoteException;
 
