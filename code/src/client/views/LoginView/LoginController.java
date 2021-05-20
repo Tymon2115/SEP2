@@ -22,7 +22,7 @@ public class LoginController {
         this.loginVM = loginViewModel;
         usernameField.textProperty().bindBidirectional(loginVM.usernameProperty());
         passwordField.textProperty().bindBidirectional(loginVM.passwordProperty());
-        loginResultMessage.textProperty().bindBidirectional(loginVM.loginResponseProperty()); // If needed
+        loginResultMessage.textProperty().bindBidirectional(loginVM.loginResponseProperty());
     }
 
     public void onLoginButton(ActionEvent actionEvent) {
