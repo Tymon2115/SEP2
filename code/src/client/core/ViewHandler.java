@@ -97,14 +97,13 @@ public class ViewHandler {
         }
     }
 
-        public void openFrontPageViewModel() {
+    public void openFrontPageViewModel() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/FrontpageView/FrontPageViewController.fxml"));
 
         try {
             Parent root = null;
             root = loader.load();
-
             FrontPageViewController controller = loader.getController();
             controller.init(viewModelFactory.getFrontPageController());
 
@@ -117,8 +116,6 @@ public class ViewHandler {
             e.printStackTrace();
         }
     }
-
-
 
 
 }
