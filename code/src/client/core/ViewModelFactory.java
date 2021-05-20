@@ -1,7 +1,5 @@
 package client.core;
 
-
-//import client.viewmodel.CarViewModel;
 import client.viewmodel.CarViewModel;
 import client.viewmodel.FrontPageViewModel;
 import client.viewmodel.LoginViewModel;
@@ -44,11 +42,11 @@ public class ViewModelFactory {
         return frontPageViewModel;
     }
 
-//    public RegistrationViewModel getRegistrationViewModel() {
-//        if (registrationViewModel == null)
-//        {
-//            registrationViewModel = new RegistrationViewModel(modelFactory.getModel());
-//        }
-//        return registrationViewModel;
-//    }
+    public RegistrationViewModel getRegistrationViewModel() {
+        if (registrationViewModel == null)
+        {
+            registrationViewModel = new RegistrationViewModel(modelFactory.getModel());
+        }
+        return registrationViewModel;
+    }
 }
