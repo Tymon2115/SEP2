@@ -9,40 +9,47 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.75" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.ReservationView.ReservationViewController">
+<SplitPane dividerPositions="0.863528009535161" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.EmployeeView.EmployeeViewController">
    <items>
       <ScrollPane prefHeight="200.0" prefWidth="200.0">
          <content>
-            <TableView prefHeight="1044.0" prefWidth="1474.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="75.0" text="Name" />
-                  <TableColumn prefWidth="75.0" text="Surname" />
-                  <TableColumn prefWidth="128.33331298828125" text="Driver's license no." />
-                  <TableColumn prefWidth="225.66668701171875" text="All other shit for reservations" />
-                  <TableColumn prefWidth="203.33331298828125" text="Column X" />
-                  <TableColumn prefWidth="317.66668701171875" text="Column X" />
-              </columns>
+            <TableView fx:id="employee_tableview" prefHeight="1044.0" prefWidth="1474.0">
+               <columns>
+                  <TableColumn fx:id="column_id" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="column_name" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="column_surname" prefWidth="75.0" text="Surname" />
+                  <TableColumn fx:id="column_branch" prefWidth="109.0" text="Driver's Licence" />
+                  <TableColumn fx:id="column_username" prefWidth="97.0" text="Address" />
+                  <TableColumn fx:id="column_role" prefWidth="104.0" text="Car" />
+                  <TableColumn fx:id="column_email" prefWidth="118.0" text="Start Branch" />
+                  <TableColumn fx:id="column_email1" prefWidth="139.0" text="End Branch" />
+                  <TableColumn fx:id="column_email11" prefWidth="156.0" text="Start Date" />
+                  <TableColumn fx:id="column_email111" prefWidth="146.0" text="End Date" />
+                  <TableColumn fx:id="column_email1111" prefWidth="126.0" text="Price" />
+                  <TableColumn fx:id="column_email11111" prefWidth="117.0" text="E-mail" />
+                  <TableColumn fx:id="column_email111111" prefWidth="95.0" text="Phone Number" />
+               </columns>
             </TableView>
          </content>
       </ScrollPane>
       <VBox prefHeight="1050.0" prefWidth="416.0">
          <children>
-            <HBox prefHeight="135.0" prefWidth="393.0">
+            <HBox prefHeight="134.0" prefWidth="225.0">
                <children>
-                  <Button fx:id="addButton" mnemonicParsing="false" onAction="#openAddView" prefHeight="175.0" prefWidth="300.0">
+                  <Button fx:id="addButton" mnemonicParsing="false" onAction="#openAddView" prefHeight="135.0" prefWidth="114.0">
                      <graphic>
-                        <ImageView fitHeight="71.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="68.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/plus.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#openDeleteView" prefHeight="158.0" prefWidth="300.0">
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#openDeleteView" prefHeight="133.0" prefWidth="96.0">
                      <graphic>
-                        <ImageView fitHeight="122.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="122.0" fitWidth="123.0" onDragDetected="#openDeleteView" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/minus.png" />
                            </image>
@@ -60,31 +67,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="openCarViewButton" mnemonicParsing="false" onAction="#openCarView" prefHeight="175.0" prefWidth="1000.0">
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#openCarView" prefHeight="175.0" prefWidth="1000.0">
                <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="173.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/sports-car.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="openEmployeeViewButton" mnemonicParsing="false" onAction="#openEmployeeView" prefHeight="175.0" prefWidth="1000.0">
-               <graphic>
-                  <ImageView fitHeight="121.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/employees.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="openBranchViewButton" mnemonicParsing="false" onAction="#openBranchView" prefHeight="175.0" prefWidth="1000.0">
-               <graphic>
-                  <ImageView fitHeight="115.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/branch.png" />
-                     </image>
-                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Back // replace for back button" />
                </graphic>
             </Button>
          </children>

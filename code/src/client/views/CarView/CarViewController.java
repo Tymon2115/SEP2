@@ -1,22 +1,27 @@
 package client.views.CarView;//package client.views.CarView;
 import client.viewmodel.CarViewModel;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import shared.Reservation.Car;
+import shared.personel.Employee;
 
 import javax.swing.text.TableView;
 import java.awt.event.ActionEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class CarViewController {
+public class CarViewController implements Initializable {
   @FXML
-  public Button openReservationViewButton;
+  private TableView<Employee> tableview_employee
   @FXML
-  public Button addButton;
+  private TableColumn<Employee, Integer> column_id
   @FXML
-  public Button deleteButton;
+  private TableColumn<Employee, String> column_make;
   @FXML
-  public Button editButton;
+  private TableColumn<Employee, String> column_model;
   @FXML
   public Label usernameLabel;
 
@@ -24,49 +29,8 @@ public class CarViewController {
   private Car car;
   private TableView tableView;
 
-  /**
-   * Method to run when opening the client GUI
-   */
-  public void init(CarViewModel carVM)
-  {
-    this.carViewModel = carVM;
-    usernameLabel.textProperty().bindBidirectional(carViewModel.usernameProperty);
-
-//    TableColumn<Car, String> makeColumn = new TableColumn<>("Make");
-//    makeColumn.setCellValueFactory(new PropertyValueFactory<>("make"));
-//
-//    TableColumn<Car, String> modelColumn = new TableColumn<>("Model");
-//    modelColumn.setCellValueFactory(new PropertyValueFactory<>("model"));
-//
-//    TableColumn<Car, String> plateNumbersColumn = new TableColumn<>("Plate numbers");
-//    plateNumbersColumn.setCellValueFactory(new PropertyValueFactory<>("plateNumbers"));
-//
-//    TableColumn<Car, String> fuelTypeColumn = new TableColumn<>("Fuel type");
-//    fuelTypeColumn.setCellValueFactory(new PropertyValueFactory<>("fuelType"));
-//
-//    TableColumn<Car, String> fuelConsumptionColumn = new TableColumn<>("Fuel consumption");
-//    fuelConsumptionColumn.setCellValueFactory(new PropertyValueFactory<>("fuelConsumption"));
-//
-//    TableColumn<Car, String> seatsColumn = new TableColumn<>("Seats");
-//    seatsColumn.setCellValueFactory(new PropertyValueFactory<>("seats"));
-//
-//    TableColumn<Car, String> engineColumn = new TableColumn<>("Engine");
-//    engineColumn.setCellValueFactory(new PropertyValueFactory<>("engine"));
-//
-//    TableColumn<Car, String> transmissionColumn = new TableColumn<>("Transmission");
-//    transmissionColumn.setCellValueFactory(new PropertyValueFactory<>("transmission"));
-//
-//    TableColumn<Car, String> equipmentColumn = new TableColumn<>("Equipment");
-//    equipmentColumn.setCellValueFactory(new PropertyValueFactory<>("equipment"));
-//
-//    TableColumn<Car, String> descriptionColumn = new TableColumn<>("Description");
-//    descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-//
-//    tableView = new TableView();
-//
-//    tableView.setItems(getCars());
-//    tableView.getColumns().addAll(makeColumn, modelColumn, plateNumbersColumn, fuelTypeColumn, fuelConsumptionColumn, seatsColumn, engineColumn, transmissionColumn, equipmentColumn, descriptionColumn);
-
+  public CarViewController (CarViewModel carViewModel) {
+    this.carViewModel = viewmodel;
   }
 
 
@@ -75,14 +39,19 @@ public class CarViewController {
   }
 
   public void openAddView(ActionEvent actionEvent) {
-//    carViewModel.addCarView(car);
+
   }
 
   public void openDeleteView(ActionEvent actionEvent) {
-//    carViewModel.deleteCarView(car);
+
   }
 
   public void openEditView(ActionEvent actionEvent) {
-//    carViewModel.openEditCarView(car);
+
+  }
+
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
+
   }
 }

@@ -61,7 +61,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#openCarView" prefHeight="175.0" prefWidth="1000.0">
+            <Button fx:id="backButton" mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
                <graphic>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Back // replace for back button" />
                </graphic>
