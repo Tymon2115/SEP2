@@ -6,8 +6,6 @@ import shared.Branches.Branch;
 import shared.PropertyChangeSubject;
 import shared.Reservation.*;
 import shared.personel.Employee;
-import shared.personel.Employees;
-import shared.personel.Manager;
 
 import javax.xml.crypto.Data;
 import java.beans.PropertyChangeEvent;
@@ -91,10 +89,10 @@ public class DataModel implements Model, PropertyChangeSubject {
         client.deleteEmployee(employee);
     }
 
-    @Override
-    public void createManager(String name, String surname, int id, Branch branch) {
-        client.createManager(name, surname, id, branch);
-    }
+//    @Override
+//    public void createManager(String name, String surname, int id, Branch branch) {
+//        client.createManager(name, surname, id, branch);
+//    }
 
     @Override
     public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
@@ -213,6 +211,16 @@ public class DataModel implements Model, PropertyChangeSubject {
         }
 
     }
+
+    @Override
+    public void register(Employee employee) {
+
+    }
+
+//    @Override
+//    public void register(Employee employee) {
+//        client.registerEmployee(employee);
+//    }
 
     @Override
     public void addListener(PropertyChangeListener listener, String name) {

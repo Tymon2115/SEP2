@@ -4,8 +4,6 @@ import shared.Branches.Branch;
 import shared.PropertyChangeSubject;
 import shared.Reservation.*;
 import shared.personel.Employee;
-import shared.personel.Employees;
-import shared.personel.Manager;
 
 import java.beans.PropertyChangeEvent;
 import java.sql.Date;
@@ -62,5 +60,7 @@ public interface Model extends PropertyChangeSubject {
     void getEmployee(int id);
 
     void getReservation(int id);
+
+    void register(Employee employee);
 
 }

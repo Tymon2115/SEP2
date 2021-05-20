@@ -15,7 +15,7 @@
       <Button layoutX="155.0" layoutY="209.0" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #7289da;" text="Log in" textFill="#e4dbdb" />
       <ImageView fitHeight="90.0" fitWidth="244.0" layoutX="126.0" layoutY="21.0">
          <image>
-            <Image url="@../../../../../../../OneDrive/Desktop/da.png" />
+            <Image url="@../icons/DatoLogin.png" />
          </image>
       </ImageView>
       <PasswordField fx:id="passwordField" layoutX="79.0" layoutY="166.0" prefHeight="26.0" prefWidth="242.0" promptText="Password" style="-fx-background-color: #2c2f33;" />

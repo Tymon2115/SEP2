@@ -2,6 +2,7 @@ package client.core;
 
 import client.model.DataModel;
 import client.model.Model;
+import client.network.DataClient;
 
 import java.rmi.RemoteException;
 
@@ -18,11 +19,7 @@ public class ModelFactory
 
     public Model getModel() {
         if (model == null) {
-            try {
-                model = new Model(clientFactory.getClient());
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
+            model = new DataModel((DataClient) clientFactory.getClient());
         }
         return model;
     }
