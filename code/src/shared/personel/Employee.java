@@ -17,15 +17,22 @@ public class Employee implements Serializable{
     private String email;
 
     public Employee(int id, String name, String surname, int roleId, Branch branch, String username, String password, String email) {
-
         this.name = name;
         this.surname = surname;
         this.id = id;
         this.branch = branch;
-        this.role = roleId;
+        this.roleId = roleId;
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+
+    public Employee(String firstName, String lastName, String username, String password)
+    {
+        this.name = firstName;
+        this.surname = lastName;
+        this.username = username;
+        this.password = password;
     }
 
     public String getName() {
@@ -65,7 +72,7 @@ public class Employee implements Serializable{
                 ", branch=" + branch +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", role=" + role +
+                ", roleId=" + roleId +
                 '}';
     }
 }
