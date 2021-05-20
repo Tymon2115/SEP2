@@ -2,13 +2,17 @@ package shared.personel;
 
 import shared.Branches.Branch;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable{
     private String name;
     private String surname;
     private int id;
     private Branch branch;
     private String username;
     private String password;
+
+
     int roleId;
     private String email;
 
@@ -21,6 +25,14 @@ public class Employee {
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+
+    public Employee(String firstName, String lastName, String username, String password)
+    {
+        this.name = firstName;
+        this.surname = lastName;
+        this.username = username;
+        this.password = password;
     }
 
     public String getName() {

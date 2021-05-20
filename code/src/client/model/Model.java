@@ -10,6 +10,7 @@ import java.sql.Date;
 
 public interface Model extends PropertyChangeSubject {
 
+
     void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price);
 
     void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price);
@@ -18,7 +19,9 @@ public interface Model extends PropertyChangeSubject {
 
     void deleteReservation(Reservation reservation);
 
+
     void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email);
+
 
     void editEmployee(int id, String name, String surname, int roleId, Branch branch, String username, String password, String email);
 
@@ -30,12 +33,15 @@ public interface Model extends PropertyChangeSubject {
 
     void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice);
 
+
     void receiveCar(PropertyChangeEvent event);
 
     void deleteCar(Car car);
 
 
+
     void createBranch(String name, String location);
+
 
     void editBranch(int id, String name, String location);
 
@@ -54,5 +60,7 @@ public interface Model extends PropertyChangeSubject {
     void getEmployee(int id);
 
     void getReservation(int id);
+
+    void register(Employee employee);
 
 }

@@ -1,10 +1,13 @@
 package client.core;
 
+import client.views.CarView.CarViewController;
 import client.views.LoginView.LoginController;
+import client.views.Registration.RegistrationViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import shared.personel.Employee;
 
 import java.io.IOException;
 
@@ -19,12 +22,13 @@ public class ViewHandler {
     }
 
     public void start() {
-        openLoginViewModel();
+        openLoginViewModel(null);
         stage.show();
+        stage.setResizable(false);
     }
 
     // Could be private
-    public void openLoginViewModel() {
+    public void openLoginViewModel(Employee employee) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/LoginView/Login.fxml"));
 
@@ -35,7 +39,7 @@ public class ViewHandler {
             LoginController controller = loader.getController();
             controller.init(viewModelFactory.getLoginViewModel());
 
-            stage.setTitle("Login");
+            stage.setTitle("Log in");
             Scene loginScene = new Scene(root);
             stage.setScene(loginScene);
 
@@ -45,11 +49,49 @@ public class ViewHandler {
         }
     }
 
-    private Parent loadFXML (String path) throws IOException {
+
+    public void openCarViewModel() {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(path));
-        Parent root = loader.load();
+        loader.setLocation(getClass().getResource("../view/CarView/CarView.fxml"));
+
+        try {
+            Parent root = null;
+            root = loader.load();
+
+            CarViewController controller = loader.getController();
+            controller.init(viewModelFactory.getCarViewModel());
+
+            stage.setTitle("Car View");
+            Scene carScene = new Scene(root);
+            stage.setScene(carScene);
 
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    public void openRegistrationViewModel() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/Registration/RegistrationView.fxml"));
+
+        try {
+            Parent root = null;
+            root = loader.load();
+
+            RegistrationViewController controller = loader.getController();
+            controller.init(viewModelFactory.getRegistrationViewModel(), this);
+
+            stage.setTitle("Registration View");
+            Scene registerScene = new Scene(root);
+            stage.setScene(registerScene);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

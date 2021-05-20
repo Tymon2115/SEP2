@@ -36,6 +36,9 @@ public class DataServer implements Server {
         }
     }
 
+
+
+
     @Override
     public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException {
         reservationHandler.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
@@ -77,6 +80,7 @@ public class DataServer implements Server {
     public void deleteEmployee(Employee employee) throws RemoteException {
         reservationHandler.deleteReservation(employee.getId());
     }
+
 
     public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException {
         try {

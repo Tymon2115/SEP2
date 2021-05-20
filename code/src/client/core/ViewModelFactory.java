@@ -1,11 +1,15 @@
 package client.core;
 
 import client.model.Model;
+import client.viewmodel.CarViewModel;
 import client.viewmodel.LoginViewModel;
+import client.viewmodel.RegistrationViewModel;
 
 public class ViewModelFactory {
 
     private LoginViewModel loginViewModel;
+    private CarViewModel carViewModel;
+    private RegistrationViewModel registrationViewModel;
     private ModelFactory modelFactory;
 
     public ViewModelFactory(ModelFactory modelFactory) {
@@ -21,8 +25,19 @@ public class ViewModelFactory {
         return loginViewModel;
     }
 
-    // Sheeshh for the GIT
-    public ModelFactory getModelFactork() {
-        return modelFactory;
+    public CarViewModel getCarViewModel() {
+        if (carViewModel == null)
+        {
+            carViewModel = new CarViewModel(modelFactory.getModel());
+        }
+        return carViewModel;
+    }
+
+    public RegistrationViewModel getRegistrationViewModel() {
+        if (registrationViewModel == null)
+        {
+            registrationViewModel = new RegistrationViewModel(modelFactory.getModel());
+        }
+        return registrationViewModel;
     }
 }
