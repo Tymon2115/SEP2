@@ -2,8 +2,6 @@ package server.database;
 
 import client.exceptions.AlreadyExists;
 import shared.Branch.Branch;
-import shared.Reservation.Cars;
-import shared.Reservation.Reservations;
 
 
 import java.sql.Connection;
@@ -67,7 +65,7 @@ public class BranchHandler {
 
     }
 
-    public ArrayList<Branch> getBranch() {
+    public ArrayList<Branch> getBranches() {
 
         try {
             Statement statement = connection.createStatement();

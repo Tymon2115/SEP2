@@ -7,7 +7,9 @@ import shared.personel.Employee;
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.Array;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public interface Client extends Remote {
     void startClient() throws RemoteException, NotBoundException;
@@ -55,4 +57,21 @@ public interface Client extends Remote {
     void login(String username, String password) throws RemoteException;
 
     void loginCallback(int role) throws RemoteException;
+
+    void getReservations() throws RemoteException;
+
+    void reservationsCallback(ArrayList<Reservation> reservations) throws RemoteException;
+
+    void getBranches() throws RemoteException;
+
+    void branchesCallback(ArrayList<Branch> branches) throws RemoteException;
+
+    void getCars() throws RemoteException;
+
+    void carsCallback(ArrayList<Car> cars) throws RemoteException;
+
+    void employeesCallback(ArrayList<Employee> employees) throws RemoteException;
+
+    void getEmployees() throws RemoteException;
+
 }

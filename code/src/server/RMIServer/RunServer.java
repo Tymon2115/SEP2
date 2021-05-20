@@ -1,9 +1,5 @@
 package server.RMIServer;
 
-import shared.Reservation.Cars;
-import shared.Reservation.Reservations;
-
-
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;

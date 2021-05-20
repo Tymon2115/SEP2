@@ -53,6 +53,27 @@ public class DataModel implements Model, PropertyChangeSubject {
         System.out.println(event.getNewValue());
     }
 
+    @Override
+    public void receiveReservations(PropertyChangeEvent event) {
+        support.firePropertyChange("reservations", null, event.getNewValue());
+
+    }
+
+    @Override
+    public void receiveCars(PropertyChangeEvent event) {
+        support.firePropertyChange("cars", null, event.getNewValue());
+    }
+
+    @Override
+    public void receiveBranches(PropertyChangeEvent event) {
+        support.firePropertyChange("branches", null, event.getNewValue());
+    }
+
+    @Override
+    public void receiveEmployees(PropertyChangeEvent event) {
+        support.firePropertyChange("employees", null, event.getNewValue());
+    }
+
 
     @Override
     public void deleteReservation(Reservation reservation) {
@@ -195,6 +216,42 @@ public class DataModel implements Model, PropertyChangeSubject {
         }
 
     }
+
+    @Override
+    public void getReservations() {
+        try {
+            client.getReservations();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override public void getBranches() {
+        try {
+            client.getBranches();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void getCars() {
+        try {
+            client.getCars();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void getEmployees() {
+        try {
+            client.getEmployees();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void register(Employee employee) {

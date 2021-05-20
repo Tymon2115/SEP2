@@ -11,6 +11,7 @@ import shared.Branch.Branch;
 import shared.Reservation.*;
 import shared.personel.Employee;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
@@ -142,5 +143,25 @@ public class DataServer implements Server {
         } catch (DoesNotExist | RemoteException doesNotExist) {
             doesNotExist.printStackTrace();
         }
+    }
+
+    @Override
+    public void getReservations(Client client) throws RemoteException {
+        client.reservationsCallback(reservationHandler.getReservations());
+    }
+
+    @Override
+    public void getBranches(Client client) throws RemoteException {
+        client.branchesCallback(branchHandler.getBranches());
+    }
+
+    @Override
+    public void getCars(Client client) throws RemoteException {
+        client.carsCallback(carHandler.getCars());
+    }
+
+    @Override
+    public void getEmployees (Client client) throws RemoteException {
+        client.employeesCallback(employeeHandler.getEmployees());
     }
 }

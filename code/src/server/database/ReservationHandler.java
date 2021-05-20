@@ -90,7 +90,7 @@ public class ReservationHandler {
 
     }
 
-    public ArrayList<Reservation> getReservation(){
+    public ArrayList<Reservation> getReservations(){
 
         try {
 
