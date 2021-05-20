@@ -88,21 +88,25 @@ public class DataModel implements Model, PropertyChangeSubject {
     }
 
     @Override
-    public void createCar(String make, Model model, String color, String numberPlates,
+    public void createCar(String make, String carModel, String color, String numberPlates,
                           String fuelType, String fuelConsumption, String seats, String engine,
                           String transmission, String equipment, String description, int branchId, double dailyPrice) {
-        client.createCar(make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
+        try {
+            client.createCar(make, carModel, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
     }
 
 
     @Override
-    public void editCar(int id, String make, Model model, String color,
+    public void editCar(int id, String make, String carModel, String color,
                         String numberPlates, String fuelType, String fuelConsumption,
                         String seats, String engine, String transmission, String equipment,
                         String description, int branchId, double dailyPrice) {
         try {
-            client.editCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
+            client.editCar(id, make, carModel, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
