@@ -29,9 +29,9 @@ public class DataServer implements Server {
     }
 
     @Override
-    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price) throws RemoteException {
+    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price, String email, String phoneNumber) throws RemoteException {
         try {
-            reservationHandler.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+            reservationHandler.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
         } catch (AlreadyExists alreadyExists) {
             alreadyExists.printStackTrace();
         }
@@ -41,8 +41,8 @@ public class DataServer implements Server {
 
 
     @Override
-    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException {
-        reservationHandler.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException {
+        reservationHandler.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
     }
 
 
@@ -138,7 +138,6 @@ public class DataServer implements Server {
     @Override
     public void login(String username, String password, Client client) {
         try {
-
             client.loginCallback(employeeHandler.login(username, password));
         } catch (DoesNotExist | RemoteException doesNotExist) {
             doesNotExist.printStackTrace();

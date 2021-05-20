@@ -36,8 +36,8 @@ public class DataClient implements Client, PropertyChangeSubject {
 
 
     @Override
-    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException {
-        server.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, (Client) this, price);
+    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException {
+        server.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, (Client) this, price, email, phoneNumber);
     }
 
     @Override
@@ -51,8 +51,8 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException {
-        server.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException {
+        server.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
     }
 
     @Override

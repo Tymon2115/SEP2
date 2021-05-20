@@ -79,16 +79,13 @@ public class RegistrationViewModel {
         return username;
     }
 
-
     public StringProperty passwordProperty() {
         return password;
     }
 
-
     public StringProperty confirmpasswordProperty() {
         return confirmpassword;
     }
-
 
     public StringProperty registrationMessageLabelProperty() {
         return registrationMessageLabel;

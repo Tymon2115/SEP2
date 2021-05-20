@@ -14,13 +14,13 @@ import java.util.ArrayList;
 public interface Client extends Remote {
     void startClient() throws RemoteException, NotBoundException;
 
-    void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException;
+    void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException;
 
     void getReservation(int id) throws RemoteException;
 
     void reservationCallback(Reservation reservation) throws RemoteException;
 
-    void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException;
+    void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException;
 
     void deleteReservation(Reservation reservation) throws RemoteException;
 

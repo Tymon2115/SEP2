@@ -13,6 +13,9 @@ public class LoginHandler {
 
 
 
+
+
+
     //creating a new password
     public static String hash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
 
