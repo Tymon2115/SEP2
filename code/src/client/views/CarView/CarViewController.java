@@ -79,7 +79,7 @@ public class CarViewController {
   }
 
   public void openAddView(ActionEvent actionEvent) {
-    carViewModel.addCarView(car);
+//    carViewModel.addCarView(car);
   }
 
   public void openDeleteView(ActionEvent actionEvent) {
@@ -87,6 +87,6 @@ public class CarViewController {
   }
 
   public void openEditView(ActionEvent actionEvent) {
-    carViewModel.openEditCarView(car);
+//    carViewModel.openEditCarView(car);
   }
 }

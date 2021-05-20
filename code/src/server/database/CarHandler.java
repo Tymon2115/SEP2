@@ -2,6 +2,7 @@ package server.database;
 
 
 import client.exceptions.AlreadyExists;
+import client.model.Model;
 import shared.Branches.Branch;
 import shared.Reservation.Car;
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 
 public class CarHandler {
 
-    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws AlreadyExists {
+    public void createCar(String make, Model model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws AlreadyExists {
         try {
 
             Statement statement1 = DatabaseConnection.getInstance().getConnection().createStatement();
@@ -121,7 +122,7 @@ public class CarHandler {
 
     }
 
-    public void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
+    public void editCar(int id, String make, Model model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
         try {
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
             statement.executeUpdate("UPDATE car SET make = '" + make + "', model = '" + model + "', color = '" + color + "', number_plates = '" + numberPlates + "', fuel_type = '" + fuelType + "', fuel_consumption = '" + fuelConsumption +

@@ -33,11 +33,11 @@ public class ViewModelFactory {
         return carViewModel;
     }
 
-    public RegistrationViewModel getRegistrationViewModel() {
-        if (registrationViewModel == null)
-        {
-            registrationViewModel = new RegistrationViewModel(modelFactory.getModel());
-        }
-        return registrationViewModel;
-    }
+//    public RegistrationViewModel getRegistrationViewModel() {
+//        if (registrationViewModel == null)
+//        {
+//            registrationViewModel = new RegistrationViewModel(modelFactory.getModel());
+//        }
+//        return registrationViewModel;
+//    }
 }

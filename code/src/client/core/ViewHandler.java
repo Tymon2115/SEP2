@@ -30,7 +30,7 @@ public class ViewHandler {
     // Could be private
     public void openLoginViewModel(Employee employee) {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/LoginView/Login.fxml"));
+        loader.setLocation(getClass().getResource("../views/LoginView/Login.fxml"));
 
         try {
             Parent root = null;
@@ -52,7 +52,7 @@ public class ViewHandler {
 
     public void openCarViewModel() {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/CarView/CarView.fxml"));
+        loader.setLocation(getClass().getResource("../views/CarView/CarView.fxml"));
 
         try {
             Parent root = null;
@@ -71,26 +71,26 @@ public class ViewHandler {
         }
     }
 
-    public void openRegistrationViewModel() {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/Registration/RegistrationView.fxml"));
-
-        try {
-            Parent root = null;
-            root = loader.load();
-
-            RegistrationViewController controller = loader.getController();
-            controller.init(viewModelFactory.getRegistrationViewModel(), this);
-
-            stage.setTitle("Registration View");
-            Scene registerScene = new Scene(root);
-            stage.setScene(registerScene);
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void openRegistrationViewModel() {
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(getClass().getResource("../views/Registration/RegistrationView.fxml"));
+//
+//        try {
+//            Parent root = null;
+//            root = loader.load();
+//
+//            RegistrationViewController controller = loader.getController();
+//            controller.init(viewModelFactory.getRegistrationViewModel(), this);
+//
+//            stage.setTitle("Registration View");
+//            Scene registerScene = new Scene(root);
+//            stage.setScene(registerScene);
+//
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
 
