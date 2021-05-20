@@ -43,4 +43,12 @@ public interface Server extends Remote {
     void deleteBranch(Branch branch) throws RemoteException;
 
     void login(String username, String password, Client client) throws RemoteException;
+
+    void getReservations(Client client) throws RemoteException;
+
+    void getBranches(Client client) throws RemoteException;
+
+    void getCars(Client client) throws RemoteException;
+
+    void getEmployees(Client client) throws RemoteException;
 }
