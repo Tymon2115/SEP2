@@ -1,7 +1,6 @@
 package client.core;
 
 import client.views.CarView.CarViewController;
-import client.views.LoginView.LoginController;
 import client.views.Registration.RegistrationViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

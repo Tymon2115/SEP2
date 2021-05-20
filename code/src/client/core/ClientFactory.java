@@ -9,9 +9,8 @@ public class ClientFactory {
 
     private DataClient client;
 
-    public Client getClient() {
-        if(client == null)
-        {
+    public DataClient getClient() {
+        if (client == null) {
             try {
                 client = new DataClient();
             } catch (RemoteException e) {

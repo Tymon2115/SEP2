@@ -1,7 +1,6 @@
 package client.network;
 
-import client.model.Model;
-import shared.Branches.Branch;
+import shared.Branch.Branch;
 import shared.Reservation.*;
 import shared.personel.Employee;
 
@@ -33,11 +32,11 @@ public interface Client extends Remote {
 
     void deleteEmployee(Employee employee) throws RemoteException;
 
-    void createCar(String make, Model model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException;
+    void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException;
 
     void getCar(int id) throws RemoteException;
 
-    void editCar(int id, String make, Model model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException;
+    void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException;
 
     void carCallback(Car car) throws RemoteException;
 

@@ -1,6 +1,7 @@
 package client.viewmodel;
 
 import client.model.DataModel;
+import client.model.Model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import shared.personel.Employee;
@@ -9,11 +10,11 @@ import java.beans.PropertyChangeSupport;
 
 public class RegistrationViewModel {
 
-    private DataModel model;
+    private Model model;
     private StringProperty firstname, lastname, username, password, confirmpassword, registrationMessageLabel;
     private PropertyChangeSupport support;
 
-    public RegistrationViewModel(DataModel model) {
+    public RegistrationViewModel(Model model) {
         this.model = model;
         support = new PropertyChangeSupport(this);
 

@@ -1,6 +1,6 @@
 package client.core;
 
-import client.model.Model;
+
 import client.viewmodel.CarViewModel;
 import client.viewmodel.LoginViewModel;
 import client.viewmodel.RegistrationViewModel;

@@ -14,6 +14,7 @@ public class Car {
     private String equipment;
     private String description;
     private int branchId;
+    private double dailyPrice;
 
     public Car(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
         this.id = id;
@@ -29,6 +30,7 @@ public class Car {
         this.equipment = equipment;
         this.description = description;
         this.branchId = id;
+        this.dailyPrice = dailyPrice;
     }
 
 

@@ -2,9 +2,7 @@ package server.database;
 
 import client.exceptions.AlreadyExists;
 import client.exceptions.DoesNotExist;
-import shared.Branches.Branch;
-import shared.Reservation.Cars;
-import shared.Reservation.Reservations;
+import shared.Branch.Branch;
 import shared.personel.Employee;
 
 import java.security.NoSuchAlgorithmException;

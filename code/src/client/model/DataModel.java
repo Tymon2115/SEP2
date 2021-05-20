@@ -1,13 +1,11 @@
 package client.model;
 
-import client.network.Client;
 import client.network.DataClient;
-import shared.Branches.Branch;
+import shared.Branch.Branch;
 import shared.PropertyChangeSubject;
 import shared.Reservation.*;
 import shared.personel.Employee;
 
-import javax.xml.crypto.Data;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -88,11 +86,6 @@ public class DataModel implements Model, PropertyChangeSubject {
     public void deleteEmployee(Employee employee) {
         client.deleteEmployee(employee);
     }
-
-//    @Override
-//    public void createManager(String name, String surname, int id, Branch branch) {
-//        client.createManager(name, surname, id, branch);
-//    }
 
     @Override
     public void createCar(String make, Model model, String color, String numberPlates,
@@ -212,11 +205,6 @@ public class DataModel implements Model, PropertyChangeSubject {
     public void register(Employee employee) {
 
     }
-
-//    @Override
-//    public void register(Employee employee) {
-//        client.registerEmployee(employee);
-//    }
 
     @Override
     public void addListener(PropertyChangeListener listener, String name) {

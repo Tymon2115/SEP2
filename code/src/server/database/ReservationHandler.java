@@ -1,7 +1,7 @@
 package server.database;
 
 import client.exceptions.AlreadyExists;
-import shared.Branches.Branch;
+import shared.Branch.Branch;
 import shared.Reservation.Address;
 import shared.Reservation.Car;
 import shared.Reservation.Reservation;
