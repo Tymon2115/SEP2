@@ -1,5 +1,6 @@
 package server.database;
 
+import client.Session;
 import client.exceptions.AlreadyExists;
 import client.exceptions.DoesNotExist;
 import shared.Branch.Branch;
@@ -138,15 +139,20 @@ public class EmployeeHandler {
             Statement statement = connection.createStatement();
             String storedPassword = null;
             int role_id = 0;
+
             ResultSet result = statement.executeQuery("SELECT * FROM employee WHERE username = '" + username + "';");
                 while (result.next()) {
                     storedPassword = result.getString("password");
                     role_id = result.getInt("role_id");
+
                 }
-           if (LoginHandler.validatePassword(password, storedPassword))
+           if (LoginHandler.validatePassword(password, storedPassword)) {
                return role_id;
-           else
+           }
+           else {
+
                return 0;
+           }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

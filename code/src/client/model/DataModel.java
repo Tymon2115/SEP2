@@ -1,5 +1,6 @@
 package client.model;
 
+import client.Session;
 import client.network.DataClient;
 import shared.Branch.Branch;
 import shared.PropertyChangeSubject;
@@ -29,18 +30,18 @@ public class DataModel implements Model, PropertyChangeSubject {
     @Override
 
 
-    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
+    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) {
         try {
-            client.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+            client.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
+    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) {
         try {
-            client.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+            client.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -186,6 +187,7 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void receiveLogin(PropertyChangeEvent event) {
+        Session.setRole_id((int)event.getNewValue());
         support.firePropertyChange("login", null, event.getNewValue());
     }
 

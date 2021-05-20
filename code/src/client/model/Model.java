@@ -12,9 +12,9 @@ import java.sql.Date;
 public interface Model extends PropertyChangeSubject {
 
 
-    void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price);
+    void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber);
 
-    void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price);
+    void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber);
 
     void receiveReservation(PropertyChangeEvent event);
 

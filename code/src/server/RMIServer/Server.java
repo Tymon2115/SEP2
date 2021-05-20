@@ -11,9 +11,9 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 
 public interface Server extends Remote {
-    void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price) throws RemoteException;
+    void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price, String email, String phoneNumber) throws RemoteException;
 
-    void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException;
+    void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException;
 
     void getReservation(int searchId, Client client) throws RemoteException;
 

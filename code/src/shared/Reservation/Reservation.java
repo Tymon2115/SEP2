@@ -17,9 +17,11 @@ public class Reservation implements Serializable {
     private Date startDate;
     private Date endDate;
     private double price;
+    private String email;
+    private String phoneNumber;
 
 
-    public Reservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
+    public Reservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -31,6 +33,8 @@ public class Reservation implements Serializable {
         this.startDate = startDate;
         this.endDate = endDate;
         this.price = price;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getName() {
@@ -55,6 +59,18 @@ public class Reservation implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public void setName(String name) {
@@ -103,6 +119,18 @@ public class Reservation implements Serializable {
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Date getEndDate() {
