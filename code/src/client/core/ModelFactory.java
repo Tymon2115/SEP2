@@ -19,7 +19,7 @@ public class ModelFactory
 
     public Model getModel() {
         if (model == null) {
-            model = new DataModel((DataClient) clientFactory.getClient());
+            model = new DataModel(clientFactory.getClient());
         }
         return model;
     }
