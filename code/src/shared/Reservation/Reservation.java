@@ -1,6 +1,6 @@
 package shared.Reservation;
 
-import shared.Branches.Branch;
+import shared.Branch.Branch;
 
 import java.io.Serializable;
 import java.sql.Date;

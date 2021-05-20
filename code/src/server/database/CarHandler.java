@@ -2,11 +2,8 @@ package server.database;
 
 
 import client.exceptions.AlreadyExists;
-import shared.Branches.Branch;
 import shared.Reservation.Car;
 
-import javax.xml.transform.Result;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

@@ -1,6 +1,6 @@
 package client.network;
 
-import shared.Branches.Branch;
+import shared.Branch.Branch;
 import shared.Reservation.*;
 import shared.personel.Employee;
 

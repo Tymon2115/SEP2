@@ -1,6 +1,6 @@
 package client.model;
 
-import shared.Branches.Branch;
+import shared.Branch.Branch;
 import shared.PropertyChangeSubject;
 import shared.Reservation.*;
 import shared.personel.Employee;
