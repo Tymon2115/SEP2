@@ -33,11 +33,11 @@ public class EmployeeViewController implements Initializable {
   @FXML
   private TableColumn<Employee, String> column_branch;
   @FXML
-  private TableColumn column_username;
+  private TableColumn<Employee, String> column_username;
   @FXML
-  private TableColumn column_role;
+  private TableColumn<Employee, String> column_role;
   @FXML
-  private TableColumn column_email;
+  private TableColumn<Employee, String> column_email;
 
 
   public void openAddView(ActionEvent actionEvent) {
