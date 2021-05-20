@@ -11,14 +11,14 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: #23272a;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.LoginView.LoginController">
    <children>
-      <TextField fx:id="usernameField" layoutX="79.0" layoutY="124.0" prefHeight="26.0" prefWidth="242.0" promptText="Username" style="-fx-background-color: #2c2f33;" />
+      <TextField fx:id="usernameField" layoutX="79.0" layoutY="124.0" prefHeight="26.0" prefWidth="242.0" promptText="Username" style="-fx-background-color: #2c2f33; -fx-text-fill: #ffffff;" />
       <Button layoutX="155.0" layoutY="209.0" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #7289da;" text="Log in" textFill="#e4dbdb" />
       <ImageView fitHeight="90.0" fitWidth="244.0" layoutX="126.0" layoutY="21.0">
          <image>
             <Image url="@../icons/DatoLogin.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="passwordField" layoutX="79.0" layoutY="166.0" prefHeight="26.0" prefWidth="242.0" promptText="Password" style="-fx-background-color: #2c2f33;" />
+      <PasswordField fx:id="passwordField" layoutX="79.0" layoutY="166.0" prefHeight="26.0" prefWidth="242.0" promptText="Password" style="-fx-background-color: #2c2f33; -fx-text-fill: #ffffff;" />
       <Label fx:id="loginResultMessage" layoutX="160.0" layoutY="254.0" text="Login Message" />
    </children>
    <padding>
