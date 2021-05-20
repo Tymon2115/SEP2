@@ -1,69 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1703.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.CarViewController">
+<SplitPane dividerPositions="0.863528009535161" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.EmployeeView.EmployeeViewController">
    <items>
-      <BorderPane prefHeight="1048.0" prefWidth="1769.0">
-         <center>
-            <TableView prefHeight="742.0" prefWidth="1401.0" style="-fx-background-color: #2c2f33;" BorderPane.alignment="CENTER">
+      <ScrollPane prefHeight="200.0" prefWidth="200.0">
+         <content>
+            <TableView fx:id="employee_tableview" prefHeight="1044.0" prefWidth="1474.0">
                <columns>
-                  <TableColumn prefWidth="102.0" style="-fx-background-color: #7289da; -fx-border-color: #23272a;" text="Make" />
-                  <TableColumn prefWidth="91.0" style="-fx-background-color: #7289da; -fx-border-color: #23272a;" text="Model" />
-                  <TableColumn prefWidth="115.0" style="-fx-background-color: #7289da; -fx-border-color: #23272a;" text="Plate Numbers" />
-                  <TableColumn prefWidth="97.0" style="-fx-background-color: #7289da; -fx-border-color: #23272a;" text="Fuel Type" />
-                  <TableColumn prefWidth="126.0" style="-fx-background-color: #7289da; -fx-border-color: #23272a;" text="Fuel Consumption" />
-                  <TableColumn prefWidth="68.0" style="-fx-background-color: #7289da; -fx-border-color: #23272a;" text="Seats" />
-                  <TableColumn prefWidth="117.0" style="-fx-background-color: #7289da; -fx-border-color: #23272a;" text="Engine" />
-                  <TableColumn prefWidth="129.0" style="-fx-background-color: #7289da; -fx-border-color: #23272a;" text="Transmission" />
-                  <TableColumn prefWidth="186.0" style="-fx-background-color: #7289da; -fx-border-color: #23272a;" text="Equipment" />
-                  <TableColumn prefWidth="396.0" style="-fx-background-color: #7289da; -fx-border-color: #23272a;" text="Description" />
+                  <TableColumn fx:id="column_id" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="column_name" prefWidth="75.0" text="Make" />
+                  <TableColumn fx:id="column_surname" prefWidth="75.0" text="Model" />
+                  <TableColumn fx:id="column_branch" prefWidth="90.0" text="Color" />
+                  <TableColumn fx:id="column_username" text="Number Plates" />
+                  <TableColumn fx:id="column_role" prefWidth="115.0" text="Fuel Type" />
+                  <TableColumn fx:id="column_email" prefWidth="98.0" text="Fuel Consumption" />
+                  <TableColumn fx:id="column_email1" prefWidth="103.0" text="Seats" />
+                  <TableColumn fx:id="column_email11" prefWidth="121.0" text="Engine" />
+                  <TableColumn fx:id="column_email111" prefWidth="97.0" text="Transmission" />
+                  <TableColumn fx:id="column_email1111" prefWidth="123.0" text="Equipment" />
+                  <TableColumn fx:id="column_email11111" prefWidth="119.0" text="Description" />
+                  <TableColumn fx:id="column_email111111" prefWidth="120.0" text="Branch" />
+                  <TableColumn fx:id="column_email1111111" prefWidth="120.0" text="Daily Price" />
                </columns>
             </TableView>
-         </center>
-         <top>
-            <Pane prefHeight="118.0" prefWidth="1428.0" style="-fx-background-color: #23272a;" BorderPane.alignment="CENTER">
+         </content>
+      </ScrollPane>
+      <VBox prefHeight="1050.0" prefWidth="416.0">
+         <children>
+            <HBox prefHeight="135.0" prefWidth="393.0">
                <children>
-                  <Label layoutX="777.0" layoutY="32.0" text="Car View" textFill="WHITE">
-                     <font>
-                        <Font size="38.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="usernameLabel" layoutX="1601.0" layoutY="51.0" text="Username" textFill="#c63030" />
-                  <ImageView fitHeight="92.0" fitWidth="219.0" layoutX="125.0" layoutY="14.0">
+                  <Button fx:id="addButton" mnemonicParsing="false" onAction="#openAddView" prefHeight="175.0" prefWidth="300.0">
+                     <graphic>
+                        <ImageView fitHeight="71.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/plus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#openDeleteView" prefHeight="158.0" prefWidth="300.0">
+                     <graphic>
+                        <ImageView fitHeight="122.0" fitWidth="123.0" onDragDetected="#openDeleteView" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="editButton" mnemonicParsing="false" onAction="#openEditView" prefHeight="175.0" prefWidth="1000.0">
+               <graphic>
+                  <ImageView fitHeight="86.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../OneDrive/Desktop/187566607_1129152490886167_4488136351878504316_n.png" />
+                        <Image url="@../icons/editIcon.png" />
                      </image>
                   </ImageView>
-               </children>
-            </Pane>
-         </top>
-         <bottom>
-            <Pane prefHeight="123.0" prefWidth="1701.0" style="-fx-background-color: #23272a;" BorderPane.alignment="CENTER" />
-         </bottom>
-         <right>
-            <AnchorPane prefHeight="730.0" prefWidth="150.0" style="-fx-background-color: #23272a;" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="addButton" layoutX="38.0" layoutY="62.0" mnemonicParsing="false" onAction="#openAddView" prefHeight="28.0" prefWidth="83.0" style="-fx-background-color: #99aab5;" text="Add Car" textFill="#2c2f33" />
-                  <Button fx:id="deleteButton" layoutX="40.0" layoutY="108.0" mnemonicParsing="false" onAction="#openDeleteView" style="-fx-background-color: #99aab5;" text="Remove Car" textFill="#2c2f33" />
-                  <Button fx:id="editButton" layoutX="41.0" layoutY="156.0" mnemonicParsing="false" onAction="#openEditView" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #99aab5;" text="Edit Car" textFill="#2c2f33" />
-                  <Button fx:id="openReservationViewButton" layoutX="12.0" layoutY="745.0" mnemonicParsing="false" onAction="#openReservationView" prefHeight="28.0" prefWidth="126.0" style="-fx-background-color: #99aab5;" text="Go to Reservations" textFill="#2c2f33" />
-               </children>
-            </AnchorPane>
-         </right>
-         <left>
-            <AnchorPane prefHeight="730.0" prefWidth="150.0" style="-fx-background-color: #23272a;" BorderPane.alignment="CENTER" />
-         </left>
-      </BorderPane>
+               </graphic>
+            </Button>
+            <Button fx:id="backButton" mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
+               <graphic>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Back // replace for back button" />
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
    </items>
 </SplitPane>

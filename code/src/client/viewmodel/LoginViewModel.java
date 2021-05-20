@@ -25,7 +25,7 @@ public class LoginViewModel {
         model.addListener(this::loggedIn, "login");
     }
 
-    public int loggedIn(PropertyChangeEvent event) {
+    public void loggedIn(PropertyChangeEvent event) {
         int role_id = (int) event.getNewValue();
 
         if (role_id == 0)
@@ -36,7 +36,7 @@ public class LoginViewModel {
             viewHandler.openFrontPageView();
         }
 
-        return role_id;
+
     }
 
     public StringProperty usernameProperty() {
