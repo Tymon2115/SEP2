@@ -11,8 +11,6 @@ public class Employee implements Serializable{
     private Branch branch;
     private String username;
     private String password;
-
-
     int roleId;
     private String email;
 

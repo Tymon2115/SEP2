@@ -9,20 +9,21 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.75" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.EmployeeView.EmployeeViewController">
+<SplitPane dividerPositions="0.75" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.EmployeeView.EmployeeViewController">
    <items>
       <ScrollPane prefHeight="200.0" prefWidth="200.0">
          <content>
-            <TableView prefHeight="1044.0" prefWidth="1474.0">
+            <TableView fx:id="employee_tableview" prefHeight="1044.0" prefWidth="1474.0">
                <columns>
-                  <TableColumn prefWidth="75.0" text="ID" />
-                  <TableColumn prefWidth="75.0" text="Name" />
-                  <TableColumn prefWidth="75.0" text="Surname" />
-                  <TableColumn prefWidth="128.33331298828125" text="Driver's license no." />
-                  <TableColumn prefWidth="225.66668701171875" text="All other shit for reservations" />
-                  <TableColumn prefWidth="203.33331298828125" text="Column X" />
-                  <TableColumn prefWidth="317.66668701171875" text="Column X" />
+                  <TableColumn fx:id="column_id" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="column_name" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="column_surname" prefWidth="75.0" text="Surname" />
+                  <TableColumn fx:id="column_branch" prefWidth="225.66668701171875" text="Branch" />
+                  <TableColumn fx:id="column_username" prefWidth="203.33331298828125" text="Username" />
+                  <TableColumn fx:id="column_role" prefWidth="317.66668701171875" text="Role" />
+                  <TableColumn fx:id="column_email" prefWidth="246.0" text="Email" />
                </columns>
             </TableView>
          </content>
@@ -60,31 +61,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="openCarViewButton" mnemonicParsing="false" onAction="#openCarView" prefHeight="175.0" prefWidth="1000.0">
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#openCarView" prefHeight="175.0" prefWidth="1000.0">
                <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="173.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/sports-car.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="openReservationViewButton" mnemonicParsing="false" onAction="#openReservationView" prefHeight="175.0" prefWidth="1000.0">
-               <graphic>
-                  <ImageView fitHeight="121.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/reservation.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="openBranchViewButton" mnemonicParsing="false" onAction="#openBranchView" prefHeight="175.0" prefWidth="1000.0">
-               <graphic>
-                  <ImageView fitHeight="115.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/branch.png" />
-                     </image>
-                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Back // replace for back button" />
                </graphic>
             </Button>
          </children>

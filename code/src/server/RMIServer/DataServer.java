@@ -2,6 +2,7 @@ package server.RMIServer;
 
 import client.exceptions.AlreadyExists;
 import client.exceptions.DoesNotExist;
+import client.model.Model;
 import client.network.Client;
 import server.database.BranchHandler;
 import server.database.CarHandler;
@@ -11,6 +12,7 @@ import shared.Branch.Branch;
 import shared.Reservation.*;
 import shared.personel.Employee;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
@@ -28,9 +30,9 @@ public class DataServer implements Server {
     }
 
     @Override
-    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price) throws RemoteException {
+    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price, String email, String phoneNumber) throws RemoteException {
         try {
-            reservationHandler.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+            reservationHandler.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
         } catch (AlreadyExists alreadyExists) {
             alreadyExists.printStackTrace();
         }
@@ -40,8 +42,8 @@ public class DataServer implements Server {
 
 
     @Override
-    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException {
-        reservationHandler.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException {
+        reservationHandler.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
     }
 
 
@@ -82,7 +84,7 @@ public class DataServer implements Server {
     }
 
 
-    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException {
+    public void createCar(String make, Model model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException {
         try {
             carHandler.createCar(make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
         } catch (AlreadyExists alreadyExists) {
@@ -92,7 +94,7 @@ public class DataServer implements Server {
     }
 
     @Override
-    public void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException {
+    public void editCar(int id, String make, Model model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException {
         carHandler.editCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
     }
 
@@ -137,10 +139,29 @@ public class DataServer implements Server {
     @Override
     public void login(String username, String password, Client client) {
         try {
-
             client.loginCallback(employeeHandler.login(username, password));
         } catch (DoesNotExist | RemoteException doesNotExist) {
             doesNotExist.printStackTrace();
         }
+    }
+
+    @Override
+    public void getReservations(Client client) throws RemoteException {
+        client.reservationsCallback(reservationHandler.getReservations());
+    }
+
+    @Override
+    public void getBranches(Client client) throws RemoteException {
+        client.branchesCallback(branchHandler.getBranches());
+    }
+
+    @Override
+    public void getCars(Client client) throws RemoteException {
+        client.carsCallback(carHandler.getCars());
+    }
+
+    @Override
+    public void getEmployees (Client client) throws RemoteException {
+        client.employeesCallback(employeeHandler.getEmployees());
     }
 }

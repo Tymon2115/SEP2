@@ -1,5 +1,6 @@
 package client.model;
 
+import client.Session;
 import client.network.DataClient;
 import shared.Branch.Branch;
 import shared.PropertyChangeSubject;
@@ -29,18 +30,18 @@ public class DataModel implements Model, PropertyChangeSubject {
     @Override
 
 
-    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
+    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) {
         try {
-            client.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+            client.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) {
+    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) {
         try {
-            client.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
+            client.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -51,6 +52,27 @@ public class DataModel implements Model, PropertyChangeSubject {
     public void receiveReservation(PropertyChangeEvent event) {
         support.firePropertyChange("reservation", null, event.getNewValue());
         System.out.println(event.getNewValue());
+    }
+
+    @Override
+    public void receiveReservations(PropertyChangeEvent event) {
+        support.firePropertyChange("reservations", null, event.getNewValue());
+
+    }
+
+    @Override
+    public void receiveCars(PropertyChangeEvent event) {
+        support.firePropertyChange("cars", null, event.getNewValue());
+    }
+
+    @Override
+    public void receiveBranches(PropertyChangeEvent event) {
+        support.firePropertyChange("branches", null, event.getNewValue());
+    }
+
+    @Override
+    public void receiveEmployees(PropertyChangeEvent event) {
+        support.firePropertyChange("employees", null, event.getNewValue());
     }
 
 
@@ -88,16 +110,25 @@ public class DataModel implements Model, PropertyChangeSubject {
     }
 
     @Override
-    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
-        client.createCar(make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
+    public void createCar(String make, String carModel, String color, String numberPlates,
+                          String fuelType, String fuelConsumption, String seats, String engine,
+                          String transmission, String equipment, String description, int branchId, double dailyPrice) {
+        try {
+            client.createCar(make, carModel, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
     }
 
 
     @Override
-    public void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
+    public void editCar(int id, String make, String carModel, String color,
+                        String numberPlates, String fuelType, String fuelConsumption,
+                        String seats, String engine, String transmission, String equipment,
+                        String description, int branchId, double dailyPrice) {
         try {
-            client.editCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
+            client.editCar(id, make, carModel, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -156,6 +187,7 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void receiveLogin(PropertyChangeEvent event) {
+        Session.setRole_id((int)event.getNewValue());
         support.firePropertyChange("login", null, event.getNewValue());
     }
 
@@ -195,6 +227,42 @@ public class DataModel implements Model, PropertyChangeSubject {
         }
 
     }
+
+    @Override
+    public void getReservations() {
+        try {
+            client.getReservations();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override public void getBranches() {
+        try {
+            client.getBranches();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void getCars() {
+        try {
+            client.getCars();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void getEmployees() {
+        try {
+            client.getEmployees();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void register(Employee employee) {

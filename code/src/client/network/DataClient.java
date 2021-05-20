@@ -1,5 +1,6 @@
 package client.network;
 
+import client.model.Model;
 import server.RMIServer.Server;
 import shared.Branch.Branch;
 import shared.PropertyChangeSubject;
@@ -9,11 +10,13 @@ import shared.personel.Employee;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.NotBoundException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class DataClient implements Client, PropertyChangeSubject {
 
@@ -34,8 +37,8 @@ public class DataClient implements Client, PropertyChangeSubject {
 
 
     @Override
-    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException {
-        server.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, (Client) this, price);
+    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException {
+        server.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, (Client) this, price, email, phoneNumber);
     }
 
     @Override
@@ -45,16 +48,12 @@ public class DataClient implements Client, PropertyChangeSubject {
 
     @Override
     public void reservationCallback(Reservation reservation) {
-        reservationUpdate(reservation);
+        support.firePropertyChange("reservation", null, reservation);
     }
 
     @Override
-    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException {
-        server.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price);
-    }
-
-    private void reservationUpdate(Reservation reservation) {
-        support.firePropertyChange("reservation", null, reservation);
+    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException {
+        server.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
     }
 
     @Override
@@ -100,7 +99,7 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
+    public void createCar(String make, Model model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
         try {
             server.createCar(make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
 
@@ -115,7 +114,7 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException {
+    public void editCar(int id, String make, Model model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException {
         server.editCar(id, make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
     }
 
@@ -179,6 +178,46 @@ public class DataClient implements Client, PropertyChangeSubject {
     @Override
     public void addListener(PropertyChangeListener listener, String name) {
         support.addPropertyChangeListener(name, listener);
+    }
+
+    @Override
+    public void getReservations() throws RemoteException {
+        server.getReservations(this);
+    }
+
+    @Override
+    public void reservationsCallback(ArrayList<Reservation> reservations) throws RemoteException {
+        support.firePropertyChange("reservations", null, reservations);
+    }
+
+    @Override
+    public void getBranches() throws RemoteException {
+        server.getReservations(this);
+    }
+
+    @Override
+    public void branchesCallback(ArrayList<Branch> branches) throws RemoteException {
+        support.firePropertyChange("branches", null, branches);
+    }
+
+    @Override
+    public void getCars() throws RemoteException {
+        server.getCars(this);
+    }
+
+    @Override
+    public void carsCallback(ArrayList<Car> cars) throws RemoteException {
+        support.firePropertyChange("cars", null, cars);
+    }
+
+    @Override
+    public void getEmployees() throws RemoteException {
+        server.getEmployees(this);
+    }
+
+    @Override
+    public void employeesCallback(ArrayList<Employee> employees) throws RemoteException {
+        support.firePropertyChange("employees", null, employees);
     }
 
 }

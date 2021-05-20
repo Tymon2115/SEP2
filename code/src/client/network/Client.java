@@ -7,18 +7,20 @@ import shared.personel.Employee;
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.Array;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public interface Client extends Remote {
     void startClient() throws RemoteException, NotBoundException;
 
-    void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException;
+    void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException;
 
     void getReservation(int id) throws RemoteException;
 
     void reservationCallback(Reservation reservation) throws RemoteException;
 
-    void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price) throws RemoteException;
+    void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException;
 
     void deleteReservation(Reservation reservation) throws RemoteException;
 
@@ -55,4 +57,21 @@ public interface Client extends Remote {
     void login(String username, String password) throws RemoteException;
 
     void loginCallback(int role) throws RemoteException;
+
+    void getReservations() throws RemoteException;
+
+    void reservationsCallback(ArrayList<Reservation> reservations) throws RemoteException;
+
+    void getBranches() throws RemoteException;
+
+    void branchesCallback(ArrayList<Branch> branches) throws RemoteException;
+
+    void getCars() throws RemoteException;
+
+    void carsCallback(ArrayList<Car> cars) throws RemoteException;
+
+    void employeesCallback(ArrayList<Employee> employees) throws RemoteException;
+
+    void getEmployees() throws RemoteException;
+
 }
