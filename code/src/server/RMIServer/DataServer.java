@@ -7,7 +7,7 @@ import server.database.BranchHandler;
 import server.database.CarHandler;
 import server.database.EmployeeHandler;
 import server.database.ReservationHandler;
-import shared.Branches.Branch;
+import shared.Branch.Branch;
 import shared.Reservation.*;
 import shared.personel.Employee;
 

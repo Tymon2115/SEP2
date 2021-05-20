@@ -1,7 +1,7 @@
 package server.RMIServer;
 
 import client.network.Client;
-import shared.Branches.Branch;
+import shared.Branch.Branch;
 import shared.Reservation.*;
 import shared.personel.Employee;
 

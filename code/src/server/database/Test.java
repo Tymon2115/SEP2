@@ -1,6 +1,6 @@
 package server.database;
 
-import shared.Branches.Branch;
+import shared.Branch.Branch;
 import shared.Reservation.Car;
 import shared.personel.Employee;
 
