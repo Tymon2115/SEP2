@@ -57,9 +57,10 @@ public class ReservationViewController {
     private TableColumn<Reservation, String> phoneNumberCol;
     ReservationViewModel reservationViewModel;
 
-    public ReservationViewController(ReservationViewModel reservationViewModel) {
+    public void init(ReservationViewModel reservationViewModel)  {
         this.reservationViewModel = reservationViewModel;
     }
+
 
 
     public void onDeleteButton(ActionEvent actionEvent) {

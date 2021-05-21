@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 
 public class LoginController {
 
@@ -23,6 +24,12 @@ public class LoginController {
         usernameField.textProperty().bindBidirectional(loginVM.usernameProperty());
         passwordField.textProperty().bindBidirectional(loginVM.passwordProperty());
         loginResultMessage.textProperty().bindBidirectional(loginVM.loginResponseProperty());
+
+        passwordField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                loginViewModel.login();
+            }
+        });
     }
 
     public void onLoginButton(ActionEvent actionEvent) {

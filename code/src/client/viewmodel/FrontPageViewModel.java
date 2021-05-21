@@ -13,18 +13,18 @@ public class FrontPageViewModel {
     }
 
     public void getCarView() {
-//        viewHandler.openCarViewModel();
+        viewHandler.openCarView();
     }
 
     public void getReservationView() {
-//        viewHandler.openReservationView();
+        viewHandler.openReservationView();
     }
 
     public void getEmployeeView() {
-//        viewHandler.openEmployeeView();
+        viewHandler.openEmployeeView();
     }
 
     public void getBranchView() {
-//        viewHandler.openBranchView();
+        viewHandler.openBranchView();
     }
 }
