@@ -8,7 +8,7 @@ public class FrontPageViewModel {
     private ViewHandler viewHandler;
     private Model model;
 
-    public FrontPageViewModel(Model model) {
+    public FrontPageViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
     }
 

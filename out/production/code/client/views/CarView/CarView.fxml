@@ -15,22 +15,22 @@
    <items>
       <ScrollPane prefHeight="200.0" prefWidth="200.0">
          <content>
-            <TableView fx:id="employee_tableview" prefHeight="1044.0" prefWidth="1474.0">
+            <TableView fx:id="tableview_car" prefHeight="1044.0" prefWidth="1474.0">
                <columns>
                   <TableColumn fx:id="column_id" prefWidth="75.0" text="ID" />
-                  <TableColumn fx:id="column_name" prefWidth="75.0" text="Make" />
-                  <TableColumn fx:id="column_surname" prefWidth="75.0" text="Model" />
-                  <TableColumn fx:id="column_branch" prefWidth="90.0" text="Color" />
-                  <TableColumn fx:id="column_username" text="Number Plates" />
-                  <TableColumn fx:id="column_role" prefWidth="115.0" text="Fuel Type" />
-                  <TableColumn fx:id="column_email" prefWidth="98.0" text="Fuel Consumption" />
-                  <TableColumn fx:id="column_email1" prefWidth="103.0" text="Seats" />
-                  <TableColumn fx:id="column_email11" prefWidth="121.0" text="Engine" />
-                  <TableColumn fx:id="column_email111" prefWidth="97.0" text="Transmission" />
-                  <TableColumn fx:id="column_email1111" prefWidth="123.0" text="Equipment" />
-                  <TableColumn fx:id="column_email11111" prefWidth="119.0" text="Description" />
-                  <TableColumn fx:id="column_email111111" prefWidth="120.0" text="Branch" />
-                  <TableColumn fx:id="column_email1111111" prefWidth="120.0" text="Daily Price" />
+                  <TableColumn fx:id="column_make" prefWidth="75.0" text="Make" />
+                  <TableColumn fx:id="column_model" prefWidth="75.0" text="Model" />
+                  <TableColumn fx:id="column_color" prefWidth="90.0" text="Color" />
+                  <TableColumn fx:id="column_numberplates" text="Number Plates" />
+                  <TableColumn fx:id="column_fueltype" prefWidth="115.0" text="Fuel Type" />
+                  <TableColumn fx:id="column_fuelconsumption" prefWidth="98.0" text="Fuel Consumption" />
+                  <TableColumn fx:id="column_seats" prefWidth="103.0" text="Seats" />
+                  <TableColumn fx:id="column_engine" prefWidth="121.0" text="Engine" />
+                  <TableColumn fx:id="column_transmission" prefWidth="97.0" text="Transmission" />
+                  <TableColumn fx:id="column_equipment" prefWidth="123.0" text="Equipment" />
+                  <TableColumn fx:id="column_description" prefWidth="119.0" text="Description" />
+                  <TableColumn fx:id="column_branch" prefWidth="120.0" text="Branch" />
+                  <TableColumn fx:id="column_dailyprice" prefWidth="120.0" text="Daily Price" />
                </columns>
             </TableView>
          </content>
@@ -50,7 +50,7 @@
                   </Button>
                   <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#openDeleteView" prefHeight="158.0" prefWidth="300.0">
                      <graphic>
-                        <ImageView fitHeight="122.0" fitWidth="123.0" onDragDetected="#openDeleteView" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="122.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/minus.png" />
                            </image>
