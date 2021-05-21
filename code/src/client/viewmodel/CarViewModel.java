@@ -1,5 +1,6 @@
 package client.viewmodel;
 
+import client.core.ViewHandler;
 import client.model.DataModel;
 import client.model.Model;
 import javafx.beans.property.IntegerProperty;
@@ -31,7 +32,7 @@ public class CarViewModel {
 
 
 
-    public CarViewModel(Model model) {
+    public CarViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
         support = new PropertyChangeSupport(this);
         id = new SimpleIntegerProperty();

@@ -17,12 +17,8 @@
             <TableView prefHeight="1044.0" prefWidth="1474.0">
                <columns>
                   <TableColumn prefWidth="75.0" text="ID" />
-                  <TableColumn prefWidth="75.0" text="Name" />
-                  <TableColumn prefWidth="75.0" text="Surname" />
-                  <TableColumn prefWidth="128.33331298828125" text="Driver's license no." />
-                  <TableColumn prefWidth="225.66668701171875" text="All other shit for reservations" />
-                  <TableColumn prefWidth="203.33331298828125" text="Column X" />
-                  <TableColumn prefWidth="317.66668701171875" text="Column X" />
+                  <TableColumn prefWidth="236.80001831054688" text="Name" />
+                  <TableColumn prefWidth="405.5999755859375" text="Location" />
                </columns>
             </TableView>
          </content>
@@ -56,33 +52,6 @@
                   <ImageView fitHeight="86.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/editIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="173.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/sports-car.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
-               <graphic>
-                  <ImageView fitHeight="121.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/employees.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
-               <graphic>
-                  <ImageView fitHeight="123.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/reservation.jpg" />
                      </image>
                   </ImageView>
                </graphic>
