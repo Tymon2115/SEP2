@@ -1,22 +1,28 @@
 package client.viewmodel;
 
+import client.core.ViewHandler;
 import client.model.Model;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
+import shared.Branch.Branch;
 
 public class BranchViewModel {
     private StringProperty name;
     private StringProperty location;
     private IntegerProperty id;
     private Model model;
+    private ViewHandler viewHandler;
+    private ObservableList<Branch> branches;
 
-    public BranchViewModel(Model model) {
+    public BranchViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
         name = new SimpleStringProperty();
         location = new SimpleStringProperty();
         id = new SimpleIntegerProperty();
+        this.viewHandler = viewHandler;
     }
 
     public String getName() {
@@ -45,5 +51,9 @@ public class BranchViewModel {
 
     public Model getModel() {
         return model;
+    }
+
+    public void home() {
+        viewHandler.openFrontPageView();
     }
 }
