@@ -26,6 +26,10 @@ public class DataModel implements Model, PropertyChangeSubject {
         client.addListener(this::receiveEmployee, "employee");
         client.addListener(this::receiveReservation, "reservation");
         client.addListener(this::receiveLogin, "login");
+        client.addListener(this::receiveBranches, "branches");
+        client.addListener(this::receiveCars, "cars");
+        client.addListener(this::receiveEmployees, "employees");
+        client.addListener(this::receiveReservations, "reservations");
         try {
             client.startClient();
         } catch (RemoteException e) {
@@ -70,7 +74,10 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void receiveCars(PropertyChangeEvent event) {
+        System.out.println("we are in data model");
+
         support.firePropertyChange("cars", null, event.getNewValue());
+        System.out.println(event.getNewValue());
     }
 
     @Override
@@ -191,7 +198,7 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void receiveLogin(PropertyChangeEvent event) {
-        Session.setRole_id((int)event.getNewValue());
+        Session.setRole_id((int) event.getNewValue());
         support.firePropertyChange("login", null, event.getNewValue());
     }
 
@@ -241,7 +248,8 @@ public class DataModel implements Model, PropertyChangeSubject {
         }
     }
 
-    @Override public void getBranches() {
+    @Override
+    public void getBranches() {
         try {
             client.getBranches();
         } catch (RemoteException e) {

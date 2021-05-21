@@ -1,7 +1,8 @@
 package client.core;
 
 
-
+import client.viewmodel.BranchViewModel;
+import client.viewmodel.CarViewModel;
 import client.views.BranchView.BranchViewController;
 
 import client.views.CarView.CarViewController;
@@ -83,16 +84,14 @@ public class ViewHandler {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/CarView/CarView.fxml"));
         try {
+            CarViewModel carViewModel = viewModelFactory.getCarViewModel();
             Parent root = null;
             root = loader.load();
-
             CarViewController controller = loader.getController();
-            System.out.println(controller);
-            controller.init(viewModelFactory.getCarViewModel());
+            controller.init(carViewModel);
             stage.setTitle("Car View");
             Scene carScene = new Scene(root);
             stage.setScene(carScene);
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -156,10 +155,11 @@ public class ViewHandler {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/BranchView/BranchView.fxml"));
         try {
+            BranchViewModel branchViewModel = viewModelFactory.getBranchViewModel();
             Parent root = null;
             root = loader.load();
             BranchViewController controller = loader.getController();
-            controller.init(viewModelFactory.getBranchViewModel());
+            controller.init(branchViewModel);
             stage.setTitle("Branch");
             Scene branchScene = new Scene(root);
             stage.setScene(branchScene);

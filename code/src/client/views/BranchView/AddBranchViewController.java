@@ -19,6 +19,7 @@ public class AddBranchViewController {
 
 
 
+
     public void init (AddEditBranchViewModel addEditBranchViewModel) {
         this.addEditBranchViewModel = addEditBranchViewModel;
         nameTextField.textProperty().bindBidirectional(addEditBranchViewModel.nameProperty());

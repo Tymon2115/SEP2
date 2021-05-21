@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import shared.Reservation.Car;
+
 import java.awt.event.ActionEvent;
 
 
@@ -27,7 +28,7 @@ public class CarViewController {
     @FXML
     private TableView<Car> tableview_car;
     @FXML
-    private TableColumn<Car, Integer> column_id;
+    private TableColumn<Car, Number> column_id;
     @FXML
     private TableColumn<Car, String> column_make;
     @FXML
@@ -49,10 +50,9 @@ public class CarViewController {
     @FXML
     private TableColumn<Car, String> column_description;
     @FXML
-    private TableColumn<Car, String> column_branch;
+    private TableColumn<Car, Number> column_branch;
     @FXML
-    private TableColumn<Car, String> column_dailyprice;
-
+    private TableColumn<Car, Number> column_dailyprice;
 
 
     public void back(ActionEvent actionEvent) {
@@ -61,7 +61,22 @@ public class CarViewController {
 
 
     public void init(CarViewModel carViewModel) {
+
         this.carViewModel = carViewModel;
+        column_branch.setCellValueFactory(cellData -> (cellData.getValue().branchIdProperty()));
+        column_dailyprice.setCellValueFactory(celldata -> (celldata.getValue().dailyPriceProperty()));
+        column_description.setCellValueFactory(celldata -> (celldata.getValue().descriptionProperty()));
+        column_engine.setCellValueFactory(celldata -> (celldata.getValue().engineProperty()));
+        column_equipment.setCellValueFactory(celldata -> (celldata.getValue().equipmentProperty()));
+        column_fuelconsumption.setCellValueFactory(celldata -> (celldata.getValue().fuelConsumptionProperty()));
+        column_fueltype.setCellValueFactory(celldata -> (celldata.getValue().fuelTypeProperty()));
+        column_id.setCellValueFactory(celldata -> (celldata.getValue().idProperty()));
+        column_make.setCellValueFactory(celldata -> (celldata.getValue().makeProperty()));
+        column_model.setCellValueFactory(celldata -> (celldata.getValue().modelProperty()));
+        column_numberplates.setCellValueFactory(celldata -> (celldata.getValue().numberPlatesProperty()));
+        column_seats.setCellValueFactory(celldata -> (celldata.getValue().seatsProperty()));
+        column_transmission.setCellValueFactory(celldata -> (celldata.getValue().transmissionProperty()));
+        tableview_car.setItems(carViewModel.getCars());
     }
 
     public void openDeleteView(javafx.event.ActionEvent actionEvent) {

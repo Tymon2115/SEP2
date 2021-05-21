@@ -1,6 +1,10 @@
 package shared.Reservation;
 
-public class Car {
+import javafx.beans.property.*;
+
+import java.io.Serializable;
+
+public class Car implements Serializable {
     private int id;
     private String make;
     private String model;
@@ -38,12 +42,20 @@ public class Car {
         return id;
     }
 
+    public IntegerProperty idProperty() {
+        return new SimpleIntegerProperty(id);
+    }
+
     public void setId(int id) {
         this.id = id;
     }
 
     public String getMake() {
         return make;
+    }
+
+    public StringProperty makeProperty() {
+        return new SimpleStringProperty(make);
     }
 
     public void setMake(String make) {
@@ -54,12 +66,20 @@ public class Car {
         return model;
     }
 
+    public StringProperty modelProperty() {
+        return new SimpleStringProperty(model);
+    }
+
     public void setModel(String model) {
         this.model = model;
     }
 
     public String getColor() {
         return color;
+    }
+
+    public StringProperty colorProperty() {
+        return new SimpleStringProperty(color);
     }
 
     public void setColor(String color) {
@@ -70,12 +90,20 @@ public class Car {
         return numberPlates;
     }
 
+    public StringProperty numberPlatesProperty() {
+        return new SimpleStringProperty(numberPlates);
+    }
+
     public void setNumberPlates(String numberPlates) {
         this.numberPlates = numberPlates;
     }
 
     public String getFuelType() {
         return fuelType;
+    }
+
+    public StringProperty fuelTypeProperty() {
+        return new SimpleStringProperty(fuelType);
     }
 
     public void setFuelType(String fuelType) {
@@ -86,12 +114,20 @@ public class Car {
         return fuelConsumption;
     }
 
+    public StringProperty fuelConsumptionProperty() {
+        return new SimpleStringProperty(fuelConsumption);
+    }
+
     public void setFuelConsumption(String fuelConsumption) {
         this.fuelConsumption = fuelConsumption;
     }
 
     public String getSeats() {
         return seats;
+    }
+
+    public StringProperty seatsProperty() {
+        return new SimpleStringProperty(seats);
     }
 
     public void setSeats(String seats) {
@@ -102,12 +138,20 @@ public class Car {
         return engine;
     }
 
+    public StringProperty engineProperty() {
+        return new SimpleStringProperty(engine);
+    }
+
     public void setEngine(String engine) {
         this.engine = engine;
     }
 
     public String getTransmission() {
         return transmission;
+    }
+
+    public StringProperty transmissionProperty() {
+        return new SimpleStringProperty(transmission);
     }
 
     public void setTransmission(String transmission) {
@@ -118,6 +162,10 @@ public class Car {
         return equipment;
     }
 
+    public StringProperty equipmentProperty() {
+        return new SimpleStringProperty(equipment);
+    }
+
     public void setEquipment(String equipment) {
         this.equipment = equipment;
     }
@@ -126,8 +174,28 @@ public class Car {
         return description;
     }
 
+    public StringProperty descriptionProperty() {
+        return new SimpleStringProperty(description);
+    }
+
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getBranchId() {
+        return branchId;
+    }
+
+    public IntegerProperty branchIdProperty() {
+        return new SimpleIntegerProperty(branchId);
+    }
+
+    public double getDailyPrice() {
+        return dailyPrice;
+    }
+
+    public DoubleProperty dailyPriceProperty() {
+        return new SimpleDoubleProperty(dailyPrice);
     }
 
     @Override

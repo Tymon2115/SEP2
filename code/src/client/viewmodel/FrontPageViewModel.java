@@ -27,5 +27,7 @@ public class FrontPageViewModel {
 
     public void getBranchView() {
         viewHandler.openBranchView();
+        model.getBranches();
+        model.getCars();
     }
 }

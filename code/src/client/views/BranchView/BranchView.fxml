@@ -14,11 +14,11 @@
    <items>
       <ScrollPane prefHeight="200.0" prefWidth="200.0">
          <content>
-            <TableView prefHeight="1044.0" prefWidth="1474.0">
+            <TableView fx:id="tableView" prefHeight="1044.0" prefWidth="1474.0">
                <columns>
-                  <TableColumn prefWidth="75.0" text="ID" />
-                  <TableColumn prefWidth="236.80001831054688" text="Name" />
-                  <TableColumn prefWidth="405.5999755859375" text="Location" />
+                  <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="idName" prefWidth="236.80001831054688" text="Name" />
+                  <TableColumn fx:id="idLocation" prefWidth="405.5999755859375" text="Location" />
                </columns>
             </TableView>
          </content>

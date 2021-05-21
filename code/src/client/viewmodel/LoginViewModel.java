@@ -1,13 +1,11 @@
 package client.viewmodel;
 
-import client.Session;
 import client.core.ViewHandler;
 import client.model.Model;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
