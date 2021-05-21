@@ -64,11 +64,6 @@ public class CarViewController implements Initializable {
     this.carViewModel = carViewModel;
   }
 
-
-
-
-
-
   public void openAddView(ActionEvent actionEvent) {
 
   }
