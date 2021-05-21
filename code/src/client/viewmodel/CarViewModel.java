@@ -1,39 +1,108 @@
 package client.viewmodel;
 
+import client.model.DataModel;
 import client.model.Model;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import shared.Reservation.Car;
 
+import java.beans.PropertyChangeSupport;
+
 public class CarViewModel {
 
-    public StringProperty usernameProperty;
     private Model model;
+    private PropertyChangeSupport support;
+    private IntegerProperty id;
+    private StringProperty make;
+    private StringProperty carModel;
+    private StringProperty numberPlates;
+    private StringProperty fuelType;
+    private StringProperty fuelConsumption;
+    private StringProperty seats;
+    private StringProperty engine;
+    private StringProperty transmission;
+    private StringProperty equipment;
+    private StringProperty description;
+    private StringProperty branch;
+    private StringProperty dailyPrice;
+
+
+
 
     public CarViewModel(Model model) {
         this.model = model;
-        usernameProperty = new SimpleStringProperty();
+        support = new PropertyChangeSupport(this);
+        id = new SimpleIntegerProperty();
+        make = new SimpleStringProperty();
+        carModel = new SimpleStringProperty();
+        numberPlates = new SimpleStringProperty();
+        fuelType = new SimpleStringProperty();
+        fuelConsumption = new SimpleStringProperty();
+        seats = new SimpleStringProperty();
+        engine = new SimpleStringProperty();
+        transmission = new SimpleStringProperty();
+        equipment = new SimpleStringProperty();
+        description = new SimpleStringProperty();
+        branch = new SimpleStringProperty();
+        dailyPrice = new SimpleStringProperty();
     }
 
-    public StringProperty usernamePropertyProperty() {
-        return usernameProperty;
+    public IntegerProperty idProperty () {
+        return id;
     }
 
-    public void addCarView(String make, String carModel, String color, String numberPlates, String fuelType,
-                           String fuelConsumption, String seats, String engine, String transmission, String equipment,
-                           String description, int branchId, double dailyPrice) {
-        model.createCar(make, carModel, color, numberPlates, fuelType, fuelConsumption, seats, engine,
-                transmission, equipment, description, branchId, dailyPrice);
+    public StringProperty makeProperty() {
+        return make;
     }
 
-    public void deleteCarView(Car car) {
-        model.deleteCar(car);
+    public StringProperty carModelProperty() {
+        return carModel;
     }
 
-    public void openEditCarView(int id, String make, String carModel, String color, String numberPlates, String fuelType,
-                                String fuelConsumption, String seats, String engine, String transmission, String equipment,
-                                String description, int branchId, double dailyPrice) {
-        model.editCar(id, make, carModel, color, numberPlates, fuelType, fuelConsumption, seats, engine,
-                transmission, equipment, description, branchId, dailyPrice);
+    public StringProperty numberPlatesProperty () {
+        return numberPlates;
     }
+
+    public StringProperty fuelTypeProperty () {
+        return fuelType;
+    }
+
+    public StringProperty fuelConsumptionProperty () {
+        return fuelConsumption;
+    }
+
+    public StringProperty seatsProperty () {
+        return seats;
+    }
+
+    public StringProperty engineProperty () {
+        return engine;
+    }
+
+    public StringProperty transmissionProperty () {
+        return transmission;
+    }
+
+    public StringProperty equipmentProperty () {
+        return equipment;
+    }
+
+    public StringProperty descriptionProperty() {
+        return description;
+    }
+
+    public StringProperty branchProperty () {
+        return branch;
+    }
+
+    public StringProperty dailyPrice () {
+        return dailyPrice;
+    }
+
+
+
+
+
 }

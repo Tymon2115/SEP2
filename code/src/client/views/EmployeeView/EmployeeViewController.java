@@ -1,5 +1,6 @@
 package client.views.EmployeeView;
 
+import client.viewmodel.CarViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,12 +14,14 @@ import java.util.ResourceBundle;
 
 public class EmployeeViewController implements Initializable {
 
+  private CarViewModel carViewModel;
+
   @FXML
   private Button editButton;
   @FXML
   private  Button deleteButton;
   @FXML
-  private  Button addButton;
+  private Button addButton;
   @FXML
   private Button backButton;
 
@@ -39,6 +42,9 @@ public class EmployeeViewController implements Initializable {
   @FXML
   private TableColumn<Employee, String> column_email;
 
+public EmployeeViewController (CarViewModel carViemModel) {
+  this.carViewModel = carViemModel;
+}
 
   public void openAddView(ActionEvent actionEvent) {
 
