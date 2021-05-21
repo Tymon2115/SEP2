@@ -1,7 +1,11 @@
 package client.core;
 
 
+
+import client.views.BranchView.BranchViewController;
+
 import client.views.CarView.CarViewController;
+import client.views.EmployeeView.EmployeeViewController;
 import client.views.FrontPageView.FrontPageViewController;
 import client.views.LoginView.LoginController;
 import client.views.Registration.RegistrationViewController;
@@ -10,7 +14,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import shared.personel.Employee;
 
 import java.io.IOException;
 
@@ -79,14 +82,13 @@ public class ViewHandler {
     public void openCarView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/CarView/CarView.fxml"));
-
         try {
             Parent root = null;
             root = loader.load();
 
             CarViewController controller = loader.getController();
-//            controller.(viewModelFactory.getCarViewModel());
-
+            System.out.println(controller);
+            controller.init(viewModelFactory.getCarViewModel());
             stage.setTitle("Car View");
             Scene carScene = new Scene(root);
             stage.setScene(carScene);
@@ -105,7 +107,7 @@ public class ViewHandler {
             root = loader.load();
 
             RegistrationViewController controller = loader.getController();
-            controller.init(viewModelFactory.getRegistrationViewModel(), this);
+            controller.init(viewModelFactory.getRegistrationViewModel());
 
             stage.setTitle("Registration View");
             Scene registerScene = new Scene(root);
@@ -125,7 +127,7 @@ public class ViewHandler {
             Parent root = null;
             root = loader.load();
             ReservationViewController controller = loader.getController();
-            controller.init(viewModelFactory.getReservationViewModel(), this);
+            controller.init(viewModelFactory.getReservationViewModel());
             stage.setTitle("Reservation");
             Scene reservationScene = new Scene(root);
             stage.setScene(reservationScene);
@@ -135,8 +137,34 @@ public class ViewHandler {
     }
 
     public void openEmployeeView() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../views/EmployeeView/EmployeeView.fxml"));
+        try {
+            Parent root = null;
+            root = loader.load();
+            EmployeeViewController controller = loader.getController();
+            controller.init(viewModelFactory.getEmployeeViewModel());
+            stage.setTitle("Employee");
+            Scene employeeScene = new Scene(root);
+            stage.setScene(employeeScene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void openBranchView() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../views/BranchView/BranchView.fxml"));
+        try {
+            Parent root = null;
+            root = loader.load();
+            BranchViewController controller = loader.getController();
+            controller.init(viewModelFactory.getBranchViewModel());
+            stage.setTitle("Branch");
+            Scene branchScene = new Scene(root);
+            stage.setScene(branchScene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

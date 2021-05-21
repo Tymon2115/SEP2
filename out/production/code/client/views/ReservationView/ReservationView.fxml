@@ -9,9 +9,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.863528009535161" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.EmployeeView.EmployeeViewController">
+<SplitPane dividerPositions="0.863528009535161" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.ReservationView.ReservationViewController">
    <items>
       <ScrollPane prefHeight="200.0" prefWidth="200.0">
          <content>
@@ -38,7 +37,7 @@
          <children>
             <HBox prefHeight="134.0" prefWidth="225.0">
                <children>
-                  <Button fx:id="addButton" mnemonicParsing="false" onAction="#openAddView" prefHeight="135.0" prefWidth="114.0">
+                  <Button fx:id="addButton" mnemonicParsing="false" onAction="#onAddButton" prefHeight="135.0" prefWidth="114.0">
                      <graphic>
                         <ImageView fitHeight="68.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -47,18 +46,10 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#openDeleteView" prefHeight="133.0" prefWidth="96.0">
-                     <graphic>
-                        <ImageView fx:id="deleteButton" fitHeight="122.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/minus.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="212.0" prefWidth="138.0" />
                </children>
             </HBox>
-            <Button fx:id="editButton" mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
+            <Button fx:id="editButton" mnemonicParsing="false" onAction="#onEditButton" prefHeight="175.0" prefWidth="1000.0">
                <graphic>
                   <ImageView fitHeight="86.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -67,11 +58,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#openCarView" prefHeight="175.0" prefWidth="1000.0">
-               <graphic>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Back // replace for back button" />
-               </graphic>
-            </Button>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#home" prefHeight="175.0" prefWidth="1000.0" text="home" />
          </children>
       </VBox>
    </items>

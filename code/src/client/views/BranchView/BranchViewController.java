@@ -1,6 +1,7 @@
 package client.views.BranchView;
 
 import client.viewmodel.BranchViewModel;
+import client.viewmodel.ReservationViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,7 +13,7 @@ import shared.Branch.Branch;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BranchViewController implements Initializable {
+public class BranchViewController {
     @FXML
     private Button editButton;
     @FXML
@@ -29,10 +30,9 @@ public class BranchViewController implements Initializable {
     TableColumn<Branch, String> idLocation;
     BranchViewModel branchViewModel;
 
-    public BranchViewController(BranchViewModel branchViewModel) {
+    public void init(BranchViewModel branchViewModel) {
         this.branchViewModel = branchViewModel;
     }
-
 
     public void openAddView(ActionEvent actionEvent) {
 
@@ -45,12 +45,10 @@ public class BranchViewController implements Initializable {
     public void openEditView(ActionEvent actionEvent) {
 
     }
-    public void goBack(ActionEvent actionEvent){
 
+    public void goBack(ActionEvent actionEvent) {
+        branchViewModel.home();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
 }

@@ -14,11 +14,12 @@ public class RegistrationViewModel {
     private Model model;
     private StringProperty firstname, lastname, username, password, confirmpassword, registrationMessageLabel;
     private PropertyChangeSupport support;
+    private ViewHandler viewHandler;
 
     public RegistrationViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
         support = new PropertyChangeSupport(this);
-
+        this.viewHandler = viewHandler;
         firstname = new SimpleStringProperty();
         lastname = new SimpleStringProperty();
         username = new SimpleStringProperty();
@@ -28,6 +29,10 @@ public class RegistrationViewModel {
 
         // Branch and Role
 
+    }
+
+    public void home() {
+        viewHandler.openFrontPageView();
     }
 
     public void register() {
