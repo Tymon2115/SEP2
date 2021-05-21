@@ -69,7 +69,7 @@ public class BranchHandler {
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM 'branch'");
+            ResultSet result = statement.executeQuery("SELECT * FROM branch");
             ArrayList<Branch> branches = new ArrayList<Branch>();
             int id = 0;
             String name = "";
