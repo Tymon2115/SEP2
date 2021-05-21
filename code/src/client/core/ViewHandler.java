@@ -64,7 +64,7 @@ public class ViewHandler {
             root = loader.load();
 
             CarViewController controller = loader.getController();
-            controller.init(viewModelFactory.getCarViewModel());
+//            controller.init(viewModelFactory.getCarViewModel());
 
             stage.setTitle("Car View");
             Scene carScene = new Scene(root);
