@@ -7,7 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class AddCarViewController {
+public class EditCarViewController {
 
     //TODO i dunno if this is the right way to bind a combo box
 
@@ -29,6 +29,8 @@ public class AddCarViewController {
         dailyPriceTextField.textProperty().bindBidirectional(addEditCarViewModel.dailyPriceProperty());
         branchComboBox.valueProperty().bindBidirectional(addEditCarViewModel.branchProperty());
         messageLabel.textProperty().bindBidirectional(addEditCarViewModel.messageProperty());
+
+        //TODO make data show from chosen car to edit
     }
 
     @FXML
@@ -64,8 +66,8 @@ public class AddCarViewController {
         addEditCarViewModel.cancelAction();
     }
 
-    public void addAction () {
-        addEditCarViewModel.addAction();
+    public void editAction () {
+        addEditCarViewModel.editAction();
     }
 
 

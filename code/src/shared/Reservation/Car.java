@@ -29,7 +29,7 @@ public class Car {
         this.transmission = transmission;
         this.equipment = equipment;
         this.description = description;
-        this.branchId = branchId
+        this.branchId = branchId;
         this.dailyPrice = dailyPrice;
     }
 

@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 
-public class AddReservationViewController {
+public class EditReservationViewController {
 
     private AddEditReservationViewModel addEditReservationViewModel;
 
@@ -63,14 +63,16 @@ public class AddReservationViewController {
         endBranchComboBox.valueProperty().bindBidirectional(addEditReservationViewModel.endBranchProperty());
         startDateDatePicker.valueProperty().bindBidirectional(addEditReservationViewModel.startDateProperty());
         endDateDatePicker.valueProperty().bindBidirectional(addEditReservationViewModel.endDateProperty());
+
+        //TODO add loading data from chosen reservation
     }
 
     public void cancelAction () {
         addEditReservationViewModel.cancelAction();
     }
 
-    public void addAction() {
-        addEditReservationViewModel.addAction();
+    public void editAction() {
+        addEditReservationViewModel.editAction();
     }
 
 

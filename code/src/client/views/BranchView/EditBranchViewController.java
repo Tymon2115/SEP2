@@ -5,9 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-
-public class AddBranchViewController {
-
+public class EditBranchViewController {
     private AddEditBranchViewModel addEditBranchViewModel;
 
     @FXML
@@ -30,7 +28,7 @@ public class AddBranchViewController {
         addEditBranchViewModel.cancelAction();
     }
 
-    public void addAction () {
-        addEditBranchViewModel.addAction();
+    public void editAction () {
+        addEditBranchViewModel.editAction();
     }
 }
