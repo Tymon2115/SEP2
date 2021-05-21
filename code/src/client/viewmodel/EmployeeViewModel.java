@@ -3,11 +3,13 @@ package client.viewmodel;
 import client.core.ViewHandler;
 import client.model.DataModel;
 import client.model.Model;
+import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 
 public class EmployeeViewModel {
@@ -34,9 +36,18 @@ public class EmployeeViewModel {
         role = new SimpleStringProperty();
         email = new SimpleStringProperty();
         this.viewHandler = viewHandler;
+        model.addListener(this::listenForEmployees, "employees");
+        model.getEmployees();
     }
 
-    public void home(){
+    private void listenForEmployees(PropertyChangeEvent event) {
+        Platform.runLater(() -> {
+            System.out.println("employee view model");
+        });
+
+    }
+
+    public void home() {
         viewHandler.openFrontPageView();
     }
 
@@ -67,5 +78,6 @@ public class EmployeeViewModel {
     public StringProperty emailProperty() {
         return email;
     }
+
 
 }

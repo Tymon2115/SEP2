@@ -196,7 +196,7 @@ public class DataClient implements Client, PropertyChangeSubject {
 
     @Override
     public void getBranches() throws RemoteException {
-        server.getReservations(this);
+        server.getBranches(this);
     }
 
     @Override

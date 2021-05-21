@@ -16,6 +16,7 @@ public class AddBranchViewController {
 
     public AddBranchViewController (BranchViewModel branchViewModel) {
         this.branchViewModel = branchViewModel;
+
     }
 
     public void backAction () {

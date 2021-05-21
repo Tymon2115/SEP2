@@ -1,5 +1,10 @@
 package shared.Branch;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.io.Serializable;
 
 public class Branch implements Serializable {
@@ -32,6 +37,18 @@ public class Branch implements Serializable {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public StringProperty locationProperty() {
+        return new SimpleStringProperty(location);
+    }
+
+    public StringProperty nameProperty() {
+        return new SimpleStringProperty(name);
+    }
+
+    public IntegerProperty idProperty() {
+        return new SimpleIntegerProperty(id);
     }
 
     @Override
