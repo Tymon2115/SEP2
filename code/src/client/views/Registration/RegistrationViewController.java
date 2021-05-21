@@ -29,10 +29,8 @@ public class RegistrationViewController {
     private RegistrationViewModel registrationViewModel;
     private ViewHandler viewHandler;
 
-    public void init(RegistrationViewModel registrationViewModel, ViewHandler viewHandler)
-    {
+    public void init(RegistrationViewModel registrationViewModel) {
         this.registrationViewModel = registrationViewModel;
-        this.viewHandler = viewHandler;
         firstnameTextField.textProperty().bindBidirectional(registrationViewModel.firstnameProperty());
         lastnameTextField.textProperty().bindBidirectional(registrationViewModel.lastnameProperty());
         usernameTextField.textProperty().bindBidirectional(registrationViewModel.usernameProperty());
@@ -43,7 +41,7 @@ public class RegistrationViewController {
 
     public void closeOnAction(ActionEvent actionEvent) {
         registrationViewModel.defaultFields();
-        viewHandler.openLoginViewModel(null);
+        registrationViewModel.home();
     }
 
     public void selectRole(ActionEvent actionEvent) {
@@ -60,5 +58,9 @@ public class RegistrationViewController {
 
     public void selectBranch(ActionEvent actionEvent) {
 
+    }
+
+    public void home() {
+        registrationViewModel.home();
     }
 }

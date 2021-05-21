@@ -11,11 +11,7 @@ public class RunCarRentalApp {
     public static void main(String[] args) {
         EmployeeHandler employeeHandler = new EmployeeHandler();
         BranchHandler branchHandler = new BranchHandler();
-        try {
-            employeeHandler.createEmployee("gelato", "dreidrei", 3, new Branch(1, "da", "dd"), "employee", "employee", "manager@hotmail.sk");
-        } catch (AlreadyExists alreadyExists) {
-            alreadyExists.printStackTrace();
-        }
+
         Application.launch(CarRentalApp.class);
 
     }

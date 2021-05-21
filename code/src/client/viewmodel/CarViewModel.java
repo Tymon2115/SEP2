@@ -28,7 +28,7 @@ public class CarViewModel {
     private StringProperty description;
     private StringProperty branch;
     private StringProperty dailyPrice;
-
+    private ViewHandler viewHandler;
 
 
 
@@ -48,6 +48,10 @@ public class CarViewModel {
         description = new SimpleStringProperty();
         branch = new SimpleStringProperty();
         dailyPrice = new SimpleStringProperty();
+        this.viewHandler = viewHandler;
+    }
+    public void home(){
+        viewHandler.openFrontPageView();
     }
 
     public IntegerProperty idProperty () {

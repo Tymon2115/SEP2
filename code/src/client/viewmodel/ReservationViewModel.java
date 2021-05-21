@@ -1,5 +1,6 @@
 package client.viewmodel;
 
+import client.core.ViewHandler;
 import client.model.Model;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,9 +21,15 @@ public class ReservationViewModel {
     private StringProperty email;
     private StringProperty phone;
     private Model model;
+    private ViewHandler viewHandler;
 
-    public ReservationViewModel(Model model) {
+    public ReservationViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
+        this.viewHandler = viewHandler;
+    }
+
+    public void home(){
+        viewHandler.openFrontPageView();
     }
 
     public int getId() {

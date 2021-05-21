@@ -10,6 +10,7 @@ public class FrontPageViewModel {
 
     public FrontPageViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
+        this.viewHandler = viewHandler;
     }
 
     public void getCarView() {
