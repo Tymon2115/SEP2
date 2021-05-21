@@ -41,9 +41,9 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#openDeleteView" prefHeight="158.0" prefWidth="300.0">
+                  <Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="158.0" prefWidth="300.0">
                      <graphic>
-                        <ImageView fitHeight="122.0" fitWidth="123.0" onDragDetected="#openDeleteView" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="122.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/minus.png" />
                            </image>
@@ -52,7 +52,7 @@
                   </Button>
                </children>
             </HBox>
-            <Button fx:id="editButton" mnemonicParsing="false" onAction="#openEditView" prefHeight="175.0" prefWidth="1000.0">
+            <Button fx:id="editButton" mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
                <graphic>
                   <ImageView fitHeight="86.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                      <image>

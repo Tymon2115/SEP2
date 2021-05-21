@@ -10,6 +10,7 @@ import shared.personel.Employee;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.Date;
 
@@ -25,6 +26,13 @@ public class DataModel implements Model, PropertyChangeSubject {
         client.addListener(this::receiveEmployee, "employee");
         client.addListener(this::receiveReservation, "reservation");
         client.addListener(this::receiveLogin, "login");
+        try {
+            client.startClient();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (NotBoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -1,5 +1,6 @@
 package client.viewmodel;
 
+import client.core.ViewHandler;
 import client.model.DataModel;
 import client.model.Model;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,7 +15,7 @@ public class RegistrationViewModel {
     private StringProperty firstname, lastname, username, password, confirmpassword, registrationMessageLabel;
     private PropertyChangeSupport support;
 
-    public RegistrationViewModel(Model model) {
+    public RegistrationViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
         support = new PropertyChangeSupport(this);
 

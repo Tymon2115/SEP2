@@ -8,8 +8,7 @@ public class CarRentalApp extends Application {
     public void start(Stage stage) throws Exception {
         ClientFactory clientFactory = new ClientFactory();
         ModelFactory modelFactory = new ModelFactory(clientFactory);
-        ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
-        ViewHandler viewHandler = new ViewHandler(viewModelFactory);
+        ViewHandler viewHandler = new ViewHandler(modelFactory);
         viewHandler.start();
     }
 }

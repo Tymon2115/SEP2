@@ -16,11 +16,14 @@ import java.io.IOException;
 public class ViewHandler {
 
     private Stage stage;
+    private ModelFactory modelFactory;
     private ViewModelFactory viewModelFactory;
 
-    public ViewHandler(ViewModelFactory viewModelFactory) {
+    public ViewHandler(ModelFactory modelFactory) {
         stage = new Stage();
-        this.viewModelFactory = viewModelFactory;
+        this.modelFactory = modelFactory;
+        viewModelFactory = new ViewModelFactory(modelFactory, this);
+
     }
 
     public void start() {
@@ -52,6 +55,23 @@ public class ViewHandler {
     }
 
     public void openFrontPageView() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../views/FrontPageView/FrontPageView.fxml"));
+
+        try {
+            Parent root = null;
+            root = loader.load();
+
+            FrontPageViewController controller = loader.getController();
+
+            stage.setTitle("login View");
+            Scene frontScene = new Scene(root);
+            stage.setScene(frontScene);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -64,7 +84,7 @@ public class ViewHandler {
             root = loader.load();
 
             CarViewController controller = loader.getController();
-            controller.init(viewModelFactory.getCarViewModel());
+//            controller.(viewModelFactory.getCarViewModel());
 
             stage.setTitle("Car View");
             Scene carScene = new Scene(root);

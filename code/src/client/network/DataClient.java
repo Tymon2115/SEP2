@@ -25,7 +25,7 @@ public class DataClient implements Client, PropertyChangeSubject {
 
 
     public DataClient() throws RemoteException {
-
+        this.server = server;
         UnicastRemoteObject.exportObject((Client) this, 0);
 
     }
