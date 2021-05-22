@@ -13,6 +13,8 @@ public class RunCarRentalApp {
         EmployeeHandler employeeHandler = new EmployeeHandler();
         BranchHandler branchHandler = new BranchHandler();
         CarHandler carHandler = new CarHandler();
+        branchHandler.createBranch("test", "test");
+        employeeHandler.createEmployee("owner", "owner", 1, new Branch(1, "test", "test"), "owner", "owner", "jd");
         //carHandler.createCar("gowno", "dupa", "red", "10", "weed", "0", "0", "none", "none", "none", "no description", 1, 10000);
 
         Application.launch(CarRentalApp.class);

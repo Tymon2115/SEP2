@@ -1,5 +1,6 @@
 package shared.Reservation;
 
+import javafx.beans.property.*;
 import shared.Branch.Branch;
 
 import java.io.Serializable;
@@ -139,6 +140,57 @@ public class Reservation implements Serializable {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+    
+    public IntegerProperty idProperty() {
+        return new SimpleIntegerProperty(id);
+    }
+
+    public StringProperty nameProperty() {
+        return new SimpleStringProperty(name);
+    }
+
+    public StringProperty surnameProperty() {
+        return new SimpleStringProperty(surname);
+    }
+
+    public StringProperty driversLicenseProperty() {
+        return new SimpleStringProperty(driversLicence);
+    }
+
+    public StringProperty addressProperty() {
+        return new SimpleStringProperty(address.toString());
+    }
+
+    public StringProperty carProperty() {
+        return new SimpleStringProperty(car.getNumberPlates());
+    }
+
+    public StringProperty startBranchProperty() {
+        return new SimpleStringProperty(startBranch.getName());
+    }
+
+    public StringProperty endBranchProperty() {
+        return new SimpleStringProperty(endBranch.getName());
+    }
+
+    public StringProperty startDateProperty() {
+        return new SimpleStringProperty(startDate.toString());
+    }
+    public StringProperty endDateProperty() {
+        return new SimpleStringProperty(endDate.toString());
+    }
+
+    public DoubleProperty priceProperty() {
+        return new SimpleDoubleProperty(price);
+    }
+
+    public StringProperty emailProperty() {
+        return new SimpleStringProperty(email);
+    }
+
+    public StringProperty phoneNumberProperty() {
+        return new SimpleStringProperty(phoneNumber);
     }
 }
 
