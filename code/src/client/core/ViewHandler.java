@@ -1,6 +1,7 @@
 package client.core;
 
 
+import client.viewmodel.AddEditReservationViewModel;
 import client.viewmodel.BranchViewModel;
 import client.viewmodel.CarViewModel;
 import client.views.BranchView.BranchViewController;
@@ -10,6 +11,7 @@ import client.views.EmployeeView.EmployeeViewController;
 import client.views.FrontPageView.FrontPageViewController;
 import client.views.LoginView.LoginController;
 import client.views.Registration.RegistrationViewController;
+import client.views.ReservationView.AddReservationViewController;
 import client.views.ReservationView.ReservationViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -163,6 +165,23 @@ public class ViewHandler {
             stage.setTitle("Branch");
             Scene branchScene = new Scene(root);
             stage.setScene(branchScene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openAddReservationView() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../views/ReservationView/AddReservationView.fxml"));
+        try {
+            AddEditReservationViewModel addEditReservationViewModel = viewModelFactory.getAddEditReservationViewModel();
+            Parent root = null;
+            root = loader.load();
+            AddReservationViewController controller = loader.getController();
+            controller.init(addEditReservationViewModel);
+            stage.setTitle("Add Reservation");
+            Scene addReservationScene = new Scene(root);
+            stage.setScene(addReservationScene);
         } catch (IOException e) {
             e.printStackTrace();
         }

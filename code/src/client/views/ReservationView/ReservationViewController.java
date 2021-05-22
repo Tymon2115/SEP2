@@ -85,7 +85,7 @@ public class ReservationViewController {
     }
 
     public void onAddButton(ActionEvent actionEvent) {
-
+        reservationViewModel.getAddReservationView();
     }
     public void home(ActionEvent actionEvent){
         reservationViewModel.home();
