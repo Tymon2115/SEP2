@@ -3,6 +3,8 @@ package client.viewmodel;
 import client.core.ViewHandler;
 import client.model.Model;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import shared.Reservation.Address;
 
@@ -39,7 +41,22 @@ public class AddEditReservationViewModel {
     public AddEditReservationViewModel (Model model, ViewHandler viewHandler) {
         this.model = model;
         this.viewHandler = viewHandler;
-        this.support = new PropertyChangeSupport(this);
+        name = new SimpleStringProperty();
+        surname = new SimpleStringProperty();
+        driversLicence = new SimpleStringProperty();
+        addressCity = new SimpleStringProperty();
+        addressStreet = new SimpleStringProperty();
+        addressZip = new SimpleStringProperty();
+        addressCountry = new SimpleStringProperty();
+        email = new SimpleStringProperty();
+        phoneNumber = new SimpleStringProperty();
+        startBranch = new SimpleStringProperty();
+        price = new SimpleStringProperty();
+        car = new SimpleStringProperty();
+        endBranch = new SimpleStringProperty();
+        startDate = new SimpleObjectProperty<>();
+        endDate = new SimpleObjectProperty<>();
+        message = new SimpleStringProperty();
     }
     public StringProperty nameProperty () {
         return name;
