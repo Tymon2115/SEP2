@@ -111,12 +111,9 @@ public class Reservation implements Serializable {
     }
 
 
-
     public void setId(int id) {
         this.id = id;
     }
-
-
 
 
     public Date getStartDate() {
@@ -146,7 +143,7 @@ public class Reservation implements Serializable {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-    
+
     public IntegerProperty idProperty() {
         return new SimpleIntegerProperty(id);
     }
@@ -182,6 +179,7 @@ public class Reservation implements Serializable {
     public StringProperty startDateProperty() {
         return new SimpleStringProperty(startDate.toString());
     }
+
     public StringProperty endDateProperty() {
         return new SimpleStringProperty(endDate.toString());
     }

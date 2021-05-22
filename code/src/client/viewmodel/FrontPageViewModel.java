@@ -21,6 +21,7 @@ public class FrontPageViewModel {
 
     public void getReservationView() {
         viewHandler.openReservationView();
+        model.getReservations();
     }
 
     public void getEmployeeView() {
@@ -33,4 +34,5 @@ public class FrontPageViewModel {
         model.getBranches();
 
     }
+
 }

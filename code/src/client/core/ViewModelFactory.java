@@ -15,6 +15,7 @@ public class ViewModelFactory {
     private ReservationViewModel reservationViewModel;
     private BranchViewModel branchViewModel;
     private EmployeeViewModel employeeViewModel;
+    private AddEditReservationViewModel addEditReservationViewModel;
 
     public ViewModelFactory(ModelFactory modelFactory, ViewHandler viewHandler) {
         this.modelFactory = modelFactory;
@@ -71,5 +72,12 @@ public class ViewModelFactory {
             employeeViewModel = new EmployeeViewModel(modelFactory.getModel(), viewHandler);
         }
         return employeeViewModel;
+    }
+
+    public AddEditReservationViewModel getAddEditReservationViewModel() {
+        if (addEditReservationViewModel == null) {
+            addEditReservationViewModel = new AddEditReservationViewModel(modelFactory.getModel(), viewHandler);
+        }
+        return addEditReservationViewModel;
     }
 }
