@@ -57,6 +57,7 @@ public class AddEditBranchViewModel {
     public void addAction() {
         if (inputVerification()) {
             model.createBranch(name.getValue(), location.getValue());
+            //TODO go back to list
         }
         else {
             //shouldn't do anything
@@ -70,7 +71,7 @@ public class AddEditBranchViewModel {
 
     public void editAction () {
         if (inputVerification()) {
-            model.createBranch(name.getValue(), location.getValue());
+            //TODO call edit in model and go back to list
         } else {
             //shouldn't do anything
         }
