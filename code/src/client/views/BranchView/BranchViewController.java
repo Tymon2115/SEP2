@@ -36,10 +36,11 @@ public class BranchViewController {
 
     public void init(BranchViewModel branchViewModel) {
         this.branchViewModel = branchViewModel;
+        tableView.getItems().clear();
         idName.setCellValueFactory(cellData -> (cellData.getValue().nameProperty()));
         idCol.setCellValueFactory(cellData -> (cellData.getValue().idProperty()));
         idLocation.setCellValueFactory(cellData -> (cellData.getValue().locationProperty()));
-        System.out.println(branchViewModel.getBranches());
+        branchViewModel.getBranches().removeIf(branch -> tableView.getItems().contains(branch));
         tableView.setItems(branchViewModel.getBranches());
     }
 

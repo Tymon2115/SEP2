@@ -1,10 +1,14 @@
 package shared.personel;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import shared.Branch.Branch;
 
 import java.io.Serializable;
 
-public class Employee implements Serializable{
+public class Employee implements Serializable {
     private String name;
     private String surname;
     private int id;
@@ -25,8 +29,7 @@ public class Employee implements Serializable{
         this.email = email;
     }
 
-    public Employee(String firstName, String lastName, String username, String password)
-    {
+    public Employee(String firstName, String lastName, String username, String password) {
         this.name = firstName;
         this.surname = lastName;
         this.username = username;
@@ -59,6 +62,34 @@ public class Employee implements Serializable{
 
     public void setBranch(Branch branch) {
         this.branch = branch;
+    }
+
+    public StringProperty nameProperty() {
+        return new SimpleStringProperty(name);
+    }
+
+    public StringProperty surnameProperty() {
+        return new SimpleStringProperty(surname);
+    }
+
+    public IntegerProperty idProperty() {
+        return new SimpleIntegerProperty(id);
+    }
+
+    public StringProperty branchProperty() {
+        return new SimpleStringProperty(branch.getName());
+    }
+
+    public StringProperty usernameProperty() {
+        return new SimpleStringProperty(username);
+    }
+
+    public IntegerProperty roleProperty() {
+        return new SimpleIntegerProperty(roleId);
+    }
+
+    public StringProperty emailProperty() {
+        return new SimpleStringProperty(email);
     }
 
     @Override

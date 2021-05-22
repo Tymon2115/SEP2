@@ -1,33 +1,33 @@
 package client.viewmodel;
 
 import client.core.ViewHandler;
-import client.model.DataModel;
 import client.model.Model;
 import javafx.application.Platform;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import shared.personel.Employee;
 
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 
 public class EmployeeViewModel {
     private final ViewHandler viewHandler;
     private Model model;
+    private ObservableList<Employee> employees;
 
 
     public EmployeeViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
-
         this.viewHandler = viewHandler;
         model.addListener(this::listenForEmployees, "employees");
-        model.getEmployees();
+        employees = FXCollections.observableArrayList();
     }
 
     private void listenForEmployees(PropertyChangeEvent event) {
         Platform.runLater(() -> {
-            System.out.println("employee view model");
+            employees.clear();
+            ArrayList<Employee> receivedEmployees = (ArrayList<Employee>) event.getNewValue();
+            employees.addAll(receivedEmployees);
         });
 
     }
@@ -37,4 +37,7 @@ public class EmployeeViewModel {
     }
 
 
+    public ObservableList<Employee> getEmployees() {
+       return employees;
+    }
 }
