@@ -74,19 +74,15 @@ public class ReservationViewController {
         phoneNumberCol.setCellValueFactory(cellData -> (cellData.getValue().phoneNumberProperty()));
     }
 
-
-
     public void onDeleteButton(ActionEvent actionEvent) {
-
     }
 
     public void onEditButton(ActionEvent actionEvent) {
-
     }
 
     public void onAddButton(ActionEvent actionEvent) {
-
     }
+
     public void home(ActionEvent actionEvent){
         reservationViewModel.home();
     }
