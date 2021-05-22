@@ -28,6 +28,7 @@ public class ReservationViewModel {
 
     private void listenForReservations(PropertyChangeEvent propertyChangeEvent) {
         Platform.runLater(() -> {
+            reservations.clear();
             System.out.println("we are in reservation view model");
             ArrayList<Reservation> receivedReservations = (ArrayList<Reservation>) propertyChangeEvent.getNewValue();
             reservations.addAll(receivedReservations);

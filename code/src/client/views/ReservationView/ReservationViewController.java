@@ -57,22 +57,23 @@ public class ReservationViewController {
     private TableColumn<Reservation, String> phoneNumberCol;
     ReservationViewModel reservationViewModel;
 
-    public void init(ReservationViewModel reservationViewModel)  {
+    public void init(ReservationViewModel reservationViewModel) {
+        tableView.getItems().clear();
         this.reservationViewModel = reservationViewModel;
         idCol.setCellValueFactory(cellData -> (cellData.getValue().idProperty()));
         nameCol.setCellValueFactory(cellData -> (cellData.getValue().nameProperty()));
         surnameCol.setCellValueFactory((cellData -> (cellData.getValue().surnameProperty())));
         driversLicenceCol.setCellValueFactory(cellData -> (cellData.getValue().driversLicenseProperty()));
         addressCol.setCellValueFactory(cellData -> (cellData.getValue().addressProperty()));
-        startBranchCol.setCellValueFactory((cellData ->(cellData.getValue().startBranchProperty())));
+        startBranchCol.setCellValueFactory((cellData -> (cellData.getValue().startBranchProperty())));
         endBranchCol.setCellValueFactory(cellData -> (cellData.getValue().endBranchProperty()));
         startDateCol.setCellValueFactory(cellData -> (cellData.getValue().startDateProperty()));
         endDateCol.setCellValueFactory(cellData -> (cellData.getValue().endDateProperty()));
         priceCol.setCellValueFactory(cellData -> (cellData.getValue().priceProperty()));
         emailCol.setCellValueFactory(cellData -> (cellData.getValue().emailProperty()));
         phoneNumberCol.setCellValueFactory(cellData -> (cellData.getValue().phoneNumberProperty()));
+        tableView.setItems(reservationViewModel.getReservations());
     }
-
 
 
     public void onDeleteButton(ActionEvent actionEvent) {
@@ -86,9 +87,12 @@ public class ReservationViewController {
     public void onAddButton(ActionEvent actionEvent) {
         reservationViewModel.getAddReservationView();
     }
-    public void home(ActionEvent actionEvent){
+
+    public void home(ActionEvent actionEvent) {
         reservationViewModel.home();
     }
+
+
 
     public void back(ActionEvent event) {
         reservationViewModel.home();
