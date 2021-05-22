@@ -47,6 +47,7 @@ public class AddReservationViewController {
     private Label messageLabel;
 
     public void init (AddEditReservationViewModel addEditReservationViewModel) {
+
         this.addEditReservationViewModel = addEditReservationViewModel;
         nameTextField.textProperty().bindBidirectional(addEditReservationViewModel.nameProperty());
         surnameTextField.textProperty().bindBidirectional(addEditReservationViewModel.surnameProperty());
