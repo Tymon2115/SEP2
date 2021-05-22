@@ -15,6 +15,8 @@ public class FrontPageViewModel {
 
     public void getCarView() {
         viewHandler.openCarView();
+        model.getCars();
+
     }
 
     public void getReservationView() {
@@ -23,11 +25,12 @@ public class FrontPageViewModel {
 
     public void getEmployeeView() {
         viewHandler.openEmployeeView();
+        model.getEmployees();
     }
 
     public void getBranchView() {
         viewHandler.openBranchView();
         model.getBranches();
-        model.getCars();
+
     }
 }

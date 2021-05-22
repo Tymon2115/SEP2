@@ -5,7 +5,6 @@ import client.model.Model;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import shared.Branch.Branch;
 import shared.Reservation.Car;
 import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
