@@ -30,8 +30,9 @@ public class ViewModelFactory {
 
     public CarViewModel getCarViewModel() {
         if (carViewModel == null) {
-            System.out.println("car view model created");
+
             carViewModel = new CarViewModel(modelFactory.getModel(), viewHandler);
+            System.out.println("car view model created");
         }
         return carViewModel;
     }

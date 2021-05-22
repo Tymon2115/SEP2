@@ -17,26 +17,11 @@ import java.util.ArrayList;
 public class EmployeeViewModel {
     private final ViewHandler viewHandler;
     private Model model;
-    private PropertyChangeSupport support;
-    private StringProperty name;
-    private StringProperty surname;
-    private IntegerProperty id;
-    private StringProperty branch;
-    private StringProperty username;
-    private StringProperty role;
-    private StringProperty email;
 
 
     public EmployeeViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
-        support = new PropertyChangeSupport(this);
-        name = new SimpleStringProperty();
-        surname = new SimpleStringProperty();
-        id = new SimpleIntegerProperty();
-        branch = new SimpleStringProperty();
-        username = new SimpleStringProperty();
-        role = new SimpleStringProperty();
-        email = new SimpleStringProperty();
+
         this.viewHandler = viewHandler;
         model.addListener(this::listenForEmployees, "employees");
         model.getEmployees();
@@ -51,34 +36,6 @@ public class EmployeeViewModel {
 
     public void home() {
         viewHandler.openFrontPageView();
-    }
-
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    public StringProperty surnameProperty() {
-        return surname;
-    }
-
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
-    public StringProperty branchProperty() {
-        return branch;
-    }
-
-    public StringProperty usernameProperty() {
-        return username;
-    }
-
-    public StringProperty roleProperty() {
-        return role;
-    }
-
-    public StringProperty emailProperty() {
-        return email;
     }
 
 
