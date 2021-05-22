@@ -157,6 +157,7 @@ public class DataClient implements Client, PropertyChangeSubject {
 
     @Override
     public void branchCallback(Branch branch) {
+        System.out.println("Client - branch callback");
         support.firePropertyChange("branch", null, branch);
     }
 
@@ -196,21 +197,25 @@ public class DataClient implements Client, PropertyChangeSubject {
 
     @Override
     public void getBranches() throws RemoteException {
+        System.out.println(">Client - get branches");
         server.getBranches(this);
     }
 
     @Override
     public void branchesCallback(ArrayList<Branch> branches) throws RemoteException {
+        System.out.println(">Client - branch callback");
         support.firePropertyChange("branches", null, branches);
     }
 
     @Override
     public void getCars() throws RemoteException {
+        System.out.println(">Client getcars");
         server.getCars(this);
     }
 
     @Override
     public void carsCallback(ArrayList<Car> cars) throws RemoteException {
+        System.out.println(">Client car callback");
         support.firePropertyChange("cars", null, cars);
     }
 

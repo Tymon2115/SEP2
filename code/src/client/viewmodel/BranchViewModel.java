@@ -19,11 +19,12 @@ import java.util.ArrayList;
 
 public class BranchViewModel  {
     private Model model;
-    private ViewHandler viewHandler;
+    private final ViewHandler viewHandler;
     private ObservableList<Branch> branches;
     public BranchViewModel(Model model, ViewHandler viewHandler) {
         branches = FXCollections.observableArrayList();
         this.model = model;
+        System.out.println(">model in branch view model : " +  model);
         model.getBranches();
         this.viewHandler = viewHandler;
         model.addListener(this::listenForBranches, "branches");
@@ -40,7 +41,7 @@ public class BranchViewModel  {
 
     public void listenForBranches(PropertyChangeEvent event) {
         Platform.runLater(() -> {
-            System.out.println("we are in branch viewmodel");
+            System.out.println(">BranchViewModel listener");
             ArrayList<Branch> receivedBranches = (ArrayList<Branch>) event.getNewValue();
             branches.addAll(receivedBranches);
         });

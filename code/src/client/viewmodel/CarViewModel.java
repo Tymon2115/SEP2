@@ -20,6 +20,7 @@ public class CarViewModel {
     public CarViewModel(Model model, ViewHandler viewHandler) {
         cars = FXCollections.observableArrayList();
         this.model = model;
+        System.out.println(">model in car view model : " + model);
         model.getCars();
         this.viewHandler = viewHandler;
         model.addListener(this::listenForCars, "cars");
@@ -27,10 +28,9 @@ public class CarViewModel {
 
     public void listenForCars(PropertyChangeEvent event) {
         Platform.runLater(() -> {
-            System.out.println("we are in car view model");
+            System.out.println(">CarViewModel listener");
             ArrayList<Car> receivedCars = (ArrayList<Car>) event.getNewValue();
             cars.addAll(receivedCars);
-            System.out.println(cars);
         });
     }
 

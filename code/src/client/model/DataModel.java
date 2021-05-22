@@ -74,14 +74,14 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void receiveCars(PropertyChangeEvent event) {
-        System.out.println("we are in data model");
-
+        System.out.println(">Model Receive Cars");
         support.firePropertyChange("cars", null, event.getNewValue());
-        System.out.println(event.getNewValue());
+
     }
 
     @Override
     public void receiveBranches(PropertyChangeEvent event) {
+        System.out.println(">Model Receive Branches");
         support.firePropertyChange("branches", null, event.getNewValue());
     }
 

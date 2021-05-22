@@ -39,7 +39,7 @@ public class BranchViewController {
         idName.setCellValueFactory(cellData -> (cellData.getValue().nameProperty()));
         idCol.setCellValueFactory(cellData -> (cellData.getValue().idProperty()));
         idLocation.setCellValueFactory(cellData -> (cellData.getValue().locationProperty()));
-        System.out.println(branchViewModel.getBranches());
+
         tableView.setItems(branchViewModel.getBranches());
     }
 

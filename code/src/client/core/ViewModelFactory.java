@@ -60,7 +60,7 @@ public class ViewModelFactory {
     public BranchViewModel getBranchViewModel() {
         if (branchViewModel == null) {
             branchViewModel = new BranchViewModel(modelFactory.getModel(), viewHandler);
-            System.out.println("branch view model created");
+            System.out.println(">BranchViewModel created");
         }
         return branchViewModel;
     }

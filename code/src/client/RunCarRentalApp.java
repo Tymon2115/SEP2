@@ -13,8 +13,10 @@ public class RunCarRentalApp {
         EmployeeHandler employeeHandler = new EmployeeHandler();
         BranchHandler branchHandler = new BranchHandler();
         CarHandler carHandler = new CarHandler();
-        //carHandler.createCar("gowno", "dupa", "red", "10", "weed", "0", "0", "none", "none", "none", "no description", 1, 10000);
 
+       // branchHandler.createBranch("gg", "fuck java");
+//        employeeHandler.createEmployee("owner", "owner", 1, new Branch(1, "D", "K"), "owner", "owner", "owner");
+        //carHandler.createCar("gowno", "dupa", "red", "10", "weed", "0", "0", "none", "none", "none", "no description", 1, 10000);
         Application.launch(CarRentalApp.class);
 
     }

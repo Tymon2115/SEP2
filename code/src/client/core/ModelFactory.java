@@ -20,7 +20,8 @@ public class ModelFactory
     public Model getModel() {
         if (model == null) {
             model = new DataModel(clientFactory.getClient());
-            System.out.println("model created");
+            System.out.println(">Model created");
+            System.out.println(">model in model factory: " + model);
         }
         return model;
     }

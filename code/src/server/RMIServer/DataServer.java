@@ -152,6 +152,7 @@ public class DataServer implements Server {
 
     @Override
     public void getBranches(Client client) throws RemoteException {
+        System.out.println(">Server - get branches");
         client.branchesCallback(branchHandler.getBranches());
     }
 
