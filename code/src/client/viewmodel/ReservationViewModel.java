@@ -42,4 +42,8 @@ public class ReservationViewModel {
     public ObservableList<Reservation> getReservations() {
         return reservations;
     }
+
+    public void getAddReservationView() {
+        viewHandler.openAddReservationView();
+    }
 }

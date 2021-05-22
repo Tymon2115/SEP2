@@ -41,7 +41,6 @@ public class AddEditReservationViewModel {
         this.viewHandler = viewHandler;
         this.support = new PropertyChangeSupport(this);
     }
-
     public StringProperty nameProperty () {
         return name;
     }
