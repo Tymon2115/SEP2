@@ -14,21 +14,21 @@
    <items>
       <ScrollPane prefHeight="200.0" prefWidth="200.0">
          <content>
-            <TableView fx:id="employee_tableview" prefHeight="1044.0" prefWidth="1474.0">
+            <TableView fx:id="tableView" prefHeight="1044.0" prefWidth="1474.0">
                <columns>
-                  <TableColumn fx:id="column_id" prefWidth="75.0" text="ID" />
-                  <TableColumn fx:id="column_name" prefWidth="75.0" text="Name" />
-                  <TableColumn fx:id="column_surname" prefWidth="75.0" text="Surname" />
-                  <TableColumn fx:id="column_branch" prefWidth="109.0" text="Driver's Licence" />
-                  <TableColumn fx:id="column_username" prefWidth="97.0" text="Address" />
-                  <TableColumn fx:id="column_role" prefWidth="104.0" text="Car" />
-                  <TableColumn fx:id="column_email" prefWidth="118.0" text="Start Branch" />
-                  <TableColumn fx:id="column_email1" prefWidth="139.0" text="End Branch" />
-                  <TableColumn fx:id="column_email11" prefWidth="156.0" text="Start Date" />
-                  <TableColumn fx:id="column_email111" prefWidth="146.0" text="End Date" />
-                  <TableColumn fx:id="column_email1111" prefWidth="126.0" text="Price" />
-                  <TableColumn fx:id="column_email11111" prefWidth="117.0" text="E-mail" />
-                  <TableColumn fx:id="column_email111111" prefWidth="95.0" text="Phone Number" />
+                  <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="nameCol" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="surnameCol" prefWidth="75.0" text="Surname" />
+                  <TableColumn fx:id="driversLicenceCol" prefWidth="109.0" text="Driver's Licence" />
+                  <TableColumn fx:id="addressCol" prefWidth="97.0" text="Address" />
+                  <TableColumn fx:id="carCol" prefWidth="104.0" text="Car" />
+                  <TableColumn fx:id="startBranchCol" prefWidth="118.0" text="Start Branch" />
+                  <TableColumn fx:id="endBranchCol" prefWidth="139.0" text="End Branch" />
+                  <TableColumn fx:id="startDateCol" prefWidth="156.0" text="Start Date" />
+                  <TableColumn fx:id="endDateCol" prefWidth="146.0" text="End Date" />
+                  <TableColumn fx:id="priceCol" prefWidth="126.0" text="Price" />
+                  <TableColumn fx:id="emailCol" prefWidth="117.0" text="E-mail" />
+                  <TableColumn fx:id="phoneNumberCol" prefWidth="95.0" text="Phone Number" />
                </columns>
             </TableView>
          </content>
