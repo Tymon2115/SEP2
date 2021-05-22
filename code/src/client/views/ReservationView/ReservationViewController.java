@@ -42,9 +42,9 @@ public class ReservationViewController {
     @FXML
     private TableColumn<Reservation, String> carCol;
     @FXML
-    private TableColumn<Reservation, String> startBranchCol;
+    private TableColumn<Reservation, Number> startBranchCol;
     @FXML
-    private TableColumn<Reservation, String> endBranchCol;
+    private TableColumn<Reservation, Number> endBranchCol;
     @FXML
     private TableColumn<Reservation, String> startDateCol;
     @FXML
@@ -64,7 +64,6 @@ public class ReservationViewController {
         surnameCol.setCellValueFactory((cellData -> (cellData.getValue().surnameProperty())));
         driversLicenceCol.setCellValueFactory(cellData -> (cellData.getValue().driversLicenseProperty()));
         addressCol.setCellValueFactory(cellData -> (cellData.getValue().addressProperty()));
-        carCol.setCellValueFactory(cellData -> (cellData.getValue().carProperty()));
         startBranchCol.setCellValueFactory((cellData ->(cellData.getValue().startBranchProperty())));
         endBranchCol.setCellValueFactory(cellData -> (cellData.getValue().endBranchProperty()));
         startDateCol.setCellValueFactory(cellData -> (cellData.getValue().startDateProperty()));
