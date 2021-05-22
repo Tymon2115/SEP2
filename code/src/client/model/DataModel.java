@@ -68,6 +68,7 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void receiveReservations(PropertyChangeEvent event) {
+
         support.firePropertyChange("reservations", null, event.getNewValue());
 
     }
