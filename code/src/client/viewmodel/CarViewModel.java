@@ -1,39 +1,45 @@
 package client.viewmodel;
 
+import client.core.ViewHandler;
 import client.model.Model;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import shared.Branch.Branch;
 import shared.Reservation.Car;
+import java.beans.PropertyChangeEvent;
+import java.util.ArrayList;
 
 public class CarViewModel {
 
-    public StringProperty usernameProperty;
     private Model model;
+    private ViewHandler viewHandler;
+    private ObservableList<Car> cars;
 
-    public CarViewModel(Model model) {
+
+    public CarViewModel(Model model, ViewHandler viewHandler) {
+        cars = FXCollections.observableArrayList();
         this.model = model;
-        usernameProperty = new SimpleStringProperty();
+        model.getCars();
+        this.viewHandler = viewHandler;
+        model.addListener(this::listenForCars, "cars");
     }
 
-    public StringProperty usernamePropertyProperty() {
-        return usernameProperty;
+    public void listenForCars(PropertyChangeEvent event) {
+        Platform.runLater(() -> {
+            System.out.println("we are in car view model");
+            ArrayList<Car> receivedCars = (ArrayList<Car>) event.getNewValue();
+            cars.addAll(receivedCars);
+            System.out.println(cars);
+        });
     }
 
-    public void addCarView(String make, String carModel, String color, String numberPlates, String fuelType,
-                           String fuelConsumption, String seats, String engine, String transmission, String equipment,
-                           String description, int branchId, double dailyPrice) {
-        model.createCar(make, carModel, color, numberPlates, fuelType, fuelConsumption, seats, engine,
-                transmission, equipment, description, branchId, dailyPrice);
+
+    public void home() {
+        viewHandler.openFrontPageView();
     }
 
-    public void deleteCarView(Car car) {
-        model.deleteCar(car);
-    }
-
-    public void openEditCarView(int id, String make, String carModel, String color, String numberPlates, String fuelType,
-                                String fuelConsumption, String seats, String engine, String transmission, String equipment,
-                                String description, int branchId, double dailyPrice) {
-        model.editCar(id, make, carModel, color, numberPlates, fuelType, fuelConsumption, seats, engine,
-                transmission, equipment, description, branchId, dailyPrice);
+    public ObservableList<Car> getCars() {
+        return cars;
     }
 }

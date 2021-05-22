@@ -28,7 +28,7 @@ public class EmployeeHandler {
 
 
 
-            ResultSet result = statement1.executeQuery("SELECT * FROM employee WHERE name = '" + name + "' AND surname = '" + surname + "' AND role_id = '" + role_id + "' AND branch_id =  '" + branch.getId() + "' AND username = '" + username + "' AND email = '" + email + "');");
+            ResultSet result = statement1.executeQuery("SELECT * FROM employee WHERE name = '" + name + "' AND surname = '" + surname + "' AND role_id = '" + role_id + "' AND branch_id =  '" + branch.getId() + "' AND username = '" + username + "' AND email = '" + email + "';");
 
 
             if (!result.next()) {

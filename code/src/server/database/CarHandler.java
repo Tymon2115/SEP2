@@ -16,7 +16,7 @@ public class CarHandler {
 
             Statement statement1 = DatabaseConnection.getInstance().getConnection().createStatement();
 
-            ResultSet result = statement1.executeQuery("SELECT * FROM car WHERE make = '" + make + "' AND model ='" + model + "' AND color = '" + color + "' AND number_plates = '" + numberPlates + "' AND fuel_type = '" + fuelType + "' AND" +
+            ResultSet result = statement1.executeQuery("SELECT * FROM car WHERE make = '" + make + "' AND model ='" + model + "' AND color = '" + color + "' AND number_plates = '" + numberPlates + "' AND fuel_type = '" + fuelType + "' AND " +
                     "fuel_consumption = '" + fuelConsumption + "' AND seats = '" + seats + "' AND engine = '" + engine + "' AND transmission = '" + transmission + "' AND equipment = '" + equipment + "' AND description = '" + description
             + "' AND branch_id = '" + branchId + "' AND daily_price = '" + dailyPrice + "';");
 
@@ -92,7 +92,7 @@ public class CarHandler {
         ArrayList<Car> cars = new ArrayList<>();
         try {
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
-            ResultSet result = statement.executeQuery("SELECT * from employee");
+            ResultSet result = statement.executeQuery("SELECT * from car");
             while (result.next()) {
                 int id = result.getInt("id");
                 String make = result.getString("make");

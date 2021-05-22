@@ -1,49 +1,55 @@
 package client.viewmodel;
 
+import client.core.ViewHandler;
 import client.model.Model;
+import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import shared.Branch.Branch;
+import shared.PropertyChangeSubject;
 
-public class BranchViewModel {
-    private StringProperty name;
-    private StringProperty location;
-    private IntegerProperty id;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
+
+public class BranchViewModel  {
     private Model model;
-
-    public BranchViewModel(Model model) {
+    private ViewHandler viewHandler;
+    private ObservableList<Branch> branches;
+    public BranchViewModel(Model model, ViewHandler viewHandler) {
+        branches = FXCollections.observableArrayList();
         this.model = model;
-        name = new SimpleStringProperty();
-        location = new SimpleStringProperty();
-        id = new SimpleIntegerProperty();
+        model.getBranches();
+        this.viewHandler = viewHandler;
+        model.addListener(this::listenForBranches, "branches");
     }
 
-    public String getName() {
-        return name.get();
-    }
-
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    public String getLocation() {
-        return location.get();
-    }
-
-    public StringProperty locationProperty() {
-        return location;
-    }
-
-    public int getId() {
-        return id.get();
-    }
-
-    public IntegerProperty idProperty() {
-        return id;
-    }
 
     public Model getModel() {
         return model;
     }
+
+    public void home() {
+        viewHandler.openFrontPageView();
+    }
+
+    public void listenForBranches(PropertyChangeEvent event) {
+        Platform.runLater(() -> {
+            System.out.println("we are in branch viewmodel");
+            ArrayList<Branch> receivedBranches = (ArrayList<Branch>) event.getNewValue();
+            branches.addAll(receivedBranches);
+        });
+    }
+
+
+    public ObservableList<Branch> getBranches() {
+        return branches;
+    }
+
+
 }

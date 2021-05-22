@@ -9,27 +9,24 @@ import javafx.scene.control.Button;
 public class FrontPageViewController {
 
     @FXML
-    public Button openEmployeeButton;
+    private Button openEmployeeButton;
     @FXML
-    public Button openBranchesButton;
-
+    private Button openBranchesButton;
+    @FXML
+    private Button openCarsButton;
 
     private FrontPageViewModel frontPageViewModel;
 
-    public void init(FrontPageViewModel frontPageViewModel)
-    {
+    public void init(FrontPageViewModel frontPageViewModel) {
         this.frontPageViewModel = frontPageViewModel;
-        openBranchesButton.setVisible(false);
-        openEmployeeButton.setVisible(false);
 
-        // Owner ID = 1, Manager ID = 2
-        if (Session.getRole_id() == 1)
-        {
-            openEmployeeButton.setVisible(true);
-            openBranchesButton.setVisible(true);
-        } else if (Session.getRole_id() == 2)
-        {
-            openEmployeeButton.setVisible(true);
+        // Owner ID = 1, Manager ID = 2, Employee ID = 3
+        if (Session.getRole_id() == 3) {
+            openBranchesButton.setVisible(false);
+            openEmployeeButton.setVisible(false);
+            openCarsButton.setVisible(false);
+        } else if (Session.getRole_id() == 2) {
+            openBranchesButton.setVisible(false);
         }
     }
 

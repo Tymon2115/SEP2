@@ -25,7 +25,7 @@ public class DataClient implements Client, PropertyChangeSubject {
 
 
     public DataClient() throws RemoteException {
-
+        this.server = server;
         UnicastRemoteObject.exportObject((Client) this, 0);
 
     }
@@ -196,7 +196,7 @@ public class DataClient implements Client, PropertyChangeSubject {
 
     @Override
     public void getBranches() throws RemoteException {
-        server.getReservations(this);
+        server.getBranches(this);
     }
 
     @Override

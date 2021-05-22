@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.75" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.EmployeeView.EmployeeViewController">
+<SplitPane dividerPositions="0.75" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.EmployeeView.EmployeeViewController">
    <items>
       <ScrollPane prefHeight="200.0" prefWidth="200.0">
          <content>
@@ -41,9 +41,9 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#openDeleteView" prefHeight="158.0" prefWidth="300.0">
+                  <Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="158.0" prefWidth="300.0">
                      <graphic>
-                        <ImageView fitHeight="122.0" fitWidth="123.0" onDragDetected="#openDeleteView" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="122.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/minus.png" />
                            </image>
@@ -52,7 +52,7 @@
                   </Button>
                </children>
             </HBox>
-            <Button fx:id="editButton" mnemonicParsing="false" onAction="#openEditView" prefHeight="175.0" prefWidth="1000.0">
+            <Button fx:id="editButton" mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
                <graphic>
                   <ImageView fitHeight="86.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -61,7 +61,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="backButton" mnemonicParsing="false" prefHeight="175.0" prefWidth="1000.0">
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" prefHeight="175.0" prefWidth="1000.0">
                <graphic>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Back // replace for back button" />
                </graphic>
