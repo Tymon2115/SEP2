@@ -12,9 +12,9 @@ public class Reservation implements Serializable {
     private String surname;
     private String driversLicence;
     private Address address;
-    private Car car;
-    private Branch startBranch;
-    private Branch endBranch;
+    private int carId;
+    private int startBranchId;
+    private int endBranchId;
     private Date startDate;
     private Date endDate;
     private double price;
@@ -22,15 +22,15 @@ public class Reservation implements Serializable {
     private String phoneNumber;
 
 
-    public Reservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, java.sql.Date startDate, Date endDate, double price, String email, String phoneNumber) {
+    public Reservation(int id, String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, java.sql.Date startDate, Date endDate, double price, String email, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.driversLicence = driversLicence;
         this.address = address;
-        this.car = car;
-        this.startBranch = startBranch;
-        this.endBranch = endBranch;
+        this.carId = carId;
+        this.startBranchId = startBranchId;
+        this.endBranchId = endBranchId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.price = price;
@@ -54,8 +54,28 @@ public class Reservation implements Serializable {
         return address;
     }
 
-    public Car getCar() {
-        return car;
+    public int getCarId() {
+        return carId;
+    }
+
+    public void setCarId(int carId) {
+        this.carId = carId;
+    }
+
+    public int getStartBranchId() {
+        return startBranchId;
+    }
+
+    public void setStartBranchId(int startBranchId) {
+        this.startBranchId = startBranchId;
+    }
+
+    public void setEndBranchId(int endBranchId) {
+        this.endBranchId = endBranchId;
+    }
+
+    public int getEndBranchId() {
+        return endBranchId;
     }
 
     public int getId() {
@@ -90,29 +110,14 @@ public class Reservation implements Serializable {
         this.address = address;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
-    }
+
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public Branch getStartBranch() {
-        return startBranch;
-    }
 
-    public void setStartBranch(Branch startBranch) {
-        this.startBranch = startBranch;
-    }
 
-    public Branch getEndBranch() {
-        return endBranch;
-    }
-
-    public void setEndBranch(Branch endBranch) {
-        this.endBranch = endBranch;
-    }
 
     public Date getStartDate() {
         return startDate;
@@ -162,16 +167,16 @@ public class Reservation implements Serializable {
         return new SimpleStringProperty(address.toString());
     }
 
-    public StringProperty carProperty() {
-        return new SimpleStringProperty(car.getNumberPlates());
+    public IntegerProperty carProperty() {
+        return new SimpleIntegerProperty(carId);
     }
 
-    public StringProperty startBranchProperty() {
-        return new SimpleStringProperty(startBranch.getName());
+    public IntegerProperty startBranchProperty() {
+        return new SimpleIntegerProperty(startBranchId);
     }
 
-    public StringProperty endBranchProperty() {
-        return new SimpleStringProperty(endBranch.getName());
+    public IntegerProperty endBranchProperty() {
+        return new SimpleIntegerProperty(endBranchId);
     }
 
     public StringProperty startDateProperty() {

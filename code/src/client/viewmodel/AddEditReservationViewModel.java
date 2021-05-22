@@ -187,6 +187,7 @@ public class AddEditReservationViewModel {
                     Double.valueOf(price.get()),
                     email.get(),
                     phoneNumber.get());
+            //TODO go back to list
         }
         else {
             //shouldn't do anything
@@ -196,7 +197,7 @@ public class AddEditReservationViewModel {
 
     public void editAction () {
         if (inputVerification()){
-            //TODO call model to edit and go back to list
+                //TODO call edit and go back to list
         }
         else {
             //shouldn't do anything

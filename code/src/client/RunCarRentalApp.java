@@ -13,7 +13,6 @@ public class RunCarRentalApp {
         EmployeeHandler employeeHandler = new EmployeeHandler();
         BranchHandler branchHandler = new BranchHandler();
         CarHandler carHandler = new CarHandler();
-
         Application.launch(CarRentalApp.class);
 
     }
