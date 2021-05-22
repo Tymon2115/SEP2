@@ -19,6 +19,7 @@ public class CarViewModel {
     public CarViewModel(Model model, ViewHandler viewHandler) {
         cars = FXCollections.observableArrayList();
         this.model = model;
+
         model.getCars();
         this.viewHandler = viewHandler;
         model.addListener(this::listenForCars, "cars");

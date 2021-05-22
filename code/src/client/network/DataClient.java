@@ -37,8 +37,8 @@ public class DataClient implements Client, PropertyChangeSubject {
 
 
     @Override
-    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException {
-        server.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, (Client) this, price, email, phoneNumber);
+    public void createReservation(String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException {
+        server.createReservation(name, surname, driversLicence, address, carId, startBranchId, endBranchId, startDate, endDate, (Client) this, price, email, phoneNumber);
     }
 
     @Override
@@ -196,21 +196,25 @@ public class DataClient implements Client, PropertyChangeSubject {
 
     @Override
     public void getBranches() throws RemoteException {
+
         server.getBranches(this);
     }
 
     @Override
     public void branchesCallback(ArrayList<Branch> branches) throws RemoteException {
+
         support.firePropertyChange("branches", null, branches);
     }
 
     @Override
     public void getCars() throws RemoteException {
+
         server.getCars(this);
     }
 
     @Override
     public void carsCallback(ArrayList<Car> cars) throws RemoteException {
+
         support.firePropertyChange("cars", null, cars);
     }
 

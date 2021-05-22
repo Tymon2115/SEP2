@@ -33,7 +33,7 @@ public class LoginController {
     }
 
     public void onLoginButton(ActionEvent actionEvent) {
-        System.out.println("Login pressed");
+
         loginVM.login();
     }
 }

@@ -19,7 +19,7 @@ public class DatabaseConnection {
             Statement statement = connection.createStatement();
             statement.executeUpdate("SET SCHEMA 'sep'");
             statement.close();
-            System.out.println("Database connection established");
+
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

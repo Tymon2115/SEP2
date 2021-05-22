@@ -56,10 +56,10 @@ public class AddEditBranchViewModel {
 
     public void addAction() {
         if (inputVerification()) {
-            //TODO call add in model and go back to list view
+            model.createBranch(name.getValue(), location.getValue());
         }
         else {
-            //shouldnt do anything
+            //shouldn't do anything
         }
 
     }
@@ -70,9 +70,9 @@ public class AddEditBranchViewModel {
 
     public void editAction () {
         if (inputVerification()) {
-            //TODO call add in model and go back to list
+            model.createBranch(name.getValue(), location.getValue());
         } else {
-            //shouldnt do anything
+            //shouldn't do anything
         }
     }
 

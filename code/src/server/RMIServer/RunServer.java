@@ -10,6 +10,6 @@ public class RunServer {
         Server server = new DataServer();
         Registry registry = LocateRegistry.createRegistry(1099);
         registry.bind("server", server);
-        System.out.println("started");
+
     }
 }

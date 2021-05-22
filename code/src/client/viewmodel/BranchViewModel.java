@@ -19,12 +19,13 @@ import java.util.ArrayList;
 
 public class BranchViewModel {
     private Model model;
-    private ViewHandler viewHandler;
+    private final ViewHandler viewHandler;
     private ObservableList<Branch> branches;
 
     public BranchViewModel(Model model, ViewHandler viewHandler) {
         branches = FXCollections.observableArrayList();
         this.model = model;
+
         model.getBranches();
         this.viewHandler = viewHandler;
         model.addListener(this::listenForBranches, "branches");

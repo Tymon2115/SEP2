@@ -30,9 +30,9 @@ public class DataServer implements Server {
     }
 
     @Override
-    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, Client client, double price, String email, String phoneNumber) throws RemoteException {
+    public void createReservation(String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, Client client, double price, String email, String phoneNumber) throws RemoteException {
         try {
-            reservationHandler.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
+            reservationHandler.createReservation(name, surname, driversLicence, address, carId, startBranchId, endBranchId, startDate, endDate, price, email, phoneNumber);
         } catch (AlreadyExists alreadyExists) {
             alreadyExists.printStackTrace();
         }
@@ -152,6 +152,7 @@ public class DataServer implements Server {
 
     @Override
     public void getBranches(Client client) throws RemoteException {
+
         client.branchesCallback(branchHandler.getBranches());
     }
 
