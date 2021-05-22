@@ -32,7 +32,7 @@ public class ViewModelFactory {
         if (carViewModel == null) {
 
             carViewModel = new CarViewModel(modelFactory.getModel(), viewHandler);
-            System.out.println("car view model created");
+
         }
         return carViewModel;
     }
@@ -61,7 +61,7 @@ public class ViewModelFactory {
     public BranchViewModel getBranchViewModel() {
         if (branchViewModel == null) {
             branchViewModel = new BranchViewModel(modelFactory.getModel(), viewHandler);
-            System.out.println(">BranchViewModel created");
+
         }
         return branchViewModel;
     }

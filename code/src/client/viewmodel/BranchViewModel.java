@@ -24,7 +24,7 @@ public class BranchViewModel  {
     public BranchViewModel(Model model, ViewHandler viewHandler) {
         branches = FXCollections.observableArrayList();
         this.model = model;
-        System.out.println(">model in branch view model : " +  model);
+
         model.getBranches();
         this.viewHandler = viewHandler;
         model.addListener(this::listenForBranches, "branches");
@@ -41,7 +41,6 @@ public class BranchViewModel  {
 
     public void listenForBranches(PropertyChangeEvent event) {
         Platform.runLater(() -> {
-            System.out.println(">BranchViewModel listener");
             ArrayList<Branch> receivedBranches = (ArrayList<Branch>) event.getNewValue();
             branches.addAll(receivedBranches);
         });

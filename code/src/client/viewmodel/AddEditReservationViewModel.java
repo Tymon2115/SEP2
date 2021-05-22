@@ -175,21 +175,42 @@ public class AddEditReservationViewModel {
 
     public void addAction () {
         if (inputVerification()){
-            //TODO call add in model and go back to list
+            model.createReservation(name.get(),
+                    surname.get(),
+                    driversLicence.get(),
+                    new Address(addressStreet.get(), addressZip.get(), addressCity.get(), addressCountry.get()),
+                    Integer.parseInt(car.get()),
+                    Integer.parseInt(startBranch.get()),
+                    Integer.parseInt(endBranch.get()),
+                    getSQLDateFromStartDate(),
+                    getSQLDateFromEndDate(),
+                    Double.valueOf(price.get()),
+                    email.get(),
+                    phoneNumber.get());
         }
         else {
-            //shouldnt do anyhing
+            //shouldn't do anything
         }
 
     }
 
     public void editAction () {
         if (inputVerification()){
-            //TODO call add in model and go back to list
+            //TODO call model to edit and go back to list
         }
         else {
-            //shouldnt do anything
+            //shouldn't do anything
         }
+    }
+
+    private Date getSQLDateFromStartDate () {
+        java.sql.Date date = Date.valueOf(startDate.getValue());
+        return date;
+    }
+
+    private Date getSQLDateFromEndDate () {
+        java.sql.Date date = Date.valueOf(endDate.getValue());
+        return date;
     }
 
 }

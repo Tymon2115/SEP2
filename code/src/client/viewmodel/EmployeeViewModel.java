@@ -29,7 +29,7 @@ public class EmployeeViewModel {
 
     private void listenForEmployees(PropertyChangeEvent event) {
         Platform.runLater(() -> {
-            System.out.println("employee view model");
+
         });
 
     }

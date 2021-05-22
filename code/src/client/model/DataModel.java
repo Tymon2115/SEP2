@@ -42,9 +42,9 @@ public class DataModel implements Model, PropertyChangeSubject {
     @Override
 
 
-    public void createReservation(String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) {
+    public void createReservation(String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber) {
         try {
-            client.createReservation(name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
+            client.createReservation(name, surname, driversLicence, address, carId, startBranchId, endBranchId, startDate, endDate, price, email, phoneNumber);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -63,7 +63,7 @@ public class DataModel implements Model, PropertyChangeSubject {
     @Override
     public void receiveReservation(PropertyChangeEvent event) {
         support.firePropertyChange("reservation", null, event.getNewValue());
-        System.out.println(event.getNewValue());
+
     }
 
     @Override
@@ -74,14 +74,14 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void receiveCars(PropertyChangeEvent event) {
-        System.out.println(">Model Receive Cars");
+
         support.firePropertyChange("cars", null, event.getNewValue());
 
     }
 
     @Override
     public void receiveBranches(PropertyChangeEvent event) {
-        System.out.println(">Model Receive Branches");
+
         support.firePropertyChange("branches", null, event.getNewValue());
     }
 
@@ -148,7 +148,7 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void receiveCar(PropertyChangeEvent event) {
-        System.out.println(event.getNewValue());
+
         support.firePropertyChange("car", null, event.getNewValue());
     }
 
@@ -176,7 +176,7 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void receiveBranch(PropertyChangeEvent event) {
-        System.out.println(event.getNewValue());
+
         support.firePropertyChange("branch", null, event.getNewValue());
     }
 

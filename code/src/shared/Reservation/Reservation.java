@@ -21,7 +21,7 @@ public class Reservation implements Serializable {
     private String phoneNumber;
 
 
-    public Reservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) {
+    public Reservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, java.sql.Date startDate, Date endDate, double price, String email, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.surname = surname;
