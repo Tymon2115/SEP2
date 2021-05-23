@@ -47,6 +47,9 @@ public class BranchViewModel {
             branches.addAll(receivedBranches);
         });
     }
+    public void addBranch(){
+        viewHandler.openAddBranchView();
+    }
 
 
     public ObservableList<Branch> getBranches() {

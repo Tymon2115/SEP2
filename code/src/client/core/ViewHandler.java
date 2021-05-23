@@ -1,11 +1,11 @@
 package client.core;
 
 
-import client.viewmodel.AddEditReservationViewModel;
-import client.viewmodel.BranchViewModel;
-import client.viewmodel.CarViewModel;
+import client.viewmodel.*;
+import client.views.BranchView.AddBranchViewController;
 import client.views.BranchView.BranchViewController;
 
+import client.views.CarView.AddCarViewController;
 import client.views.CarView.CarViewController;
 import client.views.EmployeeView.EmployeeViewController;
 import client.views.FrontPageView.FrontPageViewController;
@@ -182,6 +182,40 @@ public class ViewHandler {
             stage.setTitle("Add Reservation");
             Scene addReservationScene = new Scene(root);
             stage.setScene(addReservationScene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openAddBranchView() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../views/BranchView/AddBranchView.fxml"));
+        try {
+            AddEditBranchViewModel addEditBranchViewModel = viewModelFactory.getAddEditBranchView();
+            Parent root = null;
+            root = loader.load();
+            AddBranchViewController controller = loader.getController();
+            controller.init(addEditBranchViewModel);
+            stage.setTitle("Add Branch");
+            Scene addBranch = new Scene(root);
+            stage.setScene(addBranch);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openAddCarView() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../views/CarView/AddCarView.fxml"));
+        try {
+            AddEditCarViewModel addEditCarViewModel = viewModelFactory.getAddEditCarViewModel();
+            Parent root = null;
+            root = loader.load();
+            AddCarViewController controller = loader.getController();
+            controller.init(addEditCarViewModel);
+            stage.setTitle("Add Car");
+            Scene addCar = new Scene(root);
+            stage.setScene(addCar);
         } catch (IOException e) {
             e.printStackTrace();
         }

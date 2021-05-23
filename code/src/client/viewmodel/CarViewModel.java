@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.Reservation.Car;
+
 import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 
@@ -19,8 +20,6 @@ public class CarViewModel {
     public CarViewModel(Model model, ViewHandler viewHandler) {
         cars = FXCollections.observableArrayList();
         this.model = model;
-
-        model.getCars();
         this.viewHandler = viewHandler;
         model.addListener(this::listenForCars, "cars");
     }
@@ -37,6 +36,12 @@ public class CarViewModel {
 
     public void home() {
         viewHandler.openFrontPageView();
+    }
+
+    public void addCar() {
+
+        viewHandler.openAddCarView();
+        model.getBranches();
     }
 
     public ObservableList<Car> getCars() {
