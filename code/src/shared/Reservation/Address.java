@@ -9,7 +9,7 @@ public class Address implements Serializable {
     private String zip;
     private String country;
 
-    public Address(String city, String street, String zip, String country) {
+    public Address(String street, String city, String zip, String country) {
         this.city = city;
         this.street = street;
         this.zip = zip;

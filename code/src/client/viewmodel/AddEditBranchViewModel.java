@@ -57,7 +57,10 @@ public class AddEditBranchViewModel {
     public void addAction() {
         if (inputVerification()) {
             model.createBranch(name.getValue(), location.getValue());
-            //TODO go back to list
+            model.getBranches();
+            viewHandler.openBranchView();
+            name.set("");
+            location.set("");
         }
         else {
             //shouldn't do anything
@@ -66,12 +69,16 @@ public class AddEditBranchViewModel {
     }
 
     public void cancelAction () {
-        //TODO go back to list
+        viewHandler.openBranchView();
     }
 
-    public void editAction () {
+    public void editAction (int id) {
         if (inputVerification()) {
-            //TODO call edit in model and go back to list
+            model.editBranch(id, name.get(), location.get());
+            model.getBranches();
+            viewHandler.openBranchView();
+            name.set("");
+            location.set("e");
         } else {
             //shouldn't do anything
         }

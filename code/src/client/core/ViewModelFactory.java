@@ -16,6 +16,8 @@ public class ViewModelFactory {
     private BranchViewModel branchViewModel;
     private EmployeeViewModel employeeViewModel;
     private AddEditReservationViewModel addEditReservationViewModel;
+    private AddEditBranchViewModel addEditBranchViewModel;
+    private AddEditCarViewModel addEditCarViewModel;
 
     public ViewModelFactory(ModelFactory modelFactory, ViewHandler viewHandler) {
         this.modelFactory = modelFactory;
@@ -79,5 +81,19 @@ public class ViewModelFactory {
             addEditReservationViewModel = new AddEditReservationViewModel(modelFactory.getModel(), viewHandler);
         }
         return addEditReservationViewModel;
+    }
+
+    public AddEditBranchViewModel getAddEditBranchViewModel() {
+        if (addEditBranchViewModel == null) {
+            addEditBranchViewModel = new AddEditBranchViewModel(modelFactory.getModel(), viewHandler);
+        }
+        return addEditBranchViewModel;
+    }
+
+    public AddEditCarViewModel getAddEditCarViewModel() {
+        if (addEditCarViewModel == null) {
+            addEditCarViewModel = new AddEditCarViewModel(modelFactory.getModel(), viewHandler);
+        }
+        return addEditCarViewModel;
     }
 }

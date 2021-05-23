@@ -28,7 +28,7 @@ public class CarViewModel {
     public void listenForCars(PropertyChangeEvent event) {
         Platform.runLater(() -> {
             cars.clear();
-            System.out.println("we are in car view model");
+
             ArrayList<Car> receivedCars = (ArrayList<Car>) event.getNewValue();
             cars.addAll(receivedCars);
         });
@@ -41,5 +41,18 @@ public class CarViewModel {
 
     public ObservableList<Car> getCars() {
         return cars;
+    }
+
+    public void openAddCarView () {
+        viewHandler.openAddCarView();
+    }
+
+    public void openEditView (Car selectedCar) {
+        viewHandler.openCarEditView(selectedCar);
+    }
+
+    public void deleteAction (int id) {
+        model.deleteCar(id);
+        model.getCars();
     }
 }

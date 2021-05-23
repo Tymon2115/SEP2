@@ -45,15 +45,21 @@ public class BranchViewController {
 
 
     public void openAddView(ActionEvent actionEvent) {
-
+        branchViewModel.getAddBranchView();
     }
 
-    public void openDeleteView(ActionEvent actionEvent) {
+    public void deleteAction () {
+        if (tableView.getSelectionModel().getSelectedItems().get(0) != null) {
+            branchViewModel.deleteAction(tableView.getSelectionModel().getSelectedItems().get(0).getId());
+        }
 
     }
 
     public void openEditView(ActionEvent actionEvent) {
-
+        if (tableView.getSelectionModel().getSelectedItem() != null) {
+            Branch selectedBranch = tableView.getSelectionModel().getSelectedItems().get(0);
+            branchViewModel.openEditView(selectedBranch);
+        }
     }
 
     public void goBack(ActionEvent actionEvent) {

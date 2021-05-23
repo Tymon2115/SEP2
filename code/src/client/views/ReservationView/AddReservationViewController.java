@@ -49,6 +49,8 @@ public class AddReservationViewController {
 
     public void init (AddEditReservationViewModel addEditReservationViewModel) {
 
+        System.out.println("We are in controller");
+        System.out.println(addEditReservationViewModel.getBranches());
         this.addEditReservationViewModel = addEditReservationViewModel;
         nameTextField.textProperty().bindBidirectional(addEditReservationViewModel.nameProperty());
         surnameTextField.textProperty().bindBidirectional(addEditReservationViewModel.surnameProperty());
@@ -65,6 +67,11 @@ public class AddReservationViewController {
         endBranchComboBox.valueProperty().bindBidirectional(addEditReservationViewModel.endBranchProperty());
         startDateDatePicker.valueProperty().bindBidirectional(addEditReservationViewModel.startDateProperty());
         endDateDatePicker.valueProperty().bindBidirectional(addEditReservationViewModel.endDateProperty());
+        messageLabel.textProperty().bindBidirectional(addEditReservationViewModel.messageProperty());
+
+        startBranchComboBox.setItems(addEditReservationViewModel.getBranches());
+        endBranchComboBox.setItems(addEditReservationViewModel.getBranches());
+        carComboBox.setItems(addEditReservationViewModel.getCars());
     }
 
     public void cancelAction () {

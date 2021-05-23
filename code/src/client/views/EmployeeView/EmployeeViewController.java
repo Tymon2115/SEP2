@@ -45,7 +45,7 @@ public class EmployeeViewController {
         this.employeeViewModel = employeeViewModel;
         column_id.setCellValueFactory(cellData -> (cellData.getValue().idProperty()));
         column_name.setCellValueFactory(cellData -> (cellData.getValue().nameProperty()));
-        column_branch.setCellValueFactory(cellData -> (cellData.getValue().branchProperty()));
+        column_branch.setCellValueFactory(cellData -> (cellData.getValue().branchIdProperty()));
         column_surname.setCellValueFactory(cellData -> (cellData.getValue().surnameProperty()));
         column_email.setCellValueFactory(cellData -> (cellData.getValue().emailProperty()));
         column_username.setCellValueFactory(cellData -> (cellData.getValue().surnameProperty()));
@@ -55,14 +55,19 @@ public class EmployeeViewController {
 
 
     public void openAddView(ActionEvent actionEvent) {
-
+        employeeViewModel.openRegistrationView();
     }
 
-    public void openDeleteView(ActionEvent actionEvent) {
-
+    public void deleteAction () {
+        if (employee_tableview.getSelectionModel().getSelectedItems().get(0) != null)
+        employeeViewModel.deleteAction(employee_tableview.getSelectionModel().getSelectedItems().get(0).getId());
     }
 
     public void openEditView(ActionEvent actionEvent) {
+        if (employee_tableview.getSelectionModel().getSelectedItems().get(0) != null) {
+            Employee selectedEmployee = employee_tableview.getSelectionModel().getSelectedItems().get(0);
+            employeeViewModel.openEditView(selectedEmployee);
+        }
 
     }
 

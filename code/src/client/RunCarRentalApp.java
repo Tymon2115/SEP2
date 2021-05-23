@@ -11,8 +11,10 @@ import server.database.ReservationHandler;
 import shared.Branch.Branch;
 import shared.Reservation.Address;
 
-import java.sql.Date;
 import java.time.LocalDate;
+
+import java.util.Date;
+
 
 public class RunCarRentalApp {
     public static void main(String[] args) throws AlreadyExists {
@@ -22,8 +24,26 @@ public class RunCarRentalApp {
         ReservationHandler reservationHandler = new ReservationHandler();
         LocalDate localDate;
 
-      // reservationHandler.createReservation("fuck", "jorn" , "fatfuckJorn", new Address("gelato", "drei drei", "42069", "jamaica"), 1,1, 2, new LocalDate(1,2,3),new LocalDate(1,2,3),200000, "j@hotmail.sk", "420420420");
         Application.launch(CarRentalApp.class);
+
+
+        //TODO fix weird bug with delete employee
+
+        //TODO add proper input validation
+        //TODO write unit testing
+
+
+
+        //TODO make address show in a normal way in reservation list (toString throws exception :( )
+        //TODO make app always full screen
+        //TODO make password hidden field in register and edit employee
+
+        //TODO optional : make password sent by email
+        //TODO optional : encrypt password in client
+
+        //TODO optional : make every view look nice like registration/home
+        //TODO optional : put google icons in every view
+
 
     }
 }

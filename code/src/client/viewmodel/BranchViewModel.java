@@ -48,10 +48,21 @@ public class BranchViewModel {
         });
     }
 
-
     public ObservableList<Branch> getBranches() {
         return branches;
     }
 
+    public void getAddBranchView () {
+        viewHandler.openAddBranchView();
+    }
+
+    public void openEditView (Branch selectedBranch) {
+        viewHandler.openBranchEditView(selectedBranch);
+    }
+
+    public void deleteAction (int id) {
+        model.deleteBranch(id);
+        model.getBranches();
+    }
 
 }
