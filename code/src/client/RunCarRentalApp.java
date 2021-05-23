@@ -21,8 +21,9 @@ public class RunCarRentalApp {
         CarHandler carHandler = new CarHandler();
         ReservationHandler reservationHandler = new ReservationHandler();
         LocalDate localDate;
-
-      // reservationHandler.createReservation("fuck", "jorn" , "fatfuckJorn", new Address("gelato", "drei drei", "42069", "jamaica"), 1,1, 2, new LocalDate(1,2,3),new LocalDate(1,2,3),200000, "j@hotmail.sk", "420420420");
+//        branchHandler.createBranch("test", "test");
+//        employeeHandler.createEmployee("owner", "owner", 1, new Branch(1, "jd", "jd"), "owner", "owner", "d");
+        // reservationHandler.createReservation("fuck", "jorn" , "fatfuckJorn", new Address("gelato", "drei drei", "42069", "jamaica"), 1,1, 2, new LocalDate(1,2,3),new LocalDate(1,2,3),200000, "j@hotmail.sk", "420420420");
         Application.launch(CarRentalApp.class);
 
     }

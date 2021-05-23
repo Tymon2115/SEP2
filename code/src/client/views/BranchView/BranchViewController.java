@@ -45,7 +45,7 @@ public class BranchViewController {
 
 
     public void openAddView(ActionEvent actionEvent) {
-
+        branchViewModel.addBranch();
     }
 
     public void openDeleteView(ActionEvent actionEvent) {

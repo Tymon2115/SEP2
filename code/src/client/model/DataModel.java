@@ -82,7 +82,7 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void receiveBranches(PropertyChangeEvent event) {
-
+        System.out.println(event.getNewValue());
         support.firePropertyChange("branches", null, event.getNewValue());
     }
 

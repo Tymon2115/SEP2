@@ -83,6 +83,7 @@ public class CarViewController {
     }
 
     public void openAddView(javafx.event.ActionEvent actionEvent) {
+        carViewModel.addCar();
     }
 
     public void back(javafx.event.ActionEvent actionEvent) {
