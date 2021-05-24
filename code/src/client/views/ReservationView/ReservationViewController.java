@@ -40,7 +40,7 @@ public class ReservationViewController {
     @FXML
     private TableColumn<Reservation, String> addressCol;
     @FXML
-    private TableColumn<Reservation, String> carCol;
+    private TableColumn<Reservation, Number> carCol;
     @FXML
     private TableColumn<Reservation, Number> startBranchCol;
     @FXML
@@ -72,6 +72,7 @@ public class ReservationViewController {
         priceCol.setCellValueFactory(cellData -> (cellData.getValue().priceProperty()));
         emailCol.setCellValueFactory(cellData -> (cellData.getValue().emailProperty()));
         phoneNumberCol.setCellValueFactory(cellData -> (cellData.getValue().phoneNumberProperty()));
+        carCol.setCellValueFactory(cellData -> (cellData.getValue().carProperty()));
         tableView.setItems(reservationViewModel.getReservations());
     }
 
