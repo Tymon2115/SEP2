@@ -81,7 +81,7 @@ public class DataServer implements Server {
     @Override
     public void deleteEmployee(int employeeId) throws RemoteException {
         System.out.println("Data server");
-        reservationHandler.deleteReservation(employeeId);
+        employeeHandler.deleteEmployee(employeeId);
     }
 
 

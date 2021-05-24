@@ -210,6 +210,46 @@ public class AddEditCarViewModel {
             branch.setValue("Please input branch");
             return false;
         }
+        else if (make.get().length() > 30) {
+            message.set("Please input a make with a maximum of 30 characters");
+            return false;
+        }
+        else if (carModel.get().length() > 50){
+            message.set("Please input a model with a maximum of 50 characters");
+            return false;
+        }
+        else if (color.get().length() > 30) {
+            message.set("Please input a color with a maximum of 30 characters");
+            return false;
+        }
+        else if (numberPlates.get().length() > 10){
+            message.set("Please input number plates with a maximum of 10 characters");
+            return false;
+        }
+        else if (fuelType.get().length() > 50 ) {
+            message.set("Please input a fuel type with a maximum of 50 characters");
+            return false;
+        }
+        else if (fuelConsumption.get().length() > 50) {
+            message.set("Please input a fuel consumption with a maximum of 50 characters");
+            return false;
+        }
+        else if (Integer.parseInt(seats.get()) < 0 || Integer.parseInt(seats.get()) > 100) {
+            message.set("Please input a number of seats that is between 0 and 100");
+            return false;
+        }
+        else if (engine.get().length() > 300) {
+            message.set("Please input an engine with a maximum of 300 characters");
+            return false;
+        }
+        else if (transmission.get().length() > 300) {
+            message.set("Please input a transmission with a maximum of 300 characters");
+            return false;
+        }
+        else if (Double.parseDouble(dailyPrice.get()) < 0.0) {
+            message.set("Please input a price higher than 0");
+            return false;
+        }
         else {
             return true;
         }

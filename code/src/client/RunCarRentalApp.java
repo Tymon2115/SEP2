@@ -26,18 +26,16 @@ public class RunCarRentalApp {
         Application.launch(CarRentalApp.class);
 
 
-        //TODO fix weird bug with delete employee
+
 
         //TODO add proper input validation
+
         //TODO write unit testing
 
-
-
-        //TODO make address show in a normal way in reservation list (toString throws exception :( )
         //TODO make app always full screen
         //TODO make password hidden field in register and edit employee
 
-        //TODO optional : make password sent by email
+
         //TODO optional : encrypt password in client
 
         //TODO optional : make every view look nice like registration/home

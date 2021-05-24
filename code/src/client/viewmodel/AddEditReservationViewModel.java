@@ -242,6 +242,36 @@ public class AddEditReservationViewModel {
             message.setValue("Please input end date");
             return false;
         }
+        else if (name.get().length() > 800) {
+            message.set("Please input a name with a maximum of 800 characters");
+            return false;
+        }
+        else if (surname.get().length() > 40) {
+            message.set("Please input a surname with a maximum of 40 characters");
+            return false;
+        }
+        else if (driversLicence.get().length() > 50) {
+            message.set("Please input a drivers licence ID with a maximum of 50 characters");
+            return false;
+        }
+        else if (addressStreet.get().length() > 100) {
+            message.set("Please input a street with a maximum of 100 characters");
+            return false;
+        }
+        else if (addressCity.get().length() > 100) {
+            message.set("Please input a city with a maximum of 100 characters");
+            return false;
+        }
+        else if (addressZip.get().length() > 12) {
+            message.set("Please input a ZIP with a maximum of 12 characters");
+            return false;
+        }
+        else if (startDate.get().isAfter(endDate.get())) {
+            message.set("Start date cannot be later than the end date");
+            return false;
+        }
+
+
         else {
             return true;
         }

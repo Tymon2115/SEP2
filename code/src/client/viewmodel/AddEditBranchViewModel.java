@@ -55,6 +55,14 @@ public class AddEditBranchViewModel {
             message.setValue("Please input location");
             return false;
         }
+        else if (name.get().length() > 500) {
+            message.set("Please input a name with maximum 500 characters");
+            return false;
+        }
+        else if (location.get().length() > 100) {
+            message.set("Please input a location with a maximum of 500 characters");
+            return false;
+        }
         else {
             return true;
         }

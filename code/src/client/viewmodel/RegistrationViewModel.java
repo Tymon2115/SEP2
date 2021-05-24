@@ -15,6 +15,8 @@ import shared.personel.Employee;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegistrationViewModel {
 
@@ -91,6 +93,17 @@ public class RegistrationViewModel {
     }
 
     private boolean inputVerification () {
+        String specialCharacters = "^[^<>{}\"/|;:.,~!?@#$%^=&*\\]\\\\()\\[¿§«»ω⊙¤°℃℉€¥£¢¡®©0-9_+]*$";
+        Pattern regex = Pattern.compile(specialCharacters);
+
+        Matcher matcher = regex.matcher(password.get());
+
+        if (!matcher.find()) {
+            registrationMessageLabel.set("Please input a password with at least one special character");
+        }
+
+        //TODO oliver : finish input verification
+
         if (firstname.get() == null || "".equals(firstname.get())) {
             registrationMessageLabel.setValue("Please input your first name");
             return false;
@@ -107,9 +120,16 @@ public class RegistrationViewModel {
             registrationMessageLabel.setValue("Please input your password confirmation");
             return false;
         } else if (!password.get().equals(confirmpassword.get())){
-            registrationMessageLabel.setValue("Passwords do not match");
+            registrationMessageLabel.setValue("Please input matching passwords");
             return false;
-        } else {
+        } else if (firstname.get().length() > 800) {
+            registrationMessageLabel.set("Please input a first name with a maximum of 800 characters");
+        } else if (lastname.get().length() > 40) {
+            registrationMessageLabel.set("Please input a last name with a maximum of 40 characters");
+        } else if (password.get().length() < 8) {
+            registrationMessageLabel.set("Please input a password with a minimum length of 8 characters");
+        } else if ()
+            else {
             return true;
         }
     }
