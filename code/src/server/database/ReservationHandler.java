@@ -15,20 +15,20 @@ public class ReservationHandler {
     private final Connection connection = DatabaseConnection.getInstance().getConnection();
     private final BranchHandler branchHandler = new BranchHandler();
     private final CarHandler carHandler = new CarHandler();
+    
 
-
-    public void createReservation (String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws AlreadyExists {
+    public void createReservation(String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber) throws AlreadyExists {
         try {
             Statement statement1 = connection.createStatement();
 
             ResultSet result = statement1.executeQuery("SELECT * FROM reservation WHERE name = '" + name + "' AND surname = '" + surname + "' AND drivers_licence = '" + driversLicence + "' AND address_street = '" + address.getStreet()
-            + "' AND address_city = '" + address.getCity() + "' AND address_zip = '" + address.getZip() + "' AND address_country = '" + address.getCountry() + "' AND car_id = '" + car.getId() + "' AND start_branch_id = '" + startBranch.getId()
-            + "' AND end_branch_id = '" + endBranch.getId() + "' AND start_date = '" + startDate + "' AND end_date = '" + endDate + "' AND price = '" + price + "' AND email = '" + email + "' AND phone_number = '" + phoneNumber +"');");
+                    + "' AND address_city = '" + address.getCity() + "' AND address_zip = '" + address.getZip() + "' AND address_country = '" + address.getCountry() + "' AND car_id = '" + carId + "' AND start_branch_id = '" + startBranchId
+                    + "' AND end_branch_id = '" + endBranchId + "' AND start_date = '" + startDate + "' AND end_date = '" + endDate + "' AND price = '" + price + "' AND email = '" + email + "' AND phone_number = '" + phoneNumber + "';");
 
             if (!result.next()) {
                 Statement statement2 = connection.createStatement();
-                statement2.executeUpdate("INSERT INTO 'reservation' (name, surname, drivers_licence, address_street, address_city, address_zip, address_country, car_id, start_branch_id, end_branch_id, start_date, end_date, price, email, phone_number) " +
-                        "VALUES ('" + name + "','" + surname + "','" + driversLicence + "','" + address.getStreet() + "','" + address.getCity() + "', '" + address.getZip() + "', '" + address.getCountry() + "','" + car.getId() + "', '" + startBranch.getId() + "', '" + endBranch.getId() +
+                statement2.executeUpdate("INSERT INTO reservation (name, surname, drivers_licence, address_street, address_city, address_zip, address_country, car_id, start_branch_id, end_branch_id, start_date, end_date, price, email, phone_number) " +
+                        "VALUES ('" + name + "','" + surname + "','" + driversLicence + "','" + address.getStreet() + "','" + address.getCity() + "', '" + address.getZip() + "', '" + address.getCountry() + "','" + carId + "', '" + startBranchId + "', '" + endBranchId +
                         "', '" + startDate + "','" + endDate + "', '" + price + "', '" + email + "', '" + phoneNumber + "');");
 
                 statement1.close();
@@ -44,7 +44,7 @@ public class ReservationHandler {
         }
     }
 
-    public Reservation getReservation(int searchId){
+    public Reservation getReservation(int searchId) {
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM 'reservation' WHERE id = '" + searchId + "'); ");
@@ -56,9 +56,9 @@ public class ReservationHandler {
             String addressCity = "";
             String addressZip = "";
             String addressCountry = "";
-            Car car = null;
-            Branch startBranch = null;
-            Branch endBranch = null;
+            int carId = 0;
+            int startBranchId = 0;
+            int endBranchId = 0;
             Date startDate = null;
             Date endDate = null;
             double price = 0.0;
@@ -74,9 +74,9 @@ public class ReservationHandler {
                 addressCity = result.getString("address_city");
                 addressZip = result.getString("address_zip");
                 addressCountry = result.getString("address_country");
-                car = carHandler.getCar(result.getInt("car_id"));
-                startBranch = branchHandler.getBranch(result.getInt("start_branch_id"));
-                endBranch = branchHandler.getBranch(result.getInt("end_branch_id"));
+                carId = result.getInt("car_id");
+                startBranchId = result.getInt("start_branch_id");
+                endBranchId = result.getInt("end_branch_id");
                 startDate = result.getDate("start_date");
                 endDate = result.getDate("end_date");
                 price = result.getDouble("price");
@@ -85,7 +85,7 @@ public class ReservationHandler {
             }
             statement.close();
             result.close();
-            Reservation reservation = new Reservation(id, name, surname, driversLicence, new Address(addressStreet, addressCity, addressZip, addressCountry), car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
+            Reservation reservation = new Reservation(id, name, surname, driversLicence, new Address(addressStreet, addressCity, addressZip, addressCountry), carId, startBranchId, endBranchId, startDate, endDate, price, email, phoneNumber);
             return reservation;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -94,11 +94,9 @@ public class ReservationHandler {
 
     }
 
-    public ArrayList<Reservation> getReservations(){
+    public ArrayList<Reservation> getReservations() {
 
         try {
-
-
             int id = 0;
             String name = "";
             String surname = "";
@@ -107,9 +105,9 @@ public class ReservationHandler {
             String addressCity = "";
             String addressZip = "";
             String addressCountry = "";
-            Car car = null;
-            Branch startBranch = null;
-            Branch endBranch = null;
+            int carId = 0;
+            int startBranchId = 0;
+            int endBranchId = 0;
             Date startDate = null;
             Date endDate = null;
             double price = 0.0;
@@ -117,7 +115,7 @@ public class ReservationHandler {
             String phoneNumber = null;
 
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM 'reservation'");
+            ResultSet result = statement.executeQuery("SELECT * FROM reservation");
             ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 
 
@@ -131,43 +129,44 @@ public class ReservationHandler {
                 addressCity = result.getString("address_city");
                 addressZip = result.getString("address_zip");
                 addressCountry = result.getString("address_country");
-                car = carHandler.getCar(result.getInt("car_id"));
-                startBranch = branchHandler.getBranch(result.getInt("start_branch_id"));
-                endBranch = branchHandler.getBranch(result.getInt("end_branch_id"));
+                carId = result.getInt("car_id");
+                startBranchId = result.getInt("start_branch_id");
+                endBranchId = result.getInt("end_branch_id");
                 startDate = result.getDate("start_date");
                 endDate = result.getDate("end_date");
                 price = result.getDouble("price");
                 email = result.getString("email");
                 phoneNumber = result.getString("phone_number");
 
-                reservations.add(new Reservation(id, name, surname, driversLicence, new Address(addressStreet, addressCity, addressZip, addressCountry), car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber));
+                reservations.add(new Reservation(id, name, surname, driversLicence, new Address(addressStreet, addressCity, addressZip, addressCountry), carId, startBranchId, endBranchId, startDate, endDate, price, email, phoneNumber));
             }
+
             return reservations;
-        }
-        catch (SQLException throwables) {
+        } catch (SQLException throwables) {
             throwables.printStackTrace();
             return null;
         }
     }
 
-    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) {
+    public void editReservation(int id, String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber) {
 
 
         try {
 
             Statement statement = connection.createStatement();
             statement.executeUpdate("UPDATE reservation SET name ='" + name + "', surname = '" + surname + "', drivers_licence ='" + driversLicence + "', address_street = '" + address.getStreet() + "', address_city = '" + address.getCity()
-            + "', address_zip = '" + address.getZip() + "', address_country = '" + address.getCountry() + "', car_id = + '" + car.getId() + "', start_branch_id = '" + startBranch.getId() + "', end_branch_id = '" + endBranch.getId()
-            + "', start_date = '" + startDate + "', end_date = '" + endDate + "', price = '" + price + "' WHERE id = '" + id + "', email = '" + email + "', phone_number = '" + phoneNumber + "';");
+                    + "', address_zip = '" + address.getZip() + "', address_country = '" + address.getCountry() + "', car_id = + '" + carId + "', start_branch_id = '" + startBranchId + "', end_branch_id = '" + endBranchId
+                    + "', start_date = '" + startDate + "', end_date = '" + endDate + "', price = '" + price + "' WHERE id = '" + id + "';");
             statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
-    public void deleteReservation(int id){
-        try{
+
+    public void deleteReservation(int id) {
+        try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM reservation where id = '" + id + "';" );
+            statement.executeUpdate("DELETE FROM reservation where id = '" + id + "';");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

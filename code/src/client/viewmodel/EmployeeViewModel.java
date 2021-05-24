@@ -1,48 +1,33 @@
 package client.viewmodel;
 
 import client.core.ViewHandler;
-import client.model.DataModel;
 import client.model.Model;
 import javafx.application.Platform;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import shared.personel.Employee;
 
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 
 public class EmployeeViewModel {
     private final ViewHandler viewHandler;
     private Model model;
-    private PropertyChangeSupport support;
-    private StringProperty name;
-    private StringProperty surname;
-    private IntegerProperty id;
-    private StringProperty branch;
-    private StringProperty username;
-    private StringProperty role;
-    private StringProperty email;
+    private ObservableList<Employee> employees;
 
 
     public EmployeeViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
-        support = new PropertyChangeSupport(this);
-        name = new SimpleStringProperty();
-        surname = new SimpleStringProperty();
-        id = new SimpleIntegerProperty();
-        branch = new SimpleStringProperty();
-        username = new SimpleStringProperty();
-        role = new SimpleStringProperty();
-        email = new SimpleStringProperty();
         this.viewHandler = viewHandler;
         model.addListener(this::listenForEmployees, "employees");
-        model.getEmployees();
+        employees = FXCollections.observableArrayList();
     }
 
     private void listenForEmployees(PropertyChangeEvent event) {
         Platform.runLater(() -> {
-            System.out.println("employee view model");
+            employees.clear();
+            ArrayList<Employee> receivedEmployees = (ArrayList<Employee>) event.getNewValue();
+            employees.addAll(receivedEmployees);
         });
 
     }
@@ -51,33 +36,22 @@ public class EmployeeViewModel {
         viewHandler.openFrontPageView();
     }
 
-    public StringProperty nameProperty() {
-        return name;
+
+    public ObservableList<Employee> getEmployees() {
+       return employees;
     }
 
-    public StringProperty surnameProperty() {
-        return surname;
+    public void openRegistrationView () {
+        viewHandler.openRegistrationView();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
+    public void openEditView (Employee selectedEmployee) {
+        viewHandler.openEmployeeEditView(selectedEmployee);
     }
 
-    public StringProperty branchProperty() {
-        return branch;
+    public void deleteAction (int id) {
+        System.out.println("Here");
+        model.deleteEmployee(id);
+        model.getEmployees();
     }
-
-    public StringProperty usernameProperty() {
-        return username;
-    }
-
-    public StringProperty roleProperty() {
-        return role;
-    }
-
-    public StringProperty emailProperty() {
-        return email;
-    }
-
-
 }

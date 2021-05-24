@@ -30,7 +30,7 @@ public class ReservationViewController {
     @FXML
     TableView<Reservation> tableView;
     @FXML
-    private TableColumn<Reservation, Integer> idCol;
+    private TableColumn<Reservation, Number> idCol;
     @FXML
     private TableColumn<Reservation, String> nameCol;
     @FXML
@@ -42,40 +42,61 @@ public class ReservationViewController {
     @FXML
     private TableColumn<Reservation, String> carCol;
     @FXML
-    private TableColumn<Reservation, String> startBranchCol;
+    private TableColumn<Reservation, Number> startBranchCol;
     @FXML
-    private TableColumn<Reservation, String> endBranchCol;
+    private TableColumn<Reservation, Number> endBranchCol;
     @FXML
     private TableColumn<Reservation, String> startDateCol;
     @FXML
     private TableColumn<Reservation, String> endDateCol;
     @FXML
-    private TableColumn<Reservation, String> priceCol;
+    private TableColumn<Reservation, Number> priceCol;
     @FXML
     private TableColumn<Reservation, String> emailCol;
     @FXML
     private TableColumn<Reservation, String> phoneNumberCol;
     ReservationViewModel reservationViewModel;
 
-    public void init(ReservationViewModel reservationViewModel)  {
+    public void init(ReservationViewModel reservationViewModel) {
+        tableView.getItems().clear();
         this.reservationViewModel = reservationViewModel;
+        idCol.setCellValueFactory(cellData -> (cellData.getValue().idProperty()));
+        nameCol.setCellValueFactory(cellData -> (cellData.getValue().nameProperty()));
+        surnameCol.setCellValueFactory((cellData -> (cellData.getValue().surnameProperty())));
+        driversLicenceCol.setCellValueFactory(cellData -> (cellData.getValue().driversLicenseProperty()));
+        addressCol.setCellValueFactory(cellData -> (cellData.getValue().addressProperty()));
+        startBranchCol.setCellValueFactory((cellData -> (cellData.getValue().startBranchProperty())));
+        endBranchCol.setCellValueFactory(cellData -> (cellData.getValue().endBranchProperty()));
+        startDateCol.setCellValueFactory(cellData -> (cellData.getValue().startDateProperty()));
+        endDateCol.setCellValueFactory(cellData -> (cellData.getValue().endDateProperty()));
+        priceCol.setCellValueFactory(cellData -> (cellData.getValue().priceProperty()));
+        emailCol.setCellValueFactory(cellData -> (cellData.getValue().emailProperty()));
+        phoneNumberCol.setCellValueFactory(cellData -> (cellData.getValue().phoneNumberProperty()));
+        tableView.setItems(reservationViewModel.getReservations());
     }
 
 
-
-    public void onDeleteButton(ActionEvent actionEvent) {
-
+    public void deleteAction(ActionEvent actionEvent) {
+        if (tableView.getSelectionModel().getSelectedItems().get(0) != null)
+        reservationViewModel.deleteAction(tableView.getSelectionModel().getSelectedItems().get(0).getId());
     }
 
-    public void onEditButton(ActionEvent actionEvent) {
+    public void openEditView(ActionEvent actionEvent) {
+
+        if (tableView.getSelectionModel().getSelectedItems().get(0) != null) {
+            Reservation selectedReservation = tableView.getSelectionModel().getSelectedItems().get(0);
+            reservationViewModel.openEditView(selectedReservation);
+        }
 
     }
 
     public void onAddButton(ActionEvent actionEvent) {
-
+        reservationViewModel.getAddReservationView();
     }
-    public void home(ActionEvent actionEvent){
+
+    public void home(ActionEvent actionEvent) {
         reservationViewModel.home();
     }
+
 
 }

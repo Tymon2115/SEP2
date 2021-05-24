@@ -64,25 +64,28 @@ public class CarViewController {
 
         this.carViewModel = carViewModel;
         column_branch.setCellValueFactory(cellData -> (cellData.getValue().branchIdProperty()));
-        column_dailyprice.setCellValueFactory(celldata -> (celldata.getValue().dailyPriceProperty()));
-        column_description.setCellValueFactory(celldata -> (celldata.getValue().descriptionProperty()));
-        column_engine.setCellValueFactory(celldata -> (celldata.getValue().engineProperty()));
-        column_equipment.setCellValueFactory(celldata -> (celldata.getValue().equipmentProperty()));
-        column_fuelconsumption.setCellValueFactory(celldata -> (celldata.getValue().fuelConsumptionProperty()));
-        column_fueltype.setCellValueFactory(celldata -> (celldata.getValue().fuelTypeProperty()));
-        column_id.setCellValueFactory(celldata -> (celldata.getValue().idProperty()));
-        column_make.setCellValueFactory(celldata -> (celldata.getValue().makeProperty()));
-        column_model.setCellValueFactory(celldata -> (celldata.getValue().modelProperty()));
-        column_numberplates.setCellValueFactory(celldata -> (celldata.getValue().numberPlatesProperty()));
-        column_seats.setCellValueFactory(celldata -> (celldata.getValue().seatsProperty()));
-        column_transmission.setCellValueFactory(celldata -> (celldata.getValue().transmissionProperty()));
+        column_dailyprice.setCellValueFactory(cellData -> (cellData.getValue().dailyPriceProperty()));
+        column_description.setCellValueFactory(cellData -> (cellData.getValue().descriptionProperty()));
+        column_engine.setCellValueFactory(cellData -> (cellData.getValue().engineProperty()));
+        column_equipment.setCellValueFactory(cellData -> (cellData.getValue().equipmentProperty()));
+        column_fuelconsumption.setCellValueFactory(cellData -> (cellData.getValue().fuelConsumptionProperty()));
+        column_fueltype.setCellValueFactory(cellData -> (cellData.getValue().fuelTypeProperty()));
+        column_id.setCellValueFactory(cellData -> (cellData.getValue().idProperty()));
+        column_make.setCellValueFactory(cellData -> (cellData.getValue().makeProperty()));
+        column_model.setCellValueFactory(cellData -> (cellData.getValue().modelProperty()));
+        column_numberplates.setCellValueFactory(cellData -> (cellData.getValue().numberPlatesProperty()));
+        column_seats.setCellValueFactory(cellData -> (cellData.getValue().seatsProperty()));
+        column_transmission.setCellValueFactory(cellData -> (cellData.getValue().transmissionProperty()));
         tableview_car.setItems(carViewModel.getCars());
     }
 
-    public void openDeleteView(javafx.event.ActionEvent actionEvent) {
+    public void deleteAction () {
+        if(tableview_car.getSelectionModel().getSelectedItems().get(0) != null)
+        carViewModel.deleteAction(tableview_car.getSelectionModel().getSelectedItems().get(0).getId());
     }
 
     public void openAddView(javafx.event.ActionEvent actionEvent) {
+        carViewModel.openAddCarView();
     }
 
     public void back(javafx.event.ActionEvent actionEvent) {
@@ -90,5 +93,10 @@ public class CarViewController {
     }
 
     public void openEditView(javafx.event.ActionEvent actionEvent) {
+
+        if (tableview_car.getSelectionModel().getSelectedItem() != null) {
+            Car selectedCar = tableview_car.getSelectionModel().getSelectedItems().get(0);
+            carViewModel.openEditView(selectedCar);
+        }
     }
 }

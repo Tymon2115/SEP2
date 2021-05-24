@@ -11,28 +11,26 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.863528009535161" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-           minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/11.0.1"
-           xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.CarViewController">
+<SplitPane dividerPositions="0.863528009535161" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.CarViewController">
     <items>
         <ScrollPane prefHeight="200.0" prefWidth="200.0">
             <content>
                 <TableView fx:id="tableview_car" prefHeight="1044.0" prefWidth="1474.0">
                     <columns>
-                        <TableColumn fx:id="column_id" prefWidth="75.0" text="ID"/>
-                        <TableColumn fx:id="column_make" prefWidth="75.0" text="Make"/>
-                        <TableColumn fx:id="column_model" prefWidth="75.0" text="Model"/>
-                        <TableColumn fx:id="column_color" prefWidth="90.0" text="Color"/>
-                        <TableColumn fx:id="column_numberplates" text="Number Plates"/>
-                        <TableColumn fx:id="column_fueltype" prefWidth="115.0" text="Fuel Type"/>
-                        <TableColumn fx:id="column_fuelconsumption" prefWidth="98.0" text="Fuel Consumption"/>
-                        <TableColumn fx:id="column_seats" prefWidth="103.0" text="Seats"/>
-                        <TableColumn fx:id="column_engine" prefWidth="121.0" text="Engine"/>
-                        <TableColumn fx:id="column_transmission" prefWidth="97.0" text="Transmission"/>
-                        <TableColumn fx:id="column_equipment" prefWidth="123.0" text="Equipment"/>
-                        <TableColumn fx:id="column_description" prefWidth="119.0" text="Description"/>
-                        <TableColumn fx:id="column_branch" prefWidth="120.0" text="Branch"/>
-                        <TableColumn fx:id="column_dailyprice" prefWidth="120.0" text="Daily Price"/>
+                        <TableColumn fx:id="column_id" prefWidth="75.0" text="ID" />
+                        <TableColumn fx:id="column_make" prefWidth="75.0" text="Make" />
+                        <TableColumn fx:id="column_model" prefWidth="75.0" text="Model" />
+                        <TableColumn fx:id="column_color" prefWidth="90.0" text="Color" />
+                        <TableColumn fx:id="column_numberplates" text="Number Plates" />
+                        <TableColumn fx:id="column_fueltype" prefWidth="115.0" text="Fuel Type" />
+                        <TableColumn fx:id="column_fuelconsumption" prefWidth="98.0" text="Fuel Consumption" />
+                        <TableColumn fx:id="column_seats" prefWidth="103.0" text="Seats" />
+                        <TableColumn fx:id="column_engine" prefWidth="121.0" text="Engine" />
+                        <TableColumn fx:id="column_transmission" prefWidth="97.0" text="Transmission" />
+                        <TableColumn fx:id="column_equipment" prefWidth="123.0" text="Equipment" />
+                        <TableColumn fx:id="column_description" prefWidth="119.0" text="Description" />
+                        <TableColumn fx:id="column_branch" prefWidth="120.0" text="Branch" />
+                        <TableColumn fx:id="column_dailyprice" prefWidth="120.0" text="Daily Price" />
                     </columns>
                 </TableView>
             </content>
@@ -41,42 +39,38 @@
             <children>
                 <HBox prefHeight="135.0" prefWidth="393.0">
                     <children>
-                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#openAddView" prefHeight="175.0"
-                                prefWidth="300.0">
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#openAddView" prefHeight="175.0" prefWidth="300.0">
                             <graphic>
-                                <ImageView fitHeight="71.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="71.0" fitWidth="67.0" onDragDetected="#openAddView" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/plus.png"/>
+                                        <Image url="@../icons/plus.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#openDeleteView"
-                                prefHeight="158.0" prefWidth="300.0">
+                        <Button mnemonicParsing="false" onAction="#deleteAction" prefHeight="158.0" prefWidth="300.0">
                             <graphic>
                                 <ImageView fitHeight="122.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/minus.png"/>
+                                        <Image url="@../icons/minus.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
                     </children>
                 </HBox>
-                <Button fx:id="editButton" mnemonicParsing="false" onAction="#openEditView" prefHeight="175.0"
-                        prefWidth="1000.0">
+                <Button fx:id="editButton" mnemonicParsing="false" onAction="#openEditView" prefHeight="175.0" prefWidth="1000.0">
                     <graphic>
                         <ImageView fitHeight="86.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../icons/editIcon.png"/>
+                                <Image url="@../icons/editIcon.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" prefHeight="175.0"
-                        prefWidth="1000.0">
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" prefHeight="175.0" prefWidth="1000.0">
                     <graphic>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Back // replace for back button"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Back // replace for back button" />
                     </graphic>
                 </Button>
             </children>

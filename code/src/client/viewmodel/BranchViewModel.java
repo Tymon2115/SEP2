@@ -17,13 +17,15 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
-public class BranchViewModel  {
+public class BranchViewModel {
     private Model model;
-    private ViewHandler viewHandler;
+    private final ViewHandler viewHandler;
     private ObservableList<Branch> branches;
+
     public BranchViewModel(Model model, ViewHandler viewHandler) {
         branches = FXCollections.observableArrayList();
         this.model = model;
+
         model.getBranches();
         this.viewHandler = viewHandler;
         model.addListener(this::listenForBranches, "branches");
@@ -40,16 +42,30 @@ public class BranchViewModel  {
 
     public void listenForBranches(PropertyChangeEvent event) {
         Platform.runLater(() -> {
-            System.out.println("we are in branch viewmodel");
+            branches.clear();
             ArrayList<Branch> receivedBranches = (ArrayList<Branch>) event.getNewValue();
             branches.addAll(receivedBranches);
         });
     }
-
+    public void addBranch(){
+        viewHandler.openAddBranchView();
+    }
 
     public ObservableList<Branch> getBranches() {
         return branches;
     }
 
+    public void getAddBranchView () {
+        viewHandler.openAddBranchView();
+    }
+
+    public void openEditView (Branch selectedBranch) {
+        viewHandler.openBranchEditView(selectedBranch);
+    }
+
+    public void deleteAction (int id) {
+        model.deleteBranch(id);
+        model.getBranches();
+    }
 
 }

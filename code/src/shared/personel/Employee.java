@@ -1,37 +1,34 @@
 package shared.personel;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import shared.Branch.Branch;
 
 import java.io.Serializable;
 
-public class Employee implements Serializable{
+public class Employee implements Serializable {
     private String name;
     private String surname;
     private int id;
-    private Branch branch;
+    private int branchId;
     private String username;
     private String password;
     int roleId;
     private String email;
 
-    public Employee(int id, String name, String surname, int roleId, Branch branch, String username, String password, String email) {
+    public Employee(int id, String name, String surname, int roleId, int branchId, String username, String password, String email) {
         this.name = name;
         this.surname = surname;
         this.id = id;
-        this.branch = branch;
+        this.branchId = branchId;
         this.roleId = roleId;
         this.username = username;
         this.password = password;
         this.email = email;
     }
 
-    public Employee(String firstName, String lastName, String username, String password)
-    {
-        this.name = firstName;
-        this.surname = lastName;
-        this.username = username;
-        this.password = password;
-    }
 
     public String getName() {
         return name;
@@ -45,8 +42,8 @@ public class Employee implements Serializable{
         return id;
     }
 
-    public Branch getBranch() {
-        return branch;
+    public int getBranchId() {
+        return branchId;
     }
 
     public void setName(String name) {
@@ -57,8 +54,37 @@ public class Employee implements Serializable{
         this.surname = surname;
     }
 
-    public void setBranch(Branch branch) {
-        this.branch = branch;
+    public void setBranchId(int branchId) {
+        this.branchId = branchId;
+    }
+
+
+    public StringProperty nameProperty() {
+        return new SimpleStringProperty(name);
+    }
+
+    public StringProperty surnameProperty() {
+        return new SimpleStringProperty(surname);
+    }
+
+    public IntegerProperty idProperty() {
+        return new SimpleIntegerProperty(id);
+    }
+
+    public StringProperty branchIdProperty() {
+        return new SimpleStringProperty(String.valueOf(branchId));
+    }
+
+    public StringProperty usernameProperty() {
+        return new SimpleStringProperty(username);
+    }
+
+    public IntegerProperty roleProperty() {
+        return new SimpleIntegerProperty(roleId);
+    }
+
+    public StringProperty emailProperty() {
+        return new SimpleStringProperty(email);
     }
 
     @Override
@@ -67,7 +93,7 @@ public class Employee implements Serializable{
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", id=" + id +
-                ", branch=" + branch +
+                ", branch=" + branchId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", roleId=" + roleId +

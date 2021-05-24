@@ -2,9 +2,14 @@ package client.viewmodel;
 
 import client.core.ViewHandler;
 import client.model.Model;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
+import shared.Branch.Branch;
 
+import javax.print.DocFlavor;
 import java.beans.PropertyChangeSupport;
 
 public class AddEditBranchViewModel {
@@ -12,6 +17,7 @@ public class AddEditBranchViewModel {
     private Model model;
     private PropertyChangeSupport support;
     private ViewHandler viewHandler;
+
 
     private StringProperty name;
     private StringProperty location;
@@ -56,28 +62,33 @@ public class AddEditBranchViewModel {
 
     public void addAction() {
         if (inputVerification()) {
-            //TODO call add in model and go back to list view
+            model.createBranch(name.getValue(), location.getValue());
+            model.getBranches();
+            viewHandler.openBranchView();
+            name.set("");
+            location.set("");
         }
         else {
-            //shouldnt do anything
+            //shouldn't do anything
         }
 
     }
 
     public void cancelAction () {
-        //TODO go back to list
+        viewHandler.openBranchView();
     }
 
-    public void editAction () {
+    public void editAction (int id) {
         if (inputVerification()) {
-            //TODO call add in model and go back to list
+            model.editBranch(id, name.get(), location.get());
+            model.getBranches();
+            viewHandler.openBranchView();
+            name.set("");
+            location.set("e");
         } else {
-            //shouldnt do anything
+            //shouldn't do anything
         }
     }
-
-
-
 
 
 }

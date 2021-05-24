@@ -36,24 +36,30 @@ public class BranchViewController {
 
     public void init(BranchViewModel branchViewModel) {
         this.branchViewModel = branchViewModel;
+        tableView.getItems().clear();
         idName.setCellValueFactory(cellData -> (cellData.getValue().nameProperty()));
         idCol.setCellValueFactory(cellData -> (cellData.getValue().idProperty()));
         idLocation.setCellValueFactory(cellData -> (cellData.getValue().locationProperty()));
-        System.out.println(branchViewModel.getBranches());
         tableView.setItems(branchViewModel.getBranches());
     }
 
 
     public void openAddView(ActionEvent actionEvent) {
-
+        branchViewModel.getAddBranchView();
     }
 
-    public void openDeleteView(ActionEvent actionEvent) {
+    public void deleteAction () {
+        if (tableView.getSelectionModel().getSelectedItems().get(0) != null) {
+            branchViewModel.deleteAction(tableView.getSelectionModel().getSelectedItems().get(0).getId());
+        }
 
     }
 
     public void openEditView(ActionEvent actionEvent) {
-
+        if (tableView.getSelectionModel().getSelectedItem() != null) {
+            Branch selectedBranch = tableView.getSelectionModel().getSelectedItems().get(0);
+            branchViewModel.openEditView(selectedBranch);
+        }
     }
 
     public void goBack(ActionEvent actionEvent) {

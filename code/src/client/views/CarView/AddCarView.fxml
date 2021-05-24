@@ -7,11 +7,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.AddCarViewController">
     <children>
         <Text layoutX="211.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Plates" />
         <TextField fx:id="makeTextField" layoutX="312.0" layoutY="42.0" />
-        <Text layoutX="310.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Car" />
         <Text layoutX="210.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel Type" />
         <TextField fx:id="modelTextField" layoutX="312.0" layoutY="77.0" />
         <Button fx:id="cancelButton" layoutX="256.0" layoutY="615.0" mnemonicParsing="false" onAction="#cancelAction" text="Cancel" />
@@ -33,11 +32,11 @@
       <TextField fx:id="fuelConsumptionTextField" layoutX="312.0" layoutY="225.0" />
       <TextField fx:id="seatsTextField" layoutX="312.0" layoutY="267.0" />
       <TextField fx:id="engineTextField" layoutX="312.0" layoutY="304.0" />
-      <TextField fx:id="locationTextField115" layoutX="312.0" layoutY="348.0" />
+      <TextField fx:id="transmissionTextField" layoutX="312.0" layoutY="348.0" />
       <TextField fx:id="equipmentTextField" layoutX="312.0" layoutY="390.0" />
       <TextField fx:id="descriptionTextField" layoutX="312.0" layoutY="435.0" />
       <TextField fx:id="dailyPriceTextField" layoutX="312.0" layoutY="516.0" />
       <ComboBox fx:id="branchComboBox" layoutX="312.0" layoutY="476.0" prefHeight="31.0" prefWidth="161.0" />
-      <Label fx:id="messageLabel" layoutX="332.0" layoutY="575.0" />
+      <Label fx:id="messageLabel" layoutX="263.0" layoutY="575.0" prefHeight="15.0" prefWidth="150.0" />
     </children>
 </AnchorPane>

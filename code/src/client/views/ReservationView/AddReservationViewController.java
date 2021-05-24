@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import shared.Reservation.Car;
 
 
 public class AddReservationViewController {
@@ -34,11 +35,11 @@ public class AddReservationViewController {
     @FXML
     private TextField phoneNumberTextField;
     @FXML
-    private ComboBox carComboBox;
+    private ComboBox<String> carComboBox;
     @FXML
-    private ComboBox startBranchComboBox;
+    private ComboBox<String> startBranchComboBox;
     @FXML
-    private ComboBox endBranchComboBox;
+    private ComboBox<String> endBranchComboBox;
     @FXML
     private DatePicker startDateDatePicker;
     @FXML
@@ -47,10 +48,13 @@ public class AddReservationViewController {
     private Label messageLabel;
 
     public void init (AddEditReservationViewModel addEditReservationViewModel) {
+
+        System.out.println("We are in controller");
+        System.out.println(addEditReservationViewModel.getBranches());
         this.addEditReservationViewModel = addEditReservationViewModel;
         nameTextField.textProperty().bindBidirectional(addEditReservationViewModel.nameProperty());
         surnameTextField.textProperty().bindBidirectional(addEditReservationViewModel.surnameProperty());
-        driversLicenceTextField.textProperty().bindBidirectional(addEditReservationViewModel.surnameProperty());
+        driversLicenceTextField.textProperty().bindBidirectional(addEditReservationViewModel.driversLicenceProperty());
         streetTextField.textProperty().bindBidirectional(addEditReservationViewModel.addressStreetProperty());
         cityTextField.textProperty().bindBidirectional(addEditReservationViewModel.addressCityProperty());
         zipTextField.textProperty().bindBidirectional(addEditReservationViewModel.addressZipProperty());
@@ -58,11 +62,16 @@ public class AddReservationViewController {
         priceTextField.textProperty().bindBidirectional(addEditReservationViewModel.priceProperty());
         emailTextField.textProperty().bindBidirectional(addEditReservationViewModel.emailProperty());
         phoneNumberTextField.textProperty().bindBidirectional(addEditReservationViewModel.phoneNumberProperty());
-        carComboBox.valueProperty().bindBidirectional(addEditReservationViewModel.phoneNumberProperty());
+        carComboBox.valueProperty().bindBidirectional(addEditReservationViewModel.carProperty());
         startBranchComboBox.valueProperty().bindBidirectional(addEditReservationViewModel.startBranchProperty());
         endBranchComboBox.valueProperty().bindBidirectional(addEditReservationViewModel.endBranchProperty());
         startDateDatePicker.valueProperty().bindBidirectional(addEditReservationViewModel.startDateProperty());
         endDateDatePicker.valueProperty().bindBidirectional(addEditReservationViewModel.endDateProperty());
+        messageLabel.textProperty().bindBidirectional(addEditReservationViewModel.messageProperty());
+
+        startBranchComboBox.setItems(addEditReservationViewModel.getBranches());
+        endBranchComboBox.setItems(addEditReservationViewModel.getBranches());
+        carComboBox.setItems(addEditReservationViewModel.getCars());
     }
 
     public void cancelAction () {

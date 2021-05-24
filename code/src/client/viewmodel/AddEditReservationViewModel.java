@@ -2,21 +2,31 @@ package client.viewmodel;
 
 import client.core.ViewHandler;
 import client.model.Model;
+import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import shared.Branch.Branch;
 import shared.Reservation.Address;
+import shared.Reservation.Car;
+import shared.Reservation.Reservation;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class AddEditReservationViewModel {
     private Model model;
     private PropertyChangeSupport support;
     private ViewHandler viewHandler;
+    private ObservableList<String> branches;
+    private ObservableList<String> cars;
 
-
-    //TODO im not sure if this is the right way to bind a combo box and a date
 
 
     private StringProperty name;
@@ -36,12 +46,35 @@ public class AddEditReservationViewModel {
     private ObjectProperty<LocalDate> endDate;
     private StringProperty message;
 
+
+
     public AddEditReservationViewModel (Model model, ViewHandler viewHandler) {
         this.model = model;
+        model.addListener(this::listenForBranches, "branches");
+        model.addListener(this::listenForCars, "cars");
+        model.getBranches();
+        model.getCars();
         this.viewHandler = viewHandler;
-        this.support = new PropertyChangeSupport(this);
-    }
+        branches = FXCollections.observableArrayList();
+        cars = FXCollections.observableArrayList();
 
+        name = new SimpleStringProperty();
+        surname = new SimpleStringProperty();
+        driversLicence = new SimpleStringProperty();
+        addressCity = new SimpleStringProperty();
+        addressStreet = new SimpleStringProperty();
+        addressZip = new SimpleStringProperty();
+        addressCountry = new SimpleStringProperty();
+        email = new SimpleStringProperty();
+        phoneNumber = new SimpleStringProperty();
+        startBranch = new SimpleStringProperty();
+        price = new SimpleStringProperty();
+        car = new SimpleStringProperty();
+        endBranch = new SimpleStringProperty();
+        startDate = new SimpleObjectProperty<>();
+        endDate = new SimpleObjectProperty<>();
+        message = new SimpleStringProperty();
+    }
     public StringProperty nameProperty () {
         return name;
     }
@@ -102,10 +135,55 @@ public class AddEditReservationViewModel {
         return endDate;
     }
 
+    public StringProperty messageProperty () {
+        return message;
+    }
+
+    private void listenForBranches(PropertyChangeEvent propertyChangeEvent) {
+        Platform.runLater(() -> {
+            branches.clear();
+
+            ArrayList<Branch> receivedBranches = (ArrayList<Branch>) propertyChangeEvent.getNewValue();
+            ArrayList<String> receivedBranchNumbers = new ArrayList<>();
+            for (Branch receivedBranch : receivedBranches) {
+                receivedBranchNumbers.add(String.valueOf(receivedBranch.getId()));
+            }
+            branches.addAll(receivedBranchNumbers);
+
+        });
+    }
+
+    private void listenForCars(PropertyChangeEvent propertyChangeEvent) {
+        Platform.runLater(() -> {
+
+            cars.clear();
+
+            ArrayList<Car> receivedCars = (ArrayList<Car>) propertyChangeEvent.getNewValue();
+            ArrayList<String> receivedCarNumbers = new ArrayList<>();
+            for (Car receivedCar : receivedCars) {
+                receivedCarNumbers.add(String.valueOf(receivedCar.getId()));
+            }
+            cars.addAll(receivedCarNumbers);
+
+        });
+    }
+
+    public ObservableList<String> getCars() {
+        return cars;
+    }
+
+    public ObservableList<String> getBranches() {
+        return branches;
+    }
+
+
 
     private boolean inputVerification() {
+
         if (name.get() == null || name.get().equals("")) {
+
             message.setValue("Please input name");
+
             return false;
         }
         else if (surname.get() == null || surname.get().equals("")) {
@@ -170,26 +248,92 @@ public class AddEditReservationViewModel {
     }
 
     public void cancelAction () {
-        //TODO go back to list view
+        viewHandler.openReservationView();
     }
 
     public void addAction () {
         if (inputVerification()){
-            //TODO call add in model and go back to list
+            model.createReservation(name.get(),
+                    surname.get(),
+                    driversLicence.get(),
+                    new Address(addressStreet.get(), addressZip.get(), addressCity.get(), addressCountry.get()),
+                    Integer.parseInt(car.get()),
+                    Integer.parseInt(startBranch.get()),
+                    Integer.parseInt(endBranch.get()),
+                    getSQLDateFromStartDate(),
+                    getSQLDateFromEndDate(),
+                    Double.valueOf(price.get()),
+                    email.get(),
+                    phoneNumber.get());
+
+                    model.getReservations();
+                    viewHandler.openReservationView();
+                    name.set("");
+                    surname.set("");
+                    driversLicence.set("");
+                    addressStreet.set("");
+                    addressZip.set("");
+                    addressCity.set("");
+                    addressCountry.set("");
+                    email.set("");
+                    phoneNumber.set("");
+                    price.set("");
+
         }
         else {
-            //shouldnt do anyhing
+
         }
 
     }
 
-    public void editAction () {
+    public void editAction (int id) {
         if (inputVerification()){
-            //TODO call add in model and go back to list
+                model.editReservation(
+                        id,
+                        name.get(),
+                        surname.get(),
+                        driversLicence.get(),
+                        new Address(addressStreet.get(), addressCity.get(), addressZip.get(), addressCountry.get()),
+                        Integer.parseInt(car.get()),
+                        Integer.parseInt(startBranch.get()),
+                        Integer.parseInt(endBranch.get()),
+                        getSQLDateFromStartDate(),
+                        getSQLDateFromEndDate(),
+                        Double.parseDouble(price.get()),
+                        email.get(),
+                        phoneNumber.get()
+                );
+                model.getReservations();
+                viewHandler.openReservationView();
+                name.set("");
+                surname.set("");
+                driversLicence.set("");
+                addressCity.set("");
+                addressStreet.set("");
+                addressZip.set("");
+                addressCountry.set("");
+                car.set("");
+                startBranch.set("");
+                endBranch.set("");
+                startDate.set(null);
+                endDate.set(null);
+                price.set("");
+                email.set("");
+                phoneNumber.set("");
         }
         else {
-            //shouldnt do anything
+            //shouldn't do anything
         }
+    }
+
+    private Date getSQLDateFromStartDate () {
+        java.sql.Date date = Date.valueOf(startDate.getValue());
+        return date;
+    }
+
+    private Date getSQLDateFromEndDate () {
+        java.sql.Date date = Date.valueOf(endDate.getValue());
+        return date;
     }
 
 }
