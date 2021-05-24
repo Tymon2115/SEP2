@@ -23,7 +23,6 @@ public class RunCarRentalApp {
         CarHandler carHandler = new CarHandler();
         ReservationHandler reservationHandler = new ReservationHandler();
         LocalDate localDate;
-
         Application.launch(CarRentalApp.class);
 
 

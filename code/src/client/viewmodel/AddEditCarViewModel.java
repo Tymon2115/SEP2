@@ -3,8 +3,10 @@ package client.viewmodel;
 import client.core.ViewHandler;
 import client.model.Model;
 import javafx.application.Platform;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.Branch.Branch;
@@ -15,10 +17,12 @@ import java.util.ArrayList;
 
 public class AddEditCarViewModel {
 
+
     private Model model;
     private PropertyChangeSupport support;
     private ViewHandler viewHandler;
     private ObservableList<String> branches;
+
 
     private StringProperty make;
     private StringProperty carModel;
@@ -32,16 +36,20 @@ public class AddEditCarViewModel {
     private StringProperty equipment;
     private StringProperty description;
     private StringProperty dailyPrice;
+
     private StringProperty branch;
     private StringProperty message;
+
 
     public AddEditCarViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
         this.viewHandler = viewHandler;
+
         this.support = new PropertyChangeSupport(this);
         model.addListener(this::listenForBranches, "branches");
         model.getBranches();
         branches = FXCollections.observableArrayList();
+
 
         make = new SimpleStringProperty();
         carModel = new SimpleStringProperty();
@@ -55,6 +63,7 @@ public class AddEditCarViewModel {
         equipment = new SimpleStringProperty();
         description = new SimpleStringProperty();
         dailyPrice = new SimpleStringProperty();
+
         branch = new SimpleStringProperty();
         message = new SimpleStringProperty();
     }
@@ -75,47 +84,61 @@ public class AddEditCarViewModel {
 
     public ObservableList<String> getBranches() {
         return branches;
+
     }
 
     public StringProperty makeProperty() {
         return make;
     }
 
+
+
     public StringProperty carModelProperty() {
         return carModel;
     }
+
+
 
     public StringProperty colorProperty() {
         return color;
     }
 
+
     public StringProperty numberPlatesProperty () {
         return numberPlates;
     }
+
 
     public StringProperty fuelTypeProperty() {
         return fuelType;
     }
 
+
+
     public StringProperty fuelConsumptionProperty() {
         return fuelConsumption;
     }
+
 
     public StringProperty seatsProperty() {
         return seats;
     }
 
+
     public StringProperty engineProperty() {
         return engine;
     }
+
 
     public StringProperty transmissionProperty() {
         return transmission;
     }
 
+
     public StringProperty equipmentProperty() {
         return equipment;
     }
+
 
     public StringProperty descriptionProperty () {
         return description;
@@ -272,6 +295,7 @@ public class AddEditCarViewModel {
             //shouldn't do anything
         }
     }
+
 
 
 }

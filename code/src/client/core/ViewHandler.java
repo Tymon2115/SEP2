@@ -198,7 +198,6 @@ public class ViewHandler {
         }
     }
 
-
     public void openAddBranchView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/BranchView/AddBranchView.fxml"));
