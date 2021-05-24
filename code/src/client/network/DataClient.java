@@ -52,22 +52,22 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException {
-        server.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
+    public void editReservation(int id, String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber) throws RemoteException {
+        server.editReservation(id, name, surname, driversLicence, address, carId, startBranchId, endBranchId, startDate, endDate, price, email, phoneNumber);
     }
 
     @Override
-    public void deleteReservation(Reservation reservation) {
+    public void deleteReservation(int reservationId) {
         try {
-            server.deleteReservation(reservation);
+            server.deleteReservation(reservationId);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
     }
 
-    public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email) {
+    public void createEmployee(String name, String surname, int roleId, int branchId, String username, String password, String email) {
         try {
-            server.createEmployee(name, surname, roleId, branch, username, password, email);
+            server.createEmployee(name, surname, roleId, branchId, username, password, email);
 
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -80,8 +80,8 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void editEmployee(int id, String name, String surname, int roleId, Branch branch, String username, String password, String email) throws RemoteException {
-        server.editEmployee(id, name, surname, roleId, branch, username, password, email);
+    public void editEmployee(int id, String name, String surname, int roleId, int branchId, String username, String password, String email) throws RemoteException {
+        server.editEmployee(id, name, surname, roleId, branchId, username, password, email);
     }
 
     @Override
@@ -90,9 +90,10 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void deleteEmployee(Employee employee) {
+    public void deleteEmployee(int employeeId) {
         try {
-            server.deleteEmployee(employee);
+            System.out.println("Data client");
+            server.deleteEmployee(employeeId);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -128,9 +129,9 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void deleteCar(Car car) {
+    public void deleteCar(int carId) {
         try {
-            server.deleteCar(car);
+            server.deleteCar(carId);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -161,9 +162,10 @@ public class DataClient implements Client, PropertyChangeSubject {
     }
 
     @Override
-    public void deleteBranch(Branch branch) {
+    public void deleteBranch(int branchId) {
         try {
-            server.deleteBranch(branch);
+
+            server.deleteBranch(branchId);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

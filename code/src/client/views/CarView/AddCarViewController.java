@@ -9,8 +9,30 @@ import javafx.scene.control.TextField;
 
 public class AddCarViewController {
 
-
     private AddEditCarViewModel addEditCarViewModel;
+
+    public void init (AddEditCarViewModel addEditCarViewModel) {
+        System.out.println(addEditCarViewModel.getBranches());
+        branchComboBox.setItems(addEditCarViewModel.getBranches());
+
+        this.addEditCarViewModel = addEditCarViewModel;
+        makeTextField.textProperty().bindBidirectional(addEditCarViewModel.makeProperty());
+        modelTextField.textProperty().bindBidirectional(addEditCarViewModel.carModelProperty());
+        colorTextField.textProperty().bindBidirectional(addEditCarViewModel.colorProperty());
+        numberPlatesTextField.textProperty().bindBidirectional(addEditCarViewModel.numberPlatesProperty());
+        fuelTypeTextField.textProperty().bindBidirectional(addEditCarViewModel.fuelTypeProperty());
+        fuelConsumptionTextField.textProperty().bindBidirectional(addEditCarViewModel.fuelConsumptionProperty());
+        seatsTextField.textProperty().bindBidirectional(addEditCarViewModel.seatsProperty());
+        engineTextField.textProperty().bindBidirectional(addEditCarViewModel.engineProperty());
+        transmissionTextField.textProperty().bindBidirectional(addEditCarViewModel.transmissionProperty());
+        equipmentTextField.textProperty().bindBidirectional(addEditCarViewModel.equipmentProperty());
+        descriptionTextField.textProperty().bindBidirectional(addEditCarViewModel.descriptionProperty());
+        dailyPriceTextField.textProperty().bindBidirectional(addEditCarViewModel.dailyPriceProperty());
+        branchComboBox.valueProperty().bindBidirectional(addEditCarViewModel.branchProperty());
+        messageLabel.textProperty().bindBidirectional(addEditCarViewModel.messageProperty());
+
+
+    }
 
     @FXML
     private TextField makeTextField;
@@ -41,31 +63,11 @@ public class AddCarViewController {
     @FXML
     private Label messageLabel;
 
-    public void init(AddEditCarViewModel addEditCarViewModel) {
-        this.addEditCarViewModel = addEditCarViewModel;
-        branchComboBox.setItems(addEditCarViewModel.getBranches());
-        makeTextField.textProperty().bindBidirectional(addEditCarViewModel.makeProperty());
-        modelTextField.textProperty().bindBidirectional(addEditCarViewModel.carModelProperty());
-        colorTextField.textProperty().bindBidirectional(addEditCarViewModel.colorProperty());
-        numberPlatesTextField.textProperty().bindBidirectional(addEditCarViewModel.numberPlatesProperty());
-        fuelTypeTextField.textProperty().bindBidirectional(addEditCarViewModel.fuelTypeProperty());
-        fuelConsumptionTextField.textProperty().bindBidirectional(addEditCarViewModel.fuelConsumptionProperty());
-        seatsTextField.textProperty().bindBidirectional(addEditCarViewModel.seatsProperty());
-        engineTextField.textProperty().bindBidirectional(addEditCarViewModel.engineProperty());
-        transmissionTextField.textProperty().bindBidirectional(addEditCarViewModel.transmissionProperty());
-        equipmentTextField.textProperty().bindBidirectional(addEditCarViewModel.equipmentProperty());
-        descriptionTextField.textProperty().bindBidirectional(addEditCarViewModel.descriptionProperty());
-        dailyPriceTextField.textProperty().bindBidirectional(addEditCarViewModel.dailyPriceProperty());
-        messageLabel.textProperty().bindBidirectional(addEditCarViewModel.messageProperty());
-        branchComboBox.valueProperty().bindBidirectional(addEditCarViewModel.branchIdProperty());
-    }
-
-
-    public void cancelAction() {
+    public void cancelAction () {
         addEditCarViewModel.cancelAction();
     }
 
-    public void addAction() {
+    public void addAction () {
         addEditCarViewModel.addAction();
     }
 

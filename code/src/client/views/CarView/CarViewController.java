@@ -79,11 +79,13 @@ public class CarViewController {
         tableview_car.setItems(carViewModel.getCars());
     }
 
-    public void openDeleteView(javafx.event.ActionEvent actionEvent) {
+    public void deleteAction () {
+        if(tableview_car.getSelectionModel().getSelectedItems().get(0) != null)
+        carViewModel.deleteAction(tableview_car.getSelectionModel().getSelectedItems().get(0).getId());
     }
 
     public void openAddView(javafx.event.ActionEvent actionEvent) {
-        carViewModel.addCar();
+        carViewModel.openAddCarView();
     }
 
     public void back(javafx.event.ActionEvent actionEvent) {
@@ -91,5 +93,10 @@ public class CarViewController {
     }
 
     public void openEditView(javafx.event.ActionEvent actionEvent) {
+
+        if (tableview_car.getSelectionModel().getSelectedItem() != null) {
+            Car selectedCar = tableview_car.getSelectionModel().getSelectedItems().get(0);
+            carViewModel.openEditView(selectedCar);
+        }
     }
 }

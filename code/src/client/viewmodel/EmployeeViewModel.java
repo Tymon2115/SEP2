@@ -40,4 +40,18 @@ public class EmployeeViewModel {
     public ObservableList<Employee> getEmployees() {
        return employees;
     }
+
+    public void openRegistrationView () {
+        viewHandler.openRegistrationView();
+    }
+
+    public void openEditView (Employee selectedEmployee) {
+        viewHandler.openEmployeeEditView(selectedEmployee);
+    }
+
+    public void deleteAction (int id) {
+        System.out.println("Here");
+        model.deleteEmployee(id);
+        model.getEmployees();
+    }
 }

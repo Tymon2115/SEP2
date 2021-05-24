@@ -83,7 +83,7 @@ public class ViewModelFactory {
         return addEditReservationViewModel;
     }
 
-    public AddEditBranchViewModel getAddEditBranchView() {
+    public AddEditBranchViewModel getAddEditBranchViewModel() {
         if (addEditBranchViewModel == null) {
             addEditBranchViewModel = new AddEditBranchViewModel(modelFactory.getModel(), viewHandler);
         }

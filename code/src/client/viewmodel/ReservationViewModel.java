@@ -21,18 +21,16 @@ public class ReservationViewModel {
     public ReservationViewModel(Model model, ViewHandler viewHandler) {
         reservations = FXCollections.observableArrayList();
         this.model = model;
+        model.addListener(this::listenForReservations, "reservations");
         model.getReservations();
         this.viewHandler = viewHandler;
-        model.addListener(this::listenForReservations, "reservations");
     }
 
     private void listenForReservations(PropertyChangeEvent propertyChangeEvent) {
         Platform.runLater(() -> {
             reservations.clear();
-            System.out.println("we are in reservation view model");
             ArrayList<Reservation> receivedReservations = (ArrayList<Reservation>) propertyChangeEvent.getNewValue();
             reservations.addAll(receivedReservations);
-            System.out.println(reservations);
         });
     }
 
@@ -46,5 +44,14 @@ public class ReservationViewModel {
 
     public void getAddReservationView() {
         viewHandler.openAddReservationView();
+    }
+
+    public void openEditView(Reservation selectedReservation) {
+        viewHandler.openReservationEditView(selectedReservation);
+    }
+
+    public void deleteAction (int id) {
+        model.deleteReservation(id);
+        model.getReservations();
     }
 }

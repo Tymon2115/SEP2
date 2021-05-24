@@ -22,13 +22,13 @@ public class EmployeeHandler {
 
 
 
-    public void createEmployee(String name, String surname, int role_id, Branch branch, String username, String password, String email) throws AlreadyExists {
+    public void createEmployee(String name, String surname, int role_id, int branchId, String username, String password, String email) throws AlreadyExists {
         try {
             Statement statement1 = connection.createStatement();
 
 
 
-            ResultSet result = statement1.executeQuery("SELECT * FROM employee WHERE name = '" + name + "' AND surname = '" + surname + "' AND role_id = '" + role_id + "' AND branch_id =  '" + branch.getId() + "' AND username = '" + username + "' AND email = '" + email + "';");
+            ResultSet result = statement1.executeQuery("SELECT * FROM employee WHERE name = '" + name + "' AND surname = '" + surname + "' AND role_id = '" + role_id + "' AND branch_id =  '" + branchId + "' AND username = '" + username + "' AND email = '" + email + "';");
 
 
             if (!result.next()) {
@@ -39,7 +39,7 @@ public class EmployeeHandler {
 
                 Statement statement2 = connection.createStatement();
                 statement2.executeUpdate("INSERT INTO employee (name, surname, role_id, branch_id, username, password, email) " +
-                        "VALUES ('" + name + "', '" + surname + "', " + role_id + ", " + branch.getId() + ", '" + username + "', '" +
+                        "VALUES ('" + name + "', '" + surname + "', " + role_id + ", " + branchId + ", '" + username + "', '" +
                         hashedPassword + "','" + email + "');");
                 statement1.close();
                 statement2.close();
@@ -63,7 +63,7 @@ public class EmployeeHandler {
             String name = null;
             String surname = null;
             int id = 0;
-            Branch branch = null;
+            int branchId = 0;
             String username = null;
             String password = null;
             int roleId = 0;
@@ -73,7 +73,7 @@ public class EmployeeHandler {
                 id = result.getInt("id");
                 name = result.getString("name");
                 surname = result.getString("surname");
-                branch = branchHandler.getBranch(result.getInt("branch_id"));
+                branchId = result.getInt("branch_id");
                 username = result.getString("username");
                 password = result.getString("password");
                 roleId = result.getInt("role_id");
@@ -81,7 +81,7 @@ public class EmployeeHandler {
             }
             statement.close();
             result.close();
-            Employee employee = new Employee(id, name, surname, roleId, branch, username, password, email);
+            Employee employee = new Employee(id, name, surname, roleId, branchId, username, password, email);
             return employee;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -101,11 +101,11 @@ public class EmployeeHandler {
                 String name = result.getString("name");
                 String surname = result.getString("surname");
                 int roleId = result.getInt("role_id");
-                Branch branch = branchHandler.getBranch(result.getInt("branch_id"));
+                int branchId = result.getInt("branch_id");
                 String username = result.getString("username");
                 String password = result.getString("password");
                 String email = result.getString("email");
-                employees.add(new Employee(id, name, surname, roleId, branch, username, password, email));
+                employees.add(new Employee(id, name, surname, roleId, branchId, username, password, email));
             }
             return employees;
         } catch (SQLException throwables) {
@@ -114,10 +114,10 @@ public class EmployeeHandler {
         }
     }
 
-    public void editEmployee(int id, String name, String surname, int role_id, Branch branch, String username, String password, String email) {
+    public void editEmployee(int id, String name, String surname, int role_id, int branchId, String username, String password, String email) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("UPDATE employee SET name = '" + name + "', surname = '" + surname + "', role_id = " + role_id + "', branch_id = '" + branch.getId() + "', username = '" + username + "', password = '" + password + "', email = '" + email + "' WHERE id = '" + id + "';");
+            statement.executeUpdate("UPDATE employee SET name = '" + name + "', surname = '" + surname + "', role_id = '" + role_id + "', branch_id = '" + branchId + "', username = '" + username + "', password = '" + password + "', email = '" + email + "' WHERE id = '" + id + "';");
             statement.close();
         } catch (SQLException throwables) {
 
