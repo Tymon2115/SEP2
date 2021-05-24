@@ -1,4 +1,4 @@
-package client.views.Registration;
+package client.views.EmployeeView;
 
 import client.Session;
 import client.core.ViewHandler;
@@ -8,8 +8,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
+import shared.personel.Employee;
 
-public class RegistrationViewController {
+public class EditEmployeeViewController {
 
     @FXML
     private ComboBox<String> roleComboBox;
@@ -29,12 +31,14 @@ public class RegistrationViewController {
     private Label registrationLabelMessage;
     @FXML
     private TextField emailTextField;
+    @FXML
+    private Label idText;
 
 
     private RegistrationViewModel registrationViewModel;
     private ViewHandler viewHandler;
 
-    public void init(RegistrationViewModel registrationViewModel) {
+    public void init(RegistrationViewModel registrationViewModel, Employee selectedEmployee) {
 
         branchComboBox.setItems(registrationViewModel.getBranches());
         roleComboBox.setItems(registrationViewModel.getRoles());
@@ -50,14 +54,22 @@ public class RegistrationViewController {
         branchComboBox.valueProperty().bindBidirectional(registrationViewModel.branchProperty());
         emailTextField.textProperty().bindBidirectional(registrationViewModel.emailProperty());
 
+        idText.setText(String.valueOf(selectedEmployee.getId()));
+        firstnameTextField.textProperty().set(selectedEmployee.getName());
+        lastnameTextField.textProperty().set(selectedEmployee.getSurname());
+        usernameTextField.textProperty().set(selectedEmployee.usernameProperty().get());
+        emailTextField.textProperty().set(selectedEmployee.emailProperty().get());
+        roleComboBox.valueProperty().setValue(String.valueOf(selectedEmployee.roleProperty().get()));
+        branchComboBox.valueProperty().setValue(String.valueOf(selectedEmployee.getBranchId()));
+
     }
 
     public void closeOnAction(ActionEvent actionEvent) {
         registrationViewModel.home();
     }
 
-    public void registerButtonOnAction(ActionEvent actionEvent) {
-        registrationViewModel.register();
+    public void onEditAction () {
+        registrationViewModel.onEdit(Integer.parseInt(idText.getText()));
     }
 
     public void home() {

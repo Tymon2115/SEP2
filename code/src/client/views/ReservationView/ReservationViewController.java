@@ -76,11 +76,17 @@ public class ReservationViewController {
     }
 
 
-    public void onDeleteButton(ActionEvent actionEvent) {
-
+    public void deleteAction(ActionEvent actionEvent) {
+        if (tableView.getSelectionModel().getSelectedItems().get(0) != null)
+        reservationViewModel.deleteAction(tableView.getSelectionModel().getSelectedItems().get(0).getId());
     }
 
-    public void onEditButton(ActionEvent actionEvent) {
+    public void openEditView(ActionEvent actionEvent) {
+
+        if (tableView.getSelectionModel().getSelectedItems().get(0) != null) {
+            Reservation selectedReservation = tableView.getSelectionModel().getSelectedItems().get(0);
+            reservationViewModel.openEditView(selectedReservation);
+        }
 
     }
 
@@ -92,10 +98,5 @@ public class ReservationViewController {
         reservationViewModel.home();
     }
 
-
-
-    public void back(ActionEvent event) {
-        reservationViewModel.home();
-    }
 
 }

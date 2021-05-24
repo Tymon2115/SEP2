@@ -140,7 +140,7 @@ public class ReservationHandler {
 
                 reservations.add(new Reservation(id, name, surname, driversLicence, new Address(addressStreet, addressCity, addressZip, addressCountry), carId, startBranchId, endBranchId, startDate, endDate, price, email, phoneNumber));
             }
-            System.out.println(reservations);
+
             return reservations;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -148,15 +148,15 @@ public class ReservationHandler {
         }
     }
 
-    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) {
+    public void editReservation(int id, String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber) {
 
 
         try {
 
             Statement statement = connection.createStatement();
             statement.executeUpdate("UPDATE reservation SET name ='" + name + "', surname = '" + surname + "', drivers_licence ='" + driversLicence + "', address_street = '" + address.getStreet() + "', address_city = '" + address.getCity()
-                    + "', address_zip = '" + address.getZip() + "', address_country = '" + address.getCountry() + "', car_id = + '" + car.getId() + "', start_branch_id = '" + startBranch.getId() + "', end_branch_id = '" + endBranch.getId()
-                    + "', start_date = '" + startDate + "', end_date = '" + endDate + "', price = '" + price + "' WHERE id = '" + id + "', email = '" + email + "', phone_number = '" + phoneNumber + "';");
+                    + "', address_zip = '" + address.getZip() + "', address_country = '" + address.getCountry() + "', car_id = + '" + carId + "', start_branch_id = '" + startBranchId + "', end_branch_id = '" + endBranchId
+                    + "', start_date = '" + startDate + "', end_date = '" + endDate + "', price = '" + price + "' WHERE id = '" + id + "';");
             statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

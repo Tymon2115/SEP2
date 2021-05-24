@@ -1,20 +1,37 @@
 package client.viewmodel;
 
+import client.Session;
 import client.core.ViewHandler;
 import client.model.DataModel;
 import client.model.Model;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import shared.Branch.Branch;
 import shared.personel.Employee;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 
 public class RegistrationViewModel {
 
-    private Model model;
-    private StringProperty firstname, lastname, username, password, confirmpassword, registrationMessageLabel;
+    private  Model model;
+    private StringProperty firstname;
+    private StringProperty lastname;
+    private StringProperty username;
+    private StringProperty password;
+    private StringProperty confirmpassword;
+    private StringProperty registrationMessageLabel;
+    private StringProperty role;
+    private StringProperty branch;
+    private StringProperty email;
     private PropertyChangeSupport support;
     private ViewHandler viewHandler;
+    private ObservableList<String> branches;
+    private ObservableList<String> roles;
 
     public RegistrationViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
@@ -26,42 +43,92 @@ public class RegistrationViewModel {
         password = new SimpleStringProperty();
         confirmpassword = new SimpleStringProperty();
         registrationMessageLabel = new SimpleStringProperty();
+        role = new SimpleStringProperty();
+        branch = new SimpleStringProperty();
+        email = new SimpleStringProperty();
+        branches = FXCollections.observableArrayList();
+        roles = FXCollections.observableArrayList();
 
-        // Branch and Role
 
+        if (Session.getRole_id() == 1) {
+            roles.add("2");
+            roles.add("3");
+        }
+
+        if (Session.getRole_id() == 2) {
+            roles.add("3");
+        }
+
+        model.addListener(this::listenForBranches, "branches");
+        model.getBranches();
+
+    }
+
+    private void listenForBranches(PropertyChangeEvent propertyChangeEvent) {
+        Platform.runLater(() -> {
+            branches.clear();
+
+            ArrayList<Branch> receivedBranches = (ArrayList<Branch>) propertyChangeEvent.getNewValue();
+            ArrayList<String> receivedBranchNumbers = new ArrayList<>();
+            for (Branch receivedBranch : receivedBranches) {
+                receivedBranchNumbers.add(String.valueOf(receivedBranch.getId()));
+            }
+            branches.addAll(receivedBranchNumbers);
+
+        });
+    }
+
+    public ObservableList<String> getBranches() {
+        return branches;
+    }
+
+    public ObservableList<String> getRoles() {
+        return roles;
     }
 
     public void home() {
-        viewHandler.openFrontPageView();
+        viewHandler.openEmployeeView();
     }
 
-    public void register() {
+    private boolean inputVerification () {
         if (firstname.get() == null || "".equals(firstname.get())) {
             registrationMessageLabel.setValue("Please input your first name");
+            return false;
         } else if (lastname.get() == null || "".equals(lastname.get())) {
             registrationMessageLabel.setValue("Please input your last name");
+            return false;
         } else if (username.get() == null || "".equals(username.get())) {
             registrationMessageLabel.setValue("Please input your username");
+            return false;
         } else if (password.get() == null || "".equals(password.get())) {
             registrationMessageLabel.setValue("Please input your password");
-        } else if (password.get().length() < 3 || password.get().length() > 15) {
-            registrationMessageLabel.setValue("Password needs to be between 3 and 15 characters");
+            return false;
         } else if (confirmpassword.get() == null || "".equals(confirmpassword.get())) {
             registrationMessageLabel.setValue("Please input your password confirmation");
+            return false;
+        } else if (!password.get().equals(confirmpassword.get())){
+            registrationMessageLabel.setValue("Passwords do not match");
+            return false;
         } else {
-            if (confirmpassword.get() != null) {
-                if (!confirmpassword.get().equals(password.get())) {
-                    registrationMessageLabel.setValue("The password don't match");
-                } else {
-                    registerEmployeeAccount();
-
-                }
-            }
+            return true;
         }
     }
 
-    public void registerEmployeeAccount() {
-        model.register(new Employee(firstname.get(), lastname.get(), username.get(), password.get()));
+    public void register() {
+        if (inputVerification()) {
+            model.createEmployee(
+                    firstname.get(),
+                    lastname.get(),
+                    Integer.parseInt(role.get()),
+                    Integer.parseInt(branch.get()),
+                    username.get(),
+                    password.get(),
+                    email.get()
+            );
+
+        }
+        model.getEmployees();
+        viewHandler.openEmployeeView();
         defaultFields();
     }
 
@@ -72,6 +139,34 @@ public class RegistrationViewModel {
         password.setValue("");
         confirmpassword.setValue("");
         registrationMessageLabel.setValue("");
+        email.setValue("");
+    }
+
+    public void onEdit (int id) {
+        if (inputVerification()) {
+            model.editEmployee(
+                    id,
+                    firstname.get(),
+                    lastname.get(),
+                    Integer.parseInt(role.get()),
+                    Integer.parseInt(branch.get()),
+                    username.get(),
+                    password.get(),
+                    email.get()
+            );
+            model.getEmployees();
+            viewHandler.openEmployeeView();
+            firstname.set("");
+            lastname.set("");
+            role.set("");
+            branch.set("");
+            username.set("");
+            password.set("");
+            email.set("");
+        }
+        else {
+            //shouldn't do anything
+        }
     }
 
     public StringProperty firstnameProperty() {
@@ -82,6 +177,18 @@ public class RegistrationViewModel {
         return lastname;
     }
 
+    public StringProperty roleProperty () {
+        return role;
+    }
+
+    public StringProperty branchProperty() {
+        return branch;
+    }
+
+    public StringProperty emailProperty () {
+        return email;
+    }
+
     public StringProperty usernameProperty() {
         return username;
     }
@@ -90,7 +197,7 @@ public class RegistrationViewModel {
         return password;
     }
 
-    public StringProperty confirmpasswordProperty() {
+    public StringProperty confirmPasswordProperty() {
         return confirmpassword;
     }
 

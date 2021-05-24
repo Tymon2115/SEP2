@@ -8,13 +8,15 @@
 
 <AnchorPane fx:id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.BranchView.EditBranchViewController">
     <children>
-        <Text layoutX="215.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-        <TextField fx:id="nameTextField" layoutX="291.0" layoutY="71.0" />
+        <Text layoutX="214.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+        <TextField fx:id="nameTextField" layoutX="291.0" layoutY="100.0" />
         <Text layoutX="268.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Branch" />
-        <Text layoutX="208.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location" />
-        <TextField fx:id="locationTextField" layoutX="291.0" layoutY="120.0" />
+        <Text layoutX="207.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location" />
+        <TextField fx:id="locationTextField" layoutX="291.0" layoutY="142.0" />
         <Button fx:id="cancelButton" layoutX="227.0" layoutY="345.0" mnemonicParsing="false" onAction="#cancelAction" text="Cancel" />
         <Button fx:id="addButton" layoutX="383.0" layoutY="345.0" mnemonicParsing="false" onAction="#editAction" text="Edit" />
         <Label fx:id="messageLabel" layoutX="285.0" layoutY="200.0" />
+      <Text layoutX="218.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
+      <Text fx:id="idText" layoutX="339.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="32.7158197760582" />
     </children>
 </AnchorPane>

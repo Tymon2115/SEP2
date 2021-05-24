@@ -13,6 +13,7 @@ import java.beans.PropertyChangeSupport;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class DataModel implements Model, PropertyChangeSubject {
 
@@ -51,9 +52,9 @@ public class DataModel implements Model, PropertyChangeSubject {
     }
 
     @Override
-    public void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber) {
+    public void editReservation(int id, String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber) {
         try {
-            client.editReservation(id, name, surname, driversLicence, address, car, startBranch, endBranch, startDate, endDate, price, email, phoneNumber);
+            client.editReservation(id, name, surname, driversLicence, address, carId, startBranchId, endBranchId, startDate, endDate, price, email, phoneNumber);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -82,8 +83,8 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     @Override
     public void receiveBranches(PropertyChangeEvent event) {
-        System.out.println(event.getNewValue());
         support.firePropertyChange("branches", null, event.getNewValue());
+
     }
 
     @Override
@@ -93,21 +94,21 @@ public class DataModel implements Model, PropertyChangeSubject {
 
 
     @Override
-    public void deleteReservation(Reservation reservation) {
-        client.deleteReservation(reservation);
+    public void deleteReservation(int reservationId) {
+        client.deleteReservation(reservationId);
     }
 
     @Override
 
-    public void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email) {
-        client.createEmployee(name, surname, roleId, branch, username, password, email);
+    public void createEmployee(String name, String surname, int roleId, int branchId, String username, String password, String email) {
+        client.createEmployee(name, surname, roleId, branchId, username, password, email);
 
     }
 
     @Override
-    public void editEmployee(int id, String name, String surname, int roleId, Branch branch, String username, String password, String email) {
+    public void editEmployee(int id, String name, String surname, int roleId, int branchId, String username, String password, String email) {
         try {
-            client.editEmployee(id, name, surname, roleId, branch, username, password, email);
+            client.editEmployee(id, name, surname, roleId, branchId, username, password, email);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -121,8 +122,9 @@ public class DataModel implements Model, PropertyChangeSubject {
 
 
     @Override
-    public void deleteEmployee(Employee employee) {
-        client.deleteEmployee(employee);
+    public void deleteEmployee(int employeeId) {
+        System.out.println("Data model");
+        client.deleteEmployee(employeeId);
     }
 
     @Override
@@ -155,8 +157,8 @@ public class DataModel implements Model, PropertyChangeSubject {
 
 
     @Override
-    public void deleteCar(Car car) {
-        client.deleteCar(car);
+    public void deleteCar(int carId) {
+        client.deleteCar(carId);
     }
 
     @Override
@@ -183,8 +185,9 @@ public class DataModel implements Model, PropertyChangeSubject {
 
 
     @Override
-    public void deleteBranch(Branch branch) {
-        client.deleteBranch(branch);
+    public void deleteBranch(int branchId) {
+
+        client.deleteBranch(branchId);
     }
 
     @Override

@@ -8,13 +8,14 @@ import shared.personel.Employee;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public interface Model extends PropertyChangeSubject {
 
 
     void createReservation(String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber);
 
-    void editReservation(int id, String name, String surname, String driversLicence, Address address, Car car, Branch startBranch, Branch endBranch, Date startDate, Date endDate, double price, String email, String phoneNumber);
+    void editReservation(int id, String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber);
 
     void receiveReservation(PropertyChangeEvent event);
 
@@ -26,17 +27,17 @@ public interface Model extends PropertyChangeSubject {
 
     void receiveEmployees(PropertyChangeEvent event);
 
-    void deleteReservation(Reservation reservation);
+    void deleteReservation(int reservationId);
 
 
-    void createEmployee(String name, String surname, int roleId, Branch branch, String username, String password, String email);
+    void createEmployee(String name, String surname, int roleId, int branchId, String username, String password, String email);
 
 
-    void editEmployee(int id, String name, String surname, int roleId, Branch branch, String username, String password, String email);
+    void editEmployee(int id, String name, String surname, int roleId, int branchId, String username, String password, String email);
 
     void receiveEmployee(PropertyChangeEvent event);
 
-    void deleteEmployee(Employee employee);
+    void deleteEmployee(int employeeId);
 
     void createCar(String make, String carModel, String color, String numberPlates, String fuelType,
                    String fuelConsumption, String seats, String engine, String transmission, String equipment,
@@ -48,7 +49,7 @@ public interface Model extends PropertyChangeSubject {
 
     void receiveCar(PropertyChangeEvent event);
 
-    void deleteCar(Car car);
+    void deleteCar(int carId);
 
     void createBranch(String name, String location);
 
@@ -56,7 +57,7 @@ public interface Model extends PropertyChangeSubject {
 
     void receiveBranch(PropertyChangeEvent event);
 
-    void deleteBranch(Branch branch);
+    void deleteBranch(int branchId);
 
     void login(String username, String password);
 
