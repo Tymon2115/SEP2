@@ -3,7 +3,10 @@ package client.viewmodel;
 import client.core.ViewHandler;
 import client.model.Model;
 import javafx.application.Platform;
-import javafx.beans.property.*;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.Branch.Branch;
@@ -13,11 +16,14 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 public class AddEditCarViewModel {
+
+
     private Model model;
     private PropertyChangeSupport support;
     private ViewHandler viewHandler;
+    private ObservableList<String> branches;
 
-    private StringProperty message;
+
     private StringProperty make;
     private StringProperty carModel;
     private StringProperty color;
@@ -30,14 +36,21 @@ public class AddEditCarViewModel {
     private StringProperty equipment;
     private StringProperty description;
     private StringProperty dailyPrice;
-    private StringProperty branchId;
-    private ObservableList<String> branches;
-    private ArrayList<StringProperty> inputValidation;
+
+    private StringProperty branch;
+    private StringProperty message;
+
 
     public AddEditCarViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
         this.viewHandler = viewHandler;
+
+        this.support = new PropertyChangeSupport(this);
         model.addListener(this::listenForBranches, "branches");
+        model.getBranches();
+        branches = FXCollections.observableArrayList();
+
+
         make = new SimpleStringProperty();
         carModel = new SimpleStringProperty();
         color = new SimpleStringProperty();
@@ -50,169 +63,239 @@ public class AddEditCarViewModel {
         equipment = new SimpleStringProperty();
         description = new SimpleStringProperty();
         dailyPrice = new SimpleStringProperty();
-        branchId = new SimpleStringProperty();
+
+        branch = new SimpleStringProperty();
         message = new SimpleStringProperty();
-        branches = FXCollections.observableArrayList();
-        inputValidation = new ArrayList<>();
-        addToInputValidation();
     }
 
-    public String getMake() {
-        return make.get();
+    private void listenForBranches(PropertyChangeEvent propertyChangeEvent) {
+        Platform.runLater(() -> {
+
+            branches.clear();
+            ArrayList<Branch> receivedBranches = (ArrayList<Branch>) propertyChangeEvent.getNewValue();
+            ArrayList<String> receivedBranchNumbers = new ArrayList<>();
+            for (Branch receivedBranch : receivedBranches) {
+                receivedBranchNumbers.add(String.valueOf(receivedBranch.getId()));
+            }
+            branches.addAll(receivedBranchNumbers);
+
+        });
+    }
+
+    public ObservableList<String> getBranches() {
+        return branches;
+
     }
 
     public StringProperty makeProperty() {
         return make;
     }
 
-    public String getCarModel() {
-        return carModel.get();
-    }
+
 
     public StringProperty carModelProperty() {
         return carModel;
     }
 
-    public String getColor() {
-        return color.get();
-    }
+
 
     public StringProperty colorProperty() {
         return color;
     }
 
-    public String getNumberPlates() {
-        return numberPlates.get();
-    }
 
-    public StringProperty numberPlatesProperty() {
+    public StringProperty numberPlatesProperty () {
         return numberPlates;
     }
 
-    public String getFuelType() {
-        return fuelType.get();
-    }
 
     public StringProperty fuelTypeProperty() {
         return fuelType;
     }
 
-    public String getFuelConsumption() {
-        return fuelConsumption.get();
-    }
+
 
     public StringProperty fuelConsumptionProperty() {
         return fuelConsumption;
     }
 
-    public String getSeats() {
-        return seats.get();
-    }
 
     public StringProperty seatsProperty() {
         return seats;
     }
 
-    public String getEngine() {
-        return engine.get();
-    }
 
     public StringProperty engineProperty() {
         return engine;
     }
 
-    public String getTransmission() {
-        return transmission.get();
-    }
 
     public StringProperty transmissionProperty() {
         return transmission;
     }
 
-    public String getEquipment() {
-        return equipment.get();
-    }
 
     public StringProperty equipmentProperty() {
         return equipment;
     }
 
-    public String getDescription() {
-        return description.get();
-    }
 
-    public StringProperty descriptionProperty() {
+    public StringProperty descriptionProperty () {
         return description;
     }
 
-    public String getDailyPrice() {
-        return dailyPrice.get();
-    }
-
-    public StringProperty dailyPriceProperty() {
+    public StringProperty dailyPriceProperty () {
         return dailyPrice;
     }
 
-    public StringProperty branchIdProperty() {
-        return branchId;
+    public StringProperty branchProperty () {
+        return branch;
     }
 
-    public ObservableList<String> getBranches() {
-        return branches;
-    }
-
-    public StringProperty messageProperty() {
+    public StringProperty messageProperty () {
         return message;
     }
 
-    private boolean inputVerification() {
-        for (StringProperty stringProperty : inputValidation) {
-            if (stringProperty.get() == null || stringProperty.get().equals("")) {
-                message.set(stringProperty.getName() + "invalid input");
-                return false;
-            }
+
+    private boolean inputVerification () {
+        if (make.get() == null || make.get().equals("")) {
+            message.setValue("Please input make");
+            return false;
         }
-        return true;
+        else if (carModel.get() == null || carModel.get().equals("")) {
+            message.setValue("Please input model");
+            return false;
+        }
+        else if (color.get() == null || color.get().equals("")) {
+            message.setValue("Please input color");
+            return false;
+        }
+        else if (numberPlates.get() == null || numberPlates.get().equals("")) {
+            message.setValue("Please input number plates ");
+            return false;
+        }
+        else if (fuelType.get() == null || fuelType.get().equals("")) {
+            message.setValue("Please input fuel type");
+            return false;
+        }
+        else if (fuelConsumption.get() == null || fuelConsumption.get().equals("")) {
+            message.setValue("Please input fuel consumption");
+            return false;
+        }
+        else if (seats.get() == null || seats.get().equals("")) {
+            message.setValue("Please input seats");
+            return false;
+        }
+        else if (engine.get() == null || engine.get().equals("")) {
+            message.setValue("Please input engine");
+            return false;
+        }
+        else if (transmission.get() == null || transmission.get().equals("")) {
+            message.setValue("Please input transmission");
+            return false;
+        }
+        else if (equipment.get() == null || equipment.get().equals("")) {
+            message.setValue("Please input equipment");
+            return false;
+        }
+        else if (description.get() == null || description.get().equals("")) {
+            message.setValue("Please input description");
+            return false;
+        }
+        else if (dailyPrice.get() == null || dailyPrice.get().equals("")) {
+            message.setValue("Please input daily price");
+            return false;
+        }
+        else if (branch.get() == null || branch.get().equals("")) {
+            branch.setValue("Please input branch");
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
-    private void listenForBranches(PropertyChangeEvent event) {
-        branches.clear();
-        System.out.println("i got notified from add car");
-        Platform.runLater(() -> {
-            ArrayList<Branch> receivedBranches = (ArrayList<Branch>) event.getNewValue();
-            System.out.println(receivedBranches + "in add car");
-            for (Branch receivedBranch : receivedBranches) {
-                branches.add(Integer.toString(receivedBranch.getId()));
-            }
-        });
-    }
-
-
-    public void addAction() {
+    public void addAction () {
         if (inputVerification()) {
-            model.createCar(make.get(), carModel.get(), color.get(), numberPlates.get(),
-                    fuelType.get(), fuelConsumption.get(), seats.get(), engine.get(), transmission.get(),
-                    equipment.get(), description.get(), Integer.parseInt(branchId.get()), Double.parseDouble(dailyPrice.get()));
+            model.createCar(make.get(),
+                    carModel.get(),
+                    color.get(),
+                    numberPlates.get(),
+                    fuelType.get(),
+                    fuelConsumption.get(),
+                    seats.get(),
+                    engine.get(),
+                    transmission.get(),
+                    equipment.get(),
+                    description.get(),
+                    Integer.parseInt(branch.get()),
+                    Double.parseDouble(dailyPrice.get()));
+
+                    model.getCars();
+                    viewHandler.openCarView();
+
+                    carModel.set("");
+                    color.set("");
+                    numberPlates.set("");
+                    fuelType.set("");
+                    fuelConsumption.set("");
+                    seats.set("");
+                    engine.set("");
+                    transmission.set("");
+                    equipment.set("");
+                    description.set("");
+                    dailyPrice.set("");
         }
+        else {
+            //shouldn't do anything
+        }
+
+
     }
 
-    public void cancelAction() {
-        model.getCars();
+    public void cancelAction () {
         viewHandler.openCarView();
     }
 
-    private void addToInputValidation() {
-        inputValidation.add(make);
-        inputValidation.add(carModel);
-        inputValidation.add(color);
-        inputValidation.add(numberPlates);
-        inputValidation.add(fuelType);
-        inputValidation.add(fuelConsumption);
-        inputValidation.add(seats);
-        inputValidation.add(engine);
-        inputValidation.add(transmission);
-        inputValidation.add(equipment);
-        inputValidation.add(description);
-        inputValidation.add(dailyPrice);
+    public void editAction (int id) {
+      if (inputVerification()){
+          model.editCar(
+                  id,
+                  make.get(),
+                  carModel.get(),
+                  color.get(),
+                  numberPlates.get(),
+                  fuelType.get(),
+                  fuelConsumption.get(),
+                  seats.get(),
+                  engine.get(),
+                  transmission.get(),
+                  equipment.get(),
+                  description.get(),
+                  Integer.parseInt(branch.get()),
+                  Double.parseDouble(dailyPrice.get())
+          );
+          model.getCars();
+          viewHandler.openCarView();
+          make.set("");
+          carModel.set("");
+          color.set("");
+          numberPlates.set("");
+          fuelType.set("");
+          fuelConsumption.set("");
+          seats.set("");
+          engine.set("");
+          transmission.set("");
+          equipment.set("");
+          description.set("");
+          branch.set("");
+          dailyPrice.set("");
+      }
+        else {
+            //shouldn't do anything
+        }
     }
+
+
+
 }
