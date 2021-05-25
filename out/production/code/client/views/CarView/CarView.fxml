@@ -41,7 +41,7 @@
                     <children>
                         <Button fx:id="addButton" mnemonicParsing="false" onAction="#openAddView" prefHeight="175.0" prefWidth="300.0">
                             <graphic>
-                                <ImageView fitHeight="71.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="71.0" fitWidth="67.0" onDragDetected="#openAddView" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../icons/plus.png" />
                                     </image>

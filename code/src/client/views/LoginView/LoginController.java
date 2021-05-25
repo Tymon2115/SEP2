@@ -33,7 +33,6 @@ public class LoginController {
     }
 
     public void onLoginButton(ActionEvent actionEvent) {
-
         loginVM.login();
     }
 }
