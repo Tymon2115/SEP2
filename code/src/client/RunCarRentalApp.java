@@ -16,7 +16,16 @@ import java.time.LocalDate;
 import java.util.Date;
 
 
+/**
+ * Runs the app on the client side
+ */
 public class RunCarRentalApp {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws AlreadyExists the already exists
+     */
     public static void main(String[] args) throws AlreadyExists {
         EmployeeHandler employeeHandler = new EmployeeHandler();
         BranchHandler branchHandler = new BranchHandler();

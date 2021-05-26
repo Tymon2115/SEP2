@@ -10,6 +10,10 @@ import javafx.scene.control.TextField;
 import shared.Reservation.Car;
 
 
+/**
+ * The Add reservation view controller.
+ * @author Adam
+ */
 public class AddReservationViewController {
 
     private AddEditReservationViewModel addEditReservationViewModel;
@@ -47,6 +51,11 @@ public class AddReservationViewController {
     @FXML
     private Label messageLabel;
 
+    /**
+     * Init.
+     *
+     * @param addEditReservationViewModel the add edit reservation view model
+     */
     public void init (AddEditReservationViewModel addEditReservationViewModel) {
 
         System.out.println("We are in controller");
@@ -74,10 +83,16 @@ public class AddReservationViewController {
         carComboBox.setItems(addEditReservationViewModel.getCars());
     }
 
+    /**
+     * Cancel action.
+     */
     public void cancelAction () {
         addEditReservationViewModel.cancelAction();
     }
 
+    /**
+     * Add action.
+     */
     public void addAction() {
         addEditReservationViewModel.addAction();
     }

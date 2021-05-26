@@ -18,6 +18,10 @@ import shared.Reservation.Reservation;
 
 import java.io.IOException;
 
+/**
+ * The type Reservation view controller.
+ * @author Dan
+ */
 public class ReservationViewController {
     @FXML
     private Button homeButton;
@@ -27,6 +31,9 @@ public class ReservationViewController {
     private Button deleteButton;
     @FXML
     private Button addButton;
+    /**
+     * The Table view.
+     */
     @FXML
     TableView<Reservation> tableView;
     @FXML
@@ -55,8 +62,16 @@ public class ReservationViewController {
     private TableColumn<Reservation, String> emailCol;
     @FXML
     private TableColumn<Reservation, String> phoneNumberCol;
+    /**
+     * The Reservation view model.
+     */
     ReservationViewModel reservationViewModel;
 
+    /**
+     * Init. Called from viewHandler to load the view
+     *
+     * @param reservationViewModel the reservation view model
+     */
     public void init(ReservationViewModel reservationViewModel) {
         tableView.getItems().clear();
         this.reservationViewModel = reservationViewModel;
@@ -77,11 +92,21 @@ public class ReservationViewController {
     }
 
 
+    /**
+     * Delete action.
+     *
+     * @param actionEvent the action event
+     */
     public void deleteAction(ActionEvent actionEvent) {
         if (tableView.getSelectionModel().getSelectedItems().get(0) != null)
         reservationViewModel.deleteAction(tableView.getSelectionModel().getSelectedItems().get(0).getId());
     }
 
+    /**
+     * Open edit view.
+     *
+     * @param actionEvent the action event
+     */
     public void openEditView(ActionEvent actionEvent) {
 
         if (tableView.getSelectionModel().getSelectedItems().get(0) != null) {
@@ -91,10 +116,20 @@ public class ReservationViewController {
 
     }
 
+    /**
+     * On add button.
+     *
+     * @param actionEvent the action event
+     */
     public void onAddButton(ActionEvent actionEvent) {
         reservationViewModel.getAddReservationView();
     }
 
+    /**
+     * Home.
+     *
+     * @param actionEvent the action event
+     */
     public void home(ActionEvent actionEvent) {
         reservationViewModel.home();
     }

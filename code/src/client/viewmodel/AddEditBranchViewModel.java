@@ -12,6 +12,10 @@ import shared.Branch.Branch;
 import javax.print.DocFlavor;
 import java.beans.PropertyChangeSupport;
 
+/**
+ * ViewModel for adding and editing the branch
+ * @author Oliver
+ */
 public class AddEditBranchViewModel {
 
     private Model model;
@@ -24,7 +28,12 @@ public class AddEditBranchViewModel {
     private StringProperty message;
 
 
-
+    /**
+     * Instantiates a new Add edit branch view model.
+     *
+     * @param model       the model
+     * @param viewHandler the view handler
+     */
     public AddEditBranchViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
         this.viewHandler = viewHandler;
@@ -34,14 +43,29 @@ public class AddEditBranchViewModel {
         this.message = new SimpleStringProperty();
     }
 
+    /**
+     * Name property string property.
+     *
+     * @return the string property
+     */
     public StringProperty nameProperty() {
         return name;
     }
 
+    /**
+     * Location property string property.
+     *
+     * @return the string property
+     */
     public StringProperty locationProperty() {
         return location;
     }
 
+    /**
+     * Message property string property.
+     *
+     * @return the string property
+     */
     public StringProperty messageProperty() {
         return message;
     }
@@ -60,6 +84,9 @@ public class AddEditBranchViewModel {
         }
     }
 
+    /**
+     * Add action calls add method on model.
+     */
     public void addAction() {
         if (inputVerification()) {
             model.createBranch(name.getValue(), location.getValue());
@@ -74,10 +101,18 @@ public class AddEditBranchViewModel {
 
     }
 
+    /**
+     * Cancel action, goes back to previous scene.
+     */
     public void cancelAction () {
         viewHandler.openBranchView();
     }
 
+    /**
+     * Edit action.
+     *
+     * @param id the id
+     */
     public void editAction (int id) {
         if (inputVerification()) {
             model.editBranch(id, name.get(), location.get());

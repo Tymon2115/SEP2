@@ -6,6 +6,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 
+/**
+ * The Add branch view controller.
+ * @author Dan
+ */
 public class AddBranchViewController {
 
     private AddEditBranchViewModel addEditBranchViewModel;
@@ -18,8 +22,11 @@ public class AddBranchViewController {
     private Label messageLabel;
 
 
-
-
+    /**
+     * Init. Called from viewHandler to load the view
+     *
+     * @param addEditBranchViewModel the add edit branch view model
+     */
     public void init (AddEditBranchViewModel addEditBranchViewModel) {
         this.addEditBranchViewModel = addEditBranchViewModel;
         nameTextField.textProperty().bindBidirectional(addEditBranchViewModel.nameProperty());
@@ -27,10 +34,16 @@ public class AddBranchViewController {
         messageLabel.textProperty().bindBidirectional(addEditBranchViewModel.messageProperty());
     }
 
+    /**
+     * Cancel action.
+     */
     public void cancelAction () {
         addEditBranchViewModel.cancelAction();
     }
 
+    /**
+     * Add action.
+     */
     public void addAction () {
         addEditBranchViewModel.addAction();
     }

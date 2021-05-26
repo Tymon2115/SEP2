@@ -9,6 +9,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import shared.Reservation.Car;
 
+/**
+ * The Edit car view controller.
+ * @author Oliver
+ */
 public class EditCarViewController {
 
 
@@ -47,6 +51,12 @@ public class EditCarViewController {
     @FXML
     private Text idText;
 
+    /**
+     * Init.
+     *
+     * @param addEditCarViewModel the add edit car view model
+     * @param selectedCar         the selected car
+     */
     public void init (AddEditCarViewModel addEditCarViewModel, Car selectedCar) {
 
         branchComboBox.setItems(addEditCarViewModel.getBranches());
@@ -84,10 +94,16 @@ public class EditCarViewController {
 
     }
 
+    /**
+     * Cancel action.
+     */
     public void cancelAction () {
         addEditCarViewModel.cancelAction();
     }
 
+    /**
+     * Edit action.
+     */
     public void editAction () {
         addEditCarViewModel.editAction(Integer.parseInt(idText.getText()));
     }

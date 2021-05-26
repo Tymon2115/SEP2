@@ -15,11 +15,18 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+/**
+ * Class used for passing & retrieving data between ViewModel and Client
+ */
 public class DataModel implements Model, PropertyChangeSubject {
 
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
     private DataClient client;
 
+    /**
+     * public constructor
+     * @param client DataClient instance that allows model to listen for updates
+     */
     public DataModel(DataClient client) {
         this.client = client;
         client.addListener(this::receiveBranch, "branch");

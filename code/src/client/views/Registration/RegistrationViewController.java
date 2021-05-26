@@ -9,6 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+/**
+ * The type Registration view controller.
+ * @author Dan
+ */
 public class RegistrationViewController {
 
     @FXML
@@ -34,6 +38,11 @@ public class RegistrationViewController {
     private RegistrationViewModel registrationViewModel;
     private ViewHandler viewHandler;
 
+    /**
+     * Init. Called from viewHandler to load the view
+     *
+     * @param registrationViewModel the registration view model
+     */
     public void init(RegistrationViewModel registrationViewModel) {
 
         branchComboBox.setItems(registrationViewModel.getBranches());
@@ -52,14 +61,27 @@ public class RegistrationViewController {
 
     }
 
+    /**
+     * Close on action.
+     *
+     * @param actionEvent the action event
+     */
     public void closeOnAction(ActionEvent actionEvent) {
         registrationViewModel.home();
     }
 
+    /**
+     * Register button on action.
+     *
+     * @param actionEvent the action event
+     */
     public void registerButtonOnAction(ActionEvent actionEvent) {
         registrationViewModel.register();
     }
 
+    /**
+     * Home.
+     */
     public void home() {
         registrationViewModel.home();
     }

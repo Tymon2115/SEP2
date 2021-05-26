@@ -30,12 +30,22 @@ import shared.personel.Employee;
 
 import java.io.IOException;
 
+/**
+ * Class responsible for switching the scenes and loading init methods in the constructors
+ *
+ * @author Dan, Tymon, Oliver, Adam
+ */
 public class ViewHandler {
 
     private Stage stage;
     private ModelFactory modelFactory;
     private ViewModelFactory viewModelFactory;
 
+    /**
+     * public constructor
+     *
+     * @param modelFactory ModelFactory
+     */
     public ViewHandler(ModelFactory modelFactory) {
         stage = new Stage();
         this.modelFactory = modelFactory;
@@ -43,13 +53,18 @@ public class ViewHandler {
 
     }
 
+    /**
+     * Launches the first scene
+     */
     public void start() {
         openLoginView();
         stage.show();
         stage.setResizable(false);
     }
 
-    // Could be private
+    /**
+     * loads OpenLoginViewController, sets the scene to LoginView.fxml
+     */
     public void openLoginView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/LoginView/Login.fxml"));
@@ -71,6 +86,9 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * loads OpenFrontPageViewController, sets the scene to FrontPageView.fxml
+     */
     public void openFrontPageView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/FrontPageView/FrontPageView.fxml"));
@@ -91,7 +109,9 @@ public class ViewHandler {
         }
     }
 
-
+    /**
+     * loads CarViewController, sets the scene to CarView.fxml
+     */
     public void openCarView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/CarView/CarView.fxml"));
@@ -110,6 +130,9 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * loads RegistrationViewController, sets the scene to RegistrationView.fxml
+     */
     public void openRegistrationView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/Registration/RegistrationView.fxml"));
@@ -130,7 +153,9 @@ public class ViewHandler {
         }
     }
 
-
+    /**
+     * loads ReservationViewController, sets the scene to ReservationView.fxml
+     */
     public void openReservationView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/ReservationView/ReservationView.fxml"));
@@ -148,6 +173,9 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * loads EmployeeViewController, sets the scene to EmployeeView.fxml
+     */
     public void openEmployeeView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/EmployeeView/EmployeeView.fxml"));
@@ -164,6 +192,9 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * loads BranchViewController, sets the scene to BranchView.fxml
+     */
     public void openBranchView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/BranchView/BranchView.fxml"));
@@ -181,6 +212,9 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * loads AddReservationViewController, sets the scene to AddReservationView.fxml
+     */
     public void openAddReservationView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/ReservationView/AddReservationView.fxml"));
@@ -198,6 +232,9 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * loads AddBranchViewController, sets the scene to AddBranchView.fxml
+     */
     public void openAddBranchView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/BranchView/AddBranchView.fxml"));
@@ -215,6 +252,9 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * loads AddCarViewController, sets the scene to AddCarView.fxml
+     */
     public void openAddCarView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/CarView/AddCarView.fxml"));
@@ -232,7 +272,12 @@ public class ViewHandler {
         }
     }
 
-    public void openBranchEditView (Branch selectedBranch) {
+    /**
+     * loads EditViewController, sets the scene to EditView.fxml
+     *
+     * @param selectedBranch Branch, branch to be edited
+     */
+    public void openBranchEditView(Branch selectedBranch) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/BranchView/EditBranchView.fxml"));
         try {
@@ -249,7 +294,12 @@ public class ViewHandler {
         }
     }
 
-    public void openCarEditView (Car selectedCar) {
+    /**
+     * loads EditCarViewController, sets the scene to EditCarView.fxml
+     *
+     * @param selectedCar Car, car to be edited
+     */
+    public void openCarEditView(Car selectedCar) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/CarView/EditCarView.fxml"));
         try {
@@ -266,7 +316,12 @@ public class ViewHandler {
         }
     }
 
-    public void openEmployeeEditView (Employee selectedEmployee) {
+    /**
+     * loads EditEmployeeViewController, sets the scene to EditEmployeeView.fxml
+     *
+     * @param selectedEmployee Employee, employee to be edited
+     */
+    public void openEmployeeEditView(Employee selectedEmployee) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/EmployeeView/EditEmployeeView.fxml"));
         try {
@@ -283,7 +338,12 @@ public class ViewHandler {
         }
     }
 
-    public void openReservationEditView (Reservation selectedReservation) {
+    /**
+     * loads EditReservationViewController, sets the scene to EditReservationView.fxml
+     *
+     * @param selectedReservation Reservation, reservation to be edited
+     */
+    public void openReservationEditView(Reservation selectedReservation) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../views/ReservationView/EditReservationView.fxml"));
         try {
