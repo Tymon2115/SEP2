@@ -10,13 +10,34 @@ import shared.Reservation.Reservation;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * Handles adding and retrieving data about reservations from the database
+ * @author tymon
+ */
 public class ReservationHandler {
 
     private final Connection connection = DatabaseConnection.getInstance().getConnection();
     private final BranchHandler branchHandler = new BranchHandler();
     private final CarHandler carHandler = new CarHandler();
-    
 
+
+    /**
+     * Create reservation in the database.
+     *
+     * @param name           the name
+     * @param surname        the surname
+     * @param driversLicence the drivers licence
+     * @param address        the address
+     * @param carId          the car id
+     * @param startBranchId  the start branch id
+     * @param endBranchId    the end branch id
+     * @param startDate      the start date
+     * @param endDate        the end date
+     * @param price          the price
+     * @param email          the email
+     * @param phoneNumber    the phone number
+     * @throws AlreadyExists the already exists
+     */
     public void createReservation(String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber) throws AlreadyExists {
         try {
             Statement statement1 = connection.createStatement();
@@ -44,6 +65,12 @@ public class ReservationHandler {
         }
     }
 
+    /**
+     * Gets reservation with given id from the database.
+     *
+     * @param searchId the search id
+     * @return the reservation
+     */
     public Reservation getReservation(int searchId) {
         try {
             Statement statement = connection.createStatement();
@@ -94,6 +121,11 @@ public class ReservationHandler {
 
     }
 
+    /**
+     * Gets all reservations from the database.
+     *
+     * @return the reservations
+     */
     public ArrayList<Reservation> getReservations() {
 
         try {
@@ -148,6 +180,23 @@ public class ReservationHandler {
         }
     }
 
+    /**
+     * Edit reservation in the database.
+     *
+     * @param id             the id
+     * @param name           the name
+     * @param surname        the surname
+     * @param driversLicence the drivers licence
+     * @param address        the address
+     * @param carId          the car id
+     * @param startBranchId  the start branch id
+     * @param endBranchId    the end branch id
+     * @param startDate      the start date
+     * @param endDate        the end date
+     * @param price          the price
+     * @param email          the email
+     * @param phoneNumber    the phone number
+     */
     public void editReservation(int id, String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber) {
 
 
@@ -163,6 +212,11 @@ public class ReservationHandler {
         }
     }
 
+    /**
+     * Delete reservation from the database.
+     *
+     * @param id the id
+     */
     public void deleteReservation(int id) {
         try {
             Statement statement = connection.createStatement();

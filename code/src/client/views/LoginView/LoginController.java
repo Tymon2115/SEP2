@@ -8,6 +8,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 
+/**
+ * The  Login controller.
+ * @author adam
+ */
 public class LoginController {
 
     @FXML
@@ -19,6 +23,11 @@ public class LoginController {
 
     private LoginViewModel loginVM;
 
+    /**
+     * Init. Called from viewHandler to load the view
+     *
+     * @param loginViewModel the login view model
+     */
     public void init(LoginViewModel loginViewModel) {
         this.loginVM = loginViewModel;
         usernameField.textProperty().bindBidirectional(loginVM.usernameProperty());
@@ -32,6 +41,11 @@ public class LoginController {
         });
     }
 
+    /**
+     * On login button.
+     *
+     * @param actionEvent the action event
+     */
     public void onLoginButton(ActionEvent actionEvent) {
         loginVM.login();
     }

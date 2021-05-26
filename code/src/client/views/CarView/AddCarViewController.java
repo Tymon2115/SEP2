@@ -7,10 +7,19 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/**
+ * The type Add car view controller.
+ * @author Adam
+ */
 public class AddCarViewController {
 
     private AddEditCarViewModel addEditCarViewModel;
 
+    /**
+     * Init. Called from viewHandler to load the view
+     *
+     * @param addEditCarViewModel the add edit car view model
+     */
     public void init (AddEditCarViewModel addEditCarViewModel) {
         System.out.println(addEditCarViewModel.getBranches());
         branchComboBox.setItems(addEditCarViewModel.getBranches());
@@ -61,10 +70,16 @@ public class AddCarViewController {
     @FXML
     private Label messageLabel;
 
+    /**
+     * Cancel action.
+     */
     public void cancelAction () {
         addEditCarViewModel.cancelAction();
     }
 
+    /**
+     * Add action.
+     */
     public void addAction () {
         addEditCarViewModel.addAction();
     }

@@ -16,6 +16,10 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
+/**
+ * ViewModel for registration of new employee, only accesible by manager and owner
+ * @author Dan
+ */
 public class RegistrationViewModel {
 
     private  Model model;
@@ -33,6 +37,12 @@ public class RegistrationViewModel {
     private ObservableList<String> branches;
     private ObservableList<String> roles;
 
+    /**
+     * Instantiates a new Registration view model.
+     *
+     * @param model       the model
+     * @param viewHandler the view handler
+     */
     public RegistrationViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
         support = new PropertyChangeSupport(this);
@@ -78,14 +88,27 @@ public class RegistrationViewModel {
         });
     }
 
+    /**
+     * Gets branches.
+     *
+     * @return the branches
+     */
     public ObservableList<String> getBranches() {
         return branches;
     }
 
+    /**
+     * Gets roles.
+     *
+     * @return the roles
+     */
     public ObservableList<String> getRoles() {
         return roles;
     }
 
+    /**
+     * Home.
+     */
     public void home() {
         viewHandler.openEmployeeView();
     }
@@ -114,6 +137,9 @@ public class RegistrationViewModel {
         }
     }
 
+    /**
+     * Register.
+     */
     public void register() {
         if (inputVerification()) {
             model.createEmployee(
@@ -132,6 +158,9 @@ public class RegistrationViewModel {
         defaultFields();
     }
 
+    /**
+     * Default fields.
+     */
     public void defaultFields() {
         firstname.setValue("");
         lastname.setValue("");
@@ -142,6 +171,11 @@ public class RegistrationViewModel {
         email.setValue("");
     }
 
+    /**
+     * On edit.
+     *
+     * @param id the id
+     */
     public void onEdit (int id) {
         if (inputVerification()) {
             model.editEmployee(
@@ -169,38 +203,83 @@ public class RegistrationViewModel {
         }
     }
 
+    /**
+     * Firstname property string property.
+     *
+     * @return the string property
+     */
     public StringProperty firstnameProperty() {
         return firstname;
     }
 
+    /**
+     * Lastname property string property.
+     *
+     * @return the string property
+     */
     public StringProperty lastnameProperty() {
         return lastname;
     }
 
+    /**
+     * Role property string property.
+     *
+     * @return the string property
+     */
     public StringProperty roleProperty () {
         return role;
     }
 
+    /**
+     * Branch property string property.
+     *
+     * @return the string property
+     */
     public StringProperty branchProperty() {
         return branch;
     }
 
+    /**
+     * Email property string property.
+     *
+     * @return the string property
+     */
     public StringProperty emailProperty () {
         return email;
     }
 
+    /**
+     * Username property string property.
+     *
+     * @return the string property
+     */
     public StringProperty usernameProperty() {
         return username;
     }
 
+    /**
+     * Password property string property.
+     *
+     * @return the string property
+     */
     public StringProperty passwordProperty() {
         return password;
     }
 
+    /**
+     * Confirm password property string property.
+     *
+     * @return the string property
+     */
     public StringProperty confirmPasswordProperty() {
         return confirmpassword;
     }
 
+    /**
+     * Registration message label property string property.
+     *
+     * @return the string property
+     */
     public StringProperty registrationMessageLabelProperty() {
         return registrationMessageLabel;
     }

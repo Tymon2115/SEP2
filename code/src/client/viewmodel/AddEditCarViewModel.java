@@ -15,6 +15,10 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
+/**
+ * ViewModel for adding and editing the car
+ * @author Tymon
+ */
 public class AddEditCarViewModel {
 
 
@@ -36,11 +40,16 @@ public class AddEditCarViewModel {
     private StringProperty equipment;
     private StringProperty description;
     private StringProperty dailyPrice;
-
     private StringProperty branch;
     private StringProperty message;
 
 
+    /**
+     * Instantiates a new Add edit car view model.
+     *
+     * @param model       the model
+     * @param viewHandler the view handler
+     */
     public AddEditCarViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
         this.viewHandler = viewHandler;
@@ -82,76 +91,148 @@ public class AddEditCarViewModel {
         });
     }
 
+    /**
+     * Gets branches.
+     *
+     * @return the branches
+     */
     public ObservableList<String> getBranches() {
         return branches;
 
     }
 
+    /**
+     * Make property string property.
+     *
+     * @return the string property
+     */
     public StringProperty makeProperty() {
         return make;
     }
 
 
-
+    /**
+     * Car model property string property.
+     *
+     * @return the string property
+     */
     public StringProperty carModelProperty() {
         return carModel;
     }
 
 
-
+    /**
+     * Color property string property.
+     *
+     * @return the string property
+     */
     public StringProperty colorProperty() {
         return color;
     }
 
 
+    /**
+     * Number plates property string property.
+     *
+     * @return the string property
+     */
     public StringProperty numberPlatesProperty () {
         return numberPlates;
     }
 
 
+    /**
+     * Fuel type property string property.
+     *
+     * @return the string property
+     */
     public StringProperty fuelTypeProperty() {
         return fuelType;
     }
 
 
-
+    /**
+     * Fuel consumption property string property.
+     *
+     * @return the string property
+     */
     public StringProperty fuelConsumptionProperty() {
         return fuelConsumption;
     }
 
 
+    /**
+     * Seats property string property.
+     *
+     * @return the string property
+     */
     public StringProperty seatsProperty() {
         return seats;
     }
 
 
+    /**
+     * Engine property string property.
+     *
+     * @return the string property
+     */
     public StringProperty engineProperty() {
         return engine;
     }
 
 
+    /**
+     * Transmission property string property.
+     *
+     * @return the string property
+     */
     public StringProperty transmissionProperty() {
         return transmission;
     }
 
 
+    /**
+     * Equipment property string property.
+     *
+     * @return the string property
+     */
     public StringProperty equipmentProperty() {
         return equipment;
     }
 
 
+    /**
+     * Description property string property.
+     *
+     * @return the string property
+     */
     public StringProperty descriptionProperty () {
         return description;
     }
 
+    /**
+     * Daily price property string property.
+     *
+     * @return the string property
+     */
     public StringProperty dailyPriceProperty () {
         return dailyPrice;
     }
 
+    /**
+     * Branch property string property.
+     *
+     * @return the string property
+     */
     public StringProperty branchProperty () {
         return branch;
     }
 
+    /**
+     * Message property string property.
+     *
+     * @return the string property
+     */
     public StringProperty messageProperty () {
         return message;
     }
@@ -215,6 +296,9 @@ public class AddEditCarViewModel {
         }
     }
 
+    /**
+     * Add action.
+     */
     public void addAction () {
         if (inputVerification()) {
             model.createCar(make.get(),
@@ -253,10 +337,18 @@ public class AddEditCarViewModel {
 
     }
 
+    /**
+     * Cancel action.
+     */
     public void cancelAction () {
         viewHandler.openCarView();
     }
 
+    /**
+     * Edit action.
+     *
+     * @param id the id
+     */
     public void editAction (int id) {
       if (inputVerification()){
           model.editCar(
