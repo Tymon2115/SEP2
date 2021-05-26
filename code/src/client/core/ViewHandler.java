@@ -122,6 +122,7 @@ public class ViewHandler {
             CarViewController controller = loader.getController();
             controller.init(carViewModel);
             stage.setTitle("Car View");
+            stage.setMaximized(true);
             Scene carScene = new Scene(root);
             stage.setScene(carScene);
 
@@ -187,6 +188,7 @@ public class ViewHandler {
             stage.setTitle("Employee");
             Scene employeeScene = new Scene(root);
             stage.setScene(employeeScene);
+            stage.setMaximized(true);
         } catch (IOException e) {
             e.printStackTrace();
         }

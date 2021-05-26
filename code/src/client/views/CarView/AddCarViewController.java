@@ -37,10 +37,8 @@ public class AddCarViewController {
         equipmentTextField.textProperty().bindBidirectional(addEditCarViewModel.equipmentProperty());
         descriptionTextField.textProperty().bindBidirectional(addEditCarViewModel.descriptionProperty());
         dailyPriceTextField.textProperty().bindBidirectional(addEditCarViewModel.dailyPriceProperty());
-        branchComboBox.valueProperty().bindBidirectional(addEditCarViewModel.branchProperty());
+//        branchComboBox.valueProperty().bindBidirectional(addEditCarViewModel.branchProperty());
         messageLabel.textProperty().bindBidirectional(addEditCarViewModel.messageProperty());
-
-
     }
 
     @FXML

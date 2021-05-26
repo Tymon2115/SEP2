@@ -47,7 +47,6 @@ public class LoginController {
      * @param actionEvent the action event
      */
     public void onLoginButton(ActionEvent actionEvent) {
-
         loginVM.login();
     }
 }
