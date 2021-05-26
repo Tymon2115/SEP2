@@ -63,7 +63,10 @@ CREATE TABLE reservation (
     start_date DATE NOT NULL ,
     end_date DATE NOT NULL ,
     price NUMERIC NOT NULL ,
+    email varchar(100),
+    phone_number (100),
     FOREIGN KEY (car_id) references car (id),
     FOREIGN KEY (start_branch_id) references branch (id),
     FOREIGN KEY (end_branch_id) references  branch (id)
 );
+INSERT INTO role value (1, 'owner'), (2,'manager'), (3,'employee')

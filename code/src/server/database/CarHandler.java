@@ -9,8 +9,30 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * Handles adding and retrieving data about cars from the database
+ * @author Tymon
+ */
 public class CarHandler {
 
+    /**
+     * add car to the database.
+     *
+     * @param make            the make
+     * @param model           the model
+     * @param color           the color
+     * @param numberPlates    the number plates
+     * @param fuelType        the fuel type
+     * @param fuelConsumption the fuel consumption
+     * @param seats           the seats
+     * @param engine          the engine
+     * @param transmission    the transmission
+     * @param equipment       the equipment
+     * @param description     the description
+     * @param branchId        the branch id
+     * @param dailyPrice      the daily price
+     * @throws AlreadyExists the already exists exception if object already exists in database
+     */
     public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws AlreadyExists {
         try {
 
@@ -43,6 +65,12 @@ public class CarHandler {
         }
     }
 
+    /**
+     * Gets car  from the database.
+     *
+     * @param searchId the search id
+     * @return the car
+     */
     public Car getCar(int searchId) {
 
 
@@ -88,6 +116,11 @@ public class CarHandler {
         return null;
     }
 
+    /**
+     * Gets cars from the database.
+     *
+     * @return the cars
+     */
     public ArrayList<Car> getCars() {
         ArrayList<Car> cars = new ArrayList<>();
         try {
@@ -118,6 +151,24 @@ public class CarHandler {
 
     }
 
+    /**
+     * Edit car in the database.
+     *
+     * @param id              the id
+     * @param make            the make
+     * @param model           the model
+     * @param color           the color
+     * @param numberPlates    the number plates
+     * @param fuelType        the fuel type
+     * @param fuelConsumption the fuel consumption
+     * @param seats           the seats
+     * @param engine          the engine
+     * @param transmission    the transmission
+     * @param equipment       the equipment
+     * @param description     the description
+     * @param branchId        the branch id
+     * @param dailyPrice      the daily price
+     */
     public void editCar(int id, String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) {
         try {
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
@@ -132,6 +183,11 @@ public class CarHandler {
         }
     }
 
+    /**
+     * Delete car from the database.
+     *
+     * @param id the id
+     */
     public void deleteCar(int id) {
         try {
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();

@@ -17,6 +17,9 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
 
+/**
+ * The type Data server.
+ */
 public class DataServer implements Server {
 
     private CarHandler carHandler = new CarHandler();
@@ -25,6 +28,11 @@ public class DataServer implements Server {
     private BranchHandler branchHandler = new BranchHandler();
 
 
+    /**
+     * Instantiates a new Data server.
+     *
+     * @throws RemoteException the remote exception
+     */
     public DataServer() throws RemoteException {
         UnicastRemoteObject.exportObject(this, 0);
     }

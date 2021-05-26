@@ -9,6 +9,9 @@ import javafx.fxml.FXMLLoader;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+/**
+ * ViewModel for logging in
+ */
 public class LoginViewModel {
 
     private Model model;
@@ -17,6 +20,12 @@ public class LoginViewModel {
     private ViewHandler viewHandler;
 
 
+    /**
+     * Instantiates a new Login view model.
+     *
+     * @param model       the model
+     * @param viewHandler the view handler
+     */
     public LoginViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
         username = new SimpleStringProperty();
@@ -26,6 +35,11 @@ public class LoginViewModel {
         this.viewHandler = viewHandler;
     }
 
+    /**
+     * Logged in.
+     *
+     * @param event the event
+     */
     public void loggedIn(PropertyChangeEvent event) {
         Platform.runLater(() -> {
             int role_id = (int) event.getNewValue();
@@ -39,22 +53,43 @@ public class LoginViewModel {
 
     }
 
+    /**
+     * Username property string property.
+     *
+     * @return the string property
+     */
     public StringProperty usernameProperty() {
         return username;
     }
 
+    /**
+     * Password property string property.
+     *
+     * @return the string property
+     */
     public StringProperty passwordProperty() {
         return password;
     }
 
+    /**
+     * Login response property string property.
+     *
+     * @return the string property
+     */
     public StringProperty loginResponseProperty() {
         return loginResponse;
     }
 
+    /**
+     * Login.
+     */
     public void login() {
         model.login(username.get(), password.get());
     }
 
+    /**
+     * Open front page view.
+     */
     public void openFrontPageView() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../client/views/LoginView/Login.fxml"));

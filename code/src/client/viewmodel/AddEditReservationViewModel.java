@@ -20,6 +20,10 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * ViewModel for adding and editing the reservation
+ * @author adam
+ */
 public class AddEditReservationViewModel {
     private Model model;
     private PropertyChangeSupport support;
@@ -47,7 +51,12 @@ public class AddEditReservationViewModel {
     private StringProperty message;
 
 
-
+    /**
+     * Instantiates a new Add edit reservation view model.
+     *
+     * @param model       the model
+     * @param viewHandler the view handler
+     */
     public AddEditReservationViewModel (Model model, ViewHandler viewHandler) {
         this.model = model;
         model.addListener(this::listenForBranches, "branches");
@@ -75,66 +84,147 @@ public class AddEditReservationViewModel {
         endDate = new SimpleObjectProperty<>();
         message = new SimpleStringProperty();
     }
+
+    /**
+     * Name property string property.
+     *
+     * @return the string property
+     */
     public StringProperty nameProperty () {
         return name;
     }
 
+    /**
+     * Surname property string property.
+     *
+     * @return the string property
+     */
     public StringProperty surnameProperty ()  {
         return surname;
     }
 
+    /**
+     * Drivers licence property string property.
+     *
+     * @return the string property
+     */
     public StringProperty driversLicenceProperty() {
         return driversLicence;
     }
 
+    /**
+     * Address street property string property.
+     *
+     * @return the string property
+     */
     public StringProperty addressStreetProperty () {
         return addressStreet;
     }
 
+    /**
+     * Address zip property string property.
+     *
+     * @return the string property
+     */
     public StringProperty addressZipProperty(){
         return addressZip;
     }
 
+    /**
+     * Address city property string property.
+     *
+     * @return the string property
+     */
     public StringProperty addressCityProperty(){
         return addressCity;
     }
 
+    /**
+     * Address country property string property.
+     *
+     * @return the string property
+     */
     public StringProperty addressCountryProperty () {
         return addressCountry;
     }
 
+    /**
+     * Price property string property.
+     *
+     * @return the string property
+     */
     public StringProperty priceProperty () {
         return price;
     }
 
+    /**
+     * Email property string property.
+     *
+     * @return the string property
+     */
     public StringProperty emailProperty () {
         return email;
     }
 
+    /**
+     * Phone number property string property.
+     *
+     * @return the string property
+     */
     public StringProperty phoneNumberProperty() {
         return phoneNumber;
     }
 
+    /**
+     * Car property string property.
+     *
+     * @return the string property
+     */
     public StringProperty carProperty () {
         return car;
     }
 
+    /**
+     * Start branch property string property.
+     *
+     * @return the string property
+     */
     public StringProperty startBranchProperty () {
         return startBranch;
     }
 
+    /**
+     * End branch property string property.
+     *
+     * @return the string property
+     */
     public StringProperty endBranchProperty () {
         return endBranch;
     }
 
+    /**
+     * Start date property object property.
+     *
+     * @return the object property
+     */
     public ObjectProperty<LocalDate> startDateProperty () {
         return startDate;
     }
 
+    /**
+     * End date property object property.
+     *
+     * @return the object property
+     */
     public ObjectProperty<LocalDate> endDateProperty () {
         return endDate;
     }
 
+    /**
+     * Message property string property.
+     *
+     * @return the string property
+     */
     public StringProperty messageProperty () {
         return message;
     }
@@ -168,10 +258,20 @@ public class AddEditReservationViewModel {
         });
     }
 
+    /**
+     * Gets cars.
+     *
+     * @return the cars
+     */
     public ObservableList<String> getCars() {
         return cars;
     }
 
+    /**
+     * Gets branches.
+     *
+     * @return the branches
+     */
     public ObservableList<String> getBranches() {
         return branches;
     }
@@ -247,10 +347,16 @@ public class AddEditReservationViewModel {
         }
     }
 
+    /**
+     * Cancel action.
+     */
     public void cancelAction () {
         viewHandler.openReservationView();
     }
 
+    /**
+     * Add action.
+     */
     public void addAction () {
         if (inputVerification()){
             model.createReservation(name.get(),
@@ -286,6 +392,11 @@ public class AddEditReservationViewModel {
 
     }
 
+    /**
+     * Edit action.
+     *
+     * @param id the id
+     */
     public void editAction (int id) {
         if (inputVerification()){
                 model.editReservation(

@@ -10,6 +10,10 @@ import shared.Reservation.Car;
 import java.awt.event.ActionEvent;
 
 
+/**
+ * The type Car view controller.
+ * @author Oliver
+ */
 public class CarViewController {
 
 
@@ -55,11 +59,21 @@ public class CarViewController {
     private TableColumn<Car, Number> column_dailyprice;
 
 
+    /**
+     * Back.
+     *
+     * @param actionEvent the action event
+     */
     public void back(ActionEvent actionEvent) {
         carViewModel.home();
     }
 
 
+    /**
+     * Init.
+     *
+     * @param carViewModel the car view model
+     */
     public void init(CarViewModel carViewModel) {
 
         this.carViewModel = carViewModel;
@@ -79,19 +93,37 @@ public class CarViewController {
         tableview_car.setItems(carViewModel.getCars());
     }
 
+    /**
+     * Delete action.
+     */
     public void deleteAction () {
         if(tableview_car.getSelectionModel().getSelectedItems().get(0) != null)
         carViewModel.deleteAction(tableview_car.getSelectionModel().getSelectedItems().get(0).getId());
     }
 
+    /**
+     * Open add view.
+     *
+     * @param actionEvent the action event
+     */
     public void openAddView(javafx.event.ActionEvent actionEvent) {
         carViewModel.openAddCarView();
     }
 
+    /**
+     * Back.
+     *
+     * @param actionEvent the action event
+     */
     public void back(javafx.event.ActionEvent actionEvent) {
         carViewModel.home();
     }
 
+    /**
+     * Open edit view.
+     *
+     * @param actionEvent the action event
+     */
     public void openEditView(javafx.event.ActionEvent actionEvent) {
 
         if (tableview_car.getSelectionModel().getSelectedItem() != null) {
