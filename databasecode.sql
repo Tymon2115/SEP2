@@ -5,21 +5,26 @@ SET SCHEMA 'sep';
 --entities
 
 CREATE TABLE role (
-    id SERIAL PRIMARY KEY ,
+    id PRIMARY KEY ,
     role_name VARCHAR (50)
 );
+
+INSERT INTO role (id, role_name) VALUES (1, "owner");
+INSERT INTO role (id, role_name) VALUES (2, "manager");
+INSERT INTO role (id, role_name) VALUES (3, "employee");
+
 CREATE TABLE branch (
     id SERIAL PRIMARY KEY ,
     name VARCHAR (500) NOT NULL,
-    location VARCHAR (500)
+    location VARCHAR (500) NOT NULL
 );
 
 CREATE TABLE employee (
     id SERIAL PRIMARY KEY,
     name VARCHAR(800) NOT NULL,
     surname VARCHAR (40) NOT NULL,
-    role_id INTEGER,
-    branch_id INTEGER,
+    role_id INTEGER NOT NULL,
+    branch_id INTEGER NOT NULL,
     username VARCHAR (30) NOT NULL,
     password VARCHAR NOT NULL,
     email VARCHAR NOT NULL,

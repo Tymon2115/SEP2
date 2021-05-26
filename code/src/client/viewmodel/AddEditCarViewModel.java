@@ -1,6 +1,7 @@
 package client.viewmodel;
 
 import client.core.ViewHandler;
+import client.exceptions.AlreadyExists;
 import client.model.Model;
 import javafx.application.Platform;
 
@@ -10,10 +11,13 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.Branch.Branch;
+import shared.Reservation.Car;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AddEditCarViewModel {
 
@@ -22,6 +26,7 @@ public class AddEditCarViewModel {
     private PropertyChangeSupport support;
     private ViewHandler viewHandler;
     private ObservableList<String> branches;
+    private ArrayList<Car> cars;
 
 
     private StringProperty make;
@@ -44,13 +49,13 @@ public class AddEditCarViewModel {
     public AddEditCarViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
         this.viewHandler = viewHandler;
-
         this.support = new PropertyChangeSupport(this);
+        cars = new ArrayList<>();
         model.addListener(this::listenForBranches, "branches");
+        model.addListener(this::listenForCars, "cars");
         model.getBranches();
+        model.getCars();
         branches = FXCollections.observableArrayList();
-
-
         make = new SimpleStringProperty();
         carModel = new SimpleStringProperty();
         color = new SimpleStringProperty();
@@ -68,9 +73,14 @@ public class AddEditCarViewModel {
         message = new SimpleStringProperty();
     }
 
+    private void listenForCars(PropertyChangeEvent propertyChangeEvent) {
+        Platform.runLater(() -> {
+            cars = (ArrayList<Car>) propertyChangeEvent.getNewValue();
+        });
+    }
+
     private void listenForBranches(PropertyChangeEvent propertyChangeEvent) {
         Platform.runLater(() -> {
-
             branches.clear();
             ArrayList<Branch> receivedBranches = (ArrayList<Branch>) propertyChangeEvent.getNewValue();
             ArrayList<String> receivedBranchNumbers = new ArrayList<>();
@@ -158,6 +168,15 @@ public class AddEditCarViewModel {
 
 
     private boolean inputVerification () {
+
+        String decimalNumbers = "[1-9]\\d*(\\.\\d+)?$";
+        Pattern regexDecimalNumbers = Pattern.compile(decimalNumbers);
+        Matcher matcherDecimalNumbers = regexDecimalNumbers.matcher(dailyPrice.get());
+
+        String numbers = "[0-9]";
+        Pattern regexNumbers = Pattern.compile(numbers);
+        Matcher matcherNumbers = regexNumbers.matcher(seats.get());
+
         if (make.get() == null || make.get().equals("")) {
             message.setValue("Please input make");
             return false;
@@ -207,7 +226,15 @@ public class AddEditCarViewModel {
             return false;
         }
         else if (branch.get() == null || branch.get().equals("")) {
-            branch.setValue("Please input branch");
+            message.setValue("Please input branch");
+            return false;
+        }
+        else if (!matcherDecimalNumbers.matches()) {
+            message.set("Please input a valid daily price");
+            return false;
+        }
+        else if (!matcherNumbers.matches()){
+            message.set("Please input a valid number of seats");
             return false;
         }
         else if (make.get().length() > 30) {
@@ -246,11 +273,23 @@ public class AddEditCarViewModel {
             message.set("Please input a transmission with a maximum of 300 characters");
             return false;
         }
+
         else if (Double.parseDouble(dailyPrice.get()) < 0.0) {
             message.set("Please input a price higher than 0");
             return false;
         }
         else {
+
+            for (Car car : cars) {
+                if (car.getMake().equals(make.get()) && car.getModel().equals(carModel.get()) && car.getColor().equals(color.get()) && car.getNumberPlates().equals(numberPlates.get())
+                && car.getFuelType().equals(fuelType.get()) && car.getFuelConsumption().equals(fuelConsumption.get()) && car.getSeats().equals(seats.get()) && car.getEngine().equals(engine.get())
+                && car.getTransmission().equals(transmission.get()) && car.getEquipment().equals(equipment.get()) && car.getDescription().equals(description.get())
+                        && car.getDailyPrice() == Double.parseDouble(dailyPrice.get()) && String.valueOf(car.getBranchId()).equals(branch.get())) {
+                    message.set("This car already exists in the system");
+                    return false;
+                }
+            }
+
             return true;
         }
     }
@@ -271,30 +310,40 @@ public class AddEditCarViewModel {
                     Integer.parseInt(branch.get()),
                     Double.parseDouble(dailyPrice.get()));
 
-                    model.getCars();
-                    viewHandler.openCarView();
+                    reload();
 
-                    carModel.set("");
-                    color.set("");
-                    numberPlates.set("");
-                    fuelType.set("");
-                    fuelConsumption.set("");
-                    seats.set("");
-                    engine.set("");
-                    transmission.set("");
-                    equipment.set("");
-                    description.set("");
-                    dailyPrice.set("");
         }
         else {
             //shouldn't do anything
         }
+    }
 
+    private void defaultFields() {
+        make.set("");
+        carModel.set("");
+        color.set("");
+        numberPlates.set("");
+        fuelType.set("");
+        fuelConsumption.set("");
+        seats.set("");
+        engine.set("");
+        transmission.set("");
+        equipment.set("");
+        description.set("");
+        dailyPrice.set("");
+        message.set("");
+        branch.set("");
+        message.set("");
+    }
 
+    private void reload () {
+        model.getCars();
+        viewHandler.openCarView();
+        defaultFields();
     }
 
     public void cancelAction () {
-        viewHandler.openCarView();
+        reload();
     }
 
     public void editAction (int id) {
@@ -315,21 +364,7 @@ public class AddEditCarViewModel {
                   Integer.parseInt(branch.get()),
                   Double.parseDouble(dailyPrice.get())
           );
-          model.getCars();
-          viewHandler.openCarView();
-          make.set("");
-          carModel.set("");
-          color.set("");
-          numberPlates.set("");
-          fuelType.set("");
-          fuelConsumption.set("");
-          seats.set("");
-          engine.set("");
-          transmission.set("");
-          equipment.set("");
-          description.set("");
-          branch.set("");
-          dailyPrice.set("");
+          reload();
       }
         else {
             //shouldn't do anything

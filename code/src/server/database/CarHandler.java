@@ -11,34 +11,18 @@ import java.util.ArrayList;
 
 public class CarHandler {
 
-    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws AlreadyExists {
+    public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice){
         try {
-
-            Statement statement1 = DatabaseConnection.getInstance().getConnection().createStatement();
-
-            ResultSet result = statement1.executeQuery("SELECT * FROM car WHERE make = '" + make + "' AND model ='" + model + "' AND color = '" + color + "' AND number_plates = '" + numberPlates + "' AND fuel_type = '" + fuelType + "' AND " +
-                    "fuel_consumption = '" + fuelConsumption + "' AND seats = '" + seats + "' AND engine = '" + engine + "' AND transmission = '" + transmission + "' AND equipment = '" + equipment + "' AND description = '" + description
-            + "' AND branch_id = '" + branchId + "' AND daily_price = '" + dailyPrice + "';");
-
-
-
-
-
-            if (!result.next()) {
-
                 Statement statement2 = DatabaseConnection.getInstance().getConnection().createStatement();
                 statement2.executeUpdate(
                         " INSERT INTO car (make, model, color, number_plates, fuel_type," +
                                 " fuel_consumption, seats, engine, transmission, equipment, description, branch_id, daily_price) " +
                                 "VALUES ('" + make + "', '" + model + "', '" + color + "', '" + numberPlates + "', '" + fuelType + "', '" +
                                 fuelConsumption + "', '" + seats + "', '" + engine + "', '" + transmission + "', '" + equipment + "', '" + description + "', '" + branchId + "', '" + dailyPrice + "');");
-                statement1.close();
+
                 statement2.close();
-            } else {
-                statement1.close();
-                throw new AlreadyExists("This object already exists in the database");
             }
-        } catch (SQLException e) {
+         catch (SQLException e) {
             e.printStackTrace();
         }
     }

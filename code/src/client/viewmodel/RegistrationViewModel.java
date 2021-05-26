@@ -34,11 +34,13 @@ public class RegistrationViewModel {
     private ViewHandler viewHandler;
     private ObservableList<String> branches;
     private ObservableList<String> roles;
+    private ArrayList<Employee> employees;
 
     public RegistrationViewModel(Model model, ViewHandler viewHandler) {
         this.model = model;
         support = new PropertyChangeSupport(this);
         this.viewHandler = viewHandler;
+        employees = new ArrayList<>();
         firstname = new SimpleStringProperty();
         lastname = new SimpleStringProperty();
         username = new SimpleStringProperty();
@@ -50,6 +52,8 @@ public class RegistrationViewModel {
         email = new SimpleStringProperty();
         branches = FXCollections.observableArrayList();
         roles = FXCollections.observableArrayList();
+        model.addListener(this::listenForEmployees, "employees");
+        model.getEmployees();
 
 
         if (Session.getRole_id() == 1) {
@@ -64,6 +68,12 @@ public class RegistrationViewModel {
         model.addListener(this::listenForBranches, "branches");
         model.getBranches();
 
+    }
+
+    private void listenForEmployees(PropertyChangeEvent propertyChangeEvent) {
+        Platform.runLater(() -> {
+            employees = (ArrayList<Employee>) propertyChangeEvent.getNewValue();
+        });
     }
 
     private void listenForBranches(PropertyChangeEvent propertyChangeEvent) {
@@ -89,20 +99,30 @@ public class RegistrationViewModel {
     }
 
     public void home() {
-        viewHandler.openEmployeeView();
+        reload();
     }
 
     private boolean inputVerification () {
-        String specialCharacters = "^[^<>{}\"/|;:.,~!?@#$%^=&*\\]\\\\()\\[¿§«»ω⊙¤°℃℉€¥£¢¡®©0-9_+]*$";
-        Pattern regex = Pattern.compile(specialCharacters);
+        String specialCharacters = "[^\\w]";
+        Pattern regexSpecial = Pattern.compile(specialCharacters);
+        Matcher matcherSpecial = regexSpecial.matcher(password.get());
 
-        Matcher matcher = regex.matcher(password.get());
+        String uppercase = "[A-Z]";
+        Pattern regexUppercase = Pattern.compile(uppercase);
+        Matcher matcherUppercase = regexUppercase.matcher(password.get());
 
-        if (!matcher.find()) {
-            registrationMessageLabel.set("Please input a password with at least one special character");
-        }
+        String lowercase = "[a-z]";
+        Pattern regexLowercase = Pattern.compile(lowercase);
+        Matcher matcherLowercase = regexLowercase.matcher(password.get());
 
-        //TODO oliver : finish input verification
+        String digits = "[0-9]";
+        Pattern regexDigits = Pattern.compile(digits);
+        Matcher matcherDigits = regexDigits.matcher(password.get());
+
+        //RFC 5322 General Email Regex Official Standard
+        String validEmail = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+        Pattern regexEmail = Pattern.compile(validEmail);
+        Matcher matcherEmail = regexEmail.matcher(email.get());
 
         if (firstname.get() == null || "".equals(firstname.get())) {
             registrationMessageLabel.setValue("Please input your first name");
@@ -119,17 +139,49 @@ public class RegistrationViewModel {
         } else if (confirmpassword.get() == null || "".equals(confirmpassword.get())) {
             registrationMessageLabel.setValue("Please input your password confirmation");
             return false;
-        } else if (!password.get().equals(confirmpassword.get())){
+        } else if (email.get() == null || email.get().equals("")){
+            registrationMessageLabel.set("Please input email");
+            return false;
+        }
+        else if (!password.get().equals(confirmpassword.get())){
             registrationMessageLabel.setValue("Please input matching passwords");
             return false;
         } else if (firstname.get().length() > 800) {
             registrationMessageLabel.set("Please input a first name with a maximum of 800 characters");
+            return false;
         } else if (lastname.get().length() > 40) {
             registrationMessageLabel.set("Please input a last name with a maximum of 40 characters");
+            return false;
         } else if (password.get().length() < 8) {
             registrationMessageLabel.set("Please input a password with a minimum length of 8 characters");
-        } else if ()
+            return false;
+        } else if (!matcherSpecial.find()) {
+            registrationMessageLabel.set("Please input a password with at least one special character");
+            return false;
+        } else if (!matcherUppercase.find()){
+            registrationMessageLabel.set("Please input a password with at least one uppercase letter");
+            return false;
+        } else if (!matcherLowercase.find()){
+            registrationMessageLabel.set("Please input a password with at least one lowercase letter");
+            return false;
+        } else if (!matcherDigits.find()) {
+            registrationMessageLabel.set("Please input a password with at least one digit");
+            return false;
+        } else if (!matcherEmail.matches()){
+            registrationMessageLabel.set("Please input a valid email");
+            return false;
+        } else if (branch.get() == null || branch.get().equals("")){
+            registrationMessageLabel.set("Please select a branch");
+            return false;
+        }
             else {
+                for (Employee employee : employees) {
+                    if (employee.getName().equals(firstname.get()) && employee.getSurname().equals(lastname.get()) && String.valueOf(employee.getBranchId()).equals(branch.get()) && employee.getEmail().equals(email.get())
+                    && String.valueOf(employee.getRoleId()).equals(role.get())) {
+                        registrationMessageLabel.set("This employee already exists in the system");
+                        return false;
+                    }
+                }
             return true;
         }
     }
@@ -145,14 +197,15 @@ public class RegistrationViewModel {
                     password.get(),
                     email.get()
             );
+        reload();
 
+        } else {
+            //shouldn't do anything
         }
-        model.getEmployees();
-        viewHandler.openEmployeeView();
-        defaultFields();
+
     }
 
-    public void defaultFields() {
+    private void defaultFields() {
         firstname.setValue("");
         lastname.setValue("");
         username.setValue("");
@@ -160,6 +213,12 @@ public class RegistrationViewModel {
         confirmpassword.setValue("");
         registrationMessageLabel.setValue("");
         email.setValue("");
+    }
+
+    private void reload(){
+        model.getEmployees();
+        viewHandler.openEmployeeView();
+        defaultFields();
     }
 
     public void onEdit (int id) {
@@ -174,15 +233,7 @@ public class RegistrationViewModel {
                     password.get(),
                     email.get()
             );
-            model.getEmployees();
-            viewHandler.openEmployeeView();
-            firstname.set("");
-            lastname.set("");
-            role.set("");
-            branch.set("");
-            username.set("");
-            password.set("");
-            email.set("");
+        reload();
         }
         else {
             //shouldn't do anything

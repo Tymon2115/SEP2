@@ -42,6 +42,14 @@ public class Employee implements Serializable {
         return id;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
     public int getBranchId() {
         return branchId;
     }

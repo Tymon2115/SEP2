@@ -31,14 +31,9 @@ public class DataServer implements Server {
 
     @Override
     public void createReservation(String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, Client client, double price, String email, String phoneNumber) throws RemoteException {
-        try {
+
             reservationHandler.createReservation(name, surname, driversLicence, address, carId, startBranchId, endBranchId, startDate, endDate, price, email, phoneNumber);
-        } catch (AlreadyExists alreadyExists) {
-            alreadyExists.printStackTrace();
-        }
     }
-
-
 
 
     @Override
@@ -60,11 +55,9 @@ public class DataServer implements Server {
 
     @Override
     public void createEmployee(String name, String surname, int roleId, int branchId, String username, String password, String email) throws RemoteException {
-        try {
+
             employeeHandler.createEmployee(name, surname, roleId, branchId, username, password, email);
-        } catch (AlreadyExists alreadyExists) {
-            alreadyExists.printStackTrace();
-        }
+
     }
 
     @Override
@@ -86,11 +79,9 @@ public class DataServer implements Server {
 
 
     public void createCar(String make, String model, String color, String numberPlates, String fuelType, String fuelConsumption, String seats, String engine, String transmission, String equipment, String description, int branchId, double dailyPrice) throws RemoteException {
-        try {
+
             carHandler.createCar(make, model, color, numberPlates, fuelType, fuelConsumption, seats, engine, transmission, equipment, description, branchId, dailyPrice);
-        } catch (AlreadyExists alreadyExists) {
-            alreadyExists.printStackTrace();
-        }
+
 
     }
 
@@ -114,11 +105,9 @@ public class DataServer implements Server {
 
     @Override
     public void createBranch(String name, String location) throws RemoteException {
-        try {
+
             branchHandler.createBranch(name, location);
-        } catch (AlreadyExists alreadyExists) {
-            alreadyExists.printStackTrace();
-        }
+
     }
 
     @Override
