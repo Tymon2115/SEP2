@@ -10,6 +10,10 @@ import javafx.scene.control.TableView;
 import shared.personel.Employee;
 
 
+/**
+ * The Employee view controller.
+ * @author Adam
+ */
 public class EmployeeViewController {
 
     private EmployeeViewModel employeeViewModel;
@@ -40,6 +44,11 @@ public class EmployeeViewController {
     @FXML
     private TableColumn<Employee, String> column_email;
 
+    /**
+     * Init.
+     *
+     * @param employeeViewModel the employee view model
+     */
     public void init(EmployeeViewModel employeeViewModel) {
         employee_tableview.getItems().clear();
         this.employeeViewModel = employeeViewModel;
@@ -54,15 +63,28 @@ public class EmployeeViewController {
     }
 
 
+    /**
+     * Open add view.
+     *
+     * @param actionEvent the action event
+     */
     public void openAddView(ActionEvent actionEvent) {
         employeeViewModel.openRegistrationView();
     }
 
+    /**
+     * Delete action.
+     */
     public void deleteAction () {
         if (employee_tableview.getSelectionModel().getSelectedItems().get(0) != null)
         employeeViewModel.deleteAction(employee_tableview.getSelectionModel().getSelectedItems().get(0).getId());
     }
 
+    /**
+     * Open edit view.
+     *
+     * @param actionEvent the action event
+     */
     public void openEditView(ActionEvent actionEvent) {
         if (employee_tableview.getSelectionModel().getSelectedItems().get(0) != null) {
             Employee selectedEmployee = employee_tableview.getSelectionModel().getSelectedItems().get(0);
@@ -71,6 +93,11 @@ public class EmployeeViewController {
 
     }
 
+    /**
+     * Back.
+     *
+     * @param actionEvent the action event
+     */
     public void back(ActionEvent actionEvent) {
         employeeViewModel.home();
     }

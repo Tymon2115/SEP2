@@ -6,6 +6,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+/**
+ * The Front page view controller.
+ * @author adam
+ */
 public class FrontPageViewController {
 
     @FXML
@@ -17,6 +21,12 @@ public class FrontPageViewController {
 
     private FrontPageViewModel frontPageViewModel;
 
+    /**
+     * Init. Called from viewHandler to load the view
+     * Sets the visibility of buttons according to employee role
+     *
+     * @param frontPageViewModel the front page view model
+     */
     public void init(FrontPageViewModel frontPageViewModel) {
         this.frontPageViewModel = frontPageViewModel;
 
@@ -30,18 +40,38 @@ public class FrontPageViewController {
         }
     }
 
+    /**
+     * On cars button. Calls frontPageViewModel to set view to carView. Accessible to Manager and Owner
+     *
+     * @param actionEvent the action event
+     */
     public void onCarsButton(ActionEvent actionEvent) {
         frontPageViewModel.getCarView();
     }
 
+    /**
+     * On reservations button. Calls frontPageViewModel to set view to reservationView. Accessible to everyone
+     *
+     * @param actionEvent the action event
+     */
     public void onReservationsButton(ActionEvent actionEvent) {
         frontPageViewModel.getReservationView();
     }
 
+    /**
+     * On employee button.Calls frontPageViewModel to set view to employeeView. Accessible to Manager and Owner
+     *
+     * @param actionEvent the action event
+     */
     public void onEmployeeButton(ActionEvent actionEvent) {
         frontPageViewModel.getEmployeeView();
     }
 
+    /**
+     * On branches button. Calls frontPageViewModel to set view to branchesView. Accessible to Owner only
+     *
+     * @param actionEvent the action event
+     */
     public void onBranchesButton(ActionEvent actionEvent) {
         frontPageViewModel.getBranchView();
     }

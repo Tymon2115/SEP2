@@ -4,42 +4,148 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.EditCarViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.EditCarViewController">
     <children>
-        <Text layoutX="212.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Plates" />
-        <TextField fx:id="makeTextField" layoutX="313.0" layoutY="83.0" />
-        <Text layoutX="310.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Car" />
-        <Text layoutX="211.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel Type" />
-        <TextField fx:id="modelTextField" layoutX="313.0" layoutY="118.0" />
-        <Button fx:id="cancelButton" layoutX="256.0" layoutY="615.0" mnemonicParsing="false" onAction="#cancelAction" text="Cancel" />
-        <Button fx:id="editButton" layoutX="382.0" layoutY="615.0" mnemonicParsing="false" onAction="#editAction" text="Edit" />
-        <Text layoutX="213.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel Consumption" wrappingWidth="80.22168181836605" />
-        <Text layoutX="213.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seats" />
-        <Text layoutX="213.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Engine" />
-        <Text layoutX="213.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transmission" />
-        <Text layoutX="213.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment" />
-        <Text layoutX="212.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
-        <Text layoutX="213.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Branch" />
-        <Text layoutX="213.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Color" />
-        <Text layoutX="213.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Model" />
-        <Text layoutX="213.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make" />
-        <Text layoutX="213.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Price" />
-        <TextField fx:id="colorTextField" layoutX="313.0" layoutY="154.0" />
-        <TextField fx:id="numberPlatesTextField" layoutX="313.0" layoutY="189.0" />
-        <TextField fx:id="fuelTypeTextField" layoutX="313.0" layoutY="228.0" />
-        <TextField fx:id="fuelConsumptionTextField" layoutX="313.0" layoutY="266.0" />
-        <TextField fx:id="seatsTextField" layoutX="313.0" layoutY="308.0" />
-        <TextField fx:id="engineTextField" layoutX="313.0" layoutY="345.0" />
-        <TextField fx:id="transmissionTextField" layoutX="313.0" layoutY="389.0" />
-        <TextField fx:id="equipmentTextField" layoutX="313.0" layoutY="431.0" />
-        <TextField fx:id="descriptionTextField" layoutX="313.0" layoutY="476.0" />
-        <TextField fx:id="dailyPriceTextField" layoutX="313.0" layoutY="557.0" />
-        <ComboBox fx:id="branchComboBox" layoutX="313.0" layoutY="517.0" prefHeight="31.0" prefWidth="161.0" />
-        <Label fx:id="messageLabel" layoutX="332.0" layoutY="575.0" />
-      <Text layoutX="216.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
-      <Text fx:id="idText" layoutX="367.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="53.36475009471178" />
+        <Text fill="#7289da" layoutX="89.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Plates">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <TextField fx:id="makeTextField" layoutX="221.0" layoutY="169.0" prefHeight="25.0" prefWidth="187.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <Text fill="#7289da" layoutX="105.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel Type">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <TextField fx:id="modelTextField" layoutX="221.0" layoutY="204.0" prefHeight="25.0" prefWidth="187.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <Button fx:id="cancelButton" layoutX="274.0" layoutY="719.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #7289da;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+        <Button fx:id="editButton" layoutX="142.0" layoutY="719.0" mnemonicParsing="false" onAction="#editAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #7289da;" text="Edit" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+        <Text fill="#7289da" layoutX="87.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel Consumption" wrappingWidth="122.22168181836605">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <Text fill="#7289da" layoutX="111.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seats">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <Text fill="#7289da" layoutX="106.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Engine">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <Text fill="#7289da" layoutX="87.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transmission">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <Text fill="#7289da" layoutX="93.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <Text fill="#7289da" layoutX="92.0" layoutY="582.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <Text fill="#7289da" layoutX="106.0" layoutY="624.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Branch">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <Text fill="#7289da" layoutX="111.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Color">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <Text fill="#7289da" layoutX="108.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Model">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <Text fill="#7289da" layoutX="111.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <Text fill="#7289da" layoutX="95.0" layoutY="663.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Price">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+        <TextField fx:id="colorTextField" layoutX="221.0" layoutY="240.0" prefHeight="25.0" prefWidth="187.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <TextField fx:id="numberPlatesTextField" layoutX="221.0" layoutY="275.0" prefHeight="25.0" prefWidth="187.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <TextField fx:id="fuelTypeTextField" layoutX="221.0" layoutY="314.0" prefHeight="25.0" prefWidth="187.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <TextField fx:id="fuelConsumptionTextField" layoutX="221.0" layoutY="352.0" prefHeight="25.0" prefWidth="187.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <TextField fx:id="seatsTextField" layoutX="221.0" layoutY="394.0" prefHeight="25.0" prefWidth="187.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <TextField fx:id="engineTextField" layoutX="221.0" layoutY="431.0" prefHeight="25.0" prefWidth="187.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <TextField fx:id="transmissionTextField" layoutX="221.0" layoutY="475.0" prefHeight="25.0" prefWidth="187.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <TextField fx:id="equipmentTextField" layoutX="221.0" layoutY="517.0" prefHeight="25.0" prefWidth="187.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <TextField fx:id="descriptionTextField" layoutX="221.0" layoutY="562.0" prefHeight="25.0" prefWidth="187.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <TextField fx:id="dailyPriceTextField" layoutX="221.0" layoutY="643.0" prefHeight="30.0" prefWidth="187.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+        <ComboBox fx:id="branchComboBox" layoutX="221.0" layoutY="603.0" prefHeight="31.0" prefWidth="187.0" />
+        <Label fx:id="messageLabel" layoutX="167.0" layoutY="686.0" prefHeight="20.0" prefWidth="187.0" textFill="#7c0909">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Text fill="#7289da" layoutX="121.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text fx:id="idText" layoutX="221.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="187.0">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <AnchorPane prefHeight="105.0" prefWidth="500.0" style="-fx-background-color: #23272a;">
+         <children>
+            <ImageView fitHeight="83.0" fitWidth="199.0" layoutX="14.0" layoutY="11.0">
+               <image>
+                  <Image url="@../icons/FullDatoLogin.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="370.0" layoutY="30.0" text="Edit Car" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

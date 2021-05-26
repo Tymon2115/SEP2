@@ -7,6 +7,10 @@ import java.sql.Statement;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * Singleton for getting database connection
+ * @author Tymon
+ */
 public class DatabaseConnection {
     private static DatabaseConnection instance;
     private static Lock lock = new ReentrantLock();
@@ -25,6 +29,11 @@ public class DatabaseConnection {
         }
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static DatabaseConnection getInstance() {
         if (instance == null) {
             synchronized (lock) {
@@ -36,6 +45,11 @@ public class DatabaseConnection {
         return instance;
     }
 
+    /**
+     * Gets connection.
+     *
+     * @return the connection
+     */
     public Connection getConnection() {
         return connection;
     }

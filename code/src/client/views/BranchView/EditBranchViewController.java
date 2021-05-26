@@ -9,6 +9,10 @@ import shared.Branch.Branch;
 
 import java.util.ArrayList;
 
+/**
+ * The Edit branch view controller.
+ * @author Dan
+ */
 public class EditBranchViewController {
     private AddEditBranchViewModel addEditBranchViewModel;
 
@@ -22,7 +26,12 @@ public class EditBranchViewController {
     private Text idText;
 
 
-
+    /**
+     * Init.
+     *
+     * @param addEditBranchViewModel the add edit branch view model
+     * @param selectedBranch         the selected branch
+     */
     public void init (AddEditBranchViewModel addEditBranchViewModel, Branch selectedBranch) {
         this.addEditBranchViewModel = addEditBranchViewModel;
         nameTextField.textProperty().bindBidirectional(addEditBranchViewModel.nameProperty());
@@ -35,10 +44,16 @@ public class EditBranchViewController {
         locationTextField.textProperty().set(selectedBranch.getLocation());
     }
 
+    /**
+     * Cancel action.
+     */
     public void cancelAction () {
         addEditBranchViewModel.cancelAction();
     }
 
+    /**
+     * Edit action.
+     */
     public void editAction () {
         addEditBranchViewModel.editAction(Integer.parseInt(idText.getText()));
     }

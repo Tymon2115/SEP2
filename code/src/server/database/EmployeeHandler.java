@@ -14,14 +14,28 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * Handles adding and retrieving data about employees from the database
+ *
+ * @author Oliver
+ */
 public class EmployeeHandler {
     private final Connection connection = DatabaseConnection.getInstance().getConnection();
     private BranchHandler branchHandler = new BranchHandler();
 
 
-
-
-
+    /**
+     * Create employee  in the database.
+     *
+     * @param name     the name
+     * @param surname  the surname
+     * @param role_id  the role id
+     * @param branchId the branch id
+     * @param username the username
+     * @param password the password
+     * @param email    the email
+     * @throws AlreadyExists the already exists
+     */
     public void createEmployee(String name, String surname, int role_id, int branchId, String username, String password, String email) throws AlreadyExists {
         try {
             Statement statement1 = connection.createStatement();
@@ -56,6 +70,12 @@ public class EmployeeHandler {
         }
     }
 
+    /**
+     * Gets employee from the database.
+     *
+     * @param searchId the search id
+     * @return the employee
+     */
     public Employee getEmployee(int searchId) {
         try {
             Statement statement = connection.createStatement();
@@ -90,6 +110,11 @@ public class EmployeeHandler {
         return null;
     }
 
+    /**
+     * Gets employees from the database.
+     *
+     * @return the employees
+     */
     public ArrayList<Employee> getEmployees() {
         ArrayList<Employee> employees = new ArrayList<>();
         try {
@@ -114,6 +139,18 @@ public class EmployeeHandler {
         }
     }
 
+    /**
+     * Edit employee in the database.
+     *
+     * @param id       the id
+     * @param name     the name
+     * @param surname  the surname
+     * @param role_id  the role id
+     * @param branchId the branch id
+     * @param username the username
+     * @param password the password
+     * @param email    the email
+     */
     public void editEmployee(int id, String name, String surname, int role_id, int branchId, String username, String password, String email) {
         try {
             Statement statement = connection.createStatement();
@@ -125,6 +162,12 @@ public class EmployeeHandler {
 
         }
     }
+
+    /**
+     * Delete employee from the database.
+     *
+     * @param id the id
+     */
     public void deleteEmployee(int id){
         try{
             Statement statement = connection.createStatement();
@@ -134,6 +177,14 @@ public class EmployeeHandler {
         }
     }
 
+    /**
+     * Validates login and returns role information if accepted
+     *
+     * @param username the username
+     * @param password the password
+     * @return the int Role when login approved
+     * @throws DoesNotExist the does not exist when password does not match username
+     */
     public int login (String username, String password) throws DoesNotExist {
         try {
             Statement statement = connection.createStatement();

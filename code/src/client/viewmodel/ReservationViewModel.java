@@ -13,11 +13,21 @@ import shared.Reservation.Reservation;
 import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 
+/**
+ * ViewModel for displaying reservation information
+ * @author adam
+ */
 public class ReservationViewModel {
     private ObservableList<Reservation> reservations;
     private Model model;
     private ViewHandler viewHandler;
 
+    /**
+     * Instantiates a new Reservation view model.
+     *
+     * @param model       the model
+     * @param viewHandler the view handler
+     */
     public ReservationViewModel(Model model, ViewHandler viewHandler) {
         reservations = FXCollections.observableArrayList();
         this.model = model;
@@ -34,22 +44,43 @@ public class ReservationViewModel {
         });
     }
 
+    /**
+     * Home.
+     */
     public void home() {
         viewHandler.openFrontPageView();
     }
 
+    /**
+     * Gets reservations.
+     *
+     * @return the reservations
+     */
     public ObservableList<Reservation> getReservations() {
         return reservations;
     }
 
+    /**
+     * Gets add reservation view.
+     */
     public void getAddReservationView() {
         viewHandler.openAddReservationView();
     }
 
+    /**
+     * Open edit view.
+     *
+     * @param selectedReservation the selected reservation
+     */
     public void openEditView(Reservation selectedReservation) {
         viewHandler.openReservationEditView(selectedReservation);
     }
 
+    /**
+     * Delete action.
+     *
+     * @param id the id
+     */
     public void deleteAction (int id) {
         model.deleteReservation(id);
         model.getReservations();

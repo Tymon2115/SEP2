@@ -11,6 +11,10 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import shared.personel.Employee;
 
+/**
+ * The Edit employee view controller.
+ * @author Oliver
+ */
 public class EditEmployeeViewController {
 
     @FXML
@@ -38,6 +42,12 @@ public class EditEmployeeViewController {
     private RegistrationViewModel registrationViewModel;
     private ViewHandler viewHandler;
 
+    /**
+     * Init. Called from viewHandler to load the view
+     *
+     * @param registrationViewModel the registration view model
+     * @param selectedEmployee      the selected employee
+     */
     public void init(RegistrationViewModel registrationViewModel, Employee selectedEmployee) {
 
         branchComboBox.setItems(registrationViewModel.getBranches());
@@ -64,14 +74,25 @@ public class EditEmployeeViewController {
 
     }
 
+    /**
+     * Close on action.
+     *
+     * @param actionEvent the action event
+     */
     public void closeOnAction(ActionEvent actionEvent) {
         registrationViewModel.home();
     }
 
+    /**
+     * On edit action.
+     */
     public void onEditAction () {
         registrationViewModel.onEdit(Integer.parseInt(idText.getText()));
     }
 
+    /**
+     * Home.
+     */
     public void home() {
         registrationViewModel.home();
     }

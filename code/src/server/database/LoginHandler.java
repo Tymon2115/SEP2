@@ -8,15 +8,24 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
 
+/**
+ * Handles login process and encrypts the password
+ * @author Oliver
+ */
 public class LoginHandler {
 
 
 
 
-
-
-
-    //creating a new password
+    /**
+     * Hash string.
+     *
+     * @param password the password
+     * @return the string
+     * @throws NoSuchAlgorithmException the no such algorithm exception
+     * @throws InvalidKeySpecException  the invalid key spec exception
+     */
+//creating a new password
     public static String hash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
 
         String generatedSecuredPasswordHash = generatedStrongPasswordHash(password);
@@ -53,6 +62,15 @@ public class LoginHandler {
 
     //verification
 
+    /**
+     * Validate password boolean.
+     *
+     * @param originalPassword the original password
+     * @param storedPassword   the stored password that is encrypted
+     * @return the boolean
+     * @throws NoSuchAlgorithmException the no such algorithm exception
+     * @throws InvalidKeySpecException  the invalid key spec exception
+     */
     public static boolean validatePassword (String originalPassword, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException {
         String[] parts = storedPassword.split(":");
         int iterations = Integer.parseInt(parts[0]);

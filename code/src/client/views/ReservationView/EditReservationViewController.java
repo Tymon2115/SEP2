@@ -12,6 +12,10 @@ import javafx.scene.text.Text;
 import shared.Reservation.Reservation;
 
 
+/**
+ * The Edit reservation view controller.
+ * @author Adam
+ */
 public class EditReservationViewController {
 
     private AddEditReservationViewModel addEditReservationViewModel;
@@ -51,6 +55,12 @@ public class EditReservationViewController {
     @FXML
     private Text idText;
 
+    /**
+     * Init.
+     *
+     * @param addEditReservationViewModel the add edit reservation view model
+     * @param selectedReservation         the selected reservation
+     */
     public void init (AddEditReservationViewModel addEditReservationViewModel, Reservation selectedReservation) {
 
         carComboBox.setItems(addEditReservationViewModel.getCars());
@@ -94,10 +104,16 @@ public class EditReservationViewController {
         idText.setText(String.valueOf(selectedReservation.getId()));
     }
 
+    /**
+     * Cancel action.
+     */
     public void cancelAction () {
         addEditReservationViewModel.cancelAction();
     }
 
+    /**
+     * Edit action.
+     */
     public void editAction() {
         System.out.println("Here");
         addEditReservationViewModel.editAction(Integer.parseInt(idText.getText()));

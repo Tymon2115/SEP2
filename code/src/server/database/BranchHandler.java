@@ -10,11 +10,22 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * Handles adding and retrieving data about branches from the database
+ * @author Oliver
+ */
 public class BranchHandler {
 
     private final Connection connection = DatabaseConnection.getInstance().getConnection();
 
 
+    /**
+     * Create branch from database.
+     *
+     * @param name     the name
+     * @param location the location
+     * @throws AlreadyExists the already exists when object already exists in database
+     */
     public void createBranch(String name, String location) throws AlreadyExists {
 
         try {
@@ -39,6 +50,12 @@ public class BranchHandler {
         }
     }
 
+    /**
+     * Gets branch from database.
+     *
+     * @param searchId the search id
+     * @return the branch
+     */
     public Branch getBranch(int searchId) {
         try {
 
@@ -65,6 +82,11 @@ public class BranchHandler {
 
     }
 
+    /**
+     * Gets branches from database.
+     *
+     * @return the branches
+     */
     public ArrayList<Branch> getBranches() {
 
         try {
@@ -87,6 +109,13 @@ public class BranchHandler {
         }
     }
 
+    /**
+     * Edit branch from database.
+     *
+     * @param id       the id
+     * @param name     the name
+     * @param location the location
+     */
     public void editBranch(int id, String name, String location) {
         try {
             Statement statement = connection.createStatement();
@@ -97,6 +126,11 @@ public class BranchHandler {
         }
     }
 
+    /**
+     * Delete branch  from database.
+     *
+     * @param id the id
+     */
     public void deleteBranch(int id) {
         try {
             Statement statement = connection.createStatement();
