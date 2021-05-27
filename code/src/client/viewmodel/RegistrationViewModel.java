@@ -20,11 +20,12 @@ import java.util.regex.Pattern;
 
 /**
  * ViewModel for registration of new employee, only accesible by manager and owner
+ *
  * @author Dan
  */
 public class RegistrationViewModel {
 
-    private  Model model;
+    private Model model;
     private StringProperty firstname;
     private StringProperty lastname;
     private StringProperty username;
@@ -125,7 +126,7 @@ public class RegistrationViewModel {
         reload();
     }
 
-    private boolean inputVerification () {
+    private boolean inputVerification() {
         String specialCharacters = "[^\\w]";
         Pattern regexSpecial = Pattern.compile(specialCharacters);
         Matcher matcherSpecial = regexSpecial.matcher(password.get());
@@ -162,11 +163,10 @@ public class RegistrationViewModel {
         } else if (confirmpassword.get() == null || "".equals(confirmpassword.get())) {
             registrationMessageLabel.setValue("Please input your password confirmation");
             return false;
-        } else if (email.get() == null || email.get().equals("")){
+        } else if (email.get() == null || email.get().equals("")) {
             registrationMessageLabel.set("Please input email");
             return false;
-        }
-        else if (!password.get().equals(confirmpassword.get())){
+        } else if (!password.get().equals(confirmpassword.get())) {
             registrationMessageLabel.setValue("Please input matching passwords");
             return false;
         } else if (firstname.get().length() > 800) {
@@ -181,30 +181,29 @@ public class RegistrationViewModel {
         } else if (!matcherSpecial.find()) {
             registrationMessageLabel.set("Please input a password with at least one special character");
             return false;
-        } else if (!matcherUppercase.find()){
+        } else if (!matcherUppercase.find()) {
             registrationMessageLabel.set("Please input a password with at least one uppercase letter");
             return false;
-        } else if (!matcherLowercase.find()){
+        } else if (!matcherLowercase.find()) {
             registrationMessageLabel.set("Please input a password with at least one lowercase letter");
             return false;
         } else if (!matcherDigits.find()) {
             registrationMessageLabel.set("Please input a password with at least one digit");
             return false;
-        } else if (!matcherEmail.matches()){
+        } else if (!matcherEmail.matches()) {
             registrationMessageLabel.set("Please input a valid email");
             return false;
-        } else if (branch.get() == null || branch.get().equals("")){
+        } else if (branch.get() == null || branch.get().equals("")) {
             registrationMessageLabel.set("Please select a branch");
             return false;
-        }
-            else {
-                for (Employee employee : employees) {
-                    if (employee.getName().equals(firstname.get()) && employee.getSurname().equals(lastname.get()) && String.valueOf(employee.getBranchId()).equals(branch.get()) && employee.getEmail().equals(email.get())
-                    && String.valueOf(employee.getRoleId()).equals(role.get())) {
-                        registrationMessageLabel.set("This employee already exists in the system");
-                        return false;
-                    }
+        } else {
+            for (Employee employee : employees) {
+                if (employee.getName().equals(firstname.get()) && employee.getSurname().equals(lastname.get()) && String.valueOf(employee.getBranchId()).equals(branch.get()) && employee.getEmail().equals(email.get())
+                        && String.valueOf(employee.getRoleId()).equals(role.get())) {
+                    registrationMessageLabel.set("This employee already exists in the system");
+                    return false;
                 }
+            }
             return true;
         }
     }
@@ -223,7 +222,7 @@ public class RegistrationViewModel {
                     password.get(),
                     email.get()
             );
-        reload();
+            reload();
 
         } else {
             //shouldn't do anything
@@ -234,7 +233,7 @@ public class RegistrationViewModel {
     /**
      * Default fields.
      */
-    public void defaultFields() {
+
     private void defaultFields() {
         firstname.setValue("");
         lastname.setValue("");
@@ -245,18 +244,14 @@ public class RegistrationViewModel {
         email.setValue("");
     }
 
-    /**
-     * On edit.
-     *
-     * @param id the id
-     */
-    private void reload(){
+
+    private void reload() {
         model.getEmployees();
         viewHandler.openEmployeeView();
         defaultFields();
     }
 
-    public void onEdit (int id) {
+    public void onEdit(int id) {
         if (inputVerification()) {
             model.editEmployee(
                     id,
@@ -268,9 +263,8 @@ public class RegistrationViewModel {
                     password.get(),
                     email.get()
             );
-        reload();
-        }
-        else {
+            reload();
+        } else {
             //shouldn't do anything
         }
     }
@@ -298,7 +292,7 @@ public class RegistrationViewModel {
      *
      * @return the string property
      */
-    public StringProperty roleProperty () {
+    public StringProperty roleProperty() {
         return role;
     }
 
@@ -316,7 +310,7 @@ public class RegistrationViewModel {
      *
      * @return the string property
      */
-    public StringProperty emailProperty () {
+    public StringProperty emailProperty() {
         return email;
     }
 
