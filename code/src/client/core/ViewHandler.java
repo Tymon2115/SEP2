@@ -122,7 +122,7 @@ public class ViewHandler {
             CarViewController controller = loader.getController();
             controller.init(carViewModel);
             stage.setTitle("Car View");
-            stage.setMaximized(true);
+            stage.setMaximized(false);
             Scene carScene = new Scene(root);
             stage.setScene(carScene);
 

@@ -38,7 +38,7 @@ public class ReservationHandler {
      * @param phoneNumber    the phone number
      * @throws AlreadyExists the already exists
      */
-    public void createReservation(String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber) throws AlreadyExists {
+    public void createReservation(String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber)  {
    
         try {
                 Statement statement2 = connection.createStatement();
