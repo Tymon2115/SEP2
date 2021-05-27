@@ -72,21 +72,21 @@
       </ImageView>
    </top>
    <center>
-      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(#2c2f33, #7289da); -fx-border-color: #7289da; -fx-border-width: 2;" stylesheets="@../styles.css" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" stylesheets="@../icons/Style.css" BorderPane.alignment="CENTER">
          <columns>
-            <TableColumn fx:id="idCol" minWidth="70.0" prefWidth="70.0" resizable="false" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="ID" />
-            <TableColumn fx:id="nameCol" maxWidth="427.0" prefWidth="58.333343505859375" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Name" />
-            <TableColumn fx:id="surnameCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Surname" />
-            <TableColumn fx:id="driversLicenceCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Driver's License" />
-            <TableColumn fx:id="addressCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Address" />
-            <TableColumn fx:id="carCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Car" />
-            <TableColumn fx:id="startBranchCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Start Branch" />
-            <TableColumn fx:id="endBranchCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="End Branch" />
-            <TableColumn fx:id="startDateCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Start Date" />
-            <TableColumn fx:id="endDateCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="End Date" />
-            <TableColumn fx:id="priceCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Price" />
-            <TableColumn fx:id="emailCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="E-mail" />
-            <TableColumn fx:id="phoneNumberCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Telephone nr" />
+            <TableColumn fx:id="idCol" minWidth="70.0" prefWidth="70.0" resizable="false" text="ID" />
+            <TableColumn fx:id="nameCol" maxWidth="427.0" prefWidth="58.333343505859375" text="Name" />
+            <TableColumn fx:id="surnameCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" text="Surname" />
+            <TableColumn fx:id="driversLicenceCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" text="Driver's License" />
+            <TableColumn fx:id="addressCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" text="Address" />
+            <TableColumn fx:id="carCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" text="Car" />
+            <TableColumn fx:id="startBranchCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" text="Start Branch" />
+            <TableColumn fx:id="endBranchCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" text="End Branch" />
+            <TableColumn fx:id="startDateCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" text="Start Date" />
+            <TableColumn fx:id="endDateCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" text="End Date" />
+            <TableColumn fx:id="priceCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" text="Price" />
+            <TableColumn fx:id="emailCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" text="E-mail" />
+            <TableColumn fx:id="phoneNumberCol" maxWidth="417.0" minWidth="0.0" prefWidth="75.33332824707031" text="Telephone nr" />
          </columns>
          <BorderPane.margin>
             <Insets bottom="20.0" left="20.0" top="20.0" />
