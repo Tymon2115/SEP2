@@ -9,75 +9,74 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #23272a;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.EmployeeView.EmployeeViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1000.0" stylesheets="@../icons/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.EmployeeView.EmployeeViewController">
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_CENTER">
+      <VBox prefHeight="550.0" prefWidth="71.0" BorderPane.alignment="TOP_CENTER">
          <children>
             <Button fx:id="addButton" mnemonicParsing="false" onAction="#openAddView" prefHeight="110.0" prefWidth="118.0" style="-fx-background-color: #23272a; -fx-border-color: #7289da;">
-               <graphic>
-                  <ImageView fitHeight="86.0" fitWidth="86.0">
-                     <image>
-                        <Image url="@../icons/plusviolet.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="89.0" fitWidth="87.0">
+                     <image>
+                        <Image url="@../icons/addEmployee.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
             <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteAction" prefHeight="110.0" prefWidth="118.0" style="-fx-border-color: #7289da; -fx-background-color: #23272a;">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </VBox.margin>
                <graphic>
-                  <ImageView fitHeight="86.0" fitWidth="86.0">
+                  <ImageView fitHeight="89.0" fitWidth="87.0">
                      <image>
-                        <Image url="@../icons/minusviolet.png" />
+                        <Image url="@../icons/removeEmployee.png" />
                      </image>
                   </ImageView>
                </graphic>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
             </Button>
             <Button fx:id="editButton" mnemonicParsing="false" onAction="#openEditView" prefHeight="110.0" prefWidth="118.0" style="-fx-border-color: #7289da; -fx-background-color: #23272a;">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </VBox.margin>
                <graphic>
-                  <ImageView fitHeight="86.0" fitWidth="86.0">
+                  <ImageView fitHeight="89.0" fitWidth="87.0">
                      <image>
-                        <Image url="@../icons/editIconviolet.png" />
+                        <Image url="@../icons/edit.png" />
                      </image>
                   </ImageView>
                </graphic>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
             </Button>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" prefHeight="110.0" prefWidth="118.0" style="-fx-border-color: #7289da; -fx-background-color: #23272a;">
                <graphic>
-                  <ImageView fitHeight="107.0" fitWidth="95.0">
+                  <ImageView fitHeight="89.0" fitWidth="87.0">
                      <image>
                         <Image url="@../icons/backicon.png" />
                      </image>
                   </ImageView>
                </graphic>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets left="20.0" right="20.0" top="10.0" />
                </VBox.margin>
             </Button>
          </children>
       </VBox>
    </right>
    <center>
-      <TableView fx:id="employee_tableview" prefHeight="490.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(#2c2f33, #7289da); -fx-border-color: #7289da; -fx-border-width: 2;" BorderPane.alignment="CENTER">
+      <TableView fx:id="employee_tableview" style="-fx-border-color: #7289da; -fx-border-width: 2;" BorderPane.alignment="CENTER">
          <columns>
-            <TableColumn fx:id="column_id" prefWidth="75.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="ID" />
-            <TableColumn fx:id="column_name" prefWidth="184.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Name" />
-            <TableColumn fx:id="column_surname" prefWidth="217.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Surname" />
-            <TableColumn fx:id="column_branch" prefWidth="167.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Branch" />
-            <TableColumn fx:id="column_username" prefWidth="250.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Username" />
-            <TableColumn fx:id="column_role" prefWidth="221.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Role" />
-            <TableColumn fx:id="column_email" prefWidth="379.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Email" />
+            <TableColumn fx:id="column_id" prefWidth="52.0" text="ID" />
+            <TableColumn fx:id="column_name" prefWidth="115.0" text="Name" />
+            <TableColumn fx:id="column_surname" prefWidth="139.0" text="Surname" />
+            <TableColumn fx:id="column_branch" prefWidth="127.0" text="Branch" />
+            <TableColumn fx:id="column_username" prefWidth="145.0" text="Username" />
+            <TableColumn fx:id="column_role" prefWidth="74.0" text="Role" />
+            <TableColumn fx:id="column_email" prefWidth="180.0" text="Email" />
          </columns>
          <BorderPane.margin>
-            <Insets bottom="20.0" left="20.0" top="20.0" />
+            <Insets bottom="50.0" left="20.0" top="20.0" />
          </BorderPane.margin>
       </TableView>
    </center>

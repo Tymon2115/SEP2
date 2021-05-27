@@ -37,7 +37,6 @@ public class RunCarRentalApp {
 
 
 
-
         //NOT GUI
         //TODO write javadocs
         //TODO write unit testing

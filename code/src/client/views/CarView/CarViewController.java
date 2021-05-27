@@ -38,6 +38,8 @@ public class CarViewController {
     @FXML
     private TableColumn<Car, String> column_model;
     @FXML
+    private TableColumn<Car, String> column_color;
+    @FXML
     private TableColumn<Car, String> column_numberplates;
     @FXML
     private TableColumn<Car, String> column_fueltype;
@@ -91,6 +93,7 @@ public class CarViewController {
         column_seats.setCellValueFactory(cellData -> (cellData.getValue().seatsProperty()));
         column_transmission.setCellValueFactory(cellData -> (cellData.getValue().transmissionProperty()));
         tableview_car.setItems(carViewModel.getCars());
+        column_color.setCellValueFactory(cellData -> (cellData.getValue().colorProperty()));
     }
 
     /**

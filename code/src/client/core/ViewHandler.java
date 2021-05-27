@@ -22,6 +22,7 @@ import client.views.ReservationView.ReservationViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import shared.Branch.Branch;
 import shared.Reservation.Car;
@@ -76,11 +77,17 @@ public class ViewHandler {
             LoginController controller = loader.getController();
             controller.init(viewModelFactory.getLoginViewModel());
 
-            stage.setTitle("Log in");
+            stage.setTitle("Login");
             Scene loginScene = new Scene(root);
             stage.setScene(loginScene);
+
             stage.centerOnScreen();
 
+
+
+            stage.setResizable(false);
+            stage.centerOnScreen();
+            stage.getIcons().add(new Image("client/views/icons/DatoIcon.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -103,8 +110,13 @@ public class ViewHandler {
             stage.setTitle("Home");
             Scene frontScene = new Scene(root);
             stage.setScene(frontScene);
+
             stage.centerOnScreen();
 
+
+
+            stage.setResizable(false);
+            stage.centerOnScreen();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -124,7 +136,6 @@ public class ViewHandler {
             CarViewController controller = loader.getController();
             controller.init(carViewModel);
             stage.setTitle("Car View");
-            stage.setMaximized(false);
             Scene carScene = new Scene(root);
             stage.setScene(carScene);
             stage.centerOnScreen();
@@ -151,7 +162,6 @@ public class ViewHandler {
             Scene registerScene = new Scene(root);
             stage.setScene(registerScene);
             stage.centerOnScreen();
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -190,10 +200,10 @@ public class ViewHandler {
             root = loader.load();
             EmployeeViewController controller = loader.getController();
             controller.init(viewModelFactory.getEmployeeViewModel());
-            stage.setTitle("Employee");
+            stage.setTitle("Employees");
             Scene employeeScene = new Scene(root);
             stage.setScene(employeeScene);
-            stage.setFullScreen(true);
+            stage.getIcons().add(new Image("client/views/icons/DatoIcon.png"));
             stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
