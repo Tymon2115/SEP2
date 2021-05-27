@@ -32,8 +32,7 @@ public class RunCarRentalApp {
         LocalDate localDate;
         Application.launch(CarRentalApp.class);
 
-        branchHandler.createBranch("Ding", "Vejle");
-        employeeHandler.createEmployee("Pidar", "Prost", 1, 1, "owner", "123", "asdasd");
+
 
 
 
