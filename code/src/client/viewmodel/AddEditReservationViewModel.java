@@ -19,6 +19,8 @@ import java.beans.PropertyChangeSupport;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * ViewModel for adding and editing the reservation
@@ -30,6 +32,8 @@ public class AddEditReservationViewModel {
     private ViewHandler viewHandler;
     private ObservableList<String> branches;
     private ObservableList<String> cars;
+    private ArrayList<Reservation> reservations;
+    private ArrayList<Car> receivedCars;
 
 
 
@@ -61,11 +65,16 @@ public class AddEditReservationViewModel {
         this.model = model;
         model.addListener(this::listenForBranches, "branches");
         model.addListener(this::listenForCars, "cars");
+        model.addListener(this::listenForReservations, "reservations");
         model.getBranches();
         model.getCars();
+        model.getReservations();
+
         this.viewHandler = viewHandler;
         branches = FXCollections.observableArrayList();
         cars = FXCollections.observableArrayList();
+        reservations = new ArrayList<>();
+        receivedCars = new ArrayList<>();
 
         name = new SimpleStringProperty();
         surname = new SimpleStringProperty();
@@ -90,6 +99,12 @@ public class AddEditReservationViewModel {
      *
      * @return the string property
      */
+    private void listenForReservations(PropertyChangeEvent propertyChangeEvent) {
+        Platform.runLater(() -> {
+            reservations = (ArrayList<Reservation>) propertyChangeEvent.getNewValue();
+        });
+    }
+
     public StringProperty nameProperty () {
         return name;
     }
@@ -254,7 +269,6 @@ public class AddEditReservationViewModel {
                 receivedCarNumbers.add(String.valueOf(receivedCar.getId()));
             }
             cars.addAll(receivedCarNumbers);
-
         });
     }
 
@@ -276,9 +290,32 @@ public class AddEditReservationViewModel {
         return branches;
     }
 
-
+    public void calculatePrice () {
+        //TODO call this from controller on onclick to price, i didnt do this so i dont mess with the view so there are no conflicts -Oliver
+        if (startDate != null && endDate != null && car != null) {
+            model.getCars();
+            double carPrice = 0;
+            int duration = endDate.get().getDayOfYear() - startDate.get().getDayOfYear();
+            for (Car receivedCar : receivedCars) {
+                if (receivedCar.getId() == Integer.parseInt(car.get())) {
+                    carPrice = receivedCar.getDailyPrice();
+                }
+            }
+            price.set(String.valueOf(carPrice * duration));
+        }
+    }
 
     private boolean inputVerification() {
+
+
+        String decimalNumbers = "[1-9]\\d*(\\.\\d+)?$";
+        Pattern regexDecimalNumbers = Pattern.compile(decimalNumbers);
+        Matcher matcherDecimalNumbers = regexDecimalNumbers.matcher(price.get());
+
+        //RFC 5322 General Email Regex Official Standard
+        String validEmail = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+        Pattern regexEmail = Pattern.compile(validEmail);
+        Matcher matcherEmail = regexEmail.matcher(email.get());
 
         if (name.get() == null || name.get().equals("")) {
 
@@ -342,7 +379,58 @@ public class AddEditReservationViewModel {
             message.setValue("Please input end date");
             return false;
         }
+        else if (!matcherDecimalNumbers.matches()) {
+            message.set("Please input a valid price");
+            return false;
+        }
+        else if (!matcherEmail.matches()){
+            message.set("Please input a valid email");
+            return false;
+        }
+        else if (name.get().length() > 800) {
+            message.set("Please input a name with a maximum of 800 characters");
+            return false;
+        }
+        else if (surname.get().length() > 40) {
+            message.set("Please input a surname with a maximum of 40 characters");
+            return false;
+        }
+        else if (driversLicence.get().length() > 50) {
+            message.set("Please input a drivers licence ID with a maximum of 50 characters");
+            return false;
+        }
+        else if (addressStreet.get().length() > 100) {
+            message.set("Please input a street with a maximum of 100 characters");
+            return false;
+        }
+        else if (addressCity.get().length() > 100) {
+            message.set("Please input a city with a maximum of 100 characters");
+            return false;
+        }
+        else if (addressZip.get().length() > 12) {
+            message.set("Please input a ZIP with a maximum of 12 characters");
+            return false;
+        }
+        else if (startDate.get().isAfter(endDate.get())) {
+            message.set("Start date cannot be later than the end date");
+            return false;
+        }
+
+
         else {
+
+            for (Reservation reservation : reservations) {
+                if (reservation.getName().equals(name.get()) && reservation.getSurname().equals(surname.get()) && reservation.getDriversLicence().equals(driversLicence.get())
+                && reservation.getAddress().getStreet().equals(addressStreet.get()) && reservation.getAddress().getCity().equals(addressCity.get()) && reservation.getAddress().getZip().equals(addressZip.get())
+                && reservation.getAddress().getCountry().equals(addressCountry.get()) && String.valueOf(reservation.getPrice()).equals(price.get()) && reservation.getEmail().equals(email.get())
+                && reservation.getPhoneNumber().equals(phoneNumber.get()) && String.valueOf(reservation.getCarId()).equals(car.get())
+                && String.valueOf(reservation.getStartBranchId()).equals(startBranch.get()) && String.valueOf(reservation.getEndBranchId()).equals(endBranch.get())
+                && reservation.getStartDate().toLocalDate().equals(startDate.get()) && reservation.getEndDate().toLocalDate().equals(endDate.get())) {
+                    message.set("This reservation already exists in the system");
+                    return false;
+                }
+            }
+
             return true;
         }
     }
@@ -351,7 +439,7 @@ public class AddEditReservationViewModel {
      * Cancel action.
      */
     public void cancelAction () {
-        viewHandler.openReservationView();
+        reload();
     }
 
     /**
@@ -372,18 +460,7 @@ public class AddEditReservationViewModel {
                     email.get(),
                     phoneNumber.get());
 
-                    model.getReservations();
-                    viewHandler.openReservationView();
-                    name.set("");
-                    surname.set("");
-                    driversLicence.set("");
-                    addressStreet.set("");
-                    addressZip.set("");
-                    addressCity.set("");
-                    addressCountry.set("");
-                    email.set("");
-                    phoneNumber.set("");
-                    price.set("");
+                    reload();
 
         }
         else {
@@ -397,6 +474,31 @@ public class AddEditReservationViewModel {
      *
      * @param id the id
      */
+    private void defaultFields () {
+        name.set("");
+        surname.set("");
+        driversLicence.set("");
+        addressStreet.set("");
+        addressZip.set("");
+        addressCity.set("");
+        addressCountry.set("");
+        email.set("");
+        phoneNumber.set("");
+        price.set("");
+        message.set("");
+        startDate.set(null);
+        endDate.set(null);
+        startBranch.set("");
+        endBranch.set("");
+        car.set("");
+    }
+
+    private void reload () {
+        model.getReservations();
+        viewHandler.openReservationView();
+        defaultFields();
+    }
+
     public void editAction (int id) {
         if (inputVerification()){
                 model.editReservation(
@@ -414,23 +516,7 @@ public class AddEditReservationViewModel {
                         email.get(),
                         phoneNumber.get()
                 );
-                model.getReservations();
-                viewHandler.openReservationView();
-                name.set("");
-                surname.set("");
-                driversLicence.set("");
-                addressCity.set("");
-                addressStreet.set("");
-                addressZip.set("");
-                addressCountry.set("");
-                car.set("");
-                startBranch.set("");
-                endBranch.set("");
-                startDate.set(null);
-                endDate.set(null);
-                price.set("");
-                email.set("");
-                phoneNumber.set("");
+                        reload();
         }
         else {
             //shouldn't do anything

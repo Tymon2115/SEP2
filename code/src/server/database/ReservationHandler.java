@@ -38,26 +38,16 @@ public class ReservationHandler {
      * @param phoneNumber    the phone number
      * @throws AlreadyExists the already exists
      */
-    public void createReservation(String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber) throws AlreadyExists {
+    public void createReservation(String name, String surname, String driversLicence, Address address, int carId, int startBranchId, int endBranchId, Date startDate, Date endDate, double price, String email, String phoneNumber)  {
+   
         try {
-            Statement statement1 = connection.createStatement();
-
-            ResultSet result = statement1.executeQuery("SELECT * FROM reservation WHERE name = '" + name + "' AND surname = '" + surname + "' AND drivers_licence = '" + driversLicence + "' AND address_street = '" + address.getStreet()
-                    + "' AND address_city = '" + address.getCity() + "' AND address_zip = '" + address.getZip() + "' AND address_country = '" + address.getCountry() + "' AND car_id = '" + carId + "' AND start_branch_id = '" + startBranchId
-                    + "' AND end_branch_id = '" + endBranchId + "' AND start_date = '" + startDate + "' AND end_date = '" + endDate + "' AND price = '" + price + "' AND email = '" + email + "' AND phone_number = '" + phoneNumber + "';");
-
-            if (!result.next()) {
                 Statement statement2 = connection.createStatement();
                 statement2.executeUpdate("INSERT INTO reservation (name, surname, drivers_licence, address_street, address_city, address_zip, address_country, car_id, start_branch_id, end_branch_id, start_date, end_date, price, email, phone_number) " +
                         "VALUES ('" + name + "','" + surname + "','" + driversLicence + "','" + address.getStreet() + "','" + address.getCity() + "', '" + address.getZip() + "', '" + address.getCountry() + "','" + carId + "', '" + startBranchId + "', '" + endBranchId +
                         "', '" + startDate + "','" + endDate + "', '" + price + "', '" + email + "', '" + phoneNumber + "');");
-
-                statement1.close();
                 statement2.close();
-            } else {
-                statement1.close();
-                throw new AlreadyExists("This object already exists in the database");
-            }
+
+
         } catch (SQLException throwables) {
 
             throwables.printStackTrace();
