@@ -20,8 +20,10 @@ import java.util.ArrayList;
  * @author Oliver
  */
 public class EmployeeHandler {
+
     private final Connection connection = DatabaseConnection.getInstance().getConnection();
     private BranchHandler branchHandler = new BranchHandler();
+
 
 
     /**
@@ -36,31 +38,18 @@ public class EmployeeHandler {
      * @param email    the email
      * @throws AlreadyExists the already exists
      */
-    public void createEmployee(String name, String surname, int role_id, int branchId, String username, String password, String email) throws AlreadyExists {
+   
+    public void createEmployee(String name, String surname, int role_id, int branchId, String username, String password, String email) {
+
         try {
-            Statement statement1 = connection.createStatement();
-
-
-
-            ResultSet result = statement1.executeQuery("SELECT * FROM employee WHERE name = '" + name + "' AND surname = '" + surname + "' AND role_id = '" + role_id + "' AND branch_id =  '" + branchId + "' AND username = '" + username + "' AND email = '" + email + "';");
-
-
-            if (!result.next()) {
-
-
                 String hashedPassword = LoginHandler.hash(password);
-
-
                 Statement statement2 = connection.createStatement();
                 statement2.executeUpdate("INSERT INTO employee (name, surname, role_id, branch_id, username, password, email) " +
                         "VALUES ('" + name + "', '" + surname + "', " + role_id + ", " + branchId + ", '" + username + "', '" +
                         hashedPassword + "','" + email + "');");
-                statement1.close();
+
                 statement2.close();
-            } else {
-                statement1.close();
-                throw new AlreadyExists("This object already exists in the database");
-            }
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (NoSuchAlgorithmException e) {

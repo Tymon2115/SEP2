@@ -109,7 +109,6 @@ public class DataModel implements Model, PropertyChangeSubject {
 
     public void createEmployee(String name, String surname, int roleId, int branchId, String username, String password, String email) {
         client.createEmployee(name, surname, roleId, branchId, username, password, email);
-
     }
 
     @Override

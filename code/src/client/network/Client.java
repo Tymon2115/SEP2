@@ -75,4 +75,7 @@ public interface Client extends Remote {
 
     void getEmployees() throws RemoteException;
 
+
+
+
 }

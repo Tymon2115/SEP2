@@ -19,6 +19,7 @@ public class BranchHandler {
     private final Connection connection = DatabaseConnection.getInstance().getConnection();
 
 
+
     /**
      * Create branch from database.
      *
@@ -26,23 +27,15 @@ public class BranchHandler {
      * @param location the location
      * @throws AlreadyExists the already exists when object already exists in database
      */
-    public void createBranch(String name, String location) throws AlreadyExists {
+
+
+    public void createBranch(String name, String location){
+
 
         try {
-            Statement statement1 = connection.createStatement();
-            ResultSet result = statement1.executeQuery("SELECT * FROM branch WHERE name = '" + name + "'AND location = '" + location + "';");
-            if (!result.next()) {
-
                 Statement statement2 = connection.createStatement();
                 statement2.executeUpdate("INSERT INTO branch (name, location) VALUES ('" + name + "','" + location + "');");
-                statement1.close();
                 statement2.close();
-
-            } else {
-                statement1.close();
-                throw new AlreadyExists("This object already exists in the database");
-            }
-
         } catch (SQLException throwables) {
 
             throwables.printStackTrace();
