@@ -8,18 +8,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="1080.0" prefWidth="1790.0" style="-fx-background-color: #23272a;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.EmployeeView.EmployeeViewController">
+<AnchorPane prefHeight="1080.0" prefWidth="1790.0" style="-fx-background-color: #23272a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.EmployeeView.EmployeeViewController">
    <children>
-      <Button fx:id="addButton" layoutX="1612.0" layoutY="218.0" mnemonicParsing="false" onAction="#openAddView" prefHeight="110.0" prefWidth="118.0" style="-fx-background-color: #23272a; -fx-border-color: #7289da;" AnchorPane.leftAnchor="1612.0" AnchorPane.rightAnchor="60.0" />
-      <Button fx:id="deleteButton" layoutX="1612.0" layoutY="340.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="110.0" prefWidth="118.0" style="-fx-border-color: #7289da; -fx-background-color: #23272a;" AnchorPane.rightAnchor="60.0" />
-      <Button fx:id="editButton" layoutX="1612.0" layoutY="462.0" mnemonicParsing="false" onAction="#openEditView" prefHeight="110.0" prefWidth="118.0" style="-fx-border-color: #7289da; -fx-background-color: #23272a;" AnchorPane.rightAnchor="60.0" />
-      <Button fx:id="backButton" layoutX="1612.0" layoutY="584.0" mnemonicParsing="false" onAction="#back" prefHeight="110.0" prefWidth="118.0" style="-fx-border-color: #7289da; -fx-background-color: #23272a;" AnchorPane.rightAnchor="60.0">
+      <Button fx:id="addButton" layoutX="1612.0" layoutY="218.0" mnemonicParsing="false" onAction="#openAddView" prefHeight="110.0" prefWidth="118.0" style="-fx-background-color: #23272a; -fx-border-color: #7289da;" AnchorPane.bottomAnchor="752.0" AnchorPane.leftAnchor="1612.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="218.0" />
+      <Button fx:id="deleteButton" layoutX="1612.0" layoutY="340.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="110.0" prefWidth="118.0" style="-fx-border-color: #7289da; -fx-background-color: #23272a;" AnchorPane.bottomAnchor="630.0" AnchorPane.leftAnchor="1612.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="340.0" />
+      <Button fx:id="editButton" layoutX="1612.0" layoutY="462.0" mnemonicParsing="false" onAction="#openEditView" prefHeight="110.0" prefWidth="118.0" style="-fx-border-color: #7289da; -fx-background-color: #23272a;" AnchorPane.bottomAnchor="508.0" AnchorPane.leftAnchor="1612.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="462.0" />
+      <Button fx:id="backButton" layoutX="1612.0" layoutY="584.0" mnemonicParsing="false" onAction="#back" prefHeight="110.0" prefWidth="118.0" style="-fx-border-color: #7289da; -fx-background-color: #23272a;" AnchorPane.bottomAnchor="386.0" AnchorPane.leftAnchor="1612.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="584.0">
          <graphic>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" />
          </graphic>
       </Button>
-      <TableView fx:id="employee_tableview" layoutX="234.0" layoutY="150.0" prefHeight="798.0" prefWidth="1494.0" style="-fx-background-color: #2c2f33; -fx-border-color: #7289da; -fx-border-width: 2;" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="64.0" AnchorPane.topAnchor="152.0">
+      <TableView fx:id="employee_tableview" layoutX="234.0" layoutY="150.0" prefHeight="798.0" prefWidth="1494.0" style="-fx-background-color: linear-gradient(#2c2f33, #7289da); -fx-border-color: #7289da; -fx-border-width: 2;" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="64.0" AnchorPane.topAnchor="152.0">
          <columns>
             <TableColumn fx:id="column_id" prefWidth="75.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="ID" />
             <TableColumn fx:id="column_name" prefWidth="184.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Name" />
