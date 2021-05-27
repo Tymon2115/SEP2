@@ -74,4 +74,5 @@ CREATE TABLE reservation (
     FOREIGN KEY (start_branch_id) references branch (id),
     FOREIGN KEY (end_branch_id) references  branch (id)
 );
-INSERT INTO role value (1, 'owner'), (2,'manager'), (3,'employee')
+
+INSERT INTO role values (1, 'owner'), (2,'manager'), (3,'employee')
