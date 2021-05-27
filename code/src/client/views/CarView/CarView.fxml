@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #23272a;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.CarViewController">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #23272a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.CarViewController">
    <children>
             <Button fx:id="addButton" layoutX="1742.0" layoutY="222.0" mnemonicParsing="false" onAction="#openAddView" prefHeight="110.0" prefWidth="118.0" style="-fx-background-color: #23272a; -fx-border-color: #7289da;" AnchorPane.rightAnchor="60.0" />
             <Button fx:id="removeButton" layoutX="1742.0" layoutY="344.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="110.0" prefWidth="118.0" style="-fx-background-color: #23272a; -fx-border-color: #7289da;" AnchorPane.rightAnchor="60.0" />
@@ -51,7 +51,7 @@
             <Image url="@../icons/minusviolet.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="backButton" fitHeight="133.0" fitWidth="133.0" layoutX="1735.0" layoutY="577.0" onDragDetected="#back">
+      <ImageView fitHeight="133.0" fitWidth="133.0" layoutX="1735.0" layoutY="577.0" onDragDetected="#back">
          <image>
             <Image url="@../icons/backicon.png" />
          </image>
