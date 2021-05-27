@@ -10,118 +10,118 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="754.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.AddCarViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.AddCarViewController">
     <children>
-        <Text fill="#7289da" layoutX="104.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Plates">
+        <Text fill="#7289da" layoutX="101.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Plates">
          <font>
             <Font size="14.0" />
          </font></Text>
-        <TextField fx:id="makeTextField" layoutX="212.0" layoutY="158.0" prefHeight="25.0" prefWidth="187.0">
+        <TextField fx:id="makeTextField" layoutX="209.0" layoutY="129.0" prefHeight="25.0" prefWidth="187.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-        <Text fill="#7289da" layoutX="116.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel Type">
+        <Text fill="#7289da" layoutX="113.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel Type">
          <font>
             <Font size="14.0" />
          </font></Text>
-        <TextField fx:id="modelTextField" layoutX="212.0" layoutY="194.0" prefHeight="25.0" prefWidth="187.0">
+        <TextField fx:id="modelTextField" layoutX="209.0" layoutY="165.0" prefHeight="25.0" prefWidth="187.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-        <Button fx:id="cancelButton" layoutX="270.0" layoutY="667.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #7289da;" text="Cancel" textFill="WHITE">
+        <Button fx:id="cancelButton" layoutX="266.0" layoutY="637.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #7289da;" text="Cancel" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font></Button>
-        <Button fx:id="addButton" layoutX="136.0" layoutY="667.0" mnemonicParsing="false" onAction="#addAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #7289da;" text="Add" textFill="#fffbfb">
+        <Button fx:id="addButton" layoutX="133.0" layoutY="637.0" mnemonicParsing="false" onAction="#addAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #7289da;" text="Add" textFill="#fffbfb">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Text fill="#7289da" layoutX="85.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel Consumption" wrappingWidth="118.22168181836605">
+      <Text fill="#7289da" layoutX="82.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel Consumption" wrappingWidth="118.22168181836605">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text fill="#7289da" layoutX="128.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seats">
+      <Text fill="#7289da" layoutX="125.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seats">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text fill="#7289da" layoutX="124.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Engine">
+      <Text fill="#7289da" layoutX="121.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Engine">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text fill="#7289da" layoutX="109.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transmission">
+      <Text fill="#7289da" layoutX="106.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transmission">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text fill="#7289da" layoutX="116.0" layoutY="502.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment">
+      <Text fill="#7289da" layoutX="113.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text fill="#7289da" layoutX="114.0" layoutY="538.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+      <Text fill="#7289da" layoutX="111.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text fill="#7289da" layoutX="125.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Branch">
+      <Text fill="#7289da" layoutX="122.0" layoutY="545.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Branch">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text fill="#7289da" layoutX="130.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Color">
+      <Text fill="#7289da" layoutX="127.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Color">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text fill="#7289da" layoutX="130.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Model">
+      <Text fill="#7289da" layoutX="127.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Model">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text fill="#7289da" layoutX="133.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make">
+      <Text fill="#7289da" layoutX="130.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text fill="#7289da" layoutX="117.0" layoutY="610.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Price">
+      <Text fill="#7289da" layoutX="114.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Price">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <TextField fx:id="colorTextField" layoutX="212.0" layoutY="230.0" prefHeight="25.0" prefWidth="187.0">
+      <TextField fx:id="colorTextField" layoutX="209.0" layoutY="201.0" prefHeight="25.0" prefWidth="187.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TextField fx:id="numberPlatesTextField" layoutX="212.0" layoutY="266.0" prefHeight="25.0" prefWidth="187.0">
+      <TextField fx:id="numberPlatesTextField" layoutX="209.0" layoutY="237.0" prefHeight="25.0" prefWidth="187.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TextField fx:id="fuelTypeTextField" layoutX="212.0" layoutY="302.0" prefHeight="25.0" prefWidth="187.0">
+      <TextField fx:id="fuelTypeTextField" layoutX="209.0" layoutY="273.0" prefHeight="25.0" prefWidth="187.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TextField fx:id="fuelConsumptionTextField" layoutX="212.0" layoutY="338.0" prefHeight="25.0" prefWidth="187.0">
+      <TextField fx:id="fuelConsumptionTextField" layoutX="209.0" layoutY="309.0" prefHeight="25.0" prefWidth="187.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TextField fx:id="seatsTextField" layoutX="212.0" layoutY="374.0" prefHeight="25.0" prefWidth="187.0">
+      <TextField fx:id="seatsTextField" layoutX="209.0" layoutY="345.0" prefHeight="25.0" prefWidth="187.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TextField fx:id="engineTextField" layoutX="212.0" layoutY="410.0" prefHeight="25.0" prefWidth="187.0">
+      <TextField fx:id="engineTextField" layoutX="209.0" layoutY="381.0" prefHeight="25.0" prefWidth="187.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TextField fx:id="transmissionTextField" layoutX="212.0" layoutY="446.0" prefHeight="25.0" prefWidth="187.0">
+      <TextField fx:id="transmissionTextField" layoutX="209.0" layoutY="417.0" prefHeight="25.0" prefWidth="187.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TextField fx:id="equipmentTextField" layoutX="212.0" layoutY="482.0" prefHeight="25.0" prefWidth="187.0">
+      <TextField fx:id="equipmentTextField" layoutX="209.0" layoutY="453.0" prefHeight="25.0" prefWidth="187.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TextField fx:id="descriptionTextField" layoutX="212.0" layoutY="518.0" prefHeight="25.0" prefWidth="187.0">
+      <TextField fx:id="descriptionTextField" layoutX="209.0" layoutY="489.0" prefHeight="25.0" prefWidth="187.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TextField fx:id="dailyPriceTextField" layoutX="212.0" layoutY="590.0" prefHeight="25.0" prefWidth="187.0">
+      <TextField fx:id="dailyPriceTextField" layoutX="209.0" layoutY="561.0" prefHeight="25.0" prefWidth="187.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <ComboBox fx:id="branchComboBox" layoutX="212.0" layoutY="554.0" prefHeight="30.0" prefWidth="187.0" />
-      <Label fx:id="messageLabel" layoutX="165.0" layoutY="631.0" prefHeight="17.0" prefWidth="209.0" textFill="#b8144d">
+      <ComboBox fx:id="branchComboBox" layoutX="209.0" layoutY="525.0" prefHeight="30.0" prefWidth="187.0" />
+      <Label fx:id="messageLabel" layoutX="114.0" layoutY="599.0" prefHeight="20.0" prefWidth="288.0" textFill="#b8144d">
          <font>
             <Font size="14.0" />
          </font></Label>
@@ -132,11 +132,11 @@
                   <Image url="@../icons/FullDatoLogin.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="65.0" fitWidth="130.0" layoutX="346.0" layoutY="26.0">
-               <image>
-                  <Image url="@../../../../../../../OneDrive/Desktop/Untitled-1.png" />
-               </image>
-            </ImageView>
+            <Label layoutX="367.0" layoutY="30.0" text="Add Car" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
     </children>

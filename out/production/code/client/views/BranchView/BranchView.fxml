@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #23272a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.BranchView.BranchViewController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #23272a;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.BranchView.BranchViewController">
    <center>
       <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(#2c2f33, #7289da); -fx-border-color: #7289da; -fx-border-width: 2;" stylesheets="@../styles.css" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="idCol" minWidth="70.0" prefWidth="70.0" resizable="false" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="ID" />
-            <TableColumn fx:id="idName" maxWidth="427.0" prefWidth="212.66666412353516" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Name" />
-            <TableColumn fx:id="idLocation" maxWidth="417.0" minWidth="0.0" prefWidth="214.33333587646484" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Location" />
+            <TableColumn fx:id="idName" maxWidth="427.0" prefWidth="322.40000915527344" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Name" />
+            <TableColumn fx:id="idLocation" maxWidth="535.1999755859375" minWidth="0.0" prefWidth="425.60003662109375" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Location" />
         </columns>
          <BorderPane.margin>
             <Insets bottom="20.0" left="20.0" top="20.0" />

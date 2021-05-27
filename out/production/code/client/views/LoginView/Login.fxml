@@ -29,7 +29,7 @@
          <font>
             <Font size="14.0" />
          </font></PasswordField>
-      <Label fx:id="loginResultMessage" layoutX="160.0" layoutY="261.0" text="Login Message" />
+      <Label fx:id="loginResultMessage" layoutX="160.0" layoutY="261.0" text="Login Message" textFill="#7289da" />
    </children>
    <padding>
       <Insets right="10.0" />
