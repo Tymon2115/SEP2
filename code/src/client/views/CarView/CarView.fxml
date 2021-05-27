@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #23272a;" stylesheets="@../icons/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.CarViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #23272a;" stylesheets="@../icons/Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.CarViewController">
    <right>
       <VBox alignment="TOP_CENTER" prefHeight="532.0" prefWidth="158.0" BorderPane.alignment="CENTER">
          <children>
@@ -65,7 +65,7 @@
       </VBox>
    </right>
    <center>
-      <TableView fx:id="tableview_car" prefHeight="376.0" prefWidth="792.0" style="-fx-border-color: #7289da; -fx-border-width: 2;" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableview_car" prefHeight="376.0" prefWidth="792.0" stylesheets="@../icons/Style.css" BorderPane.alignment="CENTER">
          <columns>
             <TableColumn fx:id="column_id" prefWidth="40.0" text="ID" />
             <TableColumn fx:id="column_make" prefWidth="126.0" text="Make" />
