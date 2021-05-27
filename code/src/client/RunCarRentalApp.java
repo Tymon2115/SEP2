@@ -11,10 +11,8 @@ import server.database.ReservationHandler;
 import shared.Branch.Branch;
 import shared.Reservation.Address;
 
+import java.sql.Date;
 import java.time.LocalDate;
-
-import java.util.Date;
-
 
 /**
  * Runs the app on the client side

@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="postgresql-42.2.20" level="project" />
+    <orderEntry type="library" exported="" name="postgresql-42.2.20" level="project" />
     <orderEntry type="library" exported="" name="javaFX" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
@@ -19,5 +19,14 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Program Files/Java/postgresql-42.2.20.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
