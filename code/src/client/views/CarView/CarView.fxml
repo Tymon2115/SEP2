@@ -1,65 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #23272a;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.CarViewController">
-   <children>
-            <Button fx:id="addButton" layoutX="1742.0" layoutY="222.0" mnemonicParsing="false" onAction="#openAddView" prefHeight="110.0" prefWidth="118.0" style="-fx-background-color: #23272a; -fx-border-color: #7289da;" AnchorPane.rightAnchor="60.0" />
-            <Button fx:id="removeButton" layoutX="1742.0" layoutY="344.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="110.0" prefWidth="118.0" style="-fx-background-color: #23272a; -fx-border-color: #7289da;" AnchorPane.rightAnchor="60.0" />
-          <Button fx:id="editButton" layoutX="1742.0" layoutY="466.0" mnemonicParsing="false" onAction="#openEditView" prefHeight="110.0" prefWidth="118.0" style="-fx-background-color: #23272a; -fx-border-color: #7289da;" AnchorPane.rightAnchor="60.0" />
-          <Button fx:id="backButton" layoutX="1742.0" layoutY="588.0" mnemonicParsing="false" onAction="#back" prefHeight="110.0" prefWidth="118.0" style="-fx-background-color: #23272a; -fx-border-color: #7289da;" AnchorPane.rightAnchor="60.0">
-              <graphic>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" />
-              </graphic>
-          </Button>
-          <TableView fx:id="tableview_car" layoutX="64.0" layoutY="152.0" prefHeight="851.0" prefWidth="1634.0" style="-fx-background-color: #2c2f33; -fx-border-color: #7289da; -fx-border-width: 2;" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="64.0" AnchorPane.topAnchor="152.0">
-              <columns>
-                  <TableColumn fx:id="column_id" prefWidth="40.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="ID" />
-                  <TableColumn fx:id="column_make" prefWidth="126.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Make" />
-                  <TableColumn fx:id="column_model" prefWidth="96.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Model" />
-                  <TableColumn fx:id="column_color" prefWidth="88.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Color" />
-                  <TableColumn fx:id="column_numberplates" prefWidth="116.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Number Plates" />
-                  <TableColumn fx:id="column_fueltype" prefWidth="64.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Fuel Type" />
-                  <TableColumn fx:id="column_fuelconsumption" prefWidth="129.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Fuel Consumption" />
-                  <TableColumn fx:id="column_seats" prefWidth="56.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Seats" />
-                  <TableColumn fx:id="column_engine" prefWidth="64.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Engine" />
-                  <TableColumn fx:id="column_transmission" prefWidth="91.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Transmission" />
-                  <TableColumn fx:id="column_equipment" prefWidth="219.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Equipment" />
-                  <TableColumn fx:id="column_description" prefWidth="350.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Description" />
-                  <TableColumn fx:id="column_branch" prefWidth="93.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Branch" />
-                  <TableColumn fx:id="column_dailyprice" prefWidth="101.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Daily Price" />
-              </columns>
-          </TableView>
-      <ImageView fitHeight="110.0" fitWidth="258.0" layoutX="800.0" layoutY="14.0">
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #23272a;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.CarView.CarViewController">
+   <right>
+      <VBox alignment="TOP_CENTER" prefHeight="450.0" prefWidth="126.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="addButton" alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" mnemonicParsing="false" onAction="#openAddView" prefHeight="110.0" prefWidth="118.0" style="-fx-background-color: #23272a; -fx-border-color: #7289da;">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/plusviolet.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="removeButton" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteAction" prefHeight="110.0" prefWidth="118.0" style="-fx-background-color: #23272a; -fx-border-color: #7289da;">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/minusviolet.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="editButton" contentDisplay="CENTER" layoutX="10.0" layoutY="120.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#openEditView" prefHeight="110.0" prefWidth="118.0" style="-fx-background-color: #23272a; -fx-border-color: #7289da;">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/editIconviolet.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="backButton" contentDisplay="CENTER" layoutX="10.0" layoutY="230.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="110.0" prefWidth="118.0" style="-fx-background-color: #23272a; -fx-border-color: #7289da;">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/backicon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <TableView fx:id="tableview_car" prefHeight="851.0" prefWidth="1634.0" style="-fx-background-color: linear-gradient(#2c2f33, #7289da); -fx-border-color: #7289da; -fx-border-width: 2;" BorderPane.alignment="CENTER">
+         <columns>
+            <TableColumn fx:id="column_id" prefWidth="40.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="ID" />
+            <TableColumn fx:id="column_make" prefWidth="126.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Make" />
+            <TableColumn fx:id="column_model" prefWidth="96.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Model" />
+            <TableColumn fx:id="column_color" prefWidth="88.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Color" />
+            <TableColumn fx:id="column_numberplates" prefWidth="116.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Number Plates" />
+            <TableColumn fx:id="column_fueltype" prefWidth="64.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Fuel Type" />
+            <TableColumn fx:id="column_fuelconsumption" prefWidth="129.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Fuel Consumption" />
+            <TableColumn fx:id="column_seats" prefWidth="56.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Seats" />
+            <TableColumn fx:id="column_engine" prefWidth="64.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Engine" />
+            <TableColumn fx:id="column_transmission" prefWidth="91.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Transmission" />
+            <TableColumn fx:id="column_equipment" prefWidth="219.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Equipment" />
+            <TableColumn fx:id="column_description" prefWidth="350.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Description" />
+            <TableColumn fx:id="column_branch" prefWidth="93.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Branch" />
+            <TableColumn fx:id="column_dailyprice" prefWidth="101.0" style="-fx-background-color: #7289da; -fx-border-color: #2c2f33;" text="Daily Price" />
+         </columns>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" top="20.0" />
+         </BorderPane.margin>
+      </TableView>
+   </center>
+   <top>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@../icons/FullDatoLogin.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="86.0" fitWidth="86.0" layoutX="1758.0" layoutY="234.0">
-         <image>
-            <Image url="@../icons/plusviolet.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="86.0" fitWidth="86.0" layoutX="1758.0" layoutY="356.0">
-         <image>
-            <Image url="@../icons/minusviolet.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="backButton" fitHeight="133.0" fitWidth="133.0" layoutX="1735.0" layoutY="577.0" onDragDetected="#back">
-         <image>
-            <Image url="@../icons/backicon.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="86.0" fitWidth="86.0" layoutX="1765.0" layoutY="472.0">
-         <image>
-            <Image url="@../icons/editIconviolet.png" />
-         </image>
-      </ImageView>
-   </children>
-</AnchorPane>
+   </top>
+</BorderPane>
