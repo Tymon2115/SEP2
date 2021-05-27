@@ -77,15 +77,12 @@ public class ViewHandler {
             LoginController controller = loader.getController();
             controller.init(viewModelFactory.getLoginViewModel());
 
-            stage.setTitle("Log in");
+            stage.setTitle("Login");
             Scene loginScene = new Scene(root);
             stage.setScene(loginScene);
             stage.setResizable(false);
             stage.centerOnScreen();
             stage.getIcons().add(new Image("client/views/icons/DatoIcon.png"));
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -109,8 +106,6 @@ public class ViewHandler {
             stage.setScene(frontScene);
             stage.setResizable(false);
             stage.centerOnScreen();
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -132,8 +127,6 @@ public class ViewHandler {
             Scene carScene = new Scene(root);
             stage.setScene(carScene);
             stage.centerOnScreen();
-//            stage.setMaximized(true);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -155,8 +148,7 @@ public class ViewHandler {
             stage.setTitle("Registration View");
             Scene registerScene = new Scene(root);
             stage.setScene(registerScene);
-
-
+            stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -177,6 +169,7 @@ public class ViewHandler {
             stage.setTitle("Reservation");
             Scene reservationScene = new Scene(root);
             stage.setScene(reservationScene);
+            stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -197,6 +190,7 @@ public class ViewHandler {
             Scene employeeScene = new Scene(root);
             stage.setScene(employeeScene);
             stage.getIcons().add(new Image("client/views/icons/DatoIcon.png"));
+            stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -217,6 +211,7 @@ public class ViewHandler {
             stage.setTitle("Branch");
             Scene branchScene = new Scene(root);
             stage.setScene(branchScene);
+            stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -237,6 +232,7 @@ public class ViewHandler {
             stage.setTitle("Add Reservation");
             Scene addReservationScene = new Scene(root);
             stage.setScene(addReservationScene);
+            stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -257,6 +253,7 @@ public class ViewHandler {
             stage.setTitle("Add Branch");
             Scene addBranchScene = new Scene(root);
             stage.setScene(addBranchScene);
+            stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -277,6 +274,7 @@ public class ViewHandler {
             stage.setTitle("Add Car");
             Scene addBranchScene = new Scene(root);
             stage.setScene(addBranchScene);
+            stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -299,6 +297,7 @@ public class ViewHandler {
             stage.setTitle("Edit Branch");
             Scene editBranchScene = new Scene(root);
             stage.setScene(editBranchScene);
+            stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -321,6 +320,7 @@ public class ViewHandler {
             stage.setTitle("Edit Car");
             Scene editCarScene = new Scene(root);
             stage.setScene(editCarScene);
+            stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -343,6 +343,8 @@ public class ViewHandler {
             stage.setTitle("Edit Employee");
             Scene editEmployeeScene = new Scene(root);
             stage.setScene(editEmployeeScene);
+            stage.centerOnScreen();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -365,6 +367,8 @@ public class ViewHandler {
             stage.setTitle("Edit Reservation");
             Scene editReservationScene = new Scene(root);
             stage.setScene(editReservationScene);
+            stage.centerOnScreen();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
